@@ -1,5 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
+/android/
+downloads/
+.nomedia
+media/movies/
+exports/
+editor_addons/
+
+=======
 .nomedia
 
 # Godot-specific ignores
