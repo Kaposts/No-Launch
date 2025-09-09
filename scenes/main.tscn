@@ -1,3 +1,17 @@
-[gd_scene format=3 uid="uid://dk62yq4ftj1dx"]
+[gd_scene load_steps=2 format=3 uid="uid://dk62yq4ftj1dx"]
+
+[ext_resource type="Script" uid="uid://byjj1n3h0axru" path="res://ui/transition_example_button.gd" id="1_o5qli"]
 
 [node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 942.0
+offset_top = 22.0
+offset_right = 1123.0
+offset_bottom = 93.0
+text = "Transition Demo"
+script = ExtResource("1_o5qli")
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="_on_pressed"]
