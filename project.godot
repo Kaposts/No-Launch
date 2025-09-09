@@ -13,6 +13,8 @@ config_version=5
 config/name="New Game Project"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+"<<<<<<<HEAD[editor]version_control/plugin_name"="GitPlugin"
+version_control/autoload_on_startup=true
 
 [editor]
 
