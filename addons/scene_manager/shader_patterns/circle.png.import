@@ -1,34 +1,3 @@
-[remap]
-
-importer="texture"
-type="CompressedTexture2D"
-uid="uid://cbw0lhcx0wllm"
-path="res://.godot/imported/circle.png-49deb66a2171d4476d4de5b40b7c62d8.ctex"
-metadata={
-"vram_texture": false
-}
-
-[deps]
-
-source_file="res://addons/scene_manager/shader_patterns/circle.png"
-dest_files=["res://.godot/imported/circle.png-49deb66a2171d4476d4de5b40b7c62d8.ctex"]
-
-[params]
-
-compress/mode=0
-compress/high_quality=false
-compress/lossy_quality=0.7
-compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=false
-mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
-process/fix_alpha_border=true
-process/premult_alpha=false
-process/normal_map_invert_y=false
-process/hdr_as_srgb=false
-process/hdr_clamp_exposure=false
-process/size_limit=0
-detect_3d/compress_to=1
+version https://git-lfs.github.com/spec/v1
+oid sha256:5fe9b1b9b817a9171f6bb3d9ef63c815c59ad1f20458fef90383962a3d39e7b7
+size 789
