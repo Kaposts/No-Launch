@@ -15,7 +15,7 @@ var is_transitioning := false
 var default_options := {
 	"speed": 2,
 	"color": Color("#000000"),
-	"pattern": "fade",
+	"pattern": "squares",
 	"wait_time": 0.5,
 	"invert": false,
 	"invert_on_leave": true,

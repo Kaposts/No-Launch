@@ -11,12 +11,30 @@ config_version=5
 [application]
 
 config/name="New Game Project"
+run/main_scene="uid://dk62yq4ftj1dx"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 "<<<<<<<HEAD[editor]version_control/plugin_name"="GitPlugin"
 version_control/autoload_on_startup=true
 
+<<<<<<< HEAD
 [editor]
+=======
+[autoload]
+
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+Shaker="*res://addons/shaker/src/Shaker.gd"
+Enum="*res://core/enum.gd"
+Global="*res://core/global.gd"
+Ref="*res://core/ref.gd"
+SignalBus="*res://core/signal_bus.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
+
+[file_customization]
+>>>>>>> 112f6df57d3866a8653b2ab4e8adae64deb8966c
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
