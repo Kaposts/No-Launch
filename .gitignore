@@ -5,7 +5,8 @@ downloads/
 .nomedia
 media/movies/
 exports/
-editor_addons/
+addons/Asset_Drawer/
+addons/godot-git-plugin/
 
 =======
 .nomedia
