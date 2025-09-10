@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9a6dfe765de385684e34d7c32b4e5b63231edb83764d1699381c731dff1d91ce
-size 867
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://t336hrgr8122"
+path="res://.godot/imported/Pause.svg-bf8a05fc34af72ad423e24582ebdfe77.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://addons/shaker/assets/Pause.svg"
+dest_files=["res://.godot/imported/Pause.svg-bf8a05fc34af72ad423e24582ebdfe77.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

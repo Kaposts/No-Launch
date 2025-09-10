@@ -19,12 +19,13 @@ version_control/autoload_on_startup=true
 
 [autoload]
 
-SceneManager="*res://addons/scene_manager/SceneManager.tscn"
-Shaker="*res://addons/shaker/src/Shaker.gd"
-Enum="*res://core/enum.gd"
 Global="*res://core/global.gd"
+Enum="*res://core/enum.gd"
 Ref="*res://core/ref.gd"
 SignalBus="*res://core/signal_bus.gd"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+Shaker="*res://addons/shaker/src/Shaker.gd"
+
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
@@ -40,7 +41,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/Asset_Drawer/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [input]
 
