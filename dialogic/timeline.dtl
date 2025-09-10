@@ -1,0 +1,5 @@
+join godot right [animation="Slide In Up"]
+godot: AHOOOOY SAILOR, Want me to tell you about the ONE PIECE
+[end_timeline]
+[text_input text="What should I call you" var="player_name"]
+godot: Hi there {player_name}

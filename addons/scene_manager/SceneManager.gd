@@ -15,11 +15,11 @@ var is_transitioning := false
 var default_options := {
 	"speed": 2,
 	"color": Color("#000000"),
-	"pattern": "squares",
+	"pattern": "pixel_3",
 	"wait_time": 0.5,
 	"invert": false,
 	"invert_on_leave": true,
-	"ease": 1.0,
+	"ease": 1,
 	"skip_scene_change": false,
 	"skip_fade_out": false,
 	"skip_fade_in": false,

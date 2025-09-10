@@ -1,6 +1,7 @@
-extends Button
+extends CanvasLayer
 
-func _on_pressed() -> void:
-	print("Button: pressed")
+func _on_button_pressed() -> void:
 	await Global.transition()
-	print("transition: finished")
+
+func _on_button_2_pressed() -> void:
+	Dialogic.start("timeline")
