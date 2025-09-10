@@ -1,4 +1,3 @@
-## Write global variables here
 extends Node
 
 func _ready() -> void:

@@ -25,9 +25,19 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("2_sugp2")
 text = "dialogic demo"
 
+[node name="Button3" type="Button" parent="CanvasLayer"]
+offset_left = 445.0
+offset_top = 175.0
+offset_right = 626.0
+offset_bottom = 246.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("2_sugp2")
+text = "Sound demo"
+
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(106, 100)
 texture = ExtResource("2_0wfyh")
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer" method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button2" to="CanvasLayer" method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Button3" to="CanvasLayer" method="_on_button_3_pressed"]
