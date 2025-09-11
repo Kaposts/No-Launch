@@ -15,9 +15,13 @@ func _ready():
 		add_child(player)
 		channels.append(player)
 
-func play_sfx(sound_name: String, volume_db: float = 0, pitch_scale: float = 1.0):
+func play_sfx(sound_name: String, volume_db: float = 0, pitch_scale: float = 1.0,
+			  pitch_shift: bool = true, pitch_shift_range: float = 0.1):
 	var stream: SFXData = sfx_library.get(sound_name)
-
+	
+	if pitch_shift:
+		pitch_scale += randf_range(-pitch_shift_range, pitch_shift_range)
+	
 	if stream:
 		for player: AudioStreamPlayer2D in channels:
 			if not player.playing:
