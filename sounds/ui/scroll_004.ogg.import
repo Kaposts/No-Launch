@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bf8b78c328eff4f458482b205a3d110549b177a59ad2fab09eaa014a92c33730
-size 396
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8dc5nf8sre6y"
+path="res://.godot/imported/scroll_004.ogg-7f32d695d9db7237a5e9cdee92482d10.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/ui/scroll_004.ogg"
+dest_files=["res://.godot/imported/scroll_004.ogg-7f32d695d9db7237a5e9cdee92482d10.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

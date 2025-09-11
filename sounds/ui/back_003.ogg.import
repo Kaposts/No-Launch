@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f3787c495ee4ba1654ba1433c23a27f04c6ab951ff8ed18ba7cb1396d77309d8
-size 389
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://gxekd64khi6r"
+path="res://.godot/imported/back_003.ogg-1015c7a57a9f260a7d5a60ac897b947a.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/ui/back_003.ogg"
+dest_files=["res://.godot/imported/back_003.ogg-1015c7a57a9f260a7d5a60ac897b947a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

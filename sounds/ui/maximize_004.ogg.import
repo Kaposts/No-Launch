@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:51f3dcad4d45b2159021429b8a22cd7c56ed0bd5bcda16c5882a06a3ebebf3a2
-size 402
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bpaqd6ihbk6pg"
+path="res://.godot/imported/maximize_004.ogg-2d6d9afde7ab1a7752c0ae106f1f3a94.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/ui/maximize_004.ogg"
+dest_files=["res://.godot/imported/maximize_004.ogg-2d6d9afde7ab1a7752c0ae106f1f3a94.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

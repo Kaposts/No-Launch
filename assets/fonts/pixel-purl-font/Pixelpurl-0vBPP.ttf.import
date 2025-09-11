@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2d1a51895094d0e42f9d2eb13c407dd13909f37ec78af85f01057503a166210b
-size 771
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://csu3erj4oisi5"
+path="res://.godot/imported/Pixelpurl-0vBPP.ttf-1d91f8ce36a5e6fc994005007a6ff7b9.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/pixel-purl-font/Pixelpurl-0vBPP.ttf"
+dest_files=["res://.godot/imported/Pixelpurl-0vBPP.ttf-1d91f8ce36a5e6fc994005007a6ff7b9.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

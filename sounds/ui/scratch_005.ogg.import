@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5af64e47c74d45ea7bf836c860f48dc10d4f10a42bf700a9ba191c6e9e2a30f2
-size 399
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b4mjysl2h7w4t"
+path="res://.godot/imported/scratch_005.ogg-bff9e9a07706225cd2a55b4a00a3cc3c.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/ui/scratch_005.ogg"
+dest_files=["res://.godot/imported/scratch_005.ogg-bff9e9a07706225cd2a55b4a00a3cc3c.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

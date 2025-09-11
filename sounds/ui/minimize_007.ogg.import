@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6e2a680ef99f2d4e73d5fa7be7a7d04656930ba74c0df6ebcb4aab6e301d3d03
-size 401
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://nhlw83x7f7bf"
+path="res://.godot/imported/minimize_007.ogg-e7e9819261d73ac11ed791e72a92a313.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/ui/minimize_007.ogg"
+dest_files=["res://.godot/imported/minimize_007.ogg-e7e9819261d73ac11ed791e72a92a313.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

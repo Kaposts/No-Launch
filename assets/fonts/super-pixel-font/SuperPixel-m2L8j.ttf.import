@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:67ef0adbeab796daa5143db3daea474a659f2afde248e2452904086b3d0a3ef7
-size 774
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://vqb0yh5wx3jl"
+path="res://.godot/imported/SuperPixel-m2L8j.ttf-87603577b908377ea9355291584de5b3.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/super-pixel-font/SuperPixel-m2L8j.ttf"
+dest_files=["res://.godot/imported/SuperPixel-m2L8j.ttf-87603577b908377ea9355291584de5b3.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

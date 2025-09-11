@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fbd7aa4fe8c7695174f4a5f944b92a43062a6c193464de55fe2ea562a9c63027
-size 414
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cl37ugi30dumy"
+path="res://.godot/imported/confirmation_003.ogg-6140218993b6a8f0f51c9eaa1e28703b.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/ui/confirmation_003.ogg"
+dest_files=["res://.godot/imported/confirmation_003.ogg-6140218993b6a8f0f51c9eaa1e28703b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

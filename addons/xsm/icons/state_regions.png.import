@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:00fb52bd27150bc43da2c90ccc76082d435a6bd9c3910ba69b014b1824feda63
-size 790
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d1o1tyhfauvf4"
+path="res://.godot/imported/state_regions.png-e452ab60f1fd3e7a5a78612cb6f9a234.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://addons/xsm/icons/state_regions.png"
+dest_files=["res://.godot/imported/state_regions.png-e452ab60f1fd3e7a5a78612cb6f9a234.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
