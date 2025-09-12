@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://dsucq0pc4n28v"]
+
+[ext_resource type="AudioStream" uid="uid://mi0q7vpic17e" path="res://assets/SFX/ui/question/001.ogg" id="1_8kbpq"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_ro84l"]
+
+[resource]
+script = ExtResource("2_ro84l")
+res_name = "sfx_ui_question_001"
+res_stream = ExtResource("1_8kbpq")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false

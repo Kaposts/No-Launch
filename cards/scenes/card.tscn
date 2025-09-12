@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://crv6wrd1htgmr"]
 
 [ext_resource type="Script" uid="uid://5hg061g82116" path="res://cards/card.gd" id="1_ttli1"]
-[ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/default.tres" id="2_032ga"]
+[ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/default.tres" id="2_032ga"]
 [ext_resource type="Texture2D" uid="uid://ctarubigncthm" path="res://icon.svg" id="3_032ga"]
 [ext_resource type="Texture2D" uid="uid://cp302aqxfg0cg" path="res://cards/assets/highlight.png" id="3_77qwj"]
 [ext_resource type="Texture2D" uid="uid://b6als4emj5x8a" path="res://cards/assets/Sprite-0002.png" id="3_ixyhn"]
@@ -306,7 +306,6 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_constants/line_spacing = -3
 theme_override_font_sizes/font_size = 16
-text = "This is a asdas asdas asdasd asdasd asdas "
 horizontal_alignment = 1
 autowrap_mode = 2
 
