@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://cetfvkhut1rm3"]
+[gd_scene load_steps=3 format=3 uid="uid://cetfvkhut1rm3"]
 
-[ext_resource type="Texture2D" uid="uid://bp7wl5s1l3msq" path="res://assets/characters/placeholder_robot.png" id="1_hqvfk"]
+[ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://player_robots/player_robot.gd" id="1_ckjmp"]
+[ext_resource type="Texture2D" uid="uid://bp7wl5s1l3msq" path="res://assets/characters/placeholder_infantry.png" id="1_hqvfk"]
 
 [node name="PlayerRobot" type="Node2D"]
+script = ExtResource("1_ckjmp")
+
+[node name="DebugbugLabel" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -49.0
+offset_right = 21.0
+offset_bottom = -18.0
+text = "HP:
+Dmg:"
 
 [node name="Visuals" type="Node2D" parent="."]
+scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("1_hqvfk")

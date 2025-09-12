@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PlayerRobotParameters" load_steps=3 format=3 uid="uid://cn5ilxcucckhu"]
+
+[ext_resource type="Script" uid="uid://c1uhvd44yudpd" path="res://resources/player_robot_parameters/player_robot_parameters.gd" id="1_j3dea"]
+[ext_resource type="Texture2D" uid="uid://ruhqq71h262s" path="res://assets/characters/placeholder_shooter.png" id="2_nce05"]
+
+[resource]
+script = ExtResource("1_j3dea")
+texture = ExtResource("2_nce05")
+health = 3
+damage = 4
+metadata/_custom_type_script = "uid://c1uhvd44yudpd"
