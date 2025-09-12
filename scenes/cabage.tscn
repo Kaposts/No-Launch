@@ -1,0 +1,71 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0ekft7b1k82x"]
+
+[ext_resource type="Script" uid="uid://dwpriovdnijuo" path="res://cards/hand.gd" id="1_em3ci"]
+[ext_resource type="PackedScene" uid="uid://crv6wrd1htgmr" path="res://cards/scenes/card.tscn" id="2_lya68"]
+[ext_resource type="Script" uid="uid://bl654htndwwbj" path="res://ui/player_ui.gd" id="3_laqxi"]
+
+[sub_resource type="Curve" id="Curve_laqxi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504065, 0.484672), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_em3ci"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501355, 0.498414), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Cabage" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 4.0
+offset_top = 67.0
+offset_right = 177.0
+offset_bottom = 220.0
+autowrap_mode = 2
+
+[node name="hand" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 262.0
+offset_right = 593.0
+offset_bottom = 427.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.00399, 1.00427)
+script = ExtResource("1_em3ci")
+card_scene = ExtResource("2_lya68")
+hand_curve = SubResource("Curve_laqxi")
+rotation_curve = SubResource("Curve_em3ci")
+x_sep = -1
+y_max = -35
+
+[node name="draw" type="Button" parent="."]
+offset_left = 550.0
+offset_top = 161.0
+offset_right = 627.0
+offset_bottom = 189.0
+text = "draw
+"
+
+[node name="play_turn" type="Button" parent="."]
+offset_left = 550.0
+offset_top = 192.0
+offset_right = 628.0
+offset_bottom = 220.0
+text = "Play turn"
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource("3_laqxi")
+
+[node name="energy" type="Label" parent="UI"]
+offset_left = 27.0
+offset_top = 299.0
+offset_right = 147.0
+offset_bottom = 313.0
+text = "Executive Power: 10/10"
+
+[connection signal="pressed" from="draw" to="hand" method="_on_draw_pressed"]
+[connection signal="pressed" from="play_turn" to="hand" method="_on_play_turn_pressed"]

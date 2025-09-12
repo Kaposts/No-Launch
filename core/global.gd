@@ -1,5 +1,8 @@
 extends Node
 
+const GROUP_DROP_ZONE = "drop_zone"
+
+
 func _ready() -> void:
 	SceneManager.transition_finished.connect(func(): print('Transition complete'))
 	SceneManager.fade_complete.connect(func(): print('Fade complete'))

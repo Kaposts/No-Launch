@@ -12,7 +12,6 @@ func _on_play_random_pressed() -> void:
 func _on_play_sequence_pressed() -> void:
 	Audio.play_sequenctial('sfx_click')
 
-
 func _on_play_bgm_2_pressed() -> void:
 	Audio.play_bgm(music_1)
 
