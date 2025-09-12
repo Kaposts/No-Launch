@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://buayfca5hh34h"]
+
+[ext_resource type="Script" uid="uid://csg6xvbwnyjua" path="res://components/hitstop_component/hitstop_component.gd" id="1_wfwg3"]
+
+[node name="HitstopComponent" type="Node"]
+script = ExtResource("1_wfwg3")

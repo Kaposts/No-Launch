@@ -1,6 +1,9 @@
 ## Write global enums here
 extends Node
 
+
+enum CARD_TYPE{PATCH_NOTE, COMBAT, BUFF, BUG}
+
 enum CARD_TYPE{PATCH_NOTE, ARMY, BUFF, BUG}
 enum CARD_RARITY{COMMON, MAGIC, RARE, LEGENDARY}
 
@@ -10,3 +13,4 @@ enum CARD_FUNCTION{
     INCREASE_ARMY_SIZE,
     BUFF_ARMY,
     }
+

@@ -1,19 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://bcc4ea6baq4mq"]
+[gd_scene load_steps=3 format=3 uid="uid://bcc4ea6baq4mq"]
 
 [ext_resource type="Script" uid="uid://blwyr6s3hoy0c" path="res://scenes/levels/battle_scene.gd" id="1_6a6ir"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_skhqt"]
+vertices = PackedVector2Array(671, 314, -22.6406, 314, -18.3516, 193, 671, 193)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-28, 183, 681, 183, 681, 324, -33, 324)])
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_6a6ir")
 
-[node name="PlayerLayer" type="Node2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_skhqt")
 
-[node name="PlayerMarker" type="Marker2D" parent="PlayerLayer"]
-position = Vector2(207, 212)
+[node name="PlayerLayer" type="Node2D" parent="."]
 
 [node name="EnemyLayer" type="Node2D" parent="."]
 
-[node name="EnemyMarker" type="Marker2D" parent="EnemyLayer"]
-position = Vector2(422, 218)
+[node name="SpawnPositions" type="Node2D" parent="."]
+
+[node name="PlayerMarker" type="Marker2D" parent="SpawnPositions"]
+unique_name_in_owner = true
+position = Vector2(141, 259)
+
+[node name="EnemyMarker" type="Marker2D" parent="SpawnPositions"]
+unique_name_in_owner = true
+position = Vector2(494, 247)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_right = 40.0
@@ -28,3 +40,8 @@ text = "Summon random robot"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Summon Enemy"
+
+[node name="StartBattleButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start battle"
