@@ -26,7 +26,7 @@ SignalBus="*res://core/signal_bus.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-SFX="*res://addons/sfx_generator/sfx.gd"
+Audio="*res://addons/audio_manager/audio.gd"
 
 [dialogic]
 
@@ -96,7 +96,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/sfx_generator/plugin.cfg", "res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [file_customization]
 

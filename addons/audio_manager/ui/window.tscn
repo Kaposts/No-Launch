@@ -1,0 +1,214 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxkx7sno0wo44"]
+
+[ext_resource type="Script" uid="uid://dobqxfl0qjwsp" path="res://addons/audio_manager/ui/window.gd" id="1_uu3g4"]
+[ext_resource type="Texture2D" uid="uid://bs0tv70osjsms" path="res://addons/audio_manager/icon.png" id="2_yq6uv"]
+[ext_resource type="Texture2D" uid="uid://c7djja30dc6nd" path="res://addons/audio_manager/icon.svg" id="3_mki52"]
+[ext_resource type="Script" uid="uid://ck8jgldva5ohs" path="res://addons/audio_manager/ui/config_control.gd" id="3_tjrk6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uu3g4"]
+bg_color = Color(0.417791, 0.573971, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq6uv"]
+bg_color = Color(4.23551e-06, 0.629239, 0.981768, 1)
+
+[sub_resource type="Theme" id="Theme_uu3g4"]
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_uu3g4")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_yq6uv")
+Window/colors/title_outline_modulate = Color(0.619608, 0, 0, 1)
+Window/icons/close = null
+Window/icons/close_pressed = null
+
+[sub_resource type="ImageTexture" id="ImageTexture_uu3g4"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_yq6uv"]
+
+[node name="Window" type="Window"]
+title = "Audio Manager by Cabage"
+position = Vector2i(0, 36)
+size = Vector2i(1000, 600)
+theme = SubResource("Theme_uu3g4")
+theme_override_icons/close = SubResource("ImageTexture_uu3g4")
+theme_override_icons/close_pressed = SubResource("ImageTexture_yq6uv")
+script = ExtResource("1_uu3g4")
+
+[node name="BG" type="Panel" parent="."]
+offset_left = -112.0
+offset_top = -165.0
+offset_right = 1092.0
+offset_bottom = 683.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 895.0
+offset_top = 7.0
+offset_right = 994.0
+offset_bottom = 108.0
+
+[node name="Load" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Load
+"
+
+[node name="sfx" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "SFX
+"
+
+[node name="bgm" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "BGM"
+
+[node name="config" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Config"
+
+[node name="Close" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+text = "Close
+"
+
+[node name="Welcome" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 27.0
+offset_top = 55.0
+offset_right = 884.0
+offset_bottom = 553.0
+
+[node name="TextureRect" type="TextureRect" parent="Welcome"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 321.0
+offset_top = -7.0
+offset_right = 615.0
+offset_bottom = 287.0
+texture = ExtResource("2_yq6uv")
+
+[node name="SFX" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1006.0
+offset_bottom = 603.0
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="SFX"]
+layout_mode = 0
+offset_top = 17.0
+offset_right = 129.0
+offset_bottom = 40.0
+text = "LOADED AUDIOS"
+
+[node name="search" type="TextEdit" parent="SFX"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 9.0
+offset_right = 646.0
+offset_bottom = 44.0
+
+[node name="Audios" type="ScrollContainer" parent="SFX"]
+z_index = 1
+layout_mode = 0
+offset_left = 18.0
+offset_top = 61.0
+offset_right = 878.0
+offset_bottom = 570.0
+
+[node name="v_box" type="VBoxContainer" parent="SFX/Audios"]
+layout_mode = 2
+
+[node name="Config" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 41.0
+offset_bottom = 39.0
+script = ExtResource("3_tjrk6")
+
+[node name="config_container" type="VBoxContainer" parent="Config"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 678.0
+offset_bottom = 386.0
+
+[node name="sfx_directory" type="HBoxContainer" parent="Config/config_container"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="Config/config_container/sfx_directory"]
+layout_mode = 2
+text = "Sound effect Directory"
+
+[node name="input" type="LineEdit" parent="Config/config_container/sfx_directory"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "res://Audio/"
+
+[node name="FileDialog" type="FileDialog" parent="Config/config_container/sfx_directory"]
+title = "Open a Directory"
+position = Vector2i(0, 36)
+ok_button_text = "Select Current Folder"
+file_mode = 2
+
+[node name="btn" type="Button" parent="Config/config_container/sfx_directory"]
+layout_mode = 2
+theme_override_constants/icon_max_width = 24
+icon = ExtResource("3_mki52")
+
+[node name="pitch_randomizer_range" type="HBoxContainer" parent="Config/config_container"]
+layout_mode = 2
+
+[node name="name" type="Label" parent="Config/config_container/pitch_randomizer_range"]
+layout_mode = 2
+text = "Pitch randomizer range(float)"
+
+[node name="input" type="LineEdit" parent="Config/config_container/pitch_randomizer_range"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "2.0"
+
+[node name="BGM" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 27.0
+offset_top = 55.0
+offset_right = 67.0
+offset_bottom = 95.0
+
+[node name="Label" type="Label" parent="BGM"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "coming soon"
+
+[node name="Version" type="Label" parent="."]
+offset_left = 716.0
+offset_top = 562.0
+offset_right = 992.0
+offset_bottom = 593.0
+text = "audio_manager_v_1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="info" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 555.0
+offset_right = 823.0
+offset_bottom = 593.0
+theme_override_colors/font_color = Color(0, 0.752941, 0.0705882, 1)
+vertical_alignment = 2
+
+[connection signal="pressed" from="VBoxContainer/sfx" to="." method="_on_sfx_pressed"]
+[connection signal="pressed" from="VBoxContainer/bgm" to="." method="_on_bgm_pressed"]
+[connection signal="pressed" from="VBoxContainer/config" to="." method="_on_config_pressed"]
+[connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="text_changed" from="SFX/search" to="." method="_on_search_text_changed"]
+[connection signal="text_changed" from="Config/config_container/pitch_randomizer_range/input" to="Config" method="_on_input_text_changed"]

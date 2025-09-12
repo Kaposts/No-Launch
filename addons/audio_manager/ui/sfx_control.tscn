@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq1lbpriqtdby"]
+
+[ext_resource type="Script" uid="uid://bteelym25v1v4" path="res://addons/audio_manager/ui/sfx_control.gd" id="1_b1jao"]
+
+[node name="sfx_control" type="HBoxContainer"]
+offset_right = 763.0
+offset_bottom = 43.0
+script = ExtResource("1_b1jao")
+
+[node name="volume_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="volume_container"]
+layout_mode = 2
+text = "Volume:"
+
+[node name="Volume" type="HSlider" parent="volume_container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = -80.0
+max_value = 24.0
+step = 0.5
+
+[node name="pitch_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="pitch_container"]
+layout_mode = 2
+text = "Pitch:"
+
+[node name="Pitch" type="HSlider" parent="pitch_container"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+min_value = 0.01
+max_value = 2.0
+step = 0.05
+value = 1.01
+
+[node name="name" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 1, 0, 1)
+text = "name_not_found"
+
+[node name="play" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "play"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="pitch_randomizer" type="CheckButton" parent="."]
+layout_mode = 2
+text = "PR"
+
+[connection signal="value_changed" from="volume_container/Volume" to="." method="_on_volume_value_changed"]
+[connection signal="value_changed" from="pitch_container/Pitch" to="." method="_on_pitch_value_changed"]
+[connection signal="toggled" from="pitch_randomizer" to="." method="_on_pitch_randomizer_toggled"]
