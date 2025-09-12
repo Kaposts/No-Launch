@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cetfvkhut1rm3"]
+
+[ext_resource type="Texture2D" uid="uid://bp7wl5s1l3msq" path="res://assets/characters/placeholder_robot.png" id="1_hqvfk"]
+
+[node name="PlayerRobot" type="Node2D"]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_hqvfk")

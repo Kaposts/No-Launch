@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcc4ea6baq4mq"]
+
+[ext_resource type="PackedScene" uid="uid://cetfvkhut1rm3" path="res://player_robots/player_robot.tscn" id="1_skhqt"]
+[ext_resource type="PackedScene" uid="uid://bfbqdu1nyshr4" path="res://enemies/basic_enemy.tscn" id="2_6b61y"]
+
+[node name="BattleScene" type="Node2D"]
+
+[node name="PlayerLayer" type="Node2D" parent="."]
+
+[node name="PlayerRobot" parent="PlayerLayer" instance=ExtResource("1_skhqt")]
+position = Vector2(83, 81)
+
+[node name="EnemyLayer" type="Node2D" parent="."]
+
+[node name="BasicEnemy" parent="EnemyLayer" instance=ExtResource("2_6b61y")]
+position = Vector2(230, 86)

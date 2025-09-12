@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfbqdu1nyshr4"]
+
+[ext_resource type="Texture2D" uid="uid://frei725hsvuw" path="res://assets/enemies/placeholder_basic_enemy.png" id="1_ubayq"]
+
+[node name="BasicEnemy" type="Node2D"]
+
+[node name="Visuals" type="Node2D" parent="."]
+scale = Vector2(-1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_ubayq")
