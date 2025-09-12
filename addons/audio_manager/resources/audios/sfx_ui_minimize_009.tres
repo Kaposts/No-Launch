@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://dc6w1xtq12ukr"]
+
+[ext_resource type="AudioStream" uid="uid://nq52ajo4k026" path="res://assets/SFX/ui/minimize/009.ogg" id="1_xfdh2"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_8lakj"]
+
+[resource]
+script = ExtResource("2_8lakj")
+res_name = "sfx_ui_minimize_009"
+res_stream = ExtResource("1_xfdh2")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://bmqrfgi4udmk5"]
+
+[ext_resource type="AudioStream" uid="uid://0ota7cniowcw" path="res://assets/SFX/ui/error/007.ogg" id="1_gebec"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_lqile"]
+
+[resource]
+script = ExtResource("2_lqile")
+res_name = "sfx_ui_error_007"
+res_stream = ExtResource("1_gebec")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false

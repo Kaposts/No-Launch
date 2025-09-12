@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://dun1m55c5havx"]
+
+[ext_resource type="AudioStream" uid="uid://ddqw5fs8ahyui" path="res://assets/SFX/ui/glass/002.ogg" id="1_y3yqq"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_3pwti"]
+
+[resource]
+script = ExtResource("2_3pwti")
+res_name = "sfx_ui_glass_002"
+res_stream = ExtResource("1_y3yqq")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false

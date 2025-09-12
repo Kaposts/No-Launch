@@ -10,48 +10,49 @@ class_name Hand
 @export var y_min := 0
 @export var y_max := -15
 
-var cards_in_hand: Array[Card] = []
-var cards_in_play: Array[Card] = []
-
 var energy: int = 10
 
-func _process(delta):
-	get_parent().get_node('Label').text = str(cards_in_play)
+@export var card_pool: Array[CardData] = []
+var deck_size = 20
 
 func _ready():
 	SignalBus.activate_card.connect(_on_activate_card)
 	SignalBus.deactivate_card.connect(_on_deactivate_card)
+	SignalBus.update_hand.connect(_update_cards)
+	SignalBus.draw_card.connect(_on_draw_card)
 
-func draw() -> void:
+	deck_setup()
+
+func deck_setup():
+	for i in deck_size:
+		Global.deck.append(card_pool.pick_random())
+
+func _on_draw_card(card_data: CardData):
 	var new_card = card_scene.instantiate()
-	cards_in_hand.append(new_card)
+	new_card.data = card_data
+	Global.cards_in_hand.append(new_card)
 	add_child(new_card)
-	_update_cards()
-
-func discard(card) -> void:
-	if cards_in_hand.size() < 1:
-		push_error("You have no cards")
-		return
-	cards_in_hand.erase(card)
-	card.queue_free()
 
 func _update_cards():
-	var cards := cards_in_hand.size()
-	var all_cards_size := 100 * cards + x_sep * (cards - 1)
+
+	await get_tree().create_timer(0.2).timeout
+	
+	var cards_count: int= Global.cards_in_hand.size()
+	var all_cards_size := 100 * cards_count + x_sep * (cards_count - 1)
 	var final_x_sep := x_sep
 
 	if all_cards_size > size.x:
-		final_x_sep = (size.x - 100 * cards) / (cards - 1)
+		final_x_sep = (size.x - 100 * cards_count) / (cards_count - 1)
 		all_cards_size = size.x
 	
 	var offset := (size.x - all_cards_size) / 2
 
-	for i in cards:
+	for i in cards_count:
 		var card := get_child(i)
-		var y_multiplier := hand_curve.sample(1.0 / (cards-1) * i)
-		var rot_multiplier := rotation_curve.sample(1.0 / (cards-1) * i)
+		var y_multiplier := hand_curve.sample(1.0 / (cards_count-1) * i)
+		var rot_multiplier := rotation_curve.sample(1.0 / (cards_count-1) * i)
 
-		if cards == 1:
+		if cards_count == 1:
 			y_multiplier = 0.0
 			rot_multiplier = 0.0
 
@@ -66,26 +67,15 @@ func _update_cards():
 		tween.tween_property(card, "position", target_pos, 0.3)
 		tween.tween_property(card, "rotation_degrees", target_rot, 0.3)
 
-func _on_draw_pressed() -> void:
-	draw()
-
-func _on_play_turn_pressed() -> void:
-	print("You did your turn")
-	for card in cards_in_play:
-		discard(card)
-	cards_in_play.clear()
-
-	##FOR some weird reason it doesnt work without timeout	
-	await get_tree().create_timer(0.1).timeout
-	_update_cards()
-
-
 func _on_activate_card(card: Card) -> void:
 	energy -= card.data.energy
-	cards_in_play.append(card)
+	Global.cards_in_play.append(card)
 	SignalBus.update_energy.emit(energy)
 
 func _on_deactivate_card(card: Card) -> void:
 	energy += card.data.energy
-	cards_in_play.erase(card)
+	Global.cards_in_play.erase(card)
 	SignalBus.update_energy.emit(energy)
+
+func _on_play_turn_pressed() -> void:
+	Global.play_turn()

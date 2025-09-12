@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://cq5kwkrqxif6c"]
+
+[ext_resource type="AudioStream" uid="uid://ue47afvhfk6y" path="res://assets/SFX/ui/switch/007.ogg" id="1_bi3qc"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_1vjug"]
+
+[resource]
+script = ExtResource("2_1vjug")
+res_name = "sfx_ui_switch_007"
+res_stream = ExtResource("1_bi3qc")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false

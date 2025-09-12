@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://dxbbpjps2xthj"]
+
+[ext_resource type="AudioStream" uid="uid://bp0h3ol0a7o4k" path="res://assets/SFX/ui/select/001.ogg" id="1_mbtym"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_su2sy"]
+
+[resource]
+script = ExtResource("2_su2sy")
+res_name = "sfx_ui_select_001"
+res_stream = ExtResource("1_mbtym")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false

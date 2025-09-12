@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://qbegjraq8ykp"]
+
+[ext_resource type="AudioStream" uid="uid://bt1yptfdcv82e" path="res://assets/SFX/ui/pluck/001.ogg" id="1_upq80"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_cvmuj"]
+
+[resource]
+script = ExtResource("2_cvmuj")
+res_name = "sfx_ui_pluck_001"
+res_stream = ExtResource("1_upq80")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false
