@@ -1,0 +1,113 @@
+class_name Entity
+extends CharacterBody2D
+## Entity Base Class
+## Author: Lestavol
+## base class that all entities will inherit from
+
+
+@export var battling: bool = false:
+	set(flag):
+		battling = flag
+		if navigator_component:
+			navigator_component.enabled = battling
+
+@export var movement_speed: float = 150.0:
+	set(value):
+		movement_speed = value
+		if navigator_component:
+			navigator_component.movement_speed = movement_speed
+
+@export_group("Targeting Settings")
+@export var targets: Array[Node2D]:
+	set(array):
+		targets = array
+		if navigator_component:
+			navigator_component.targets = targets
+
+
+var health: int
+var damage: int
+
+@onready var navigator_component: NavigatorComponent = %NavigatorComponent
+@onready var path_recalculation_timer: Timer = %PathRecalculationTimer
+
+@onready var attack_range: Area2D = %AttackRange
+@onready var hitbox_component: HitboxComponent = %HitboxComponent
+@onready var hurtbox_component: HurtboxComponent = %HurtboxComponent
+
+
+
+#===================================================================================================
+#region BUILT-IN FUNCTIONS
+
+func _ready() -> void:
+	set_up_navigator()
+	
+	navigator_component.velocity_computed.connect(_on_navigator_component_velocity_computed)
+	navigator_component.target_reached.connect(_on_navigator_component_target_reached)
+	
+	attack_range.body_entered.connect(_on_attack_range_entered)
+	hurtbox_component.area_entered.connect(_on_hurtbox_entered)
+
+#endregion
+#===================================================================================================
+#region NAVIGATOR FUNCTIONS
+
+
+func set_up_navigator() -> void:
+	navigator_component.enabled = battling
+	navigator_component.current_agent_position = global_position
+	navigator_component.movement_speed = movement_speed
+	navigator_component.targets = targets
+
+
+func start_navigating(target: Node2D = null) -> void:
+	battling = true
+	path_recalculation_timer.start()
+	if target:
+		navigator_component.start(target)
+	else:
+		navigator_component.navigate_to_nearest_target_in_targets()
+
+
+func stop_navigating(position_to_look_at: Vector2 = Vector2.ZERO) -> void:
+	navigator_component.movement_speed = 0.0
+	
+	battling = false
+	velocity = Vector2.ZERO
+	navigator_component.stop()
+	#animation_state_machine.travel("idle")
+	path_recalculation_timer.stop()
+	
+	#if not position_to_look_at.is_equal_approx(Vector2.ZERO):
+		#_direction = (position_to_look_at - global_position).normalized()
+		#animation_tree.set(IDLE_BLEND_POSITION, _direction)
+
+
+func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
+	if battling:
+		velocity = safe_velocity
+		move_and_slide()
+
+
+func _on_navigator_component_target_reached() -> void:
+	if battling:
+		if targets.size() > 1:
+			start_navigating()
+		else:
+			stop_navigating(Vector2.RIGHT)
+
+
+func _on_path_recalculation_timer_timeout() -> void:
+	if battling and not navigator_component.is_target_reachable():
+		_on_navigator_component_target_reached()
+
+#endregion
+
+
+func _on_attack_range_entered(body: Node2D) -> void:
+	pass
+
+
+func _on_hurtbox_entered(area: Area2D) -> void:
+	stop_navigating()

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://brbg6i0mvo0l8"]
+
+[ext_resource type="Script" uid="uid://bpg3e56dg5mcd" path="res://components/navigator_component/navigator_component.gd" id="1_ur652"]
+
+[node name="NavigatorComponent" type="NavigationAgent2D"]
+path_desired_distance = 16.0
+target_desired_distance = 20.0
+path_postprocessing = 1
+simplify_path = true
+simplify_epsilon = 0.5
+debug_path_custom_color = Color(0.888813, 0, 0.117952, 1)
+debug_path_custom_point_size = 1.32
+script = ExtResource("1_ur652")
+
+[node name="UpdateTimer" type="Timer" parent="."]
+wait_time = 0.2

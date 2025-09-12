@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmi6e4m54urq"]
+
+[ext_resource type="PhysicsMaterial" uid="uid://ds21hhixu6dyw" path="res://components/wall_bounce_component.tscn/default_wall_bounce_material.tres" id="1_e6bue"]
+[ext_resource type="Script" uid="uid://c08etuj7inn3l" path="res://components/wall_bounce_component.tscn/wall_bounce_component.gd" id="1_nd7xm"]
+
+[node name="WallBounceComponent" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 64
+physics_material_override = ExtResource("1_e6bue")
+sleeping = true
+lock_rotation = true
+freeze = true
+linear_damp_mode = 1
+linear_damp = 4.0
+script = ExtResource("1_nd7xm")

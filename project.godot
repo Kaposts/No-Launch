@@ -131,6 +131,24 @@ dialogic_default_action={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_navigation/layer_1="ground"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="player_hurtbox"
+2d_physics/layer_4="enemy_hurtbox"
+2d_physics/layer_5="player_hitbox"
+2d_physics/layer_6="enemy_hitbox"
+2d_physics/layer_7="wall"
+avoidance/layer_1="player"
+avoidance/layer_2="enemy"
+
+[physics]
+
+2d/default_gravity=0.0
+2d/default_gravity_vector=Vector2(0, 0)
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

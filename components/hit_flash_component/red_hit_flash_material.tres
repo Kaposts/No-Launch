@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c74ydyvwc33hj"]
+
+[ext_resource type="Shader" uid="uid://doi7gyjf00jrn" path="res://components/hit_flash_component/red_hit_flash.gdshader" id="1_peinv"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_peinv")
+shader_parameter/lerp_percent = 0.0

@@ -1,0 +1,212 @@
+[gd_scene load_steps=21 format=3 uid="uid://cetfvkhut1rm3"]
+
+[ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://entities/player_robots/player_robot.gd" id="1_ckjmp"]
+[ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
+[ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="2_gllqd"]
+[ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="3_i8ckr"]
+[ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="3_r6tem"]
+[ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="3_vpkpi"]
+[ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="4_vyq1y"]
+[ext_resource type="PackedScene" uid="uid://cmi6e4m54urq" path="res://components/wall_bounce_component.tscn/wall_bounce_component.tscn" id="5_ixurt"]
+[ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="6_nvrdh"]
+[ext_resource type="Shader" uid="uid://doi7gyjf00jrn" path="res://components/hit_flash_component/red_hit_flash.gdshader" id="7_vyq1y"]
+
+[sub_resource type="Animation" id="Animation_vpkpi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pn703"]
+resource_name = "attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CombatAreas/HitboxComponent/HitboxCollider")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"disabled", false],
+"method": &"set_deferred"
+}, {
+"args": [&"disabled", true],
+"method": &"set_deferred"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpkpi"]
+_data = {
+&"RESET": SubResource("Animation_vpkpi"),
+&"attack": SubResource("Animation_pn703")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pn703"]
+radius = 16.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbp4f"]
+load_path = "res://.godot/imported/placeholder_infantry.png-b679e30efc86b3af68214e6d50d6e5f4.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uxc6o"]
+radius = 15.0333
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyq1y"]
+resource_local_to_scene = true
+shader = ExtResource("7_vyq1y")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpkpi"]
+resource_local_to_scene = true
+radius = 29.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pn703"]
+size = Vector2(24, 44)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r6tem"]
+radius = 20.0
+
+[node name="PlayerRobot" type="CharacterBody2D"]
+collision_mask = 67
+script = ExtResource("1_ckjmp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vpkpi")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_pn703")
+
+[node name="DebugbugLabel" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -49.0
+offset_right = 21.0
+offset_bottom = -18.0
+text = "HP:
+Dmg:"
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="PathRecalculationTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="Visuals" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = SubResource("CompressedTexture2D_gbp4f")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_gllqd")]
+
+[node name="HitstopComponent" parent="." instance=ExtResource("3_i8ckr")]
+
+[node name="KnockbackComponent" parent="." node_paths=PackedStringArray("wall_bounce_component") instance=ExtResource("4_vyq1y")]
+wall_bounce_component = NodePath("WallBounceComponent")
+
+[node name="WallBounceComponent" parent="KnockbackComponent" instance=ExtResource("5_ixurt")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackComponent/WallBounceComponent"]
+shape = SubResource("CircleShape2D_uxc6o")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("6_nvrdh")]
+sprite_group = [NodePath("../Visuals/Sprite2D")]
+hit_flash_material = SubResource("ShaderMaterial_vyq1y")
+
+[node name="NavigatorComponent" parent="." instance=ExtResource("2_ckjmp")]
+unique_name_in_owner = true
+path_desired_distance = 10.0
+target_desired_distance = 16.0
+avoidance_enabled = true
+radius = 30.0
+neighbor_distance = 200.0
+max_speed = 1000.0
+
+[node name="CombatAreas" type="Node2D" parent="."]
+
+[node name="AttackRange" type="Area2D" parent="CombatAreas"]
+unique_name_in_owner = true
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="AttackRangeCollider" type="CollisionShape2D" parent="CombatAreas/AttackRange"]
+shape = SubResource("CircleShape2D_vpkpi")
+debug_color = Color(0.28158, 0.620734, 0.334111, 0.42)
+
+[node name="HitboxComponent" parent="CombatAreas" node_paths=PackedStringArray("hitstop_component", "navigator_component") instance=ExtResource("3_r6tem")]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 8
+hitstop_component = NodePath("../../HitstopComponent")
+navigator_component = NodePath("../../NavigatorComponent")
+
+[node name="HitboxCollider" type="CollisionShape2D" parent="CombatAreas/HitboxComponent"]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_pn703")
+disabled = true
+
+[node name="HurtboxComponent" parent="CombatAreas" node_paths=PackedStringArray("health_component", "navigator_component", "knockback_component", "hit_flash_component", "hitstop_component") instance=ExtResource("3_vpkpi")]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 32
+health_component = NodePath("../../HealthComponent")
+navigator_component = NodePath("../../NavigatorComponent")
+knockback_component = NodePath("../../KnockbackComponent")
+hit_flash_component = NodePath("../../HitFlashComponent")
+hitstop_component = NodePath("../../HitstopComponent")
+
+[node name="HurtboxCollider" type="CollisionShape2D" parent="CombatAreas/HurtboxComponent"]
+shape = SubResource("CircleShape2D_r6tem")
+debug_color = Color(0.876566, 0.263999, 0.560066, 0.42)

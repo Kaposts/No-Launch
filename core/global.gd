@@ -1,5 +1,9 @@
 extends Node
 
+const SCENE_PATHS: Dictionary[String, String] = {
+	"navigator_component" : "uid://brbg6i0mvo0l8",
+}
+
 const GROUP_DROP_ZONE = "drop_zone"
 
 

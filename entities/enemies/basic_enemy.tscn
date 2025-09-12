@@ -1,0 +1,209 @@
+[gd_scene load_steps=21 format=3 uid="uid://bfbqdu1nyshr4"]
+
+[ext_resource type="Script" uid="uid://k1unwkateubc" path="res://entities/enemies/basic_enemy.gd" id="1_6ofcp"]
+[ext_resource type="Texture2D" uid="uid://b8r6qc0p8gdj2" path="res://assets/enemies/placeholder_basic_enemy.png" id="1_ubayq"]
+[ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="3_5xrap"]
+[ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="4_4lwq5"]
+[ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="4_hgkiq"]
+[ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="5_43b24"]
+[ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="5_jmffx"]
+[ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="6_43b24"]
+[ext_resource type="PackedScene" uid="uid://cmi6e4m54urq" path="res://components/wall_bounce_component.tscn/wall_bounce_component.tscn" id="6_t7g2k"]
+[ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="7_q6ol2"]
+[ext_resource type="Shader" uid="uid://bvguo825tyhh6" path="res://components/hit_flash_component/white_hit_flash.gdshader" id="8_hgkiq"]
+
+[sub_resource type="Animation" id="Animation_vpkpi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pn703"]
+resource_name = "attack"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.523599, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CombatAreas/HitboxComponent/HitboxCollider")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"disabled", false],
+"method": &"set_deferred"
+}, {
+"args": [&"disabled", true],
+"method": &"set_deferred"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpkpi"]
+_data = {
+&"RESET": SubResource("Animation_vpkpi"),
+&"attack": SubResource("Animation_pn703")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_axigu"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jebyg"]
+radius = 15.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgkiq"]
+resource_local_to_scene = true
+shader = ExtResource("8_hgkiq")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ykiu"]
+resource_local_to_scene = true
+radius = 29.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axigu"]
+size = Vector2(24, 44)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4lwq5"]
+radius = 24.0
+
+[node name="BasicEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 67
+script = ExtResource("1_6ofcp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vpkpi")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_axigu")
+
+[node name="DebugbugLabel" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -49.0
+offset_right = 21.0
+offset_bottom = -18.0
+text = "HP:
+Dmg:"
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="PathRecalculationTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="Visuals" type="Node2D" parent="."]
+rotation = -3.14159
+scale = Vector2(2, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_ubayq")
+
+[node name="HealthComponent" parent="." instance=ExtResource("6_43b24")]
+
+[node name="HitstopComponent" parent="." instance=ExtResource("4_hgkiq")]
+
+[node name="KnockbackComponent" parent="." node_paths=PackedStringArray("wall_bounce_component") instance=ExtResource("5_jmffx")]
+wall_bounce_component = NodePath("WallBounceComponent")
+
+[node name="WallBounceComponent" parent="KnockbackComponent" instance=ExtResource("6_t7g2k")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackComponent/WallBounceComponent"]
+shape = SubResource("CircleShape2D_jebyg")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("7_q6ol2")]
+sprite_group = [NodePath("../Visuals/Sprite2D")]
+hit_flash_material = SubResource("ShaderMaterial_hgkiq")
+
+[node name="NavigatorComponent" parent="." instance=ExtResource("3_5xrap")]
+unique_name_in_owner = true
+avoidance_enabled = true
+radius = 30.0
+neighbor_distance = 200.0
+max_speed = 1000.0
+avoidance_layers = 2
+avoidance_mask = 2
+
+[node name="CombatAreas" type="Node2D" parent="."]
+
+[node name="AttackRange" type="Area2D" parent="CombatAreas"]
+unique_name_in_owner = true
+visible = false
+collision_layer = 0
+
+[node name="AttackRangeCollider" type="CollisionShape2D" parent="CombatAreas/AttackRange"]
+shape = SubResource("CircleShape2D_5ykiu")
+debug_color = Color(0.28158, 0.620734, 0.334111, 0.42)
+
+[node name="HitboxComponent" parent="CombatAreas" node_paths=PackedStringArray("hitstop_component", "navigator_component") instance=ExtResource("5_43b24")]
+unique_name_in_owner = true
+collision_layer = 32
+collision_mask = 4
+hitstop_component = NodePath("../../HitstopComponent")
+navigator_component = NodePath("../../NavigatorComponent")
+
+[node name="HitboxCollider" type="CollisionShape2D" parent="CombatAreas/HitboxComponent"]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_axigu")
+disabled = true
+
+[node name="HurtboxComponent" parent="CombatAreas" node_paths=PackedStringArray("health_component", "navigator_component", "knockback_component", "hit_flash_component", "hitstop_component") instance=ExtResource("4_4lwq5")]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 16
+health_component = NodePath("../../HealthComponent")
+navigator_component = NodePath("../../NavigatorComponent")
+knockback_component = NodePath("../../KnockbackComponent")
+hit_flash_component = NodePath("../../HitFlashComponent")
+hitstop_component = NodePath("../../HitstopComponent")
+
+[node name="HurtboxCollider" type="CollisionShape2D" parent="CombatAreas/HurtboxComponent"]
+shape = SubResource("CircleShape2D_4lwq5")
+debug_color = Color(0.876566, 0.263999, 0.560066, 0.42)
