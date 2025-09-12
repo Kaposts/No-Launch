@@ -1,35 +1,3 @@
-[remap]
-
-importer="font_data_dynamic"
-type="FontFile"
-uid="uid://d2dp25n1obbu5"
-path="res://.godot/imported/PixelGame-R9AZe.otf-f598dd38da5ef13a08ef1a6b41a75b52.fontdata"
-
-[deps]
-
-source_file="res://assets/fonts/pixel-game-font/PixelGame-R9AZe.otf"
-dest_files=["res://.godot/imported/PixelGame-R9AZe.otf-f598dd38da5ef13a08ef1a6b41a75b52.fontdata"]
-
-[params]
-
-Rendering=null
-antialiasing=1
-generate_mipmaps=false
-disable_embedded_bitmaps=true
-multichannel_signed_distance_field=false
-msdf_pixel_range=8
-msdf_size=48
-allow_system_fallback=true
-force_autohinter=false
-hinting=1
-subpixel_positioning=4
-keep_rounding_remainders=true
-oversampling=0.0
-Fallbacks=null
-fallbacks=[]
-Compress=null
-compress=true
-preload=[]
-language_support={}
-script_support={}
-opentype_features={}
+version https://git-lfs.github.com/spec/v1
+oid sha256:94e9450fc0174d298bcacd8351c7d0387e7bdf78603f6ba1946c873f6b778bdb
+size 771

@@ -1,35 +1,3 @@
-[remap]
-
-importer="font_data_dynamic"
-type="FontFile"
-uid="uid://b62ejme3qct3f"
-path="res://.godot/imported/PixelScriptRegular-0WnDG.otf-8f806fd9745e7a01f7771ba4ba360639.fontdata"
-
-[deps]
-
-source_file="res://assets/fonts/pixel-script-font/PixelScriptRegular-0WnDG.otf"
-dest_files=["res://.godot/imported/PixelScriptRegular-0WnDG.otf-8f806fd9745e7a01f7771ba4ba360639.fontdata"]
-
-[params]
-
-Rendering=null
-antialiasing=1
-generate_mipmaps=false
-disable_embedded_bitmaps=true
-multichannel_signed_distance_field=false
-msdf_pixel_range=8
-msdf_size=48
-allow_system_fallback=true
-force_autohinter=false
-hinting=1
-subpixel_positioning=4
-keep_rounding_remainders=true
-oversampling=0.0
-Fallbacks=null
-fallbacks=[]
-Compress=null
-compress=true
-preload=[]
-language_support={}
-script_support={}
-opentype_features={}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2ee6719209cc1996f4e818d3d44a8ff3fe676919f5f4c3b0b55e6b1deb1dc3d6
+size 800
