@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cetfvkhut1rm3"]
 
 [ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://player_robots/player_robot.gd" id="1_ckjmp"]
-[ext_resource type="Texture2D" uid="uid://bp7wl5s1l3msq" path="res://assets/characters/placeholder_infantry.png" id="1_hqvfk"]
 
-[node name="PlayerRobot" type="Node2D"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbp4f"]
+load_path = "res://.godot/imported/placeholder_infantry.png-b679e30efc86b3af68214e6d50d6e5f4.ctex"
+
+[node name="PlayerRobot" type="CharacterBody2D"]
 script = ExtResource("1_ckjmp")
 
 [node name="DebugbugLabel" type="Label" parent="."]
@@ -18,4 +20,4 @@ Dmg:"
 scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("1_hqvfk")
+texture = SubResource("CompressedTexture2D_gbp4f")

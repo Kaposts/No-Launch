@@ -5,8 +5,8 @@ const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_param
 
 @onready var robot_button: Button = %RobotButton
 @onready var enemy_button: Button = %EnemyButton
-@onready var player_marker: Marker2D = $PlayerLayer/PlayerMarker
-@onready var enemy_marker: Marker2D = $EnemyLayer/EnemyMarker
+@onready var player_marker: Marker2D = %PlayerMarker
+@onready var enemy_marker: Marker2D = %EnemyMarker
 @onready var player_layer: Node2D = $PlayerLayer
 @onready var enemy_layer: Node2D = $EnemyLayer
 

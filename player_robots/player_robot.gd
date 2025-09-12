@@ -1,5 +1,5 @@
 class_name PlayerRobot
-extends Node2D
+extends CharacterBody2D
 ## Player robot scene
 ## Author: Lestavol
 ## Player robots scenes represent the player's ally entities

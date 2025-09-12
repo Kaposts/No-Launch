@@ -1,5 +1,5 @@
 class_name Enemy
-extends Node2D
+extends CharacterBody2D
 ## Enemy scene
 ## Author: Lestavol
 ## Enemy scenes represent the enemy entities
