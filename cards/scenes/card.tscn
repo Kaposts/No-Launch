@@ -1,0 +1,319 @@
+[gd_scene load_steps=12 format=3 uid="uid://crv6wrd1htgmr"]
+
+[ext_resource type="Script" uid="uid://5hg061g82116" path="res://cards/card.gd" id="1_ttli1"]
+[ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/default.tres" id="2_032ga"]
+[ext_resource type="Texture2D" uid="uid://ctarubigncthm" path="res://icon.svg" id="3_032ga"]
+[ext_resource type="Texture2D" uid="uid://cp302aqxfg0cg" path="res://cards/assets/highlight.png" id="3_77qwj"]
+[ext_resource type="Texture2D" uid="uid://b6als4emj5x8a" path="res://cards/assets/Sprite-0002.png" id="3_ixyhn"]
+
+[sub_resource type="Animation" id="Animation_t0n0d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Container:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ttli1"]
+resource_name = "draw"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.215892, 0.215892), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.54894, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-771, -349), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ixyhn"]
+resource_name = "drop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Container:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 0.1)]
+}
+
+[sub_resource type="Animation" id="Animation_5aj6u"]
+resource_name = "enter"
+length = 0.4
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2(150, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2(0, -100)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2(1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_em3ci"]
+resource_name = "exit"
+length = 0.4
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:custom_minimum_size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2(50, 150)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Container:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Container:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5aj6u"]
+_data = {
+&"RESET": SubResource("Animation_t0n0d"),
+&"draw": SubResource("Animation_ttli1"),
+&"drop": SubResource("Animation_ixyhn"),
+&"enter": SubResource("Animation_5aj6u"),
+&"exit": SubResource("Animation_em3ci")
+}
+
+[node name="Card" type="Control" node_paths=PackedStringArray("anim")]
+custom_minimum_size = Vector2(50, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 150.0
+pivot_offset = Vector2(50, 75)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_ttli1")
+data = ExtResource("2_032ga")
+anim = NodePath("anim")
+
+[node name="Container" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -75.0
+offset_right = 50.0
+offset_bottom = 85.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 75)
+
+[node name="highlight" type="TextureRect" parent="Container" groups=["scene_manager_entity_nodes"]]
+visible = false
+custom_minimum_size = Vector2(100, 160)
+layout_mode = 2
+texture = ExtResource("3_77qwj")
+
+[node name="background" type="TextureRect" parent="Container"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_ixyhn")
+stretch_mode = 2
+
+[node name="container" type="VBoxContainer" parent="Container"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="sprite" type="TextureRect" parent="Container/container"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_032ga")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Name" type="Label" parent="Container/container"]
+layout_mode = 2
+text = "NAME OF THE CARDasdasd"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="Container/container"]
+layout_mode = 2
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 16
+text = "This is a asdas asdas asdasd asdasd asdas "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5aj6u")
+}
+playback_auto_capture_transition_type = 4
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -108,6 +108,10 @@ folder_colors={
 "res://ui/": "blue"
 }
 
+[global_group]
+
+drop_zone="group that tells CARDS if they can drop"
+
 [gui]
 
 theme/custom_font="uid://csu3erj4oisi5"
