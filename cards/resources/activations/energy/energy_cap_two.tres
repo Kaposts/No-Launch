@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="EnergyResource" load_steps=2 format=3 uid="uid://0nntiijer471"]
 
-[ext_resource type="Script" uid="uid://q3rw36rkkhnn" path="res://cards/resources/activations/energy.gd" id="1_gshmn"]
+[ext_resource type="Script" uid="uid://q3rw36rkkhnn" path="res://cards/resources/activations/energy.gd" id="1_o3jsp"]
 
 [resource]
-script = ExtResource("1_gshmn")
+script = ExtResource("1_o3jsp")
 amount = 2
-rounds = 0
-description = "Gain 2 energy"
+description = "+2 EP cap"
 function = 1
+rounds = 1
 metadata/_custom_type_script = "uid://q3rw36rkkhnn"

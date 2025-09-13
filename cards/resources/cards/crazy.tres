@@ -1,18 +1,20 @@
-[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://djejey6fjbje"]
+[gd_resource type="Resource" script_class="CardData" load_steps=8 format=3 uid="uid://djejey6fjbje"]
 
 [ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_qxxwa"]
-[ext_resource type="Resource" uid="uid://0nntiijer471" path="res://cards/resources/activations/energy/gain_two_energy.tres" id="2_lvkwq"]
+[ext_resource type="Resource" uid="uid://cst4qjohraau0" path="res://cards/resources/activations/army_buffs/army_hp_plus_one.tres" id="2_ahey6"]
 [ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_ahey6"]
+[ext_resource type="Resource" uid="uid://b0dndv6sj7vwm" path="res://cards/resources/activations/army_buffs/army_dmg_plus_one.tres" id="3_oddg1"]
+[ext_resource type="Resource" uid="uid://2fjk0exchkdl" path="res://cards/resources/activations/army_buffs/army_spd_plus_one.tres" id="4_4vixs"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_oddg1"]
 [ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="5_4vixs"]
 
 [resource]
 script = ExtResource("4_oddg1")
-name = "Energy"
+name = "CRAZY CARD"
 type = 0
 rarity = 0
 background = ExtResource("3_ahey6")
 sprite = ExtResource("5_4vixs")
 energy = 1
-activations = Array[ExtResource("1_qxxwa")]([ExtResource("2_lvkwq")])
+activations = Array[ExtResource("1_qxxwa")]([ExtResource("2_ahey6"), ExtResource("3_oddg1"), ExtResource("4_4vixs")])
 metadata/_custom_type_script = "uid://6dduflnjkwry"

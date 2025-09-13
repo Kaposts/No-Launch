@@ -12,3 +12,5 @@ signal play_card(card: Card)
 
 signal start_round()
 signal end_round()
+
+signal buff_applied(sprites: Array)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnergyResource" load_steps=2 format=3 uid="uid://grc6rgdo5j0i"]
+
+[ext_resource type="Script" uid="uid://q3rw36rkkhnn" path="res://cards/resources/activations/energy.gd" id="1_3kdf7"]
+
+[resource]
+script = ExtResource("1_3kdf7")
+amount = 0
+description = "Refill energy"
+function = 2
+rounds = 1
+metadata/_custom_type_script = "uid://q3rw36rkkhnn"
