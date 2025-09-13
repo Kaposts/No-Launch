@@ -8,7 +8,7 @@
 
 [resource]
 script = ExtResource("4_m0wkf")
-name = "ARMY BIG ARMY HUGE"
+name = "BIG ARMY HUGE"
 type = 0
 rarity = 1
 background = ExtResource("3_1e7al")

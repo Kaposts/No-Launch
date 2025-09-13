@@ -6,7 +6,10 @@ var data: ActivationResource
 var rounds: int = 1
 
 func _ready():
+	SignalBus.end_round.connect(_on_round_end)
+
 	rounds = data.rounds
+
 	if data is ArmySizeResource:
 		rounds -= 1
 		for i in data.army_amount:

@@ -19,7 +19,7 @@ func get_buffs() -> PlayerBuffsResource:
 			bonus_speed += buff.data.speed
 
 		if data is ArmySizeResource:
-			bonus_army += buff.army_amount
+			bonus_army += data.army_amount
 
 	var resource = PlayerBuffsResource.new()
 	resource.bonus_army = bonus_army

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_3kdf7")
-amount = 0
+amount = -1
 description = "Refill energy"
 function = 2
 rounds = 1

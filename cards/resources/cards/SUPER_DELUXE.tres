@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=13 format=3 uid="uid://tqrfe1s7g6wy"]
+
+[ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_lvwbd"]
+[ext_resource type="Resource" uid="uid://pjj1wdm05e8l" path="res://cards/resources/activations/army_size/army_plus_three.tres" id="2_0vwv8"]
+[ext_resource type="Resource" uid="uid://grc6rgdo5j0i" path="res://cards/resources/activations/energy/fill_energy.tres" id="2_5s88e"]
+[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_46oa1"]
+[ext_resource type="Resource" uid="uid://bb3py4udwp1tt" path="res://cards/resources/activations/draw/draw_three.tres" id="3_oqlw0"]
+[ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_1epww"]
+[ext_resource type="Resource" uid="uid://cgfv56fva871l" path="res://cards/resources/activations/energy/energy_cap_three.tres" id="4_1fl3o"]
+[ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="5_xfchg"]
+[ext_resource type="Resource" uid="uid://2fjk0exchkdl" path="res://cards/resources/activations/army_buffs/army_spd_plus_one.tres" id="6_pxtw0"]
+[ext_resource type="Resource" uid="uid://cst4qjohraau0" path="res://cards/resources/activations/army_buffs/army_hp_plus_one.tres" id="7_ecnod"]
+[ext_resource type="Resource" uid="uid://b0dndv6sj7vwm" path="res://cards/resources/activations/army_buffs/army_dmg_plus_one.tres" id="8_k1uba"]
+[ext_resource type="Resource" uid="uid://b3q14i5oh25qg" path="res://cards/resources/activations/energy/gain_energy_2.tres" id="9_oqlw0"]
+
+[resource]
+script = ExtResource("4_1epww")
+name = "ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR "
+type = 2
+rarity = 0
+background = ExtResource("3_46oa1")
+sprite = ExtResource("5_xfchg")
+energy = 2
+activations = Array[ExtResource("1_lvwbd")]([ExtResource("2_0vwv8"), ExtResource("3_oqlw0"), ExtResource("4_1fl3o"), ExtResource("2_5s88e"), ExtResource("6_pxtw0"), ExtResource("7_ecnod"), ExtResource("8_k1uba"), ExtResource("9_oqlw0"), ExtResource("2_0vwv8"), ExtResource("2_0vwv8"), ExtResource("2_0vwv8")])
+metadata/_custom_type_script = "uid://6dduflnjkwry"

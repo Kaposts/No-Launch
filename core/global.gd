@@ -11,8 +11,8 @@ var cards_in_play: Array[Card] = []
 var deck: Array[CardData] = []
 
 @onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
-var max_energy: int = 4
-var energy: int = 4
+var max_energy: int = 10
+var energy: int = 10
 var deck_size = 20
 var card_draw_per_round: int = 2
 var is_playing_turn: bool = false
@@ -49,6 +49,10 @@ func draw(amount: int = 1) -> void:
 		var card = deck.pop_front()
 		SignalBus.update_hand.emit()
 		SignalBus.draw_card.emit(card)
+
+func create_card(data: CardData):
+	SignalBus.update_hand.emit()
+	SignalBus.draw_card.emit(data)
 
 func discard(card) -> void:
 	if cards_in_hand.size() < 1:
@@ -94,6 +98,8 @@ func fill_energy(amount: int):
 		energy = max_energy
 	else:
 		energy += amount
+		
+	SignalBus.update_energy.emit(energy)
 
 func _on_end_round():
 	is_playing_turn = false
