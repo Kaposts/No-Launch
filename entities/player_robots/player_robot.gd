@@ -5,9 +5,6 @@ extends Entity
 ## Player robots scenes represent the player's ally entities
 
 
-var parameters: PlayerRobotParameters
-
-
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
 
 #===================================================================================================

@@ -18,3 +18,4 @@ signal apply_buff(data: ActivationResource)
 signal buff_applied(sprites: Array)
 
 signal spawn_player()
+signal entities_array_updated

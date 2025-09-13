@@ -10,11 +10,6 @@ extends CharacterBody2D
 		battling = flag
 		if navigator_component:
 			navigator_component.enabled = battling
-		if battling:
-			battling_timer.start()
-		else:
-			battling_timer.stop()
-
 @export var movement_speed: float = 150.0:
 	set(value):
 		movement_speed = value
@@ -28,11 +23,13 @@ extends CharacterBody2D
 		if navigator_component:
 			navigator_component.targets = targets
 
+
+var parameters: EntityParameters
+
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var navigator_component: NavigatorComponent = %NavigatorComponent
 @onready var path_recalculation_timer: Timer = %PathRecalculationTimer
-@onready var battling_timer: Timer = $Timers/BattlingTimer
 
 @onready var attack_range: Area2D = %AttackRange
 @onready var hitbox_component: HitboxComponent = %HitboxComponent
@@ -45,6 +42,9 @@ extends CharacterBody2D
 #region BUILT-IN FUNCTIONS
 
 func _ready() -> void:
+	health_component.max_health = parameters.health
+	hitbox_component.damage = parameters.damage
+	
 	set_up_navigator()
 	
 	navigator_component.velocity_computed.connect(_on_navigator_component_velocity_computed)
@@ -52,8 +52,7 @@ func _ready() -> void:
 	
 	attack_range.body_entered.connect(_on_attack_range_entered)
 	wall_bounce_component.sleeping_state_changed.connect(_on_wall_bounce_component_sleeping_state_changed)
-	
-	battling_timer.timeout.connect(_on_battling_timer_timeout)
+
 
 
 #endregion
@@ -100,8 +99,14 @@ func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_navigator_component_target_reached() -> void:
-	if targets.size() > 0:
-		start_navigating(targets.pick_random())
+	await SignalBus.entities_array_updated
+	if targets.is_empty():
+		start_navigating(get_tree().get_first_node_in_group("enemy_nexus") if self is PlayerRobot
+					else get_tree().get_first_node_in_group("player_nexus"))
+	
+	var target: Node2D = targets.pick_random()
+	if target != null:
+		start_navigating(target)
 	else:
 		stop_navigating()
 
@@ -119,14 +124,9 @@ func _on_attack_range_entered(body: Node2D) -> void:
 	animation_player.play("attack")
 
 
-func _on_battling_timer_timeout() -> void:
-	if attack_range.has_overlapping_bodies():
-		_on_attack_range_entered(attack_range.get_overlapping_bodies()[0])
-
-
 func _on_wall_bounce_component_sleeping_state_changed() -> void:
 	if wall_bounce_component.sleeping and battling:
-		start_navigating()
+		_on_navigator_component_target_reached()
 
 
 #endregion

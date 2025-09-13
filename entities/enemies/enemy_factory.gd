@@ -4,17 +4,12 @@ extends Node
 ## Author: Lestavol
 ## Factory class to create new enemy based on given parameters
 
-enum Type{
-	BASIC_INFANTRY,
-}
+
+const ENEMY_SCENE: PackedScene = preload("uid://bfbqdu1nyshr4")
 
 
-const ENEMY_SCENES: Dictionary[Type, PackedScene] = {
-	Type.BASIC_INFANTRY : preload("uid://bfbqdu1nyshr4"),
-}
-
-
-static func new_enemy(type: Type) -> Enemy:
-	var enemy: Enemy = ENEMY_SCENES[type].instantiate()
+static func new_enemy(parameters: EntityParameters) -> Enemy:
+	var enemy: Enemy = ENEMY_SCENE.instantiate()
+	enemy.parameters = parameters
 	
 	return enemy

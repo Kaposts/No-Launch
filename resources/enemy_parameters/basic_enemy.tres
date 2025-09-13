@@ -1,11 +1,12 @@
-[gd_resource type="Resource" script_class="EnemyParameters" load_steps=3 format=3 uid="uid://dquq8a7iqipgf"]
+[gd_resource type="Resource" script_class="EntityParameters" load_steps=3 format=3 uid="uid://dquq8a7iqipgf"]
 
-[ext_resource type="Script" uid="uid://b7auv04wntn8f" path="res://resources/enemy_parameters/enemy_parameters.gd" id="1_gjud1"]
-[ext_resource type="Texture2D" uid="uid://frei725hsvuw" path="res://assets/enemies/placeholder_basic_enemy.png" id="2_148v3"]
+[ext_resource type="Script" uid="uid://c1uhvd44yudpd" path="res://resources/entity_parameters.gd" id="1_gjud1"]
+[ext_resource type="Texture2D" uid="uid://b8r6qc0p8gdj2" path="res://assets/enemies/placeholder_basic_enemy.png" id="2_148v3"]
 
 [resource]
 script = ExtResource("1_gjud1")
 texture = ExtResource("2_148v3")
 health = 6
 damage = 1
-metadata/_custom_type_script = "uid://b7auv04wntn8f"
+speed = 170.0
+metadata/_custom_type_script = "uid://c1uhvd44yudpd"

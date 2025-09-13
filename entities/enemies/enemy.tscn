@@ -1,16 +1,16 @@
 [gd_scene load_steps=21 format=3 uid="uid://bfbqdu1nyshr4"]
 
-[ext_resource type="Script" uid="uid://k1unwkateubc" path="res://entities/enemies/basic_enemy.gd" id="1_6ofcp"]
-[ext_resource type="Texture2D" uid="uid://b8r6qc0p8gdj2" path="res://assets/enemies/placeholder_basic_enemy.png" id="1_ubayq"]
-[ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="3_5xrap"]
-[ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="4_4lwq5"]
-[ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="4_hgkiq"]
-[ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="5_43b24"]
-[ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="5_jmffx"]
-[ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="6_43b24"]
-[ext_resource type="PackedScene" uid="uid://cmi6e4m54urq" path="res://components/wall_bounce_component.tscn/wall_bounce_component.tscn" id="6_t7g2k"]
-[ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="7_q6ol2"]
-[ext_resource type="Shader" uid="uid://bvguo825tyhh6" path="res://components/hit_flash_component/white_hit_flash.gdshader" id="8_hgkiq"]
+[ext_resource type="Script" uid="uid://k1unwkateubc" path="res://entities/enemies/enemy.gd" id="1_3udgd"]
+[ext_resource type="Texture2D" uid="uid://b8r6qc0p8gdj2" path="res://assets/enemies/placeholder_basic_enemy.png" id="2_vabdn"]
+[ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="3_nrfwl"]
+[ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="4_5xow2"]
+[ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="5_xmuku"]
+[ext_resource type="PackedScene" uid="uid://cmi6e4m54urq" path="res://components/wall_bounce_component.tscn/wall_bounce_component.tscn" id="6_2ggct"]
+[ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="7_wy1il"]
+[ext_resource type="Shader" uid="uid://bvguo825tyhh6" path="res://components/hit_flash_component/white_hit_flash.gdshader" id="8_53k0f"]
+[ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="9_u01qb"]
+[ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="10_4teby"]
+[ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="11_bjdlj"]
 
 [sub_resource type="Animation" id="Animation_vpkpi"]
 length = 0.001
@@ -96,9 +96,9 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jebyg"]
 radius = 15.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hgkiq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3udgd"]
 resource_local_to_scene = true
-shader = ExtResource("8_hgkiq")
+shader = ExtResource("8_53k0f")
 shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ykiu"]
@@ -111,11 +111,11 @@ size = Vector2(24, 44)
 [sub_resource type="CircleShape2D" id="CircleShape2D_4lwq5"]
 radius = 24.0
 
-[node name="BasicEnemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 67
 motion_mode = 1
-script = ExtResource("1_6ofcp")
+script = ExtResource("1_3udgd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -127,7 +127,7 @@ rotation = -3.14159
 scale = Vector2(2, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("1_ubayq")
+texture = ExtResource("2_vabdn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -148,27 +148,25 @@ unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
-[node name="BattlingTimer" type="Timer" parent="Timers"]
+[node name="HealthComponent" parent="." instance=ExtResource("3_nrfwl")]
 
-[node name="HealthComponent" parent="." instance=ExtResource("6_43b24")]
+[node name="HitstopComponent" parent="." instance=ExtResource("4_5xow2")]
 
-[node name="HitstopComponent" parent="." instance=ExtResource("4_hgkiq")]
-
-[node name="KnockbackComponent" parent="." node_paths=PackedStringArray("wall_bounce_component") instance=ExtResource("5_jmffx")]
+[node name="KnockbackComponent" parent="." node_paths=PackedStringArray("wall_bounce_component") instance=ExtResource("5_xmuku")]
 unique_name_in_owner = true
 wall_bounce_component = NodePath("WallBounceComponent")
 
-[node name="WallBounceComponent" parent="KnockbackComponent" instance=ExtResource("6_t7g2k")]
+[node name="WallBounceComponent" parent="KnockbackComponent" instance=ExtResource("6_2ggct")]
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackComponent/WallBounceComponent"]
 shape = SubResource("CircleShape2D_jebyg")
 
-[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("7_q6ol2")]
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("7_wy1il")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_hgkiq")
+hit_flash_material = SubResource("ShaderMaterial_3udgd")
 
-[node name="NavigatorComponent" parent="." instance=ExtResource("3_5xrap")]
+[node name="NavigatorComponent" parent="." instance=ExtResource("9_u01qb")]
 unique_name_in_owner = true
 radius = 30.0
 avoidance_layers = 2
@@ -186,7 +184,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_5ykiu")
 debug_color = Color(0.28158, 0.620734, 0.334111, 0.42)
 
-[node name="HitboxComponent" parent="CombatAreas" node_paths=PackedStringArray("hitstop_component", "navigator_component") instance=ExtResource("5_43b24")]
+[node name="HitboxComponent" parent="CombatAreas" node_paths=PackedStringArray("hitstop_component", "navigator_component") instance=ExtResource("10_4teby")]
 unique_name_in_owner = true
 collision_layer = 32
 collision_mask = 4
@@ -198,7 +196,7 @@ position = Vector2(12, 0)
 shape = SubResource("RectangleShape2D_axigu")
 disabled = true
 
-[node name="HurtboxComponent" parent="CombatAreas" node_paths=PackedStringArray("health_component", "navigator_component", "knockback_component", "hit_flash_component", "hitstop_component") instance=ExtResource("4_4lwq5")]
+[node name="HurtboxComponent" parent="CombatAreas" node_paths=PackedStringArray("health_component", "navigator_component", "knockback_component", "hit_flash_component", "hitstop_component") instance=ExtResource("11_bjdlj")]
 unique_name_in_owner = true
 collision_layer = 8
 collision_mask = 16
