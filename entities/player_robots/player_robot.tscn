@@ -89,14 +89,14 @@ _data = {
 &"attack": SubResource("Animation_pn703")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pn703"]
-radius = 16.0
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbp4f"]
 load_path = "res://.godot/imported/placeholder_infantry.png-b679e30efc86b3af68214e6d50d6e5f4.ctex"
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pn703"]
+radius = 6.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxc6o"]
-radius = 15.0333
+radius = 9.05539
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vyq1y"]
 resource_local_to_scene = true
@@ -105,7 +105,7 @@ shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpkpi"]
 resource_local_to_scene = true
-radius = 29.0
+radius = 31.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pn703"]
 size = Vector2(24, 44)
@@ -122,8 +122,14 @@ libraries = {
 &"": SubResource("AnimationLibrary_vpkpi")
 }
 
+[node name="Visuals" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = SubResource("CompressedTexture2D_gbp4f")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_pn703")
 
 [node name="DebugbugLabel" type="Label" parent="."]
@@ -141,22 +147,22 @@ unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
-[node name="Visuals" type="Node2D" parent="."]
-scale = Vector2(2, 2)
-
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = SubResource("CompressedTexture2D_gbp4f")
+[node name="BattlingTimer" type="Timer" parent="Timers"]
+unique_name_in_owner = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_gllqd")]
 
 [node name="HitstopComponent" parent="." instance=ExtResource("3_i8ckr")]
 
 [node name="KnockbackComponent" parent="." node_paths=PackedStringArray("wall_bounce_component") instance=ExtResource("4_vyq1y")]
+unique_name_in_owner = true
 wall_bounce_component = NodePath("WallBounceComponent")
 
 [node name="WallBounceComponent" parent="KnockbackComponent" instance=ExtResource("5_ixurt")]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackComponent/WallBounceComponent"]
+position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_uxc6o")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("6_nvrdh")]
@@ -171,12 +177,13 @@ avoidance_enabled = true
 radius = 30.0
 neighbor_distance = 200.0
 max_speed = 1000.0
+debug_enabled = true
 
 [node name="CombatAreas" type="Node2D" parent="."]
+visible = false
 
 [node name="AttackRange" type="Area2D" parent="CombatAreas"]
 unique_name_in_owner = true
-visible = false
 collision_layer = 0
 collision_mask = 2
 monitorable = false

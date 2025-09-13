@@ -10,6 +10,10 @@ extends CharacterBody2D
 		battling = flag
 		if navigator_component:
 			navigator_component.enabled = battling
+		if battling:
+			battling_timer.start()
+		else:
+			battling_timer.stop()
 
 @export var movement_speed: float = 150.0:
 	set(value):
@@ -24,15 +28,17 @@ extends CharacterBody2D
 		if navigator_component:
 			navigator_component.targets = targets
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var navigator_component: NavigatorComponent = %NavigatorComponent
 @onready var path_recalculation_timer: Timer = %PathRecalculationTimer
+@onready var battling_timer: Timer = $Timers/BattlingTimer
 
 @onready var attack_range: Area2D = %AttackRange
 @onready var hitbox_component: HitboxComponent = %HitboxComponent
 @onready var hurtbox_component: HurtboxComponent = %HurtboxComponent
 @onready var health_component: HealthComponent = $HealthComponent
-
+@onready var wall_bounce_component: WallBounceComponent = %WallBounceComponent
 
 
 #===================================================================================================
@@ -45,12 +51,14 @@ func _ready() -> void:
 	navigator_component.target_reached.connect(_on_navigator_component_target_reached)
 	
 	attack_range.body_entered.connect(_on_attack_range_entered)
-	hurtbox_component.area_entered.connect(_on_hurtbox_entered)
+	wall_bounce_component.sleeping_state_changed.connect(_on_wall_bounce_component_sleeping_state_changed)
+	
+	battling_timer.timeout.connect(_on_battling_timer_timeout)
+
 
 #endregion
 #===================================================================================================
 #region NAVIGATOR FUNCTIONS
-
 
 func set_up_navigator() -> void:
 	navigator_component.enabled = battling
@@ -63,9 +71,8 @@ func start_navigating(target: Node2D = null) -> void:
 	battling = true
 	path_recalculation_timer.start()
 	if target:
-		navigator_component.start(target)
-	else:
-		navigator_component.navigate_to_nearest_target_in_targets()
+		targets.append(target)
+	navigator_component.navigate_to_nearest_target_in_targets()
 
 
 func stop_navigating(position_to_look_at: Vector2 = Vector2.ZERO) -> void:
@@ -89,11 +96,10 @@ func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_navigator_component_target_reached() -> void:
-	if battling:
-		if targets.size() > 1:
-			start_navigating()
-		else:
-			stop_navigating(Vector2.RIGHT)
+	if targets.size() > 0:
+		start_navigating()
+	else:
+		stop_navigating()
 
 
 func _on_path_recalculation_timer_timeout() -> void:
@@ -101,11 +107,23 @@ func _on_path_recalculation_timer_timeout() -> void:
 		_on_navigator_component_target_reached()
 
 #endregion
-
+#===================================================================================================
+#region EVENT HANDLERS
 
 func _on_attack_range_entered(body: Node2D) -> void:
-	pass
+	hitbox_component.rotation = position.angle_to(body.position)
+	animation_player.play("attack")
 
 
-func _on_hurtbox_entered(area: Area2D) -> void:
-	stop_navigating()
+func _on_battling_timer_timeout() -> void:
+	if attack_range.has_overlapping_bodies():
+		_on_attack_range_entered(attack_range.get_overlapping_bodies()[0])
+
+
+func _on_wall_bounce_component_sleeping_state_changed() -> void:
+	if wall_bounce_component.sleeping:
+		start_navigating()
+
+
+#endregion
+#===================================================================================================

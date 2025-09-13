@@ -7,7 +7,6 @@ extends Enemy
 @export var enemy_hp: int = 6
 @export var enemy_damage: int = 1
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #===================================================================================================
 #region BUILT-IN FUNCTIONS

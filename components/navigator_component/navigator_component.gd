@@ -21,14 +21,14 @@ const NAV_LINK_END_MARGIN: float = 5.0
 		return movement_speed * NAVIGATOR_SPEED_MODIFIER
 @export var current_agent_position: Vector2 = Vector2.ZERO
 
-@onready var update_timer: Timer = $UpdateTimer
+var current_target: Node2D: set = set_new_current_target
 
 var _owner: Node2D
-var _current_target: Node2D: set = set_new_current_target
 var _current_target_index: int = 0
-
 var _on_nav_link : bool = false
 var _nav_link_end_position : Vector2
+
+@onready var update_timer: Timer = $UpdateTimer
 
 
 func _ready():
@@ -59,8 +59,7 @@ func _physics_process(delta):
 	if is_navigation_finished():
 		return
 	
-	if _owner != null:
-		current_agent_position = _owner.global_position
+	current_agent_position = _owner.global_position
 	
 	# Get the next path point from the navigation agent.
 	var next_path_position: Vector2 = get_next_path_position()
@@ -91,9 +90,9 @@ func start(new_target: Node2D = null) -> void:
 		stop()
 		return
 	elif new_target:
-		_current_target = new_target
+		current_target = new_target
 	else:
-		_current_target = targets[_current_target_index]
+		current_target = targets[_current_target_index]
 	
 	enabled = true
 	if update_timer.is_stopped():
@@ -101,7 +100,7 @@ func start(new_target: Node2D = null) -> void:
 
 
 func stop() -> void:
-	_current_target = null
+	current_target = null
 
 
 func pause() -> void:
@@ -110,12 +109,12 @@ func pause() -> void:
 
 
 func set_new_current_target(new_target: Node2D) -> void:
-	_current_target = new_target
-	if _current_target == null:
+	current_target = new_target
+	if current_target == null:
 		target_position = current_agent_position
 		pause()
 	else:
-		target_position = _current_target.global_position
+		target_position = current_target.global_position
 
 
 func navigate_to_next_target_in_targets(reverse_path: bool = false) -> void:
@@ -170,7 +169,7 @@ func get_current_path_length_squared() -> float:
 func _on_update_timer_timeout() -> void:
 	if enabled:
 		if not _on_nav_link:
-			target_position = _current_target.global_position
+			target_position = current_target.global_position
 	else:
 		target_position = current_agent_position
 

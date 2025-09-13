@@ -4,10 +4,9 @@ extends Area2D
 ##
 ## Area2D node that provides functionality of being hurt for characters
 
-signal hit(hitbox_component: HitboxComponent)
 
 @export var invicibility_duration: float = 0.2
-@export var health_component: Node
+@export var health_component: HealthComponent
 @export var navigator_component: NavigatorComponent
 @export var knockback_component: KnockbackComponent
 @export var hit_flash_component: HitFlashComponent
@@ -29,7 +28,6 @@ func _on_area_entered(hitbox_component: HitboxComponent) -> void:
 	invicibility_timer.wait_time = invicibility_duration + hitbox_component.hitstop_duration
 	invicibility_timer.start()
 	
-	hit.emit(hitbox_component)
 	health_component.damage(hitbox_component.damage)
 	hit_flash_component.flash(invicibility_duration)
 	navigator_component.pause()
@@ -40,5 +38,5 @@ func _on_area_entered(hitbox_component: HitboxComponent) -> void:
 	# Need to check for previously freed physics objects
 	if hitbox_component != null:
 		navigator_component.pause()
-		#knockback_component.knockback(hitbox_component)
-		knockback_component.knockback_tween(hitbox_component)
+		knockback_component.knockback(hitbox_component)
+		#knockback_component.knockback_tween(hitbox_component)

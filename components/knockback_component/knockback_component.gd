@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	if _is_active:
 		_timer += delta
 		if _timer > _knock_duration:
-			wall_bounce_component.freeze = true
+			wall_bounce_component.physics_active = false
 			_timer = 0.0
 			_knock_duration = 0.0
 			_is_active = false
@@ -40,7 +40,7 @@ func knockback(from: HitboxComponent,
 	#var impulse_magnitude: float = wall_bounce_component\
 		#.calculate_impulse_magnitude_to_reach_distance_in_duration(distance, duration)
 	var impulse_magnitude: float = from.knockback_force
-	wall_bounce_component.freeze = false
+	wall_bounce_component.physics_active = true
 	wall_bounce_component.apply_central_impulse(direction * impulse_magnitude)
 	
 	_knock_duration = duration
