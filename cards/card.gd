@@ -17,6 +17,7 @@ var drag_offset: Vector2
 
 @onready var card_background = $Container/background
 @onready var card_sprite = $Container/container/sprite
+@onready var energy_cost = $Container/container/sprite/energy_cost
 @onready var card_name = $Container/container/Name
 @onready var card_description = $Container/container/Description
 @onready var highlight = $Container/highlight
@@ -33,12 +34,15 @@ func _ready():
 	card_background.texture = data.background
 	card_sprite.texture = data.sprite
 	card_name.text = data.name
-	
+	energy_cost.text = str(data.energy)
+
 	generate_description()
 
 func _on_anim_finished(anim_name: StringName):
 	if anim_name == ANIM_DRAW:
 		mouse_filter = Control.MOUSE_FILTER_STOP
+		# Audio.play_random(SFX.SFX_UI_SWITCH_006)
+		Audio.play_by_name(SFX.SFX_UI_CLICK_005)
 	if anim_name == ANIM_DROP:
 		hand.discard(self)
 
@@ -64,6 +68,8 @@ func _on_gui_input(event: InputEvent) -> void:
 			else: activate_card()
 
 func activate_card():
+	if Global.energy - data.energy < 0: return
+
 	is_activated = true
 	highlight.show()
 	SignalBus.activate_card.emit(self)

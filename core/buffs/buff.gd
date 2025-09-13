@@ -7,7 +7,6 @@ var rounds: int = 1
 
 func _ready():
 	rounds = data.rounds
-	
 
 func _on_round_start():
 	pass

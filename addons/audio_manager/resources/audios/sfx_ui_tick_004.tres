@@ -7,6 +7,6 @@
 script = ExtResource("2_cueed")
 res_name = "sfx_ui_tick_004"
 res_stream = ExtResource("1_ypl7d")
-res_volume_db = 0.0
+res_volume_db = -10.0
 res_pitch_scale = 1.21
 res_pitch_randomizer = true
