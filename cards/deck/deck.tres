@@ -1,12 +1,16 @@
-[gd_resource type="Resource" script_class="DeckData" load_steps=5 format=3 uid="uid://capo0ballwxnh"]
+[gd_resource type="Resource" script_class="DeckData" load_steps=9 format=3 uid="uid://capo0ballwxnh"]
 
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="1_m1yx2"]
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="2_fq1aa"]
 [ext_resource type="Script" uid="uid://cjpgkkglbfd61" path="res://cards/deck/deck_data.gd" id="2_jm7wc"]
 [ext_resource type="Resource" uid="uid://dqale123jnws3" path="res://cards/resources/cards/energy.tres" id="3_oeao5"]
+[ext_resource type="Resource" uid="uid://bpko5pb3i4aou" path="res://cards/resources/cards/army_dmg_plus_one.tres" id="4_1g8h1"]
+[ext_resource type="Resource" uid="uid://bfgtc0joj8hxk" path="res://cards/resources/cards/army_hp_plus_one.tres" id="5_ni3em"]
+[ext_resource type="Resource" uid="uid://biu4hmd6q5i4m" path="res://cards/resources/cards/army_size_plus_one.tres" id="6_qr5wy"]
+[ext_resource type="Resource" uid="uid://cfgryt26darl7" path="res://cards/resources/cards/army_spd_plus_one.tres" id="7_bnwtv"]
 
 [resource]
 script = ExtResource("2_jm7wc")
 size = 20
-card_pool = Array[ExtResource("1_m1yx2")]([ExtResource("2_fq1aa"), ExtResource("3_oeao5")])
+card_pool = Array[ExtResource("1_m1yx2")]([ExtResource("2_fq1aa"), ExtResource("3_oeao5"), ExtResource("4_1g8h1"), ExtResource("5_ni3em"), ExtResource("6_qr5wy"), ExtResource("7_bnwtv")])
 metadata/_custom_type_script = "uid://cjpgkkglbfd61"

@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_wkpff")
-amount = 1
-rounds = 1
+army_amount = 0
 description = "Gain +1 robot for this turn "
-function = 0
+function = 2
+rounds = 1
 metadata/_custom_type_script = "uid://1l34bmlgd313"
