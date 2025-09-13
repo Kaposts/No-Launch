@@ -18,6 +18,8 @@ point_count = 3
 
 [node name="Cabage" type="Node2D"]
 
+[node name="BattleScene" parent="." instance=ExtResource("6_5aj6u")]
+
 [node name="drop" type="TextureRect" parent="." groups=["drop_zone"]]
 visible = false
 offset_right = 640.0
@@ -56,8 +58,5 @@ text = "draw
 "
 
 [node name="UI" parent="." instance=ExtResource("5_t0n0d")]
-
-[node name="BattleScene" parent="." instance=ExtResource("6_5aj6u")]
-position = Vector2(0, 33)
 
 [connection signal="pressed" from="draw" to="hand" method="_on_draw_pressed"]

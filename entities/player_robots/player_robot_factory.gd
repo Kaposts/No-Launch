@@ -8,7 +8,7 @@ extends Node
 const ROBOT_SCENE: PackedScene = preload("uid://cetfvkhut1rm3")
 
 
-static func new_robot(parameters: PlayerRobotParameters) -> PlayerRobot:
+static func new_robot(parameters: EntityParameters) -> PlayerRobot:
 	var robot: PlayerRobot = ROBOT_SCENE.instantiate()
 	robot.parameters = parameters
 	

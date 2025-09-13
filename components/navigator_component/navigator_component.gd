@@ -167,7 +167,7 @@ func get_current_path_length_squared() -> float:
 
 ## Called when the recalculation timer times out.
 func _on_update_timer_timeout() -> void:
-	if enabled:
+	if enabled and current_target != null and not current_target.is_queued_for_deletion():
 		if not _on_nav_link:
 			target_position = current_target.global_position
 	else:

@@ -14,3 +14,5 @@ signal start_round()
 signal end_round()
 
 signal buff_applied(sprites: Array)
+
+signal entities_array_updated
