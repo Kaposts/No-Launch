@@ -116,6 +116,7 @@ radius = 20.0
 
 [node name="PlayerRobot" type="CharacterBody2D"]
 collision_mask = 67
+motion_mode = 1
 script = ExtResource("1_ckjmp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -130,6 +131,7 @@ scale = Vector2(2, 2)
 texture = SubResource("CompressedTexture2D_gbp4f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_pn703")
 
@@ -174,11 +176,7 @@ hit_flash_material = SubResource("ShaderMaterial_ixurt")
 unique_name_in_owner = true
 path_desired_distance = 10.0
 target_desired_distance = 16.0
-avoidance_enabled = true
-radius = 30.0
-neighbor_distance = 200.0
-max_speed = 1000.0
-debug_enabled = true
+enabled = false
 
 [node name="CombatAreas" type="Node2D" parent="."]
 visible = false

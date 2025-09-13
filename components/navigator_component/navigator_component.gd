@@ -92,7 +92,7 @@ func start(new_target: Node2D = null) -> void:
 	elif new_target:
 		current_target = new_target
 	else:
-		current_target = targets[_current_target_index]
+		current_target = targets.pick_random()
 	
 	enabled = true
 	if update_timer.is_stopped():
