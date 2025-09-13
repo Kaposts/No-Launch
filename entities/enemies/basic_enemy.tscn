@@ -148,8 +148,6 @@ unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
-[node name="BattlingTimer" type="Timer" parent="Timers"]
-
 [node name="HealthComponent" parent="." instance=ExtResource("6_43b24")]
 
 [node name="HitstopComponent" parent="." instance=ExtResource("4_hgkiq")]
