@@ -1,6 +1,9 @@
 extends ActivationResource
-class_name ArmySizeResource
+class_name ArmyBuffResource
 
-@export var amount: int
-@export var rounds: int
-#@export var type:  
+@export var damage: int
+@export var health: int
+@export var speed: int
+
+@export var is_multiplier: bool = false 
+@export var multiplier: int = 1

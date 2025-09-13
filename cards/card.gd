@@ -29,7 +29,6 @@ func _ready():
 	anim.animation_finished.connect(_on_anim_finished)
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-	# gui_input.connect(_on_gui_input)
 
 	card_background.texture = data.background
 	card_sprite.texture = data.sprite
@@ -44,17 +43,21 @@ func _on_anim_finished(anim_name: StringName):
 		hand.discard(self)
 
 func _on_mouse_entered():
+	if Global.is_playing_turn: return
 	Audio.play_by_name(SFX.SFX_UI_TICK_004)
 	is_hovered = true
 	if not is_dragging:
 		anim.play(ANIM_ENTER)
 
 func _on_mouse_exited():
+	if Global.is_playing_turn: return
 	is_hovered = false
 	if not is_dragging:
 		anim.play(ANIM_EXIT)
 
 func _on_gui_input(event: InputEvent) -> void:
+	if Global.is_playing_turn: return
+
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
 			if is_activated: deactivate_card()

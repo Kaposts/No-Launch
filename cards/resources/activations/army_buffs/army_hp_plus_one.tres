@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ArmyBuffResource" load_steps=2 format=3 uid="uid://cst4qjohraau0"]
 
-[ext_resource type="Script" uid="uid://1l34bmlgd313" path="res://cards/resources/activations/army_size.gd" id="1_b0km7"]
+[ext_resource type="Script" uid="uid://tv8u13ofur3d" path="res://cards/resources/activations/army_buffs.gd" id="1_b0km7"]
 
 [resource]
 script = ExtResource("1_b0km7")
@@ -10,4 +10,5 @@ speed = 0
 is_multiplier = false
 multiplier = 1
 description = "Increase armies health by 1"
+function = 0
 metadata/_custom_type_script = "uid://1l34bmlgd313"

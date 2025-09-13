@@ -106,6 +106,7 @@ enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons
 
 folder_colors={
 "res://addons/": "red",
+"res://cards/": "pink",
 "res://core/": "orange",
 "res://dialogic/": "yellow",
 "res://scenes/": "green",

@@ -7,4 +7,5 @@ script = ExtResource("1_wkpff")
 amount = 1
 rounds = 1
 description = "Gain +1 robot for this turn "
+function = 0
 metadata/_custom_type_script = "uid://1l34bmlgd313"
