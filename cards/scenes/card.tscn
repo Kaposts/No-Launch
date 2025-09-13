@@ -279,7 +279,7 @@ size_flags_vertical = 4
 script = ExtResource("1_ttli1")
 data = ExtResource("2_032ga")
 anim = NodePath("anim")
-rarity_sprites = [ExtResource("6_77qwj"), ExtResource("4_352vs")]
+rarity_sprites = Array[Texture]([ExtResource("6_77qwj"), ExtResource("4_352vs")])
 
 [node name="Container" type="AspectRatioContainer" parent="."]
 layout_mode = 1
