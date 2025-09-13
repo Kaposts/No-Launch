@@ -11,15 +11,21 @@ var cards_in_play: Array[Card] = []
 var deck: Array[CardData] = []
 
 @onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
-var energy: int = 10
+var max_energy: int = 4
+var energy: int = 4
 var deck_size = 20
-
+var card_draw_per_round: int = 2
 var is_playing_turn: bool = false
 
 func _ready() -> void:
+	energy = max_energy
 	deck_size = deck_data.size
+
 	SceneManager.transition_finished.connect(func(): print('Transition complete'))
 	SceneManager.fade_complete.connect(func(): print('Fade complete'))
+
+	SignalBus.end_round.connect(_on_end_round)
+
 	starting_hand()
 
 func transition():
@@ -41,7 +47,6 @@ func draw(amount: int = 1) -> void:
 
 	for i in amount:
 		var card = deck.pop_front()
-		Audio.play_random(SFX.SFX_UI_SWITCH_006)
 		SignalBus.update_hand.emit()
 		SignalBus.draw_card.emit(card)
 
@@ -66,9 +71,18 @@ func play_turn() -> void:
 	cards_in_play.clear()
 
 	SignalBus.update_hand.emit()
-
-	is_playing_turn = false
+	SignalBus.start_round.emit()
 
 func increase_energy(amount: int):
 	energy += amount
 	SignalBus.update_energy.emit(energy)
+
+func _on_end_round():
+	is_playing_turn = false
+	energy = max_energy
+
+	SignalBus.update_energy.emit(energy)
+
+	for i in card_draw_per_round:
+		await get_tree().create_timer(0.2).timeout
+		draw()

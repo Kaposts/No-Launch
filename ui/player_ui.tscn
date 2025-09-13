@@ -6,11 +6,18 @@
 script = ExtResource("1_cfom6")
 
 [node name="energy" type="Label" parent="."]
-offset_left = 27.0
-offset_top = 299.0
-offset_right = 147.0
-offset_bottom = 313.0
-text = "Executive Power: 10/10"
+offset_left = 21.0
+offset_top = 300.0
+offset_right = 141.0
+offset_bottom = 314.0
+text = "Executive Power: 4/4"
+
+[node name="cards_in_deck" type="Label" parent="."]
+offset_left = 21.0
+offset_top = 283.0
+offset_right = 141.0
+offset_bottom = 297.0
+text = "Cards inside deck: "
 
 [node name="play_turn" type="Button" parent="."]
 offset_left = 550.0
@@ -19,4 +26,13 @@ offset_right = 628.0
 offset_bottom = 220.0
 text = "Play turn"
 
+[node name="play_turn2" type="Button" parent="."]
+offset_left = 550.0
+offset_top = 229.0
+offset_right = 628.0
+offset_bottom = 257.0
+text = "End round
+"
+
 [connection signal="pressed" from="play_turn" to="." method="_on_play_turn_pressed"]
+[connection signal="pressed" from="play_turn2" to="." method="_on_play_turn_2_pressed"]

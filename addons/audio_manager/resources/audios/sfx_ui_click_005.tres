@@ -8,5 +8,5 @@ script = ExtResource("2_4pyvp")
 res_name = "sfx_ui_click_005"
 res_stream = ExtResource("1_rli64")
 res_volume_db = 0.0
-res_pitch_scale = 1.0
+res_pitch_scale = 0.81
 res_pitch_randomizer = false
