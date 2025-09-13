@@ -31,6 +31,9 @@ var _nav_link_end_position : Vector2
 @onready var update_timer: Timer = $UpdateTimer
 
 
+#===================================================================================================
+#region BUILT-IN FUNCTIONS
+
 func _ready():
 	_owner = owner
 	
@@ -72,6 +75,10 @@ func _physics_process(delta):
 		velocity_computed.emit(new_velocity)
 
 
+#endregion
+#===================================================================================================
+#region PUBLIC FUNCTIONS
+
 ## Setup the navigation agent.
 func actor_setup():
 	# Wait for the first physics frame so the NavigationServer can sync.
@@ -108,13 +115,13 @@ func pause() -> void:
 	update_timer.stop()
 
 
-func set_new_current_target(new_target: Node2D) -> void:
-	current_target = new_target
-	if current_target == null:
-		target_position = current_agent_position
-		pause()
-	else:
-		target_position = current_target.global_position
+func resume() -> void:
+	if has_valid_current_target():
+		start(current_target)
+
+
+func has_valid_current_target() -> bool:
+	return current_target != null and not current_target.is_queued_for_deletion()
 
 
 func navigate_to_next_target_in_targets(reverse_path: bool = false) -> void:
@@ -132,7 +139,7 @@ func navigate_to_next_target_in_targets(reverse_path: bool = false) -> void:
 
 
 ## Only consider 2D coordinates space. Don't account for navigation distance and cost
-func navigate_to_nearest_target_in_targets() -> void:
+func navigate_to_nearest_target_in_2D() -> void:
 	if targets.is_empty():
 		stop()
 		return
@@ -146,6 +153,22 @@ func navigate_to_nearest_target_in_targets() -> void:
 	
 	start()
 
+
+## Calculate pathfinding to all targets and navigate to nearest target by path
+func navigate_to_nearest_target_by_pathfinding() -> void:
+	pass
+
+#endregion
+#===================================================================================================
+#region GETTERS SETTERS
+
+func set_new_current_target(new_target: Node2D) -> void:
+	current_target = new_target
+	if current_target == null:
+		target_position = current_agent_position
+		pause()
+	else:
+		target_position = current_target.global_position
 
 func get_current_path_length() -> float:
 	return sqrt(get_current_path_length_squared())
@@ -164,10 +187,13 @@ func get_current_path_length_squared() -> float:
 	
 	return result
 
+#endregion
+#===================================================================================================
+#region EVENT HANDLERS
 
 ## Called when the recalculation timer times out.
 func _on_update_timer_timeout() -> void:
-	if enabled and current_target != null and not current_target.is_queued_for_deletion():
+	if enabled and has_valid_current_target():
 		if not _on_nav_link:
 			target_position = current_target.global_position
 	else:
@@ -187,3 +213,6 @@ func _on_waypoint_reached(details : Dictionary) -> void:
 	# This check produces unexpected results when comparing vectors directly.
 	if details.position.distance_squared_to(_nav_link_end_position) < NAV_LINK_END_MARGIN ** 2.0:
 		_on_nav_link = false
+
+#endregion
+#===================================================================================================
