@@ -72,7 +72,7 @@ func start_navigating(target: Node2D = null) -> void:
 	path_recalculation_timer.start()
 	if target:
 		targets.append(target)
-	navigator_component.navigate_to_nearest_target_in_targets()
+	navigator_component.start(target)
 
 
 func stop_navigating(position_to_look_at: Vector2 = Vector2.ZERO) -> void:
@@ -80,7 +80,9 @@ func stop_navigating(position_to_look_at: Vector2 = Vector2.ZERO) -> void:
 	
 	battling = false
 	velocity = Vector2.ZERO
+	move_and_slide()
 	navigator_component.stop()
+	wall_bounce_component.freeze = true
 	#animation_state_machine.travel("idle")
 	path_recalculation_timer.stop()
 	
@@ -92,12 +94,14 @@ func stop_navigating(position_to_look_at: Vector2 = Vector2.ZERO) -> void:
 func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
 	if battling:
 		velocity = safe_velocity
-		move_and_slide()
+	else:
+		velocity = Vector2.ZERO
+	move_and_slide()
 
 
 func _on_navigator_component_target_reached() -> void:
 	if targets.size() > 0:
-		start_navigating()
+		start_navigating(targets.pick_random())
 	else:
 		stop_navigating()
 
@@ -121,7 +125,7 @@ func _on_battling_timer_timeout() -> void:
 
 
 func _on_wall_bounce_component_sleeping_state_changed() -> void:
-	if wall_bounce_component.sleeping:
+	if wall_bounce_component.sleeping and battling:
 		start_navigating()
 
 

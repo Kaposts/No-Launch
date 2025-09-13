@@ -10,6 +10,8 @@ const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_param
 @onready var enemy_marker: Marker2D = %EnemyMarker
 @onready var player_layer: Node2D = $PlayerLayer
 @onready var enemy_layer: Node2D = $EnemyLayer
+@onready var player_nexus: Nexus = $PlayerNexus
+@onready var enemy_nexus: Nexus = $EnemyNexus
 
 
 var player_robot_types: Array[PlayerRobotParameters] = []
@@ -90,12 +92,12 @@ func _on_entity_died(entity: Entity) -> void:
 	if enemies.is_empty():
 		for player_robot in player_robots:
 			player_robot = player_robot as PlayerRobot
-			player_robot.stop_navigating()
+			player_robot.start_navigating(enemy_nexus)
 		return
 	elif player_robots.is_empty():
 		for enemy in enemies:
 			enemy = enemy as Enemy
-			enemy.stop_navigating()
+			enemy.start_navigating(player_nexus)
 		return
 	
 	if entity is Enemy:

@@ -11,7 +11,7 @@ signal hit_connected(hurtbox_component: HurtboxComponent)
 
 @export_group("Attack Knockback Parameters")
 @export var knockback_distance: float = 60.0
-@export var knockback_force: float = 360.0
+@export var knockback_force: float = 400.0
 @export var knockback_duration: float = 0.2
 
 @export_group("Attack Hitstop Parameters")

@@ -1,0 +1,24 @@
+class_name Nexus
+extends Area2D
+## Nexus Area2D class
+## Author: Lestavol
+## Home Base for each faction
+
+@export var health: int = 20
+
+@onready var debug_label: Label = $DebugLabel
+
+
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+	update_health()
+
+
+func update_health() -> void:
+	debug_label.text = "HP: %2d" % health
+
+
+func _on_body_entered(body: Node2D) -> void:
+	health -= 1
+	update_health()
+	body.health_component.damage(1000)
