@@ -35,10 +35,9 @@ func assign_card(activation: ActivationResource):
 	add_child(buff_instance)
 
 	var sprites:Array = []
+	
 	#buff animation logic
-	print('assign)')
 	if activation is ArmyBuffResource:
-		print('yes)')
 		if activation.damage > 0:
 			sprites.append(load("res://entities/assets/buffs/buff1.png"))
 		if activation.health > 0:

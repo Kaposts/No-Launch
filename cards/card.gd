@@ -1,7 +1,7 @@
 extends Control
 class_name Card
 
-@onready var hand: Hand = get_parent()
+# @onready var hand: Hand = get_parent()
 
 @export var data: CardData
 @export var anim: AnimationPlayer
@@ -36,7 +36,7 @@ func _ready():
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 
-	card_background.texture = data.background
+	# card_background.texture = data.background
 	card_sprite.texture = data.sprite
 	card_name.text = data.name
 	energy_cost.text = str(data.energy)
@@ -95,7 +95,8 @@ func _check_drop():
 			dropped_in_zone = true
 			anim.play("drop")
 			break
-	hand._update_cards()
+	# hand._update_cards()
+	SignalBus.update_hand.emit()
 	if not dropped_in_zone:
 		anim.play('RESET')
 	# 	# Return to original position
@@ -121,4 +122,7 @@ func generate_description():
 	for activation in data.activations:
 		card_description.text += activation.description + "\n"
 		print(activation.description)
-	
+
+func _on_close_pressed() -> void:
+	Global.discard(self)
+	SignalBus.update_hand.emit()
