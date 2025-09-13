@@ -9,7 +9,7 @@ vertices = PackedVector2Array(671, 164.969, 671, 395.008, -11.8672, 395.977, -9.
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-19, 153, 681, 155, 681, 405, -22, 406)])
 
-[node name="BattleScene" type="Node2D"]
+[node name="BattleScene" type="Node2D" groups=["battle_scene"]]
 script = ExtResource("1_6a6ir")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
