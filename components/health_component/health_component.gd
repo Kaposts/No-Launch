@@ -1,14 +1,17 @@
 class_name HealthComponent
 extends Node
 ## Health Component
-##
+## Author: Lestavol
 ## Health Component to manages a character's HP
 
 signal died
 signal health_changed(change_value: float)
 
 
-@export var max_health: float = 10.0
+@export var max_health: float = 10.0:
+	set(value):
+		max_health = value
+		current_health = value
 var current_health: float
 
 

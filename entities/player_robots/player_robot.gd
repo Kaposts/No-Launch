@@ -17,11 +17,11 @@ var parameters: PlayerRobotParameters
 func _ready() -> void:
 	super()
 	
-	health = parameters.health
-	damage = parameters.damage
+	health_component.max_health = parameters.health
+	hitbox_component.damage = parameters.damage
 	sprite.texture = parameters.texture
 	
-	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health, damage]
+	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health_component.current_health, hitbox_component.damage]
 
 #endregion
 

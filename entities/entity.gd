@@ -25,15 +25,13 @@ extends CharacterBody2D
 			navigator_component.targets = targets
 
 
-var health: int
-var damage: int
-
 @onready var navigator_component: NavigatorComponent = %NavigatorComponent
 @onready var path_recalculation_timer: Timer = %PathRecalculationTimer
 
 @onready var attack_range: Area2D = %AttackRange
 @onready var hitbox_component: HitboxComponent = %HitboxComponent
 @onready var hurtbox_component: HurtboxComponent = %HurtboxComponent
+@onready var health_component: HealthComponent = $HealthComponent
 
 
 

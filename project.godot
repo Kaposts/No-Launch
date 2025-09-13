@@ -117,6 +117,7 @@ folder_colors={
 [global_group]
 
 drop_zone="group that tells CARDS if they can drop"
+death_layer="Layer to display death animations for entities"
 
 [gui]
 
