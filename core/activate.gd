@@ -5,14 +5,15 @@ func _ready():
 
 func _on_play_card(card: Card):
 	print(card)
-	for activation in card.data.activations:
+	for activation: ActivationResource in card.data.activations:
 		match activation.function:
 			Enum.CARD_FUNCTION.DRAW_CARD:
-				print('watafaku')
-				Global.draw()
+				for i in activation.amount:
+					await get_tree().create_timer(0.2).timeout
+					Global.draw(1)
 			Enum.CARD_FUNCTION.INCREASE_ENERGY:
-				#INCREASE_ENERGY
-				pass
+				print(activation.amount)
+				Global.increase_energy(activation.amount)
 			Enum.CARD_FUNCTION.INCREASE_ARMY_SIZE:
 				#INCREASE_ARMY_SIZE
 				pass

@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="EnergyResource" load_steps=2 format=3 uid="uid://0nntiijer471"]
+[gd_resource type="Resource" script_class="EnergyResource" load_steps=2 format=3 uid="uid://130u2hs36wut"]
 
 [ext_resource type="Script" uid="uid://q3rw36rkkhnn" path="res://cards/resources/activations/energy.gd" id="1_x6nib"]
 
 [resource]
 script = ExtResource("1_x6nib")
-amount = 2
+amount = 1
 rounds = 0
-description = "Gain 2 energy"
+description = "Gain 1 energy"
+function = 1
 metadata/_custom_type_script = "uid://q3rw36rkkhnn"

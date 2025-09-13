@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArmySizeResource" load_steps=2 format=3 uid="uid://pjj1wdm05e8l"]
+
+[ext_resource type="Script" uid="uid://1l34bmlgd313" path="res://cards/resources/activations/army_size.gd" id="1_bxftl"]
+
+[resource]
+script = ExtResource("1_bxftl")
+amount = 3
+rounds = 1
+description = "Gain +3 robot for this turn "
+function = 0
+metadata/_custom_type_script = "uid://1l34bmlgd313"

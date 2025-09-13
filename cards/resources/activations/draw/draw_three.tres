@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DrawResource" load_steps=2 format=3 uid="uid://bb3py4udwp1tt"]
+
+[ext_resource type="Script" uid="uid://d3cpiu7cad4pf" path="res://cards/resources/activations/draw.gd" id="1_uar00"]
+
+[resource]
+script = ExtResource("1_uar00")
+amount = 3
+rounds = 0
+description = "Draw three cards"
+function = 0
+metadata/_custom_type_script = "uid://d3cpiu7cad4pf"

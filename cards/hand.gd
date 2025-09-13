@@ -10,10 +10,7 @@ class_name Hand
 @export var y_min := 0
 @export var y_max := -15
 
-var energy: int = 10
-
 @export var card_pool: Array[CardData] = []
-var deck_size = 20
 
 func _ready():
 	SignalBus.activate_card.connect(_on_activate_card)
@@ -21,11 +18,8 @@ func _ready():
 	SignalBus.update_hand.connect(_update_cards)
 	SignalBus.draw_card.connect(_on_draw_card)
 
-	deck_setup()
+	Global.deck_setup()
 
-func deck_setup():
-	for i in deck_size:
-		Global.deck.append(card_pool.pick_random())
 
 func _on_draw_card(card_data: CardData):
 	var new_card = card_scene.instantiate()
@@ -68,14 +62,11 @@ func _update_cards():
 		tween.tween_property(card, "rotation_degrees", target_rot, 0.3)
 
 func _on_activate_card(card: Card) -> void:
-	energy -= card.data.energy
+	Global.energy -= card.data.energy
 	Global.cards_in_play.append(card)
-	SignalBus.update_energy.emit(energy)
+	SignalBus.update_energy.emit(Global.energy)
 
 func _on_deactivate_card(card: Card) -> void:
-	energy += card.data.energy
+	Global.energy += card.data.energy
 	Global.cards_in_play.erase(card)
-	SignalBus.update_energy.emit(energy)
-
-func _on_play_turn_pressed() -> void:
-	Global.play_turn()
+	SignalBus.update_energy.emit(Global.energy)

@@ -11,13 +11,17 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-28, 183, 681, 183, 681
 script = ExtResource("1_6a6ir")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(0, -147)
 navigation_polygon = SubResource("NavigationPolygon_skhqt")
 
 [node name="PlayerLayer" type="Node2D" parent="."]
+position = Vector2(0, -147)
 
 [node name="EnemyLayer" type="Node2D" parent="."]
+position = Vector2(0, -147)
 
 [node name="SpawnPositions" type="Node2D" parent="."]
+position = Vector2(0, -147)
 
 [node name="PlayerMarker" type="Marker2D" parent="SpawnPositions"]
 unique_name_in_owner = true
