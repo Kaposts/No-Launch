@@ -14,6 +14,8 @@ script = ExtResource("1_6a6ir")
 position = Vector2(0, -147)
 navigation_polygon = SubResource("NavigationPolygon_skhqt")
 
+[node name="DeathLayer" type="Node2D" parent="." groups=["death_layer"]]
+
 [node name="PlayerLayer" type="Node2D" parent="."]
 position = Vector2(0, -147)
 

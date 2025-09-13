@@ -13,6 +13,8 @@ const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_param
 
 
 var player_robot_types: Array[PlayerRobotParameters] = []
+var player_robots: Array[Node2D] = []
+var enemies: Array[Node2D] = []
 
 
 func _ready() -> void:
@@ -37,11 +39,25 @@ func _load_player_available_robot_types() -> void:
 		var param: PlayerRobotParameters = load(directory_path + resource_file)
 		player_robot_types.append(param)
 
+
+func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
+	player_robots.clear()
+	for child in player_layer.get_children():
+		if child not in excluded_entities:
+			player_robots.append(child as Node2D)
+	
+	enemies.clear()
+	for child in enemy_layer.get_children():
+		if child not in excluded_entities:
+			enemies.append(child as Node2D)
+
+
 func _on_robot_button_pressed() -> void:
 	var new_robot: PlayerRobot = PlayerRobotFactory.new_robot(player_robot_types.pick_random())
 	player_layer.add_child(new_robot)
 	new_robot.position = Vector2(player_marker.position.x + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET),
 								 player_marker.position.y + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET))
+	new_robot.health_component.died.connect(_on_entity_died.bind(new_robot))
 
 
 func _on_enemy_button_pressed() -> void:
@@ -49,16 +65,44 @@ func _on_enemy_button_pressed() -> void:
 	enemy_layer.add_child(new_enemy)
 	new_enemy.position = Vector2(enemy_marker.position.x + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET),
 								 enemy_marker.position.y + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET))
+	new_enemy.health_component.died.connect(_on_entity_died.bind(new_enemy))
 
 
 func _on_start_battle_button_pressed() -> void:
-	var player_robots: Array = player_layer.get_children()
-	var enemies: Array = enemy_layer.get_children()
+	_set_valid_entities()
 	
-	for player_robot in player_robots:
-		player_robot = player_robot as PlayerRobot
-		player_robot.start_navigating(enemies.pick_random() as Node2D)
+	if not player_robots.is_empty() and not enemies.is_empty():
+		for player_robot in player_robots:
+			player_robot = player_robot as PlayerRobot
+			player_robot.targets = enemies
+			player_robot.start_navigating(enemies.pick_random())
+		
+		for enemy in enemies:
+			enemy = enemy as Enemy
+			enemy.targets = player_robots
+			enemy.start_navigating(player_robots.pick_random())
+
+
+func _on_entity_died(entity: Entity) -> void:
+	_set_valid_entities([entity])
+	if enemies.is_empty():
+		for player_robot in player_robots:
+			player_robot = player_robot as PlayerRobot
+			player_robot.stop_navigating()
+		return
+	elif player_robots.is_empty():
+		for enemy in enemies:
+			enemy = enemy as Enemy
+			enemy.stop_navigating()
+		return
 	
-	for enemy in enemies:
-		enemy = enemy as Enemy
-		enemy.start_navigating(player_robots.pick_random() as Node2D)
+	if entity is Enemy:
+		for player_robot in player_robots:
+			player_robot = player_robot as PlayerRobot
+			if player_robot.navigator_component.current_target == entity:
+				player_robot.start_navigating()
+	elif entity is PlayerRobot:
+		for enemy in enemies:
+			enemy = enemy as Enemy
+			if enemy.navigator_component.current_target == entity:
+				enemy.start_navigating()

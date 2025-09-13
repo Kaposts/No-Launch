@@ -15,7 +15,7 @@ func on_died():
 		return
 	var spawn_position = owner.global_position
 	
-	var enemy_death_layer: Node2D = get_tree().get_first_node_in_group(GlobalConstants.ENEMY_DEATH_LAYER)
+	var enemy_death_layer: Node2D = get_tree().get_first_node_in_group("death_layer")
 	get_parent().remove_child(self)
 	enemy_death_layer.add_child(self)
 	

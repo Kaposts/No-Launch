@@ -10,9 +10,9 @@ signal hit_connected(hurtbox_component: HurtboxComponent)
 #@export var sfx_player: RandomAudioPlayer2D
 
 @export_group("Attack Knockback Parameters")
-@export var knockback_distance: float = 25.0
-@export var knockback_force: float = 360.0 # TODO: rework physics to use distance instead
-@export var knockback_duration: float = 0.15
+@export var knockback_distance: float = 60.0
+@export var knockback_force: float = 360.0
+@export var knockback_duration: float = 0.2
 
 @export_group("Attack Hitstop Parameters")
 @export_range(0.0, 10.0, 0.001) var hitstop_duration: float = 0.12

@@ -6,12 +6,15 @@ extends RigidBody2D
 ## detects and slide against walls. WallBounceComponent must be a child of a plain Node (not a Node2D
 ## to simulate positions correctly. Best to add it as a child of the Knockback Component.
 
+## When true, the owner entity follow the wall bounce component, and vice versa
+@export var physics_active: bool = false
+
 
 func _physics_process(_delta: float) -> void:
-	if freeze:
-		global_position = owner.global_position
-	else:
+	if physics_active:
 		owner.global_position = global_position
+	else:
+		global_position = owner.global_position
 
 
 func calculate_impulse_magnitude_to_reach_distance_in_duration(distance: float, duration: float) -> float:

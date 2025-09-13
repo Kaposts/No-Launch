@@ -101,7 +101,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/editor_generate_functions/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/editor_generate_functions/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [file_customization]
 
@@ -117,6 +117,7 @@ folder_colors={
 [global_group]
 
 drop_zone="group that tells CARDS if they can drop"
+death_layer="Layer to display death animations for entities"
 
 [gui]
 

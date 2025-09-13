@@ -9,7 +9,6 @@ var parameters: PlayerRobotParameters
 
 
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #===================================================================================================
 #region BUILT-IN FUNCTIONS
@@ -17,17 +16,10 @@ var parameters: PlayerRobotParameters
 func _ready() -> void:
 	super()
 	
-	health = parameters.health
-	damage = parameters.damage
+	health_component.max_health = parameters.health
+	hitbox_component.damage = parameters.damage
 	sprite.texture = parameters.texture
 	
-	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health, damage]
+	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health_component.current_health, hitbox_component.damage]
 
 #endregion
-
-
-
-func _on_attack_range_entered(body: Node2D) -> void:
-	super(body)
-	hitbox_component.rotation = position.angle_to(body.position)
-	animation_player.play("attack")
