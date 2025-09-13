@@ -99,7 +99,12 @@ func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_navigator_component_target_reached() -> void:
+	if navigator_component.current_target != null and not navigator_component.current_target.is_queued_for_deletion():
+		navigator_component.start(navigator_component.current_target)
+		return
+	
 	await SignalBus.entities_array_updated
+	
 	if targets.is_empty():
 		start_navigating(get_tree().get_first_node_in_group("enemy_nexus") if self is PlayerRobot
 					else get_tree().get_first_node_in_group("player_nexus"))
