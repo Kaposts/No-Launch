@@ -11,10 +11,11 @@ extends RigidBody2D
 
 
 func _physics_process(_delta: float) -> void:
-	if physics_active:
-		owner.global_position = global_position
-	else:
+	if freeze:
+		#pass
 		global_position = owner.global_position
+	else:
+		owner.global_position = global_position
 
 
 func calculate_impulse_magnitude_to_reach_distance_in_duration(distance: float, duration: float) -> float:

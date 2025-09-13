@@ -32,8 +32,12 @@ PlayerBuffs="*res://core/buffs/player_buffs.gd"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"godot": "res://dialogic/godot.dch"
+}
+directories/dtl_directory={
+"timeline": "res://dialogic/timeline.dtl"
+}
 layout/style_directory={
 "": "res://dialogic/New_File.tres",
 "New_File": "res://dialogic/New_File.tres"
