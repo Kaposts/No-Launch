@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:27ca1f5efd46b06e254b2b80b77f9d55fad786371787135c6ef77a50a9066772
-size 524
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dwrqd13lxgg25"
+path="res://.godot/imported/typing5.wav-5315fa96c84bd3957d157e8c978c1f04.sample"
+
+[deps]
+
+source_file="res://addons/dialogic/Example Assets/sound-effects/typing5.wav"
+dest_files=["res://.godot/imported/typing5.wav-5315fa96c84bd3957d157e8c978c1f04.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
