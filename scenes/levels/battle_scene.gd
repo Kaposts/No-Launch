@@ -37,7 +37,6 @@ func _load_player_available_robot_types() -> void:
 		var param: PlayerRobotParameters = load(directory_path + resource_file)
 		player_robot_types.append(param)
 
-
 func _on_robot_button_pressed() -> void:
 	var new_robot: PlayerRobot = PlayerRobotFactory.new_robot(player_robot_types.pick_random())
 	player_layer.add_child(new_robot)

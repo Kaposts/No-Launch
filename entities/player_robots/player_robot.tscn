@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cetfvkhut1rm3"]
+[gd_scene load_steps=22 format=3 uid="uid://cetfvkhut1rm3"]
 
 [ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://entities/player_robots/player_robot.gd" id="1_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cmi6e4m54urq" path="res://components/wall_bounce_component.tscn/wall_bounce_component.tscn" id="5_ixurt"]
 [ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="6_nvrdh"]
 [ext_resource type="Shader" uid="uid://doi7gyjf00jrn" path="res://components/hit_flash_component/red_hit_flash.gdshader" id="7_vyq1y"]
+[ext_resource type="Script" uid="uid://cwuta7j2lp3mb" path="res://entities/player_robots/buff_animation.gd" id="11_nvrdh"]
 
 [sub_resource type="Animation" id="Animation_vpkpi"]
 length = 0.001
@@ -98,7 +99,7 @@ load_path = "res://.godot/imported/placeholder_infantry.png-b679e30efc86b3af6821
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxc6o"]
 radius = 15.0333
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vyq1y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ixurt"]
 resource_local_to_scene = true
 shader = ExtResource("7_vyq1y")
 shader_parameter/lerp_percent = 0.0
@@ -161,7 +162,7 @@ shape = SubResource("CircleShape2D_uxc6o")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("6_nvrdh")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_vyq1y")
+hit_flash_material = SubResource("ShaderMaterial_ixurt")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("2_ckjmp")]
 unique_name_in_owner = true
@@ -210,3 +211,8 @@ hitstop_component = NodePath("../../HitstopComponent")
 [node name="HurtboxCollider" type="CollisionShape2D" parent="CombatAreas/HurtboxComponent"]
 shape = SubResource("CircleShape2D_r6tem")
 debug_color = Color(0.876566, 0.263999, 0.560066, 0.42)
+
+[node name="Buff" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("11_nvrdh")

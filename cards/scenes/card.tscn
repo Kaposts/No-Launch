@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://crv6wrd1htgmr"]
+[gd_scene load_steps=14 format=3 uid="uid://crv6wrd1htgmr"]
 
 [ext_resource type="Script" uid="uid://5hg061g82116" path="res://cards/card.gd" id="1_ttli1"]
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="2_032ga"]
 [ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="3_032ga"]
 [ext_resource type="Texture2D" uid="uid://jquepj7fyeds" path="res://cards/assets/highlight.png" id="3_77qwj"]
 [ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_ixyhn"]
+[ext_resource type="Texture2D" uid="uid://nswnxasf6ps6" path="res://cards/assets/rarity/rarity2.png" id="4_352vs"]
+[ext_resource type="Texture2D" uid="uid://daxjiqxhbe6r" path="res://cards/assets/rarity/rarity1.png" id="6_77qwj"]
 
 [sub_resource type="Animation" id="Animation_t0n0d"]
 length = 0.001
@@ -270,13 +272,14 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 3.0
 offset_right = 103.0
-offset_bottom = 150.0
+offset_bottom = 140.0
 pivot_offset = Vector2(50, 75)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ttli1")
 data = ExtResource("2_032ga")
 anim = NodePath("anim")
+rarity_sprites = [ExtResource("6_77qwj"), ExtResource("4_352vs")]
 
 [node name="Container" type="AspectRatioContainer" parent="."]
 layout_mode = 1
@@ -285,30 +288,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -821.0
-offset_top = -424.0
-offset_right = -721.0
-offset_bottom = -264.0
+offset_left = -50.0
+offset_top = -70.0
+offset_right = 50.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(50, 75)
 
-[node name="highlight" type="TextureRect" parent="Container" groups=["scene_manager_entity_nodes"]]
+[node name="highlight" type="Control" parent="Container"]
 visible = false
-custom_minimum_size = Vector2(100, 160)
 layout_mode = 2
+
+[node name="sprite" type="TextureRect" parent="Container/highlight"]
+layout_mode = 2
+offset_left = -10.0
+offset_top = -30.0
+offset_right = 110.0
+offset_bottom = 130.0
 texture = ExtResource("3_77qwj")
 
 [node name="background" type="TextureRect" parent="Container"]
 clip_contents = true
+custom_minimum_size = Vector2(100, 140)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("3_ixyhn")
-stretch_mode = 2
 
 [node name="container" type="VBoxContainer" parent="Container"]
-custom_minimum_size = Vector2(80, 0)
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 5
@@ -323,19 +332,9 @@ texture = ExtResource("3_032ga")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="energy_cost" type="Label" parent="Container/container/sprite"]
-layout_mode = 2
-offset_left = -7.0
-offset_top = -10.5
-offset_right = -0.315
-offset_bottom = 3.5
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "3"
-
 [node name="Name" type="Label" parent="Container/container"]
 layout_mode = 2
-text = "NAME OF THE CARDasdasd"
+text = "CARD NAME"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -345,6 +344,29 @@ theme_override_constants/line_spacing = -3
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 autowrap_mode = 2
+
+[node name="info" type="Control" parent="Container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="energy_cost" type="Label" parent="Container/info"]
+layout_mode = 2
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 8.685
+offset_bottom = -6.0
+scale = Vector2(1.93224, 1.93224)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "3"
+
+[node name="rarity" type="TextureRect" parent="Container/info"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = -16.0
+offset_right = 96.0
+texture = ExtResource("6_77qwj")
+stretch_mode = 2
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

@@ -64,18 +64,36 @@ func play_turn() -> void:
 	is_playing_turn = true
 	print("You did your turn")
 	print(cards_in_play)
-	for card in cards_in_play:
-		await get_tree().create_timer(0.3).timeout
-		SignalBus.play_card.emit(card)
-		discard(card)
-	cards_in_play.clear()
+	# for card in cards_in_play:
+	# 	await get_tree().create_timer(0.3).timeout
+	# 	SignalBus.play_card.emit(card)
+	# 	discard(card)
+	# cards_in_play.clear()
 
-	SignalBus.update_hand.emit()
+	# SignalBus.update_hand.emit()
 	SignalBus.start_round.emit()
 
-func increase_energy(amount: int):
-	energy += amount
+func play_card(card: Card) -> void:
+	energy -= card.data.energy 
+	
+	SignalBus.play_card.emit(card)
+
+	discard(card)
+
+	SignalBus.update_hand.emit()
 	SignalBus.update_energy.emit(energy)
+
+func increase_energy(amount: int):
+	max_energy += amount
+	SignalBus.update_energy.emit(energy)
+
+func fill_energy(amount: int):
+	if amount == -1:
+		energy = max_energy
+	elif energy + amount > max_energy:
+		energy = max_energy
+	else:
+		energy += amount
 
 func _on_end_round():
 	is_playing_turn = false

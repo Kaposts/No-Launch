@@ -5,6 +5,9 @@ class_name Card
 
 @export var data: CardData
 @export var anim: AnimationPlayer
+
+@export var rarity_sprites: Array[Texture] #THE ORDER NEEDS TO MATCH WITH enum.gd
+
 const ANIM_DRAW = "draw"
 const ANIM_ENTER = "enter"
 const ANIM_DROP = "drop"
@@ -17,10 +20,12 @@ var drag_offset: Vector2
 
 @onready var card_background = $Container/background
 @onready var card_sprite = $Container/container/sprite
-@onready var energy_cost = $Container/container/sprite/energy_cost
+@onready var energy_cost = $Container/info/energy_cost
+@onready var rarity = $Container/info/rarity
 @onready var card_name = $Container/container/Name
 @onready var card_description = $Container/container/Description
 @onready var highlight = $Container/highlight
+
 
 func _ready():
 	#SO THAT WHEN DRAWING YOU CAN'T RUIN CARDS ROTTATION
@@ -35,16 +40,16 @@ func _ready():
 	card_sprite.texture = data.sprite
 	card_name.text = data.name
 	energy_cost.text = str(data.energy)
+	rarity.texture = rarity_sprites[data.rarity]
 
 	generate_description()
 
 func _on_anim_finished(anim_name: StringName):
 	if anim_name == ANIM_DRAW:
 		mouse_filter = Control.MOUSE_FILTER_STOP
-		# Audio.play_random(SFX.SFX_UI_SWITCH_006)
 		Audio.play_by_name(SFX.SFX_UI_CLICK_005)
 	if anim_name == ANIM_DROP:
-		hand.discard(self)
+		Global.play_card(self)
 
 func _on_mouse_entered():
 	if Global.is_playing_turn: return
@@ -63,23 +68,54 @@ func _on_gui_input(event: InputEvent) -> void:
 	if Global.is_playing_turn: return
 
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		# if event.pressed:
+		# 	if is_activated: deactivate_card()
+		# 	else: activate_card()
+		if Global.energy - data.energy < 0: return
 		if event.pressed:
-			if is_activated: deactivate_card()
-			else: activate_card()
+			# Start dragging
+			is_dragging = true
+			drag_offset = get_global_mouse_position() - global_position
+			z_index = 100
+		else:
+			# Mouse released
+			is_dragging = false
+			z_index = 0
+			_check_drop()
+	elif event is InputEventMouseMotion and is_dragging:
+		global_position = get_global_mouse_position() - drag_offset
 
-func activate_card():
-	if Global.energy - data.energy < 0: return
+func _check_drop():
+	var dropped_in_zone := false
 
-	is_activated = true
-	highlight.show()
-	SignalBus.activate_card.emit(self)
-	Audio.play_random('sfx_ui_drop')
+	# Suppose your drop zones are in a group called "drop_zone"
+	for zone in get_tree().get_nodes_in_group("drop_zone"):
+		if zone is Control and zone.get_global_rect().has_point(get_global_mouse_position()):
+			mouse_filter = Control.MOUSE_FILTER_IGNORE
+			dropped_in_zone = true
+			anim.play("drop")
+			break
+	hand._update_cards()
+	if not dropped_in_zone:
+		anim.play('RESET')
+	# 	# Return to original position
+	# 	var tween := create_tween()
+	# 	tween.tween_property(self, "position", original_pos, 0.3).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-func deactivate_card():
-	is_activated = false
-	highlight.hide()
-	SignalBus.deactivate_card.emit(self)
-	Audio.play_random('sfx_ui_pluck')
+
+# func activate_card():
+# 	if Global.energy - data.energy < 0: return
+
+# 	is_activated = true
+# 	highlight.show()
+# 	SignalBus.activate_card.emit(self)
+# 	Audio.play_random('sfx_ui_drop')
+
+# func deactivate_card():
+# 	is_activated = false
+# 	highlight.hide()
+# 	SignalBus.deactivate_card.emit(self)
+# 	Audio.play_random('sfx_ui_pluck')
 
 func generate_description():
 	for activation in data.activations:

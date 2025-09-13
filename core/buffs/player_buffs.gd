@@ -33,3 +33,17 @@ func assign_card(activation: ActivationResource):
 	var buff_instance: Buff = preload("res://core/buffs/buff.gd").new()
 	buff_instance.data = activation
 	add_child(buff_instance)
+
+	var sprites:Array = []
+	#buff animation logic
+	print('assign)')
+	if activation is ArmyBuffResource:
+		print('yes)')
+		if activation.damage > 0:
+			sprites.append(load("res://entities/assets/buffs/buff1.png"))
+		if activation.health > 0:
+			sprites.append(load("res://entities/assets/buffs/buff2.png"))
+		if activation.speed > 0:
+			sprites.append(load("res://entities/assets/buffs/buff3.png"))
+
+	SignalBus.buff_applied.emit(sprites)
