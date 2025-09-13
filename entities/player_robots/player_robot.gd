@@ -23,6 +23,10 @@ func _ready() -> void:
 	SignalBus.apply_buff.connect(_on_apply_buff)
 
 func _on_apply_buff(data: ActivationResource):
+	health_component.max_health = parameters.health
+	hitbox_component.damage = parameters.damage
+
+	print('applying buff')
 	var buff: PlayerBuffsResource = PlayerBuffs.get_buffs()
 	health_component.max_health += buff.bonus_health
 	hitbox_component.damage += buff.bonus_damage
