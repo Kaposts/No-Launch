@@ -15,8 +15,6 @@ func _on_play_card(card: Card):
 				print(activation.amount)
 				Global.increase_energy(activation.amount)
 			Enum.CARD_FUNCTION.INCREASE_ARMY_SIZE:
-				#INCREASE_ARMY_SIZE
-				pass
+				PlayerBuffs.assign_card(activation)
 			Enum.CARD_FUNCTION.BUFF_ARMY:
-				#BUFF_ARMY
-				pass
+				PlayerBuffs.assign_card(activation)

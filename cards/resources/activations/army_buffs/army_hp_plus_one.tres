@@ -10,5 +10,6 @@ speed = 0
 is_multiplier = false
 multiplier = 1
 description = "Increase armies health by 1"
-function = 0
+function = 3
+rounds = 1
 metadata/_custom_type_script = "uid://1l34bmlgd313"
