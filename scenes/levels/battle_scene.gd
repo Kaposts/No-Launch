@@ -2,6 +2,7 @@ extends Node2D
 
 const RANDOM_OFFSET: float = 50.0
 const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_parameters/"
+const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 
 @onready var robot_button: Button = %RobotButton
 @onready var enemy_button: Button = %EnemyButton
@@ -14,10 +15,13 @@ const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_param
 @onready var enemy_nexus: Nexus = $EnemyNexus
 
 
-var player_robot_types: Array[PlayerRobotParameters] = []
+var player_robot_types: Array[EntityParameters] = []
+var enemy_types: Array[EntityParameters] = []
 var player_robots: Array[Node2D] = []
 var enemies: Array[Node2D] = []
 
+#===================================================================================================
+#region BUILT-IN FUNCTIONS
 
 func _ready() -> void:
 	robot_button.pressed.connect(_on_robot_button_pressed)
@@ -25,7 +29,11 @@ func _ready() -> void:
 	start_battle_button.pressed.connect(_on_start_battle_button_pressed)
 	
 	_load_player_available_robot_types()
+	_load_enemy_types()
 
+#endregion
+#===================================================================================================
+#region PRIVATE FUNCTIONS
 
 func _load_player_available_robot_types() -> void:
 	var directory_path: String = PLAYER_ROBOT_PARAMETERS_PATH
@@ -37,9 +45,22 @@ func _load_player_available_robot_types() -> void:
 		if resource_file.ends_with(".gd"):
 			continue
 		
-		# Load the resource and then sort it by rarity into a dictionary
-		var param: PlayerRobotParameters = load(directory_path + resource_file)
+		var param: EntityParameters = load(directory_path + resource_file)
 		player_robot_types.append(param)
+
+
+func _load_enemy_types() -> void:
+	var directory_path: String = ENEMY_PARAMETERS_PATH
+	
+	# Get all resource files in the given dirrectory
+	var resources: PackedStringArray = ResourceLoader.list_directory(directory_path)
+	
+	for resource_file in resources:
+		if resource_file.ends_with(".gd"):
+			continue
+		
+		var param: EntityParameters = load(directory_path + resource_file)
+		enemy_types.append(param)
 
 
 func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
@@ -52,7 +73,12 @@ func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
 	for child in enemy_layer.get_children():
 		if child not in excluded_entities:
 			enemies.append(child as Node2D)
+	
+	SignalBus.entities_array_updated.emit()
 
+#endregion
+#===================================================================================================
+#region EVENT HANDLERS
 
 func _on_robot_button_pressed() -> void:
 	var new_robot: PlayerRobot = PlayerRobotFactory.new_robot(player_robot_types.pick_random())
@@ -63,7 +89,7 @@ func _on_robot_button_pressed() -> void:
 
 
 func _on_enemy_button_pressed() -> void:
-	var new_enemy: Enemy = EnemyFactory.new_enemy(EnemyFactory.Type.values().pick_random())
+	var new_enemy: Enemy = EnemyFactory.new_enemy(enemy_types.pick_random())
 	enemy_layer.add_child(new_enemy)
 	new_enemy.position = Vector2(enemy_marker.position.x + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET),
 								 enemy_marker.position.y + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET))
@@ -108,3 +134,6 @@ func _on_entity_died(entity: Entity) -> void:
 			enemy = enemy as Enemy
 			if enemy.navigator_component.current_target == entity:
 				enemy.start_navigating()
+
+#endregion
+#===================================================================================================

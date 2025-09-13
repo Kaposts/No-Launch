@@ -10,8 +10,6 @@ extends CharacterBody2D
 		battling = flag
 		if navigator_component:
 			navigator_component.enabled = battling
-
-
 @export var movement_speed: float = 150.0:
 	set(value):
 		movement_speed = value
@@ -24,6 +22,9 @@ extends CharacterBody2D
 		targets = array
 		if navigator_component:
 			navigator_component.targets = targets
+
+
+var parameters: EntityParameters
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -41,6 +42,9 @@ extends CharacterBody2D
 #region BUILT-IN FUNCTIONS
 
 func _ready() -> void:
+	health_component.max_health = parameters.health
+	hitbox_component.damage = parameters.damage
+	
 	set_up_navigator()
 	
 	navigator_component.velocity_computed.connect(_on_navigator_component_velocity_computed)
@@ -95,8 +99,13 @@ func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_navigator_component_target_reached() -> void:
+	await SignalBus.entities_array_updated
+	if targets.is_empty():
+		start_navigating(get_tree().get_first_node_in_group("enemy_nexus") if self is PlayerRobot
+					else get_tree().get_first_node_in_group("player_nexus"))
+	
 	var target: Node2D = targets.pick_random()
-	if target != null and not target.is_queued_for_deletion():
+	if target != null:
 		start_navigating(target)
 	else:
 		stop_navigating()

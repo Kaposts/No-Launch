@@ -1,5 +1,19 @@
 class_name Enemy
 extends Entity
-## Enemy scene
+## Basic Enemy Class
 ## Author: Lestavol
-## Enemy scenes represent the enemy entities
+## Enemy scene and behaviors
+
+@onready var sprite: Sprite2D = $Visuals/Sprite2D
+
+#===================================================================================================
+#region BUILT-IN FUNCTIONS
+
+func _ready() -> void:
+	super()
+	
+	sprite.texture = parameters.texture
+	
+	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health_component.current_health, hitbox_component.damage]
+
+#endregion

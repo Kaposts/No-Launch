@@ -50,11 +50,11 @@ rotation = 1.57079
 scale = Vector2(1.82408, 0.226563)
 texture = ExtResource("2_6a6ir")
 
-[node name="PlayerNexus" parent="." instance=ExtResource("2_6b61y")]
+[node name="PlayerNexus" parent="." groups=["player_nexus"] instance=ExtResource("2_6b61y")]
 position = Vector2(66, 118)
 collision_mask = 2
 
-[node name="EnemyNexus" parent="." instance=ExtResource("2_6b61y")]
+[node name="EnemyNexus" parent="." groups=["enemy_nexus"] instance=ExtResource("2_6b61y")]
 modulate = Color(1, 0.15, 0.164166, 1)
 position = Vector2(605, 130)
 
