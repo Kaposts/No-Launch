@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6brqedq46jjh"]
+
+[ext_resource type="Script" uid="uid://b613tgqoq1rxs" path="res://components/ui/floating_text/floating_text.gd" id="1_gqwyq"]
+[ext_resource type="LabelSettings" uid="uid://b0tfeq0xvfm4f" path="res://resources/ui/ally_text_label.tres" id="2_1tf1l"]
+
+[node name="FloatingText" type="Node2D"]
+z_index = 1
+script = ExtResource("1_gqwyq")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 32)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -16.0
+offset_right = 100.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "2"
+label_settings = ExtResource("2_1tf1l")
+horizontal_alignment = 1
+vertical_alignment = 1

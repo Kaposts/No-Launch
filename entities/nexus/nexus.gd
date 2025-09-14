@@ -5,8 +5,13 @@ extends Area2D
 ## Home Base for each faction
 
 @export var health: int = 20
+@export var can_destroy_entity: bool = false:
+	set(flag):
+		can_destroy_entity = flag
+		collider.disabled = !can_destroy_entity
 
 @onready var debug_label: Label = $DebugLabel
+@onready var collider: CollisionShape2D = $CollisionShape2D
 
 
 func _ready() -> void:
@@ -18,6 +23,8 @@ func _ready() -> void:
 func update_health() -> void:
 	debug_label.text = "HP: %2d" % health
 
+
+
 func _on_body_entered(body: Node2D) -> void:
 	var damage = 1
 	if RoundEffect.nexus_takes_double_damage:
@@ -25,6 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 	health -= damage
 	update_health()
 	body.health_component.damage(1000)
+
 
 func _on_heal_nexus(value: int):
 	health += value

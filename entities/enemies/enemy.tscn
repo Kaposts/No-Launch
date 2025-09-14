@@ -253,6 +253,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_vpkpi")
 }
 
+[node name="HPBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(24, 4)
+offset_left = -11.0
+offset_top = -25.0
+offset_right = 13.0
+offset_bottom = -21.0
+theme_type_variation = &"RedProgressBar"
+max_value = 1.0
+value = 0.5
+fill_mode = 1
+show_percentage = false
+
 [node name="Visuals" type="Node2D" parent="."]
 position = Vector2(0, 7)
 
@@ -265,15 +277,6 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_axigu")
-
-[node name="DebugbugLabel" type="Label" parent="."]
-visible = false
-offset_left = -19.0
-offset_top = -49.0
-offset_right = 21.0
-offset_bottom = -18.0
-text = "HP:
-Dmg:"
 
 [node name="Timers" type="Node" parent="."]
 

@@ -86,6 +86,9 @@ func prep_battle(robot_count: int = randi_range(min_robot_count, max_robot_count
 	tween.tween_callback(spawn_robots.bind(robot_count))
 	tween.tween_callback(spawn_enemies.bind(enemy_count))
 	
+	player_nexus.can_destroy_entity = false
+	enemy_nexus.can_destroy_entity = false
+	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE)
 
 
@@ -147,11 +150,15 @@ func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
 	for child in player_layer.get_children():
 		if child not in excluded_entities:
 			player_robots.append(child as Node2D)
+	if player_robots.is_empty():
+		player_nexus.can_destroy_entity = true
 	
 	enemies.clear()
 	for child in enemy_layer.get_children():
 		if child not in excluded_entities:
 			enemies.append(child as Node2D)
+	if enemies.is_empty():
+		enemy_nexus.can_destroy_entity = true
 	
 	SignalBus.entities_array_updated.emit()
 

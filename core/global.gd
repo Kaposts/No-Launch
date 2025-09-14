@@ -2,6 +2,7 @@ extends Node
 
 const SCENE_PATHS: Dictionary[String, String] = {
 	"navigator_component" : "uid://brbg6i0mvo0l8",
+	"floating_text" : "uid://c6brqedq46jjh",
 }
 
 const GROUP_DROP_ZONE = "drop_zone"
@@ -12,8 +13,8 @@ var cards_in_hand: Array[Card] = []
 var cards_in_play: Array[Card] = []
 var deck: Array[CardData] = []
 
-@onready var deck_data: DeckData = preload("res://cards/deck/test_deck.tres")
-# @onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
+# @onready var deck_data: DeckData = preload("res://cards/deck/test_deck.tres")
+@onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
 var max_energy: int = 4
 var energy: int = 4
 var deck_size = 5000
