@@ -38,8 +38,8 @@ scene = ExtResource("6_lq03r")
 overrides = {
 "box_animation_in": "1",
 "box_animation_out": "1",
-"box_margin_bottom": "5.0",
-"box_size": "Vector2(400, 100)",
+"box_margin_bottom": "150.0",
+"box_size": "Vector2(250, 100)",
 "name_label_box_offset": "Vector2(0, 12)",
 "next_indicator_animation": "1",
 "next_indicator_size": "Vector2(15, 15)"
@@ -85,4 +85,4 @@ layer_info = {
 }
 base_overrides = {}
 layers = Array[ExtResource("2_livgd")]([])
-metadata/_latest_layer = "11"
+metadata/_latest_layer = "13"

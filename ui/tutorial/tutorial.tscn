@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0a6xslbkr78j"]
+
+[ext_resource type="Script" uid="uid://dtj8o7ytr6kt0" path="res://ui/tutorial/tutorial.gd" id="1_tkdws"]
+
+[node name="Tutorial" type="Control" node_paths=PackedStringArray("steps")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tkdws")
+steps = [NodePath("step_1"), NodePath("step_2"), NodePath("step_3")]
+
+[node name="step_1" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="step_1"]
+layout_mode = 0
+offset_left = 167.5
+offset_top = 141.0
+offset_right = 207.5
+offset_bottom = 181.0
+
+[node name="Label" type="Label" parent="step_1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.0
+offset_top = -39.0
+offset_right = 147.0
+offset_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use Cards to Buff your Robots or Activate Their Effect"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="step_2" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="step_2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 14.0
+text = "Each Card costs EP (Executive Power). EP is refilled each round"
+
+[node name="step_3" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="step_3"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 14.0
+text = "Drag a Card into the stage to Play it!"
