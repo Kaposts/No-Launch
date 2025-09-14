@@ -127,6 +127,7 @@ player_layer=""
 
 [gui]
 
+theme/custom="uid://blwjd2mb1dnlm"
 theme/custom_font="uid://csu3erj4oisi5"
 
 [input]

@@ -5,6 +5,6 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_6h6yf")
-shader_parameter/hovered = false
+shader_parameter/hovered = true
 shader_parameter/line_color = Vector4(1, 1, 1, 1)
-shader_parameter/width = 1.0
+shader_parameter/width = 0.573

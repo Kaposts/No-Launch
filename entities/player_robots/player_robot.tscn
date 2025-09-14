@@ -252,6 +252,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_vpkpi")
 }
 
+[node name="HPBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 6)
+offset_left = -16.0
+offset_top = -47.0
+offset_right = 16.0
+offset_bottom = -41.0
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
@@ -260,6 +270,7 @@ texture = ExtResource("2_qkkt1")
 offset = Vector2(3, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_pn703")
 
@@ -280,6 +291,7 @@ wall_bounce_component = NodePath("WallBounceComponent")
 
 [node name="WallBounceComponent" parent="KnockbackComponent" instance=ExtResource("5_ixurt")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackComponent/WallBounceComponent"]
@@ -301,6 +313,7 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="CombatAreas" type="Node2D" parent="."]
+visible = false
 
 [node name="AttackRange" type="Area2D" parent="CombatAreas"]
 unique_name_in_owner = true
