@@ -4,7 +4,10 @@ extends Node2D
 @export var music_2: AudioStream
 
 func _on_play_by_name_pressed() -> void:
+
 	Audio.play_by_name(SFX.SFX_UI_CLICK_001)
+	Audio.play_random('sfx_click')
+	Audio.play_sequenctial('sfx_click')
 
 func _on_play_random_pressed() -> void:
 	Audio.play_random('sfx_click')
