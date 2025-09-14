@@ -23,3 +23,7 @@ signal entities_array_updated
 
 
 signal heal_nexus(value: int)
+
+
+signal start_game()
+signal game_started()
