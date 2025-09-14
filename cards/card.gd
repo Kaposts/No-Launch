@@ -7,6 +7,7 @@ class_name Card
 @export var anim: AnimationPlayer
 
 @export var rarity_sprites: Array[Texture] #THE ORDER NEEDS TO MATCH WITH enum.gd
+@export var type_sprites: Array[Texture] #THE ORDER NEEDS TO MATCH WITH enum.gd
 
 const ANIM_DRAW = "draw"
 const ANIM_ENTER = "enter"
@@ -42,6 +43,7 @@ func _ready():
 	card_name.text = data.name
 	energy_cost.text = str(data.energy)
 	rarity.texture = rarity_sprites[data.rarity]
+	card_background.texture = type_sprites[data.type]
 
 	generate_description()
 
