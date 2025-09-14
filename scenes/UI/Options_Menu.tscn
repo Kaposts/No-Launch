@@ -149,6 +149,7 @@ autoplay = true
 bus = &"SFX"
 parameters/looping = true
 
+[connection signal="pressed" from="TextureRect/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_mouse_exited"]
 [connection signal="value_changed" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider2" to="." method="_on_music_mouse_exited"]

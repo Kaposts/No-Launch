@@ -44,3 +44,7 @@ func _on_SFX_value_changed(value: float) -> void:
 
 func _on_SFX_mouse_exited() -> void:
 	self.release_focus()
+
+
+func _on_close_button_pressed() -> void:
+	exit_options_menu.emit()
