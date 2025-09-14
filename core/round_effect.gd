@@ -10,9 +10,11 @@ var double_or_nothing: bool = false
 
 func _ready():
 	SignalBus.end_round.connect(_on_end_round)
-	_on_end_round()
 
 func _on_end_round():
+	change_effect()
+	
+func change_effect():
 	reset_effects()
 	activate_effect(pick_random_effect())
 

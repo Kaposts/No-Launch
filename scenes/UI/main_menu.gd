@@ -12,6 +12,7 @@ func _on_options_button_pressed() -> void:
 func _on_start_pressed() -> void:
 	await Global.transition()
 	get_tree().change_scene_to_file("res://scenes/cabage.tscn")
+	SignalBus.start_game.emit()
 
 func _on_credits_pressed() -> void:
 	pass # Replace with function body.
