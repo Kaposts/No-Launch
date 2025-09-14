@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bfbqdu1nyshr4"]
+[gd_scene load_steps=23 format=3 uid="uid://bfbqdu1nyshr4"]
 
 [ext_resource type="Script" uid="uid://gt30j16u4rei" path="res://entities/enemies/enemy.gd" id="1_3udgd"]
 [ext_resource type="Texture2D" uid="uid://b8r6qc0p8gdj2" path="res://assets/enemies/placeholder_basic_enemy.png" id="2_vabdn"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://bvguo825tyhh6" path="res://components/hit_flash_component/white_hit_flash.gdshader" id="8_53k0f"]
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="9_u01qb"]
 [ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="10_4teby"]
+[ext_resource type="PackedScene" uid="uid://d2t5i7o64cme7" path="res://components/death_component/death_component.tscn" id="10_vabdn"]
 [ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="11_bjdlj"]
 
 [sub_resource type="Animation" id="Animation_vpkpi"]
@@ -49,6 +50,35 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3udgd"]
+resource_name = "appear"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_pn703"]
@@ -96,35 +126,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_3udgd"]
-resource_name = "appear"
-length = 0.3
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Sprite2D:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15, 0.2, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [false, true, false, true, false, true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpkpi"]
 _data = {
 &"RESET": SubResource("Animation_vpkpi"),
@@ -138,7 +139,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jebyg"]
 radius = 15.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vabdn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3udgd"]
 resource_local_to_scene = true
 shader = ExtResource("8_53k0f")
 shader_parameter/lerp_percent = 0.0
@@ -207,7 +208,7 @@ shape = SubResource("CircleShape2D_jebyg")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("7_wy1il")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_vabdn")
+hit_flash_material = SubResource("ShaderMaterial_3udgd")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("9_u01qb")]
 unique_name_in_owner = true
@@ -215,6 +216,10 @@ radius = 30.0
 avoidance_layers = 2
 avoidance_mask = 2
 enabled = false
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("10_vabdn")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="CombatAreas" type="Node2D" parent="."]
 visible = false

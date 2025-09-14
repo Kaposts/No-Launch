@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://dsj60sr5pt2qa"]
+
+[ext_resource type="AudioStream" uid="uid://dunasror0fy6v" path="res://assets/SFX/death_component/death_4.ogg" id="1_gisdu"]
+[ext_resource type="Script" uid="uid://bby850gxeiihc" path="res://addons/audio_manager/audio_data.gd" id="2_570ev"]
+
+[resource]
+script = ExtResource("2_570ev")
+res_name = "sfx_death_component_death_4"
+res_stream = ExtResource("1_gisdu")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false

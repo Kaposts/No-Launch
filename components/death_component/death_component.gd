@@ -15,10 +15,11 @@ func on_died():
 		return
 	var spawn_position = owner.global_position
 	
-	var enemy_death_layer: Node2D = get_tree().get_first_node_in_group("death_layer")
+	var death_layer: Node2D = get_tree().get_first_node_in_group("death_layer")
 	get_parent().remove_child(self)
-	enemy_death_layer.add_child(self)
+	death_layer.add_child(self)
 	
 	global_position = spawn_position
 	$AnimationPlayer.play("default")
-	$HitRandomAudioPlayerComponent.play_random()
+	Audio.play_random("sfx_death_component_death_")
+	
