@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://bfbqdu1nyshr4"]
+[gd_scene load_steps=22 format=3 uid="uid://bfbqdu1nyshr4"]
 
-[ext_resource type="Script" uid="uid://k1unwkateubc" path="res://entities/enemies/enemy.gd" id="1_3udgd"]
+[ext_resource type="Script" uid="uid://gt30j16u4rei" path="res://entities/enemies/enemy.gd" id="1_3udgd"]
 [ext_resource type="Texture2D" uid="uid://b8r6qc0p8gdj2" path="res://assets/enemies/placeholder_basic_enemy.png" id="2_vabdn"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="3_nrfwl"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="4_5xow2"]
@@ -37,6 +37,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_pn703"]
@@ -84,9 +96,39 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_3udgd"]
+resource_name = "appear"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpkpi"]
 _data = {
 &"RESET": SubResource("Animation_vpkpi"),
+&"appear": SubResource("Animation_3udgd"),
 &"attack": SubResource("Animation_pn703")
 }
 
@@ -96,7 +138,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jebyg"]
 radius = 15.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3udgd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vabdn"]
 resource_local_to_scene = true
 shader = ExtResource("8_53k0f")
 shader_parameter/lerp_percent = 0.0
@@ -112,6 +154,7 @@ size = Vector2(24, 44)
 radius = 24.0
 
 [node name="Enemy" type="CharacterBody2D"]
+visible = false
 collision_layer = 2
 collision_mask = 67
 motion_mode = 1
@@ -164,7 +207,7 @@ shape = SubResource("CircleShape2D_jebyg")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("7_wy1il")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_3udgd")
+hit_flash_material = SubResource("ShaderMaterial_vabdn")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("9_u01qb")]
 unique_name_in_owner = true
