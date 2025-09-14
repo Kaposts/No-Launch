@@ -24,23 +24,23 @@ func pick_random_effect() -> int:
 
 func activate_effect(effect: Enum.ROUND_EFFECTS):
 	var description: String = "404"
-	
+	print("ASLDIHAS:OFIHAS:    ", effect)
 	match effect:
 		Enum.ROUND_EFFECTS.NEXUS_TAKES_DOUBLE_DAMAGE:
 			nexus_takes_double_damage = true
 			description = "Damage to cores is doubled"
 		Enum.ROUND_EFFECTS.CARD_KILL_ROBOT_MAYBE:
 			card_kill_robot_maybe = true
-			description = "Playing a card has a 33% chance to destroy your robot"
+			description = "Playing a card has a 1/3 chance to destroy your robot"
 		Enum.ROUND_EFFECTS.DOUBLE_OR_NOTHING:
 			double_or_nothing = true
-			description = "Double or nothing"
+			description = "50% chance that a card will either work twice, or not at all"
 		Enum.ROUND_EFFECTS.CORRUPTION_DETECTED:
 			Global.corrupt_cards()
-			description = "Corruption detected"
+			description = "Some of your cards got corrupted"
 		Enum.ROUND_EFFECTS.BIG_UPDATE:
 			Global.big_update()
-			description = "BIG UPDATE"
+			description = "Cards receive additional effects"
 
 
 	SignalBus.round_effect_activate.emit(description)

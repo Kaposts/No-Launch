@@ -27,3 +27,12 @@ func _on_round_effect_activate(description: String):
 
 func _on_round_effect_close_pressed() -> void:
 	$round_effect.hide()
+
+func _input(event):
+	if event is InputEventKey:
+		if event.pressed and not event.echo:
+			if event.keycode == KEY_ESCAPE:
+				if $OptionsMenu.visible:
+					$OptionsMenu.hide()
+				else:
+					$OptionsMenu.show()

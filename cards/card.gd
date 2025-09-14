@@ -13,6 +13,8 @@ const ANIM_DRAW = "draw"
 const ANIM_ENTER = "enter"
 const ANIM_DROP = "drop"
 const ANIM_EXIT = "exit"
+const ANIM_DUPLICATE = "duplicate"
+const ANIM_DELETE = "delete"
 
 var is_hovered := false
 var is_dragging := false
@@ -28,6 +30,7 @@ var drag_offset: Vector2
 @onready var card_description = $Container/info/Description
 @onready var highlight = $Container/highlight
 
+var double: bool = false
 
 func _ready():
 	#SO THAT WHEN DRAWING YOU CAN'T RUIN CARDS ROTTATION
@@ -47,11 +50,19 @@ func _ready():
 
 	generate_description()
 
+
+	if randi_range(1,2) == 1:
+		double = true
+
 func _on_anim_finished(anim_name: StringName):
 	if anim_name == ANIM_DRAW:
 		mouse_filter = Control.MOUSE_FILTER_STOP
 		Audio.play_by_name(SFX.SFX_UI_CLICK_005)
 	if anim_name == ANIM_DROP:
+		Global.play_card(self)
+	if anim_name == ANIM_DUPLICATE:
+		Global.play_card(self)
+	if anim_name == ANIM_DELETE:
 		Global.play_card(self)
 
 func _on_mouse_entered():
@@ -72,14 +83,18 @@ func _on_mouse_exited():
 func _on_gui_input(event: InputEvent) -> void:
 	if Global.is_playing_turn: return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if Global.energy - data.energy < 0: return
+		if Global.energy - data.energy < 0 and event.pressed: 
+			Audio.play_by_name(SFX.SFX_UI_ERROR_003)
+			return
+
 		if event.pressed:
 			# Start dragging
 			if corrupted:return
 			is_dragging = true
 			drag_offset = get_global_mouse_position() - global_position
 			z_index = 100
-		else:
+
+		elif Global.energy - data.energy >= 0 :
 			if corrupted:return
 			# Mouse released
 			is_dragging = false
@@ -96,9 +111,16 @@ func _check_drop():
 	# Suppose your drop zones are in a group called "drop_zone"
 	for zone in get_tree().get_nodes_in_group("drop_zone"):
 		if zone is Control and zone.get_global_rect().has_point(get_global_mouse_position()):
+			
 			mouse_filter = Control.MOUSE_FILTER_IGNORE
 			dropped_in_zone = true
-			anim.play("drop")
+			
+
+			if RoundEffect.double_or_nothing:
+				if double: anim.play("duplicate")
+				else: anim.play("delete")
+			else: anim.play("drop")
+
 			break
 	# hand._update_cards()
 	SignalBus.update_hand.emit()

@@ -20,8 +20,8 @@ func _ready():
 
 	Global.deck_setup()
 
-
 func _on_draw_card(card_data: CardData):
+	if Global.cards_in_hand.size() >= Global.card_in_hand_limit: return
 	var new_card = card_scene.instantiate()
 	new_card.data = card_data
 	Global.cards_in_hand.append(new_card)

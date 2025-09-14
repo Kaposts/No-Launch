@@ -6,6 +6,8 @@ const SCENE_PATHS: Dictionary[String, String] = {
 
 const GROUP_DROP_ZONE = "drop_zone"
 
+var card_in_hand_limit: int = 15
+
 var cards_in_hand: Array[Card] = []
 var cards_in_play: Array[Card] = []
 var deck: Array[CardData] = []
@@ -101,14 +103,14 @@ func play_card(card: Card) -> void:
 	SignalBus.update_energy.emit(energy)
 	
 	if RoundEffect.double_or_nothing:
-		if randi_range(1,2) == 1:
-			discard(card)
-			return
-		else:
+		if card.double:
 			SignalBus.play_card.emit(card)
 			SignalBus.play_card.emit(card)
 			discard(card)
 			SignalBus.update_hand.emit()
+			return
+		else:
+			discard(card)
 			return
 
 	card_kill_robot_maybe()
