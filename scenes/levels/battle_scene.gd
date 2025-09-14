@@ -86,6 +86,9 @@ func prep_battle(robot_count: int = randi_range(min_robot_count, max_robot_count
 	tween.tween_callback(spawn_robots.bind(robot_count))
 	tween.tween_callback(spawn_enemies.bind(enemy_count))
 	
+	player_nexus.can_destroy_entity = false
+	enemy_nexus.can_destroy_entity = false
+	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE)
 
 
@@ -175,11 +178,13 @@ func _on_entity_died(entity: Entity) -> void:
 	
 	# If last entity of a faction dies, redirect all survivors to the opposing nexus
 	if enemies.is_empty():
+		enemy_nexus.can_destroy_entity = true
 		for player_robot in player_robots:
 			player_robot = player_robot as PlayerRobot
 			player_robot.start_navigating(enemy_nexus)
 		return
 	elif player_robots.is_empty():
+		player_nexus.can_destroy_entity = true
 		for enemy in enemies:
 			enemy = enemy as Enemy
 			enemy.start_navigating(player_nexus)
