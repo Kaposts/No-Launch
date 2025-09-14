@@ -71,6 +71,7 @@ offset_bottom = 220.0
 text = "Play turn"
 
 [node name="play_turn2" type="Button" parent="."]
+visible = false
 offset_left = 550.0
 offset_top = 229.0
 offset_right = 628.0
@@ -82,8 +83,7 @@ text = "End round
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = -40.0
-offset_bottom = -4.0
+offset_bottom = 36.0
 grow_horizontal = 2
 
 [node name="BG" type="TextureRect" parent="round_effect"]

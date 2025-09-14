@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PatchNoteJam"
-run/main_scene="uid://bcc4ea6baq4mq"
+run/main_scene="uid://c0ekft7b1k82x"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 "<<<<<<<HEAD[editor]version_control/plugin_name"="GitPlugin"
