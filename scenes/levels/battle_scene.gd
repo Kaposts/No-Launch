@@ -1,12 +1,17 @@
 extends Node2D
 
-const RANDOM_OFFSET: float = 50.0
+const POSITION_OFFSET: float = 50.0
+const APPEAR_TIMING_OFFSET: float = 0.5
 const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_parameters/"
 const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 
-@onready var robot_button: Button = %RobotButton
-@onready var enemy_button: Button = %EnemyButton
-@onready var start_battle_button: Button = %StartBattleButton
+
+@export_group("Battle Settings")
+@export var min_robot_count: int = 3
+@export var max_robot_count: int = 5
+@export var min_enemy_count: int = 5
+@export var max_enemy_count: int = 10
+
 @onready var player_marker: Marker2D = %PlayerMarker
 @onready var enemy_marker: Marker2D = %EnemyMarker
 @onready var player_layer: Node2D = $PlayerLayer
@@ -24,16 +29,70 @@ var enemies: Array[Node2D] = []
 #region BUILT-IN FUNCTIONS
 
 func _ready() -> void:
-	robot_button.pressed.connect(_on_robot_button_pressed)
-	enemy_button.pressed.connect(_on_enemy_button_pressed)
-	start_battle_button.pressed.connect(_on_start_battle_button_pressed)
-
-	SignalBus.spawn_player.connect(_on_robot_button_pressed)
+	SignalBus.spawn_player.connect(spawn_robot)
+	SignalBus.start_round.connect(start_battle)
 	
 	_load_player_available_robot_types()
 	_load_enemy_types()
 	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE, false, true)
+	
+	prep_battle()
+
+#endregion
+#===================================================================================================
+#region PUBLIC FUNCTIONS
+
+func spawn_robot() -> void:
+	var new_robot: PlayerRobot = PlayerRobotFactory.new_robot(player_robot_types.pick_random())
+	new_robot.appearance_timing_offset = randf_range(0.0, APPEAR_TIMING_OFFSET)
+	player_layer.add_child(new_robot)
+	new_robot.position = Vector2(player_marker.position.x + randf_range(-POSITION_OFFSET, POSITION_OFFSET),
+								 player_marker.position.y + randf_range(-POSITION_OFFSET, POSITION_OFFSET))
+	new_robot.health_component.died.connect(_on_entity_died.bind(new_robot))
+
+
+func spawn_robots(how_many: int) -> void:
+	for i in how_many:
+		spawn_robot()
+
+
+func spawn_enemy() -> void:
+	var new_enemy: Enemy = EnemyFactory.new_enemy(enemy_types.pick_random())
+	new_enemy.appearance_timing_offset = randf_range(0.0, APPEAR_TIMING_OFFSET)
+	enemy_layer.add_child(new_enemy)
+	new_enemy.position = Vector2(enemy_marker.position.x + randf_range(-POSITION_OFFSET, POSITION_OFFSET),
+								 enemy_marker.position.y + randf_range(-POSITION_OFFSET, POSITION_OFFSET))
+	new_enemy.health_component.died.connect(_on_entity_died.bind(new_enemy))
+
+
+func spawn_enemies(how_many: int) -> void:
+	for i in how_many:
+		spawn_enemy()
+
+
+func prep_battle(robot_count: int = randi_range(min_robot_count, max_robot_count),
+				 enemy_count: int = randi_range(min_enemy_count, max_enemy_count)) -> void:
+	
+	var tween: Tween = get_tree().create_tween()
+	tween.set_parallel()
+	tween.tween_callback(spawn_robots.bind(robot_count))
+	tween.tween_callback(spawn_enemies.bind(enemy_count))
+
+
+func start_battle() -> void:
+	_set_valid_entities()
+	
+	if not player_robots.is_empty() and not enemies.is_empty():
+		for player_robot in player_robots:
+			player_robot = player_robot as PlayerRobot
+			player_robot.targets = enemies
+			player_robot.start_navigating(enemies.pick_random())
+		
+		for enemy in enemies:
+			enemy = enemy as Enemy
+			enemy.targets = player_robots
+			enemy.start_navigating(player_robots.pick_random())
 
 #endregion
 #===================================================================================================
@@ -80,43 +139,24 @@ func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
 	
 	SignalBus.entities_array_updated.emit()
 
+
+func _is_battle_ended() -> bool:
+	return enemies.is_empty() and player_robots.is_empty()
+
 #endregion
 #===================================================================================================
 #region EVENT HANDLERS
 
-func _on_robot_button_pressed() -> void:
-	var new_robot: PlayerRobot = PlayerRobotFactory.new_robot(player_robot_types.pick_random())
-	player_layer.add_child(new_robot)
-	new_robot.position = Vector2(player_marker.position.x + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET),
-								 player_marker.position.y + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET))
-	new_robot.health_component.died.connect(_on_entity_died.bind(new_robot))
-
-
-func _on_enemy_button_pressed() -> void:
-	var new_enemy: Enemy = EnemyFactory.new_enemy(enemy_types.pick_random())
-	enemy_layer.add_child(new_enemy)
-	new_enemy.position = Vector2(enemy_marker.position.x + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET),
-								 enemy_marker.position.y + randf_range(-RANDOM_OFFSET, RANDOM_OFFSET))
-	new_enemy.health_component.died.connect(_on_entity_died.bind(new_enemy))
-
-
-func _on_start_battle_button_pressed() -> void:
-	_set_valid_entities()
-	
-	if not player_robots.is_empty() and not enemies.is_empty():
-		for player_robot in player_robots:
-			player_robot = player_robot as PlayerRobot
-			player_robot.targets = enemies
-			player_robot.start_navigating(enemies.pick_random())
-		
-		for enemy in enemies:
-			enemy = enemy as Enemy
-			enemy.targets = player_robots
-			enemy.start_navigating(player_robots.pick_random())
-
-
 func _on_entity_died(entity: Entity) -> void:
 	_set_valid_entities([entity])
+	
+	# Check if battle is finished and start a new round
+	if _is_battle_ended():
+		SignalBus.end_round.emit()
+		prep_battle()
+		return
+	
+	# If last entity of a faction dies, redirect all survivors to the opposing nexus
 	if enemies.is_empty():
 		for player_robot in player_robots:
 			player_robot = player_robot as PlayerRobot
@@ -128,6 +168,7 @@ func _on_entity_died(entity: Entity) -> void:
 			enemy.start_navigating(player_nexus)
 		return
 	
+	# Reset navigation for opposing faction when an entity dies
 	if entity is Enemy:
 		for player_robot in player_robots:
 			player_robot = player_robot as PlayerRobot

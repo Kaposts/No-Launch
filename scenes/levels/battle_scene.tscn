@@ -76,25 +76,3 @@ position = Vector2(178, 272)
 [node name="EnemyMarker" type="Marker2D" parent="SpawnPositions"]
 unique_name_in_owner = true
 position = Vector2(479, 270)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = 257.0
-offset_top = 176.0
-offset_right = 388.0
-offset_bottom = 262.0
-size_flags_horizontal = 4
-
-[node name="RobotButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Summon random robot"
-
-[node name="EnemyButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Summon Enemy"
-
-[node name="StartBattleButton" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Start battle"

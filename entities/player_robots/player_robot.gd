@@ -22,6 +22,7 @@ func _ready() -> void:
 
 	SignalBus.apply_buff.connect(_on_apply_buff)
 
+
 func _on_apply_buff(data: ActivationResource):
 	health_component.max_health = parameters.health
 	hitbox_component.damage = parameters.damage

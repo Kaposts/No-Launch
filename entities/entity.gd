@@ -25,6 +25,7 @@ extends CharacterBody2D
 
 
 var parameters: EntityParameters
+var appearance_timing_offset: float = 0.0
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -52,7 +53,9 @@ func _ready() -> void:
 	
 	attack_range.body_entered.connect(_on_attack_range_entered)
 	wall_bounce_component.sleeping_state_changed.connect(_on_wall_bounce_component_sleeping_state_changed)
-
+	
+	await get_tree().create_timer(appearance_timing_offset, false).timeout
+	animation_player.play("appear")
 
 
 #endregion
