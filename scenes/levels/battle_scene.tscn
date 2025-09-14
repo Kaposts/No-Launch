@@ -6,15 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://l1j0i3abask5" path="res://assets/battle_scene/foreground.png" id="4_a0jns"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_skhqt"]
-vertices = PackedVector2Array(671, 164.969, 671, 395.008, -11.8672, 395.977, -9.10938, 163.023)
+vertices = PackedVector2Array(652.039, 178.969, 652.953, 395.953, -5, 393.039, -5, 177.023)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-19, 153, 681, 155, 681, 405, -22, 406)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-15, 167, 662, 169, 663, 406, -15, 403)])
 
 [node name="BattleScene" type="Node2D" groups=["battle_scene"]]
 script = ExtResource("1_6a6ir")
 
 [node name="ResetNavigationTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.8
 one_shot = true
 
 [node name="Background" type="Node2D" parent="."]
@@ -25,7 +25,6 @@ texture = ExtResource("2_emqap")
 centered = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 position = Vector2(0, -147)
 navigation_polygon = SubResource("NavigationPolygon_skhqt")
 
@@ -38,7 +37,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Wall/StaticBody2D"]
 position = Vector2(-6, 11)
 build_mode = 1
-polygon = PackedVector2Array(-7, 0, 680, 1, 680, 242, -9, 243)
+polygon = PackedVector2Array(-9, 15, 677, 17, 680, 242, -9, 243)
 
 [node name="PlayerNexus" parent="." groups=["player_nexus"] instance=ExtResource("2_6b61y")]
 position = Vector2(82, 134)

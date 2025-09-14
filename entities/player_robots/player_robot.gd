@@ -19,8 +19,6 @@ func _ready() -> void:
 	movement_speed = parameters.speed + buff.bonus_speed
 	sprite.texture = parameters.textures.pick_random()
 	
-	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health_component.current_health, hitbox_component.damage]
-
 	SignalBus.apply_buff.connect(_on_apply_buff)
 
 

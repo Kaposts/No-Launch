@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cetfvkhut1rm3"]
+[gd_scene load_steps=27 format=3 uid="uid://cetfvkhut1rm3"]
 
 [ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://entities/player_robots/player_robot.gd" id="1_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="2_gllqd"]
 [ext_resource type="Texture2D" uid="uid://b6m1egen2p3o8" path="res://assets/characters/player_infantry.png" id="2_qkkt1"]
+[ext_resource type="Material" uid="uid://bju26aurmj117" path="res://resources/pixel_smoothing_shader/pixel_smoothing_material.tres" id="2_uxc6o"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="3_i8ckr"]
 [ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="3_r6tem"]
 [ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="3_vpkpi"]
@@ -50,7 +51,19 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CombatAreas/HitboxComponent/HitboxCollider:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_ixurt"]
@@ -104,10 +117,10 @@ tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.4, 1),
+"transitions": PackedFloat32Array(0.233258, 1.93187, 1, 1),
 "update": 0,
-"values": [0.0, 0.523599, 0.0]
+"values": [0.0, -0.698132, 0.785398, 0.0]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -126,12 +139,86 @@ tracks/2/keys = {
 "method": &"set_deferred"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uxc6o"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.6),
+"transitions": PackedFloat32Array(0.482968, 2.2974, 2.21914, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.3), Vector2(1.3, 0.8), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_g0y6n"]
+resource_name = "move"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.554785, 1.27456, 1.31951, 1),
+"update": 0,
+"values": [0.0, -0.349066, 0.349066, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.366022, 1.86607, 1.93187, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 1.2), Vector2(1.2, 0.8), Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpkpi"]
 _data = {
 &"RESET": SubResource("Animation_vpkpi"),
 &"appear": SubResource("Animation_ixurt"),
-&"attack": SubResource("Animation_pn703")
+&"attack": SubResource("Animation_pn703"),
+&"idle": SubResource("Animation_uxc6o"),
+&"move": SubResource("Animation_g0y6n")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pn703"]
@@ -140,7 +227,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxc6o"]
 radius = 9.05539
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkkt1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxc6o"]
 resource_local_to_scene = true
 shader = ExtResource("7_vyq1y")
 shader_parameter/lerp_percent = 0.0
@@ -156,8 +243,7 @@ size = Vector2(24, 44)
 radius = 20.0
 
 [node name="PlayerRobot" type="CharacterBody2D"]
-visible = false
-collision_mask = 65
+collision_mask = 67
 motion_mode = 1
 script = ExtResource("1_ckjmp")
 
@@ -169,21 +255,13 @@ libraries = {
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+material = ExtResource("2_uxc6o")
 texture = ExtResource("2_qkkt1")
+offset = Vector2(3, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, 10)
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_pn703")
-
-[node name="DebugbugLabel" type="Label" parent="."]
-visible = false
-offset_left = -19.0
-offset_top = -49.0
-offset_right = 21.0
-offset_bottom = -18.0
-text = "HP:
-Dmg:"
 
 [node name="Timers" type="Node" parent="."]
 
@@ -202,14 +280,15 @@ wall_bounce_component = NodePath("WallBounceComponent")
 
 [node name="WallBounceComponent" parent="KnockbackComponent" instance=ExtResource("5_ixurt")]
 unique_name_in_owner = true
+position = Vector2(0, -10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KnockbackComponent/WallBounceComponent"]
-position = Vector2(0, 7)
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_uxc6o")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("6_nvrdh")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_qkkt1")
+hit_flash_material = SubResource("ShaderMaterial_uxc6o")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("2_ckjmp")]
 unique_name_in_owner = true
@@ -222,7 +301,6 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="CombatAreas" type="Node2D" parent="."]
-visible = false
 
 [node name="AttackRange" type="Area2D" parent="CombatAreas"]
 unique_name_in_owner = true
@@ -231,6 +309,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="AttackRangeCollider" type="CollisionShape2D" parent="CombatAreas/AttackRange"]
+position = Vector2(1, -12)
 shape = SubResource("CircleShape2D_vpkpi")
 debug_color = Color(0.28158, 0.620734, 0.334111, 0.42)
 
@@ -242,7 +321,7 @@ hitstop_component = NodePath("../../HitstopComponent")
 navigator_component = NodePath("../../NavigatorComponent")
 
 [node name="HitboxCollider" type="CollisionShape2D" parent="CombatAreas/HitboxComponent"]
-position = Vector2(12, 0)
+position = Vector2(17, -11)
 shape = SubResource("RectangleShape2D_pn703")
 disabled = true
 
@@ -257,6 +336,7 @@ hit_flash_component = NodePath("../../HitFlashComponent")
 hitstop_component = NodePath("../../HitstopComponent")
 
 [node name="HurtboxCollider" type="CollisionShape2D" parent="CombatAreas/HurtboxComponent"]
+position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_r6tem")
 debug_color = Color(0.876566, 0.263999, 0.560066, 0.42)
 
@@ -264,3 +344,4 @@ debug_color = Color(0.876566, 0.263999, 0.560066, 0.42)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("11_nvrdh")
+metadata/_edit_use_anchors_ = true
