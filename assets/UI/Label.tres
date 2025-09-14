@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bd4jlbqvq7d6x"]
+
+[ext_resource type="FontFile" uid="uid://cdcwtu3i2pxed" path="res://assets/fonts/ThaleahFat/ThaleahFat.ttf" id="1_yy7ca"]
+
+[resource]
+font = ExtResource("1_yy7ca")
