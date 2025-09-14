@@ -1,0 +1,157 @@
+[gd_scene load_steps=18 format=3 uid="uid://btlewng7066ct"]
+
+[ext_resource type="Texture2D" uid="uid://v8w1mm1n1fug" path="res://assets/UI/Settings Menu #2 - Without Close.png" id="1_qbgyr"]
+[ext_resource type="Script" uid="uid://b0rgmdkheb7eg" path="res://scenes/UI/options_menu.gd" id="1_rb3fs"]
+[ext_resource type="Texture2D" uid="uid://c8qeg65lntobq" path="res://assets/UI/UI_Buttons/Close - Normal.png" id="2_m6btu"]
+[ext_resource type="Texture2D" uid="uid://dd4t5yb2uby8g" path="res://assets/UI/UI_Buttons/Close - Clicked.png" id="3_2c0gt"]
+[ext_resource type="Texture2D" uid="uid://7o7f5byf5rh6" path="res://assets/UI/UI_Buttons/Close - Hover.png" id="4_rb3fs"]
+[ext_resource type="LabelSettings" uid="uid://dsk8tddkeqlvd" path="res://assets/UI/Label_Black.tres" id="5_e4yxm"]
+[ext_resource type="Texture2D" uid="uid://ckdav2kcveqb5" path="res://assets/UI/UI_Buttons/Grabber_Off.png" id="6_ar1by"]
+[ext_resource type="Texture2D" uid="uid://b3iayjau22qs5" path="res://assets/UI/UI_Buttons/Grabber_On.png" id="7_d6jn2"]
+[ext_resource type="Texture2D" uid="uid://bobsx3llabjyg" path="res://assets/UI/UI_Buttons/Settings Sliders.png" id="8_2c0gt"]
+[ext_resource type="AudioStream" uid="uid://ch5pg1u8syji0" path="res://assets/music/Patch Notes Jam Main Battle Theme.mp3" id="10_e4yxm"]
+[ext_resource type="AudioStream" uid="uid://c1qoj4xysw33l" path="res://assets/SFX/ui/error/001.ogg" id="11_ar1by"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb3fs"]
+atlas = ExtResource("8_2c0gt")
+region = Rect2(0, 0, 80, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e4yxm"]
+texture = SubResource("AtlasTexture_rb3fs")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ar1by"]
+texture = SubResource("AtlasTexture_rb3fs")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6jn2"]
+atlas = ExtResource("8_2c0gt")
+region = Rect2(0, 32, 80, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x4hbc"]
+texture = SubResource("AtlasTexture_d6jn2")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="Theme" id="Theme_61x1x"]
+HSlider/icons/grabber = ExtResource("7_d6jn2")
+HSlider/icons/grabber_highlight = ExtResource("6_ar1by")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_e4yxm")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_ar1by")
+HSlider/styles/slider = SubResource("StyleBoxTexture_x4hbc")
+
+[node name="OptionsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rb3fs")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 75.0
+offset_right = 362.0
+offset_bottom = 199.0
+scale = Vector2(1.475, 1.475)
+texture = ExtResource("1_qbgyr")
+
+[node name="CloseButton" type="TextureButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 160.678
+offset_top = 2.71186
+offset_right = 175.678
+offset_bottom = 17.7119
+texture_normal = ExtResource("2_m6btu")
+texture_pressed = ExtResource("3_2c0gt")
+texture_hover = ExtResource("4_rb3fs")
+
+[node name="GridContainer" type="GridContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 25.0
+offset_right = 176.0
+offset_bottom = 117.0
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Label" type="Label" parent="TextureRect/GridContainer"]
+layout_mode = 2
+text = "Master"
+label_settings = ExtResource("5_e4yxm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = SubResource("Theme_61x1x")
+min_value = -30.0
+max_value = 0.0
+step = 0.001
+
+[node name="Label2" type="Label" parent="TextureRect/GridContainer"]
+layout_mode = 2
+text = "Music"
+label_settings = ExtResource("5_e4yxm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = SubResource("Theme_61x1x")
+min_value = -30.0
+max_value = 0.0
+step = 0.001
+
+[node name="Label3" type="Label" parent="TextureRect/GridContainer"]
+layout_mode = 2
+text = "Sound
+Effects"
+label_settings = ExtResource("5_e4yxm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider3" type="HSlider" parent="TextureRect/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme = SubResource("Theme_61x1x")
+min_value = -30.0
+max_value = 0.0
+step = 0.001
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_e4yxm")
+autoplay = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ar1by")
+autoplay = true
+bus = &"SFX"
+parameters/looping = true
+
+[connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_mouse_exited"]
+[connection signal="value_changed" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider2" to="." method="_on_music_mouse_exited"]
+[connection signal="value_changed" from="TextureRect/GridContainer/HSlider2" to="." method="_on_music_value_changed"]
+[connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider3" to="." method="_on_SFX_mouse_exited"]
+[connection signal="value_changed" from="TextureRect/GridContainer/HSlider3" to="." method="_on_SFX_value_changed"]
