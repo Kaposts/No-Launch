@@ -83,6 +83,8 @@ func prep_battle(robot_count: int = randi_range(min_robot_count, max_robot_count
 	tween.set_parallel()
 	tween.tween_callback(spawn_robots.bind(robot_count))
 	tween.tween_callback(spawn_enemies.bind(enemy_count))
+	
+	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE)
 
 
 func start_battle() -> void:
@@ -99,6 +101,7 @@ func start_battle() -> void:
 			enemy.targets = player_robots
 			enemy.start_navigating(player_robots.pick_random())
 	
+	MusicPlayer.switch_song(MusicPlayer.SongNames.MAIN_BATTLE, false)
 	reset_navigation_timer.start()
 
 #endregion

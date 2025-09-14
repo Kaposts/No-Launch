@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerRobotParameters" load_steps=3 format=3 uid="uid://cugg8eevv1j45"]
+[gd_resource type="Resource" script_class="EntityParameters" load_steps=3 format=3 uid="uid://cugg8eevv1j45"]
 
 [ext_resource type="Script" uid="uid://c1uhvd44yudpd" path="res://resources/entity_parameters.gd" id="1_xq0nn"]
 [ext_resource type="Texture2D" uid="uid://b4ak48bfpcv7f" path="res://assets/characters/placeholder_defender.png" id="2_p5f28"]
@@ -8,5 +8,5 @@ script = ExtResource("1_xq0nn")
 texture = ExtResource("2_p5f28")
 health = 10
 damage = 1
-speed = 200.0
+speed = 300.0
 metadata/_custom_type_script = "uid://c1uhvd44yudpd"
