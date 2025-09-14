@@ -16,6 +16,7 @@ const ANIM_EXIT = "exit"
 var is_hovered := false
 var is_dragging := false
 var is_activated := false
+var corrupted := false
 var drag_offset: Vector2
 
 @onready var card_background = $Container/background
@@ -64,25 +65,27 @@ func _on_mouse_exited():
 	if not is_dragging:
 		anim.play(ANIM_EXIT)
 
+
+# bunch of if corrupted:return are placed so that the card functionality doesnt work but the close button is clickable, better approach is yet to discover
 func _on_gui_input(event: InputEvent) -> void:
 	if Global.is_playing_turn: return
-
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		# if event.pressed:
-		# 	if is_activated: deactivate_card()
-		# 	else: activate_card()
 		if Global.energy - data.energy < 0: return
 		if event.pressed:
 			# Start dragging
+			if corrupted:return
 			is_dragging = true
 			drag_offset = get_global_mouse_position() - global_position
 			z_index = 100
 		else:
+			if corrupted:return
 			# Mouse released
 			is_dragging = false
 			z_index = 0
 			_check_drop()
+
 	elif event is InputEventMouseMotion and is_dragging:
+		if corrupted:return
 		global_position = get_global_mouse_position() - drag_offset
 
 func _check_drop():
@@ -130,3 +133,7 @@ func _on_close_pressed() -> void:
 	if randf() < 0.1:
 		var res = load("res://cards/resources/cards/SUPER_DELUXE.tres")
 		Global.create_card(res)
+
+func corrupt():
+	$Container/info/corrupt.show()
+	corrupted = true

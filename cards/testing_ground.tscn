@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ct6rmlxigrouc"]
 
 [ext_resource type="Script" uid="uid://ba2mt5yjot4ot" path="res://cards/spawn_test_cards.gd" id="1_8ktu0"]
-[ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="2_xworw"]
+[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="2_xworw"]
 [ext_resource type="PackedScene" uid="uid://ccxkca6puflbo" path="res://ui/player_ui.tscn" id="3_tox4o"]
 [ext_resource type="PackedScene" uid="uid://bcc4ea6baq4mq" path="res://scenes/levels/battle_scene.tscn" id="4_1gmf6"]
 

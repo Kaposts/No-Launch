@@ -55,6 +55,7 @@ func draw(amount: int = 1, type: int = -1) -> void:
 	for i in amount:
 		if type >= 0:
 			card = get_card_by_rarity(deck, type)
+			if !card: return
 			deck.erase(card)
 		else:
 			card = deck.pop_front()
@@ -90,14 +91,35 @@ func play_turn() -> void:
 	SignalBus.start_round.emit()
 
 func play_card(card: Card) -> void:
-	energy -= card.data.energy 
+	energy -= card.data.energy
+	SignalBus.update_energy.emit(energy)
 	
+	if RoundEffect.double_or_nothing:
+		if randi_range(1,2) == 1:
+			discard(card)
+			return
+		else:
+			SignalBus.play_card.emit(card)
+			SignalBus.play_card.emit(card)
+			discard(card)
+			SignalBus.update_hand.emit()
+			return
+
+	card_kill_robot_maybe()
+
 	SignalBus.play_card.emit(card)
 
 	discard(card)
 
 	SignalBus.update_hand.emit()
-	SignalBus.update_energy.emit(energy)
+
+func card_kill_robot_maybe():
+
+	if RoundEffect.card_kill_robot_maybe:
+		if randi_range(1, 3) == 1:
+			var layer = get_tree().get_first_node_in_group("player_layer")
+			if layer.get_child_count() > 0:
+				layer.get_children().pick_random().queue_free()
 
 func increase_energy(amount: int):
 	max_energy += amount
@@ -129,4 +151,33 @@ func duplicate_hand():
 	for card in cards_to_dup.size():
 		await get_tree().create_timer(0.2).timeout
 		create_card(cards_to_dup[card].data)
-		print('WHATE HELLYY',card)
+
+func corrupt_cards():
+	var amount_to_corrupt
+
+	if cards_in_hand.size() > 4:
+		amount_to_corrupt = 2
+	elif cards_in_hand.size() > 6:
+		amount_to_corrupt = 3
+	else:
+		amount_to_corrupt = 1
+
+	for i in amount_to_corrupt:
+		var card: Card = cards_in_hand.pick_random()
+		card.corrupt()
+
+func big_update():
+	var damage_nexus_activation = load("res://cards/resources/activations/nexus/damage_nexus_1.tres")
+
+	for card in cards_in_hand:
+		var new_data = CardData.new()
+		new_data = card.data
+		var picked_card = deck_data.card_pool.pick_random()
+		new_data.activations.append(picked_card.activations[0])
+		new_data.activations.append(damage_nexus_activation)
+		card.data = new_data
+
+		print(new_data.activations)
+
+		card.card_description.text = ""
+		card.generate_description()

@@ -122,6 +122,7 @@ death_layer="Layer to display death animations for entities"
 player_nexus=""
 enemy_nexus=""
 battle_scene="Main battle scene"
+player_layer=""
 
 [gui]
 
