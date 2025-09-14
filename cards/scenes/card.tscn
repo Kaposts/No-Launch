@@ -1,20 +1,29 @@
-[gd_scene load_steps=18 format=3 uid="uid://crv6wrd1htgmr"]
+[gd_scene load_steps=24 format=3 uid="uid://crv6wrd1htgmr"]
 
 [ext_resource type="Script" uid="uid://5hg061g82116" path="res://cards/card.gd" id="1_ttli1"]
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="2_032ga"]
 [ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="3_032ga"]
 [ext_resource type="Texture2D" uid="uid://jquepj7fyeds" path="res://cards/assets/highlight.png" id="3_77qwj"]
 [ext_resource type="Texture2D" uid="uid://nswnxasf6ps6" path="res://cards/assets/rarity/rarity2.png" id="4_352vs"]
+[ext_resource type="Texture2D" uid="uid://b2q08rv8ko0e4" path="res://cards/assets/types/army.png" id="5_wwic2"]
 [ext_resource type="Texture2D" uid="uid://daxjiqxhbe6r" path="res://cards/assets/rarity/rarity1.png" id="6_77qwj"]
-[ext_resource type="Texture2D" uid="uid://dkgmot6plf6ht" path="res://cards/assets/template_test/Card_Template_0.png" id="6_352vs"]
+[ext_resource type="Texture2D" uid="uid://m0l48l7q22f3" path="res://cards/assets/types/buff.png" id="6_352vs"]
+[ext_resource type="Texture2D" uid="uid://b8fnav65ot0mo" path="res://cards/assets/types/action.png" id="7_nmpxu"]
+[ext_resource type="Texture2D" uid="uid://cep51dl01iy8o" path="res://cards/assets/types/DELUXE PRO MASTER CARD (Without.Close).png" id="8_dc7yu"]
+[ext_resource type="Texture2D" uid="uid://7o7f5byf5rh6" path="res://assets/UI/UI_Buttons/Close - Hover.png" id="11_14m1o"]
+[ext_resource type="Texture2D" uid="uid://dd4t5yb2uby8g" path="res://assets/UI/UI_Buttons/Close - Clicked.png" id="11_dc7yu"]
+[ext_resource type="Texture2D" uid="uid://c8qeg65lntobq" path="res://assets/UI/UI_Buttons/Close - Normal.png" id="13_tnxwt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_352vs"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wwic2"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_umc8y"]
+texture = ExtResource("11_14m1o")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtsy0"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_14m1o"]
+texture = ExtResource("11_dc7yu")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmpxu"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tnxwt"]
+texture = ExtResource("13_tnxwt")
 
 [sub_resource type="Animation" id="Animation_t0n0d"]
 length = 0.001
@@ -299,6 +308,7 @@ script = ExtResource("1_ttli1")
 data = ExtResource("2_032ga")
 anim = NodePath("anim")
 rarity_sprites = Array[Texture]([ExtResource("6_77qwj"), ExtResource("4_352vs")])
+type_sprites = Array[Texture]([ExtResource("5_wwic2"), ExtResource("6_352vs"), ExtResource("7_nmpxu"), ExtResource("8_dc7yu")])
 
 [node name="Container" type="AspectRatioContainer" parent="."]
 layout_mode = 1
@@ -371,7 +381,7 @@ autowrap_mode = 2
 layout_mode = 2
 offset_left = 9.0
 offset_top = -1.0
-offset_right = 21.0
+offset_right = 23.0
 offset_bottom = 13.0
 scale = Vector2(1.45, 1)
 size_flags_horizontal = 0
@@ -381,35 +391,12 @@ text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="rarity" type="TextureRect" parent="Container/info"]
-layout_mode = 0
-offset_left = 42.0
-offset_top = -39.0
-offset_right = 58.0
-offset_bottom = -23.0
-texture = ExtResource("6_77qwj")
-stretch_mode = 2
-
-[node name="close" type="Button" parent="Container/info"]
-layout_mode = 0
-offset_left = 79.0
-offset_top = -19.0
-offset_right = 101.0
-offset_bottom = 12.0
-scale = Vector2(0.64, 0.422769)
-mouse_filter = 1
-theme_override_styles/focus = SubResource("StyleBoxEmpty_352vs")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_wwic2")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_xtsy0")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_nmpxu")
-action_mode = 0
-
 [node name="Description" type="Label" parent="Container/info"]
 layout_mode = 2
 offset_left = 10.0
-offset_top = 56.0
+offset_top = 63.0
 offset_right = 155.0
-offset_bottom = 160.0
+offset_bottom = 154.0
 scale = Vector2(0.559999, 0.559999)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -3
@@ -417,6 +404,14 @@ theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="rarity" type="TextureRect" parent="Container/info"]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 100.0
+offset_bottom = 123.0
+texture = ExtResource("4_352vs")
+stretch_mode = 2
 
 [node name="corrupt" type="Label" parent="Container/info"]
 visible = false
@@ -431,6 +426,19 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 text = "CORRUPTED"
+
+[node name="close" type="Button" parent="Container/info"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = -20.0
+offset_right = 95.0
+offset_bottom = -5.0
+mouse_filter = 1
+theme_override_styles/focus = SubResource("StyleBoxEmpty_352vs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_umc8y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_14m1o")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tnxwt")
+action_mode = 0
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

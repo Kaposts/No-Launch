@@ -2,7 +2,12 @@
 extends Node
 
 
-enum CARD_TYPE{ARMY, BUFF, ACTION}
+enum CARD_TYPE{
+	ARMY, 
+	BUFF, 
+	ACTION,
+	DELUXE}
+
 enum CARD_RARITY{
 	NULL = -1,
 	COMMON = 0,
