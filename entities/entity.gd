@@ -27,6 +27,7 @@ extends CharacterBody2D
 var parameters: EntityParameters
 var appearance_timing_offset: float = 0.0
 
+@onready var visuals: Node2D = $Visuals
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var navigator_component: NavigatorComponent = %NavigatorComponent
@@ -58,6 +59,11 @@ func _ready() -> void:
 	animation_player.play("appear")
 
 
+func _process(delta: float) -> void:
+	if not velocity.is_equal_approx(Vector2.ZERO):
+		_sync_animation()
+
+
 #endregion
 #===================================================================================================
 #region NAVIGATOR FUNCTIONS
@@ -87,10 +93,6 @@ func stop_navigating(position_to_look_at: Vector2 = Vector2.ZERO) -> void:
 	wall_bounce_component.freeze = true
 	#animation_state_machine.travel("idle")
 	path_recalculation_timer.stop()
-	
-	#if not position_to_look_at.is_equal_approx(Vector2.ZERO):
-		#_direction = (position_to_look_at - global_position).normalized()
-		#animation_tree.set(IDLE_BLEND_POSITION, _direction)
 
 
 func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
@@ -111,10 +113,13 @@ func _on_navigator_component_target_reached() -> void:
 	if targets.is_empty():
 		start_navigating(get_tree().get_first_node_in_group("enemy_nexus") if self is PlayerRobot
 					else get_tree().get_first_node_in_group("player_nexus"))
+		_sync_animation()
+		return
 	
 	var target: Node2D = targets.pick_random()
 	if target != null:
 		start_navigating(target)
+		_sync_animation_to_target(target)
 	else:
 		stop_navigating()
 
@@ -122,6 +127,28 @@ func _on_navigator_component_target_reached() -> void:
 func _on_path_recalculation_timer_timeout() -> void:
 	if battling and not navigator_component.is_target_reachable():
 		_on_navigator_component_target_reached()
+
+#endregion
+#===================================================================================================
+#region PRIVATE FUNCTIONS
+
+func _sync_animation() -> void:
+	if velocity.x > 0.0:
+		visuals.scale.x = 1.0
+	elif velocity.x < 0.0:
+		visuals.scale.x = -1.0
+
+
+func _sync_animation_to_target(target: Node2D) -> void:
+	if target == null:
+		_sync_animation()
+		return
+	
+	if (target.global_position - global_position).x > 0.0:
+		visuals.scale.x = 1.0
+	elif (target.global_position - global_position).x < 0.0:
+		visuals.scale.x = -1.0
+
 
 #endregion
 #===================================================================================================

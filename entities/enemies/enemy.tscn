@@ -139,7 +139,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jebyg"]
 radius = 15.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrfwl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vabdn"]
 resource_local_to_scene = true
 shader = ExtResource("8_53k0f")
 shader_parameter/lerp_percent = 0.0
@@ -170,6 +170,7 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("2_vabdn")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -207,7 +208,7 @@ shape = SubResource("CircleShape2D_jebyg")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("7_wy1il")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_nrfwl")
+hit_flash_material = SubResource("ShaderMaterial_vabdn")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("9_u01qb")]
 unique_name_in_owner = true
