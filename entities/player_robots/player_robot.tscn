@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://cetfvkhut1rm3"]
+[gd_scene load_steps=26 format=3 uid="uid://cetfvkhut1rm3"]
 
 [ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://entities/player_robots/player_robot.gd" id="1_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="2_gllqd"]
 [ext_resource type="Texture2D" uid="uid://b6m1egen2p3o8" path="res://assets/characters/player_infantry.png" id="2_qkkt1"]
+[ext_resource type="Material" uid="uid://bju26aurmj117" path="res://resources/pixel_smoothing_shader/pixel_smoothing_material.tres" id="2_uxc6o"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="3_i8ckr"]
 [ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="3_r6tem"]
 [ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="3_vpkpi"]
@@ -127,11 +128,15 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_uxc6o"]
+resource_name = "idle"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpkpi"]
 _data = {
 &"RESET": SubResource("Animation_vpkpi"),
 &"appear": SubResource("Animation_ixurt"),
-&"attack": SubResource("Animation_pn703")
+&"attack": SubResource("Animation_pn703"),
+&"idle": SubResource("Animation_uxc6o")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pn703"]
@@ -140,7 +145,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxc6o"]
 radius = 9.05539
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkkt1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g0y6n"]
 resource_local_to_scene = true
 shader = ExtResource("7_vyq1y")
 shader_parameter/lerp_percent = 0.0
@@ -169,6 +174,7 @@ libraries = {
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+material = ExtResource("2_uxc6o")
 texture = ExtResource("2_qkkt1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -209,7 +215,7 @@ shape = SubResource("CircleShape2D_uxc6o")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("6_nvrdh")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_qkkt1")
+hit_flash_material = SubResource("ShaderMaterial_g0y6n")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("2_ckjmp")]
 unique_name_in_owner = true

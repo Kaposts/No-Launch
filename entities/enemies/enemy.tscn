@@ -1,6 +1,7 @@
-[gd_scene load_steps=23 format=3 uid="uid://bfbqdu1nyshr4"]
+[gd_scene load_steps=24 format=3 uid="uid://bfbqdu1nyshr4"]
 
 [ext_resource type="Script" uid="uid://gt30j16u4rei" path="res://entities/enemies/enemy.gd" id="1_3udgd"]
+[ext_resource type="Material" uid="uid://bju26aurmj117" path="res://resources/pixel_smoothing_shader/pixel_smoothing_material.tres" id="2_nrfwl"]
 [ext_resource type="Texture2D" uid="uid://dofbdlrr3qwfk" path="res://assets/enemies/enemy_1.png" id="2_vabdn"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="3_nrfwl"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="4_5xow2"]
@@ -169,6 +170,7 @@ libraries = {
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+material = ExtResource("2_nrfwl")
 texture = ExtResource("2_vabdn")
 flip_h = true
 

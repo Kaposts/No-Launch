@@ -27,6 +27,7 @@ var drag_offset: Vector2
 @onready var card_name = $Container/info/Name
 @onready var card_description = $Container/info/Description
 @onready var highlight = $Container/highlight
+@onready var border_material: ShaderMaterial = rarity.material
 
 
 func _ready():
@@ -58,12 +59,14 @@ func _on_mouse_entered():
 	if Global.is_playing_turn: return
 	Audio.play_by_name(SFX.SFX_UI_TICK_004)
 	is_hovered = true
+	border_material.set_shader_parameter("hovered", true)
 	if not is_dragging:
 		anim.play(ANIM_ENTER)
 
 func _on_mouse_exited():
 	if Global.is_playing_turn: return
 	is_hovered = false
+	border_material.set_shader_parameter("hovered", false)
 	if not is_dragging:
 		anim.play(ANIM_EXIT)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://crv6wrd1htgmr"]
+[gd_scene load_steps=25 format=3 uid="uid://crv6wrd1htgmr"]
 
 [ext_resource type="Script" uid="uid://5hg061g82116" path="res://cards/card.gd" id="1_ttli1"]
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="2_032ga"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cep51dl01iy8o" path="res://cards/assets/types/DELUXE PRO MASTER CARD (Without.Close).png" id="8_dc7yu"]
 [ext_resource type="Texture2D" uid="uid://7o7f5byf5rh6" path="res://assets/UI/UI_Buttons/Close - Hover.png" id="11_14m1o"]
 [ext_resource type="Texture2D" uid="uid://dd4t5yb2uby8g" path="res://assets/UI/UI_Buttons/Close - Clicked.png" id="11_dc7yu"]
+[ext_resource type="Material" uid="uid://dhcgqc68f1p1v" path="res://resources/external_border_shader/external_border_material.tres" id="11_tnxwt"]
 [ext_resource type="Texture2D" uid="uid://c8qeg65lntobq" path="res://assets/UI/UI_Buttons/Close - Normal.png" id="13_tnxwt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_352vs"]
@@ -406,6 +407,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="rarity" type="TextureRect" parent="Container/info"]
+material = ExtResource("11_tnxwt")
 layout_mode = 0
 offset_top = -23.0
 offset_right = 100.0
