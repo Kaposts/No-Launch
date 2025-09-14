@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://blk1ycwrde8uk"]
+[gd_scene load_steps=18 format=3 uid="uid://blk1ycwrde8uk"]
 
 [ext_resource type="Texture2D" uid="uid://bdfcrq2mmpufd" path="res://assets/UI/Computer.png" id="1_58fj5"]
+[ext_resource type="Script" uid="uid://c44k4q21cabh6" path="res://scenes/UI/main_menu.gd" id="1_kuv8g"]
 [ext_resource type="Texture2D" uid="uid://ct1nj6mhb5i30" path="res://assets/UI/Cool Dog ( Background ).png" id="2_3h7gc"]
 [ext_resource type="Texture2D" uid="uid://rbp3828kpkmy" path="res://assets/UI/UI_Buttons/Play - Normal .png" id="3_6kh0n"]
 [ext_resource type="Texture2D" uid="uid://cukti72x7ype2" path="res://assets/UI/UI_Buttons/Play - Clicked.png" id="4_av0jf"]
@@ -15,9 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://cfhkvdm4kvy43" path="res://assets/UI/UI_Buttons/Quit - Normal.png" id="13_4v2cq"]
 [ext_resource type="Texture2D" uid="uid://c1w7rrrjj64fu" path="res://assets/UI/UI_Buttons/Quit - Clickedl.png" id="14_c1mgp"]
 [ext_resource type="Texture2D" uid="uid://b2sdrk8iiyp48" path="res://assets/UI/UI_Buttons/Quit - Hover.png" id="15_hkamj"]
-[ext_resource type="PackedScene" uid="uid://btlewng7066ct" path="res://scenes/UI/Options_Menu.tscn" id="16_kuv8g"]
+[ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="16_kuv8g"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_kuv8g")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 638.0
@@ -165,4 +167,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OptionsMenu" parent="Options_Menu" instance=ExtResource("16_kuv8g")]
+visible = false
 layout_mode = 1
+
+[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Options/TextureButton" to="." method="_on_options_button_pressed"]

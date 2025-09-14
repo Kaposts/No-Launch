@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://btlewng7066ct"]
+[gd_scene load_steps=16 format=3 uid="uid://cr7esn4hh8e7e"]
 
 [ext_resource type="Texture2D" uid="uid://v8w1mm1n1fug" path="res://assets/UI/Settings Menu #2 - Without Close.png" id="1_qbgyr"]
 [ext_resource type="Script" uid="uid://b0rgmdkheb7eg" path="res://scenes/UI/options_menu.gd" id="1_rb3fs"]
@@ -9,8 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://ckdav2kcveqb5" path="res://assets/UI/UI_Buttons/Grabber_Off.png" id="6_ar1by"]
 [ext_resource type="Texture2D" uid="uid://b3iayjau22qs5" path="res://assets/UI/UI_Buttons/Grabber_On.png" id="7_d6jn2"]
 [ext_resource type="Texture2D" uid="uid://bobsx3llabjyg" path="res://assets/UI/UI_Buttons/Settings Sliders.png" id="8_2c0gt"]
-[ext_resource type="AudioStream" uid="uid://ch5pg1u8syji0" path="res://assets/music/Patch Notes Jam Main Battle Theme.mp3" id="10_e4yxm"]
-[ext_resource type="AudioStream" uid="uid://c1qoj4xysw33l" path="res://assets/SFX/ui/error/001.ogg" id="11_ar1by"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rb3fs"]
 atlas = ExtResource("8_2c0gt")
@@ -137,17 +135,6 @@ theme = SubResource("Theme_61x1x")
 min_value = -30.0
 max_value = 0.0
 step = 0.001
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_e4yxm")
-autoplay = true
-bus = &"Music"
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_ar1by")
-autoplay = true
-bus = &"SFX"
-parameters/looping = true
 
 [connection signal="pressed" from="TextureRect/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_mouse_exited"]
