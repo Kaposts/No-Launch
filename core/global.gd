@@ -12,7 +12,8 @@ var cards_in_hand: Array[Card] = []
 var cards_in_play: Array[Card] = []
 var deck: Array[CardData] = []
 
-@onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
+@onready var deck_data: DeckData = preload("res://cards/deck/test_deck.tres")
+# @onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
 var max_energy: int = 4
 var energy: int = 4
 var deck_size = 5000
@@ -155,8 +156,20 @@ func _on_end_round():
 
 func duplicate_hand():
 	var cards_to_dup = cards_in_hand
+
+	var skip: bool = false
 	## SORRY I AM TOO TIRED AND SPENT ALREADY TOO MUCH TIME TO FIX THIS PROPERLY
 	for card in cards_to_dup.size():
+		for activation:ActivationResource in cards_to_dup[card].data.activations:
+			print(Enum.CARD_FUNCTION.DUPLICATE_HAND)
+			print(activation.function)
+			print(activation.function == Enum.CARD_FUNCTION.DUPLICATE_HAND)
+			if activation.function == Enum.CARD_FUNCTION.DUPLICATE_HAND: 
+				skip = true
+				continue
+		
+		if skip: continue
+
 		await get_tree().create_timer(0.2).timeout
 		create_card(cards_to_dup[card].data)
 
