@@ -29,6 +29,7 @@ PlayerBuffs="*res://core/buffs/player_buffs.gd"
 Audio="*res://addons/audio_manager/audio.gd"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
+RoundEffect="*res://core/round_effect.gd"
 
 [dialogic]
 

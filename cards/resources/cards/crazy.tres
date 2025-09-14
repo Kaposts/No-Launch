@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://b0dndv6sj7vwm" path="res://cards/resources/activations/army_buffs/army_dmg_plus_one.tres" id="3_oddg1"]
 [ext_resource type="Resource" uid="uid://2fjk0exchkdl" path="res://cards/resources/activations/army_buffs/army_spd_plus_one.tres" id="4_4vixs"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_oddg1"]
-[ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="5_4vixs"]
+[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_4vixs"]
 
 [resource]
 script = ExtResource("4_oddg1")
