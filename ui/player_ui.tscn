@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ccxkca6puflbo"]
+[gd_scene load_steps=11 format=3 uid="uid://ccxkca6puflbo"]
 
 [ext_resource type="Script" uid="uid://bl654htndwwbj" path="res://ui/player_ui.gd" id="1_cfom6"]
 
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, -40)]
 }
 
 [sub_resource type="Animation" id="Animation_vq5xy"]
@@ -38,7 +38,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
@@ -47,9 +47,26 @@ tracks/0/keys = {
 "values": [Vector2(0, -40), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_cfom6"]
+resource_name = "hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -40)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iwa1g"]
 _data = {
 &"RESET": SubResource("Animation_ehg4m"),
+&"hide": SubResource("Animation_cfom6"),
 &"show": SubResource("Animation_vq5xy")
 }
 
@@ -91,7 +108,8 @@ text = "End round
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 36.0
+offset_top = -40.0
+offset_bottom = -4.0
 grow_horizontal = 2
 
 [node name="BG" type="TextureRect" parent="round_effect"]
