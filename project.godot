@@ -124,11 +124,14 @@ player_nexus=""
 enemy_nexus=""
 battle_scene="Main battle scene"
 player_layer=""
+ui_layer="layer to contain any dynamic ui elements"
 
 [gui]
 
 theme/custom="uid://blwjd2mb1dnlm"
 theme/custom_font="uid://csu3erj4oisi5"
+theme/default_font_antialiasing=0
+theme/default_font_hinting=0
 
 [input]
 

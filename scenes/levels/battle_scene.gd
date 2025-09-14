@@ -150,11 +150,15 @@ func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
 	for child in player_layer.get_children():
 		if child not in excluded_entities:
 			player_robots.append(child as Node2D)
+	if player_robots.is_empty():
+		player_nexus.can_destroy_entity = true
 	
 	enemies.clear()
 	for child in enemy_layer.get_children():
 		if child not in excluded_entities:
 			enemies.append(child as Node2D)
+	if enemies.is_empty():
+		enemy_nexus.can_destroy_entity = true
 	
 	SignalBus.entities_array_updated.emit()
 
@@ -178,13 +182,11 @@ func _on_entity_died(entity: Entity) -> void:
 	
 	# If last entity of a faction dies, redirect all survivors to the opposing nexus
 	if enemies.is_empty():
-		enemy_nexus.can_destroy_entity = true
 		for player_robot in player_robots:
 			player_robot = player_robot as PlayerRobot
 			player_robot.start_navigating(enemy_nexus)
 		return
 	elif player_robots.is_empty():
-		player_nexus.can_destroy_entity = true
 		for enemy in enemies:
 			enemy = enemy as Enemy
 			enemy.start_navigating(player_nexus)
