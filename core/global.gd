@@ -42,11 +42,23 @@ func deck_setup():
 	for i in deck_size:
 		Global.deck.append(deck_data.card_pool.pick_random())
 
-func draw(amount: int = 1) -> void:
+func get_card_by_rarity(cards: Array, rarity: Enum.CARD_RARITY) -> CardData:
+	for card: CardData in cards:
+		if card.rarity == rarity:
+			return card
+	return null
+
+func draw(amount: int = 1, type: int = -1) -> void:
 	if deck.size() <= 0: return
+	var card
 
 	for i in amount:
-		var card = deck.pop_front()
+		if type >= 0:
+			card = get_card_by_rarity(deck, type)
+			deck.erase(card)
+		else:
+			card = deck.pop_front()
+
 		SignalBus.update_hand.emit()
 		SignalBus.draw_card.emit(card)
 
@@ -110,3 +122,11 @@ func _on_end_round():
 	for i in card_draw_per_round:
 		await get_tree().create_timer(0.2).timeout
 		draw()
+
+func duplicate_hand():
+	var cards_to_dup = cards_in_hand
+	## SORRY I AM TOO TIRED AND SPENT ALREADY TOO MUCH TIME TO FIX THIS PROPERLY
+	for card in cards_to_dup.size():
+		await get_tree().create_timer(0.2).timeout
+		create_card(cards_to_dup[card].data)
+		print('WHATE HELLYY',card)

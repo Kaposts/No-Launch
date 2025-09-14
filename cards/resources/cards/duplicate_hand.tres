@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://dxex3hg25414t"]
+
+[ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_k0heh"]
+[ext_resource type="Resource" uid="uid://c1xfcymiws6ql" path="res://cards/resources/activations/duplicate/duplicate_hand.tres" id="2_k0heh"]
+[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_1ik2x"]
+[ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_1w0e3"]
+[ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="5_qm4o6"]
+
+[resource]
+script = ExtResource("4_1w0e3")
+name = "System Glitch"
+type = 2
+rarity = 1
+background = ExtResource("3_1ik2x")
+sprite = ExtResource("5_qm4o6")
+energy = 6
+activations = Array[ExtResource("1_k0heh")]([ExtResource("2_k0heh")])
+metadata/_custom_type_script = "uid://6dduflnjkwry"

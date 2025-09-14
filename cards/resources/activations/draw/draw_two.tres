@@ -5,7 +5,8 @@
 [resource]
 script = ExtResource("1_86a5c")
 amount = 2
-rounds = 0
+rarity = -1
 description = "Draw two cards"
 function = 0
+rounds = 0
 metadata/_custom_type_script = "uid://d3cpiu7cad4pf"
