@@ -254,11 +254,11 @@ libraries = {
 }
 
 [node name="HPBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(32, 6)
-offset_left = -15.0
+custom_minimum_size = Vector2(24, 4)
+offset_left = -11.0
 offset_top = -25.0
-offset_right = 17.0
-offset_bottom = -19.0
+offset_right = 13.0
+offset_bottom = -21.0
 theme_type_variation = &"RedProgressBar"
 max_value = 1.0
 value = 0.5
