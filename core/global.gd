@@ -35,7 +35,7 @@ func _on_start_game():
 	energy = max_energy
 	# deck_size = deck_data.size
 	starting_hand()
-
+	await get_tree().create_timer(2).timeout
 	RoundEffect.change_effect()
 	SignalBus.game_started.emit()
 

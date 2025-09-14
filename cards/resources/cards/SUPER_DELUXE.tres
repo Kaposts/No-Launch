@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://bb3py4udwp1tt" path="res://cards/resources/activations/draw/draw_three.tres" id="3_oqlw0"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_1epww"]
 [ext_resource type="Resource" uid="uid://cgfv56fva871l" path="res://cards/resources/activations/energy/energy_cap_three.tres" id="4_1fl3o"]
-[ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="5_xfchg"]
+[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_xfchg"]
 [ext_resource type="Resource" uid="uid://2fjk0exchkdl" path="res://cards/resources/activations/army_buffs/army_spd_plus_one.tres" id="6_pxtw0"]
 [ext_resource type="Resource" uid="uid://cst4qjohraau0" path="res://cards/resources/activations/army_buffs/army_hp_plus_one.tres" id="7_ecnod"]
 [ext_resource type="Resource" uid="uid://b0dndv6sj7vwm" path="res://cards/resources/activations/army_buffs/army_dmg_plus_one.tres" id="8_k1uba"]
@@ -16,7 +16,7 @@
 [resource]
 script = ExtResource("4_1epww")
 name = "ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR ERROR "
-type = 2
+type = 3
 rarity = 0
 background = ExtResource("3_46oa1")
 sprite = ExtResource("5_xfchg")

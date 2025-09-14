@@ -2,8 +2,6 @@
 
 extends Node
 
-
-
 var nexus_takes_double_damage: bool = false
 var card_kill_robot_maybe: bool = false
 var double_or_nothing: bool = false
@@ -12,6 +10,9 @@ func _ready():
 	SignalBus.end_round.connect(_on_end_round)
 
 func _on_end_round():
+	SignalBus.round_effect_hide.emit()
+	await get_tree().create_timer(2).timeout
+
 	change_effect()
 	
 func change_effect():
