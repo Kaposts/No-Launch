@@ -7,7 +7,7 @@ func _ready():
 	SignalBus.round_effect_hide.connect(on_round_effect_hide)
 
 
-	Dialogic.start("timeline")
+	# Dialogic.start("timeline")
 
 func _on_update_energy(value):
 	$energy.text = "Executive Power: " + str(value) +"/"+ str(Global.max_energy)

@@ -43,6 +43,8 @@ func hide_step(index: int):
     tween.tween_property(step, "modulate:a", 0.0, 0.5)
     tween.tween_callback(Callable(step, "hide"))
 
+    if current_step >= steps.size() -1:
+        hide()
 
 func next_step():
     if current_step < steps.size() - 1:
