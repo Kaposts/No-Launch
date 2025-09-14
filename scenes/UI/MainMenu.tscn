@@ -1,0 +1,165 @@
+[gd_scene load_steps=18 format=3 uid="uid://blk1ycwrde8uk"]
+
+[ext_resource type="Texture2D" uid="uid://bdfcrq2mmpufd" path="res://assets/UI/Computer.png" id="1_58fj5"]
+[ext_resource type="Script" uid="uid://c44k4q21cabh6" path="res://scenes/UI/main_menu.gd" id="1_kuv8g"]
+[ext_resource type="Texture2D" uid="uid://ct1nj6mhb5i30" path="res://assets/UI/Cool Dog ( Background ).png" id="2_3h7gc"]
+[ext_resource type="Texture2D" uid="uid://rbp3828kpkmy" path="res://assets/UI/UI_Buttons/Play - Normal .png" id="3_6kh0n"]
+[ext_resource type="Texture2D" uid="uid://cukti72x7ype2" path="res://assets/UI/UI_Buttons/Play - Clicked.png" id="4_av0jf"]
+[ext_resource type="Texture2D" uid="uid://ca5qfs8j2juau" path="res://assets/UI/UI_Buttons/Play - Hover.png" id="5_kuv8g"]
+[ext_resource type="LabelSettings" uid="uid://bd4jlbqvq7d6x" path="res://assets/UI/Label.tres" id="6_av0jf"]
+[ext_resource type="Texture2D" uid="uid://dlmt00j81iyhg" path="res://assets/UI/UI_Buttons/Credits - Normal.png" id="7_h5h42"]
+[ext_resource type="Texture2D" uid="uid://cx2gidm6p7jn6" path="res://assets/UI/UI_Buttons/Credits - Clickedl.png" id="8_r7s35"]
+[ext_resource type="Texture2D" uid="uid://cdxsyiajlcgws" path="res://assets/UI/UI_Buttons/Credits - Hover.png" id="9_ht4ob"]
+[ext_resource type="Texture2D" uid="uid://2tvqnmojuqh0" path="res://assets/UI/UI_Buttons/Settings - Normal.png" id="10_ft4qb"]
+[ext_resource type="Texture2D" uid="uid://copcxjh0drkkp" path="res://assets/UI/UI_Buttons/Settings - Clicked.png" id="11_5m80a"]
+[ext_resource type="Texture2D" uid="uid://bfoyy5hcgwoyb" path="res://assets/UI/UI_Buttons/Settings - Hover.png" id="12_i2kgm"]
+[ext_resource type="Texture2D" uid="uid://cfhkvdm4kvy43" path="res://assets/UI/UI_Buttons/Quit - Normal.png" id="13_4v2cq"]
+[ext_resource type="Texture2D" uid="uid://c1w7rrrjj64fu" path="res://assets/UI/UI_Buttons/Quit - Clickedl.png" id="14_c1mgp"]
+[ext_resource type="Texture2D" uid="uid://b2sdrk8iiyp48" path="res://assets/UI/UI_Buttons/Quit - Hover.png" id="15_hkamj"]
+[ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="16_kuv8g"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_kuv8g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 638.0
+offset_bottom = 361.0
+color = Color(0.0085, 0.0300333, 0.17, 1)
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 13.0
+offset_top = -37.0
+offset_right = 633.0
+offset_bottom = 452.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_58fj5")
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -119.0
+offset_top = -73.5
+offset_right = 104.0
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3h7gc")
+
+[node name="MainMenu_Buttons" type="Control" parent="TextureRect2"]
+anchors_preset = 0
+
+[node name="Side_Buttons" type="VBoxContainer" parent="TextureRect2/MainMenu_Buttons"]
+layout_mode = 0
+offset_left = 89.865
+offset_top = 95.155
+offset_right = 159.865
+offset_bottom = 272.155
+scale = Vector2(1.275, 1.275)
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Start" type="VBoxContainer" parent="TextureRect2/MainMenu_Buttons/Side_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -3
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Start"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_6kh0n")
+texture_pressed = ExtResource("4_av0jf")
+texture_hover = ExtResource("5_kuv8g")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Start"]
+layout_mode = 2
+text = "Start"
+label_settings = ExtResource("6_av0jf")
+
+[node name="Credits" type="VBoxContainer" parent="TextureRect2/MainMenu_Buttons/Side_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -3
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("7_h5h42")
+texture_pressed = ExtResource("8_r7s35")
+texture_hover = ExtResource("9_ht4ob")
+
+[node name="Label" type="Label" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits"]
+layout_mode = 2
+text = "Credits"
+label_settings = ExtResource("6_av0jf")
+horizontal_alignment = 3
+vertical_alignment = 3
+
+[node name="Options" type="VBoxContainer" parent="TextureRect2/MainMenu_Buttons/Side_Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -6
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("10_ft4qb")
+texture_pressed = ExtResource("11_5m80a")
+texture_hover = ExtResource("12_i2kgm")
+
+[node name="Label" type="Label" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Options"]
+layout_mode = 2
+text = "Options"
+label_settings = ExtResource("6_av0jf")
+horizontal_alignment = 3
+vertical_alignment = 3
+
+[node name="Quit" type="VBoxContainer" parent="TextureRect2/MainMenu_Buttons"]
+layout_mode = 0
+offset_left = 437.97
+offset_top = 261.305
+offset_right = 492.97
+offset_bottom = 311.305
+scale = Vector2(1.35, 1.35)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = -3
+
+[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Quit"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("13_4v2cq")
+texture_pressed = ExtResource("14_c1mgp")
+texture_hover = ExtResource("15_hkamj")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect2/MainMenu_Buttons/Quit"]
+layout_mode = 2
+text = "Quit"
+label_settings = ExtResource("6_av0jf")
+horizontal_alignment = 1
+
+[node name="OptionsMenu" parent="." instance=ExtResource("16_kuv8g")]
+visible = false
+
+[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Start/TextureButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits/TextureButton" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Options/TextureButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Quit/TextureButton" to="." method="_on_quit_pressed"]

@@ -59,6 +59,8 @@ func play(audio: AudioData, player_override = null):
 			player.pitch_scale = audio.res_pitch_scale
 			player.autoplay = true
 
+			player.bus = "SFX"
+
 			if audio.res_pitch_randomizer:
 				var range = config.pitch_randomizer_range
 				var rand := randf_range(-1 * range, range)
@@ -153,6 +155,7 @@ func play_bgm(stream: AudioStream, loop: bool = true):
 	# Fade out current and fade in new
 	next_player.stream = stream
 	next_player.volume_db = -80
+	next_player.bus = "Music"
 	next_player.play()
 	crossfade(current_player, next_player)
 
