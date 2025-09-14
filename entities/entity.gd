@@ -99,8 +99,8 @@ func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
 
 
 func _on_navigator_component_target_reached() -> void:
-	if navigator_component.current_target != null and not navigator_component.current_target.is_queued_for_deletion():
-		navigator_component.start(navigator_component.current_target)
+	if navigator_component.has_valid_current_target():
+		navigator_component.resume()
 		return
 	
 	await SignalBus.entities_array_updated

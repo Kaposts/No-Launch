@@ -32,6 +32,8 @@ func _ready() -> void:
 	
 	_load_player_available_robot_types()
 	_load_enemy_types()
+	
+	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE, false, true)
 
 #endregion
 #===================================================================================================
