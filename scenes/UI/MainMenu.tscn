@@ -156,18 +156,10 @@ text = "Quit"
 label_settings = ExtResource("6_av0jf")
 horizontal_alignment = 1
 
-[node name="Options_Menu" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="OptionsMenu" parent="Options_Menu" instance=ExtResource("16_kuv8g")]
+[node name="OptionsMenu" parent="." instance=ExtResource("16_kuv8g")]
 visible = false
-layout_mode = 1
 
+[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Start/TextureButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits/TextureButton" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Options/TextureButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Quit/TextureButton" to="." method="_on_quit_pressed"]

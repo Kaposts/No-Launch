@@ -1,18 +1,20 @@
 extends Node2D
 
-@onready var options_menu = $Options_Menu/OptionsMenu 
+@onready var options_menu = $OptionsMenu 
 @onready var main_menu_buttons = $TextureRect2/MainMenu_Buttons
 
 func _ready():
-	handle_connecting_signals()
-
-
+	pass
 
 func _on_options_button_pressed() -> void:
-	options_menu.visible = true
+	options_menu.show()
 	
-func on_exit_options():
-	options_menu.visible = false
+func _on_start_pressed() -> void:
+	await Global.transition()
+	get_tree().change_scene_to_file("res://scenes/cabage.tscn")
 
-func handle_connecting_signals():
-	options_menu.exit_options_menu.connect(on_exit_options)
+func _on_credits_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
