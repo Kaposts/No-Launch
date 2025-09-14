@@ -17,7 +17,7 @@ func _ready() -> void:
 	health_component.max_health = parameters.health + buff.bonus_health
 	hitbox_component.damage = parameters.damage + buff.bonus_damage
 	movement_speed = parameters.speed + buff.bonus_speed
-	sprite.texture = parameters.texture
+	sprite.texture = parameters.textures.pick_random()
 	
 	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health_component.current_health, hitbox_component.damage]
 

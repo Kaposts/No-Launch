@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://bfbqdu1nyshr4"]
 
 [ext_resource type="Script" uid="uid://gt30j16u4rei" path="res://entities/enemies/enemy.gd" id="1_3udgd"]
-[ext_resource type="Texture2D" uid="uid://b8r6qc0p8gdj2" path="res://assets/enemies/placeholder_basic_enemy.png" id="2_vabdn"]
+[ext_resource type="Texture2D" uid="uid://dofbdlrr3qwfk" path="res://assets/enemies/enemy_1.png" id="2_vabdn"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="3_nrfwl"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="4_5xow2"]
 [ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="5_xmuku"]
@@ -139,7 +139,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jebyg"]
 radius = 15.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3udgd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nrfwl"]
 resource_local_to_scene = true
 shader = ExtResource("8_53k0f")
 shader_parameter/lerp_percent = 0.0
@@ -167,8 +167,6 @@ libraries = {
 }
 
 [node name="Visuals" type="Node2D" parent="."]
-rotation = -3.14159
-scale = Vector2(2, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
 texture = ExtResource("2_vabdn")
@@ -178,6 +176,7 @@ visible = false
 shape = SubResource("CircleShape2D_axigu")
 
 [node name="DebugbugLabel" type="Label" parent="."]
+visible = false
 offset_left = -19.0
 offset_top = -49.0
 offset_right = 21.0
@@ -208,7 +207,7 @@ shape = SubResource("CircleShape2D_jebyg")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("7_wy1il")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_3udgd")
+hit_flash_material = SubResource("ShaderMaterial_nrfwl")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("9_u01qb")]
 unique_name_in_owner = true

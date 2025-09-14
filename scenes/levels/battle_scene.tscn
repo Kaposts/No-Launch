@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcc4ea6baq4mq"]
+[gd_scene load_steps=6 format=3 uid="uid://bcc4ea6baq4mq"]
 
 [ext_resource type="Script" uid="uid://blwyr6s3hoy0c" path="res://scenes/levels/battle_scene.gd" id="1_6a6ir"]
-[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="2_6a6ir"]
 [ext_resource type="PackedScene" uid="uid://mqf25vmd4yyl" path="res://entities/nexus/nexus.tscn" id="2_6b61y"]
+[ext_resource type="Texture2D" uid="uid://d1moacob82no" path="res://assets/battle_scene/background.png" id="2_emqap"]
+[ext_resource type="Texture2D" uid="uid://l1j0i3abask5" path="res://assets/battle_scene/foreground.png" id="4_a0jns"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_skhqt"]
 vertices = PackedVector2Array(671, 164.969, 671, 395.008, -11.8672, 395.977, -9.10938, 163.023)
@@ -15,6 +16,13 @@ script = ExtResource("1_6a6ir")
 [node name="ResetNavigationTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+scale = Vector2(1.27183, 1.07485)
+texture = ExtResource("2_emqap")
+centered = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -32,35 +40,26 @@ position = Vector2(-6, 11)
 build_mode = 1
 polygon = PackedVector2Array(-7, 0, 680, 1, 680, 242, -9, 243)
 
-[node name="Sprite2D" type="Sprite2D" parent="Wall"]
-position = Vector2(325, 5)
-scale = Vector2(6.22656, 0.226563)
-texture = ExtResource("2_6a6ir")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Wall"]
-position = Vector2(331, 250)
-scale = Vector2(6.22656, 0.226563)
-texture = ExtResource("2_6a6ir")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Wall"]
-position = Vector2(669, 129.308)
-rotation = 1.57079
-scale = Vector2(1.76005, 0.226563)
-texture = ExtResource("2_6a6ir")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Wall"]
-position = Vector2(-22.9999, 131.321)
-rotation = 1.57079
-scale = Vector2(1.82408, 0.226563)
-texture = ExtResource("2_6a6ir")
-
 [node name="PlayerNexus" parent="." groups=["player_nexus"] instance=ExtResource("2_6b61y")]
-position = Vector2(66, 118)
+position = Vector2(82, 134)
 collision_mask = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="PlayerNexus"]
+position = Vector2(-82, -134)
+texture = ExtResource("4_a0jns")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 216, 314)
+
 [node name="EnemyNexus" parent="." groups=["enemy_nexus"] instance=ExtResource("2_6b61y")]
-modulate = Color(1, 0.15, 0.164166, 1)
-position = Vector2(605, 130)
+position = Vector2(555, 134)
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyNexus"]
+position = Vector2(-142, -134)
+texture = ExtResource("4_a0jns")
+centered = false
+region_enabled = true
+region_rect = Rect2(284, 0, 228, 315)
 
 [node name="DeathLayer" type="Node2D" parent="." groups=["death_layer"]]
 
@@ -75,8 +74,8 @@ position = Vector2(0, -147)
 
 [node name="PlayerMarker" type="Marker2D" parent="SpawnPositions"]
 unique_name_in_owner = true
-position = Vector2(178, 272)
+position = Vector2(173, 293)
 
 [node name="EnemyMarker" type="Marker2D" parent="SpawnPositions"]
 unique_name_in_owner = true
-position = Vector2(479, 270)
+position = Vector2(474, 291)

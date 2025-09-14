@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://entities/player_robots/player_robot.gd" id="1_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="2_gllqd"]
+[ext_resource type="Texture2D" uid="uid://b6m1egen2p3o8" path="res://assets/characters/player_infantry.png" id="2_qkkt1"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="3_i8ckr"]
 [ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="3_r6tem"]
 [ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="3_vpkpi"]
@@ -133,9 +134,6 @@ _data = {
 &"attack": SubResource("Animation_pn703")
 }
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gbp4f"]
-load_path = "res://.godot/imported/placeholder_infantry.png-b679e30efc86b3af68214e6d50d6e5f4.ctex"
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_pn703"]
 radius = 6.0
 
@@ -169,10 +167,9 @@ libraries = {
 }
 
 [node name="Visuals" type="Node2D" parent="."]
-scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = SubResource("CompressedTexture2D_gbp4f")
+texture = ExtResource("2_qkkt1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -180,6 +177,7 @@ position = Vector2(0, 10)
 shape = SubResource("CircleShape2D_pn703")
 
 [node name="DebugbugLabel" type="Label" parent="."]
+visible = false
 offset_left = -19.0
 offset_top = -49.0
 offset_right = 21.0

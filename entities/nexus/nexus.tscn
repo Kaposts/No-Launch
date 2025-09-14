@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://mqf25vmd4yyl"]
+[gd_scene load_steps=3 format=3 uid="uid://mqf25vmd4yyl"]
 
 [ext_resource type="Script" uid="uid://dpl71fdu4ngcd" path="res://entities/nexus/nexus.gd" id="1_nuvkp"]
-[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="2_ai8wm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai8wm"]
-size = Vector2(130.5, 164)
+size = Vector2(130.5, 204)
 
 [node name="Nexus" type="Area2D"]
 collision_layer = 0
@@ -18,11 +17,6 @@ offset_right = 22.0
 offset_bottom = -67.0
 text = "HP: 20"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ai8wm")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-0.25, 0)
 shape = SubResource("RectangleShape2D_ai8wm")
 debug_color = Color(1, 1, 1, 0.42)

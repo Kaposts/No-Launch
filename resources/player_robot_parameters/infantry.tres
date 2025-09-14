@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="EntityParameters" load_steps=3 format=3 uid="uid://d27co4a5g0b2y"]
 
 [ext_resource type="Script" uid="uid://c1uhvd44yudpd" path="res://resources/entity_parameters.gd" id="1_wty0b"]
-[ext_resource type="Texture2D" uid="uid://b6qi1tritsv60" path="res://assets/characters/placeholder_infantry.png" id="2_pelnx"]
+[ext_resource type="Texture2D" uid="uid://b6m1egen2p3o8" path="res://assets/characters/player_infantry.png" id="2_pelnx"]
 
 [resource]
 script = ExtResource("1_wty0b")
-texture = ExtResource("2_pelnx")
+textures = Array[Texture2D]([ExtResource("2_pelnx")])
 health = 5
 damage = 2
 speed = 150.0
