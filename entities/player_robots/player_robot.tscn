@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cetfvkhut1rm3"]
+[gd_scene load_steps=26 format=3 uid="uid://cetfvkhut1rm3"]
 
 [ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://entities/player_robots/player_robot.gd" id="1_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
@@ -128,11 +128,15 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_uxc6o"]
+resource_name = "idle"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vpkpi"]
 _data = {
 &"RESET": SubResource("Animation_vpkpi"),
 &"appear": SubResource("Animation_ixurt"),
-&"attack": SubResource("Animation_pn703")
+&"attack": SubResource("Animation_pn703"),
+&"idle": SubResource("Animation_uxc6o")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pn703"]
