@@ -29,6 +29,7 @@ var timing_offset: float = 0.0
 
 @onready var visuals: Node2D = $Visuals
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hp_bar: ProgressBar = $HPBar
 
 @onready var navigator_component: NavigatorComponent = %NavigatorComponent
 @onready var path_recalculation_timer: Timer = %PathRecalculationTimer
@@ -54,8 +55,10 @@ func _ready() -> void:
 	
 	attack_range.body_entered.connect(_on_attack_range_entered)
 	wall_bounce_component.sleeping_state_changed.connect(_on_wall_bounce_component_sleeping_state_changed)
+	health_component.health_changed.connect(_on_health_changed)
 	
 	hide()
+	_update_health()
 	await get_tree().create_timer(timing_offset, false).timeout
 	animation_player.play("appear")
 	await animation_player.animation_finished
@@ -157,6 +160,10 @@ func _sync_animation_to_target(target: Node2D) -> void:
 		visuals.scale.x = -1.0
 
 
+func _update_health() -> void:
+	hp_bar.value = health_component.get_health_percent()
+
+
 #endregion
 #===================================================================================================
 #region EVENT HANDLERS
@@ -169,6 +176,10 @@ func _on_attack_range_entered(body: Node2D) -> void:
 func _on_wall_bounce_component_sleeping_state_changed() -> void:
 	if wall_bounce_component.sleeping and battling:
 		_on_navigator_component_target_reached()
+
+
+func _on_health_changed(change_value: float) -> void:
+	_update_health()
 
 
 #endregion

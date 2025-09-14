@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dpl71fdu4ngcd" path="res://entities/nexus/nexus.gd" id="1_nuvkp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai8wm"]
-size = Vector2(130.5, 204)
+size = Vector2(130.5, 279)
 
 [node name="Nexus" type="Area2D"]
 collision_layer = 0
