@@ -85,6 +85,10 @@ func _on_mouse_exited():
 # bunch of if corrupted:return are placed so that the card functionality doesnt work but the close button is clickable, better approach is yet to discover
 func _on_gui_input(event: InputEvent) -> void:
 	if Global.is_playing_turn: return
+
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE and event.pressed:
+		_on_close_pressed()
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if Global.energy - data.energy < 0 and event.pressed: 
 			Audio.play_by_name(SFX.SFX_UI_ERROR_003)
