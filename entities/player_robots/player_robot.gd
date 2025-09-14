@@ -16,7 +16,8 @@ func _ready() -> void:
 	var buff: PlayerBuffsResource = PlayerBuffs.get_buffs()
 	health_component.max_health = parameters.health + buff.bonus_health
 	hitbox_component.damage = parameters.damage + buff.bonus_damage
-	sprite.texture = parameters.texture
+	movement_speed = parameters.speed + buff.bonus_speed
+	sprite.texture = parameters.textures.pick_random()
 	
 	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health_component.current_health, hitbox_component.damage]
 

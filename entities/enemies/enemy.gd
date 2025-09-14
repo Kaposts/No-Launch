@@ -12,7 +12,8 @@ extends Entity
 func _ready() -> void:
 	super()
 	
-	sprite.texture = parameters.texture
+	sprite.texture = parameters.textures.pick_random()
+	visuals.scale.x = -1.0
 	
 	$DebugbugLabel.text = "HP: %d\nDMG: %d" % [health_component.current_health, hitbox_component.damage]
 

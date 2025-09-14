@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs2msqcudcidd"]
+
+[ext_resource type="Script" uid="uid://bpcutvyml4247" path="res://scenes/components/random_audio_player/random_audio_player_2d_component.gd" id="1_u0ism"]
+
+[node name="RandomAudioPlayer2DComponent" type="AudioStreamPlayer2D"]
+max_distance = 300.0
+bus = &"SFX"
+area_mask = 2
+script = ExtResource("1_u0ism")

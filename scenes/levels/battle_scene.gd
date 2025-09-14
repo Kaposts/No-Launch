@@ -18,6 +18,7 @@ const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 @onready var enemy_layer: Node2D = $EnemyLayer
 @onready var player_nexus: Nexus = $PlayerNexus
 @onready var enemy_nexus: Nexus = $EnemyNexus
+@onready var reset_navigation_timer: Timer = $ResetNavigationTimer
 
 
 var player_robot_types: Array[EntityParameters] = []
@@ -31,6 +32,8 @@ var enemies: Array[Node2D] = []
 func _ready() -> void:
 	SignalBus.spawn_player.connect(spawn_robot)
 	SignalBus.start_round.connect(start_battle)
+	
+	reset_navigation_timer.timeout.connect(_on_reset_navigation_timer_timeout)
 	
 	_load_player_available_robot_types()
 	_load_enemy_types()
@@ -74,10 +77,14 @@ func spawn_enemies(how_many: int) -> void:
 func prep_battle(robot_count: int = randi_range(min_robot_count, max_robot_count),
 				 enemy_count: int = randi_range(min_enemy_count, max_enemy_count)) -> void:
 	
+	reset_navigation_timer.stop()
+	
 	var tween: Tween = get_tree().create_tween()
 	tween.set_parallel()
 	tween.tween_callback(spawn_robots.bind(robot_count))
 	tween.tween_callback(spawn_enemies.bind(enemy_count))
+	
+	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE)
 
 
 func start_battle() -> void:
@@ -93,6 +100,9 @@ func start_battle() -> void:
 			enemy = enemy as Enemy
 			enemy.targets = player_robots
 			enemy.start_navigating(player_robots.pick_random())
+	
+	MusicPlayer.switch_song(MusicPlayer.SongNames.MAIN_BATTLE, false)
+	reset_navigation_timer.start()
 
 #endregion
 #===================================================================================================
@@ -149,6 +159,7 @@ func _is_battle_ended() -> bool:
 
 func _on_entity_died(entity: Entity) -> void:
 	_set_valid_entities([entity])
+	reset_navigation_timer.start()
 	
 	# Check if battle is finished and start a new round
 	if _is_battle_ended():
@@ -179,6 +190,11 @@ func _on_entity_died(entity: Entity) -> void:
 			enemy = enemy as Enemy
 			if enemy.navigator_component.current_target == entity:
 				enemy.start_navigating()
+
+
+func _on_reset_navigation_timer_timeout() -> void:
+	# Reset navigation for all entities when a certain amount of time has passed but no death occurs
+	start_battle()
 
 #endregion
 #===================================================================================================
