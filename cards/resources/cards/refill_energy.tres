@@ -8,11 +8,12 @@
 
 [resource]
 script = ExtResource("6_kxop8")
-name = "FILL ME UP DADDY"
+name = "FULL CHARGE"
 type = 2
 rarity = 0
 background = ExtResource("5_40e0a")
 sprite = ExtResource("7_apkhe")
 energy = 2
+weight = 1
 activations = Array[ExtResource("1_skcy8")]([ExtResource("2_e5ms0")])
 metadata/_custom_type_script = "uid://6dduflnjkwry"

@@ -15,6 +15,7 @@ var deck: Array[CardData] = []
 
 # @onready var deck_data: DeckData = preload("res://cards/deck/test_deck.tres")
 @onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
+const energy_cap: int = 15
 var max_energy: int = 4
 var energy: int = 4
 var deck_size = 5000
@@ -60,18 +61,33 @@ func get_card_by_rarity(cards: Array, rarity: Enum.CARD_RARITY) -> CardData:
 
 func draw(amount: int = 1, type: int = -1) -> void:
 	if deck.size() <= 0: return
-	var card
+	var card_data: CardData
 
 	for i in amount:
 		if type >= 0:
-			card = get_card_by_rarity(deck, type)
-			if !card: return
-			deck.erase(card)
+			card_data = get_card_by_rarity(deck, type)
+			if !card_data: return
+			deck.erase(card_data)
 		else:
-			card = deck.pop_front()
+			card_data = pop_deck_by_weight()
 
 		SignalBus.update_hand.emit()
-		SignalBus.draw_card.emit(card)
+		SignalBus.draw_card.emit(card_data)
+
+func pop_deck_by_weight():
+	var total_weight = 0
+	for card_data: CardData in deck_data.card_pool:
+		total_weight += card_data.weight
+
+	# Pick a random number between 0 and total_weight
+	var r = randi() % total_weight
+	var running_sum = 0
+
+	# Find which card corresponds to r
+	for card_data: CardData  in deck_data.card_pool:
+		running_sum += card_data.weight
+		if r < running_sum:
+			return card_data.duplicate(true)
 
 func create_card(data: CardData):
 	SignalBus.update_hand.emit()
@@ -132,7 +148,12 @@ func card_kill_robot_maybe():
 				layer.get_children().pick_random().queue_free()
 
 func increase_energy(amount: int):
+
 	max_energy += amount
+
+	if max_energy >= energy_cap:
+		max_energy = energy_cap
+
 	SignalBus.update_energy.emit(energy)
 
 func fill_energy(amount: int):
@@ -198,7 +219,7 @@ func big_update():
 
 	for card in cards_in_hand:
 		var new_data = CardData.new()
-		new_data = card.data
+		new_data = card.data.duplicate(true)
 		var picked_card = deck_data.card_pool.pick_random()
 		new_data.activations.append(picked_card.activations[0])
 		new_data.activations.append(damage_nexus_activation)
