@@ -25,7 +25,7 @@ extends CharacterBody2D
 
 
 var parameters: EntityParameters
-var appearance_timing_offset: float = 0.0
+var timing_offset: float = 0.0
 
 @onready var visuals: Node2D = $Visuals
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
@@ -55,8 +55,11 @@ func _ready() -> void:
 	attack_range.body_entered.connect(_on_attack_range_entered)
 	wall_bounce_component.sleeping_state_changed.connect(_on_wall_bounce_component_sleeping_state_changed)
 	
-	await get_tree().create_timer(appearance_timing_offset, false).timeout
+	hide()
+	await get_tree().create_timer(timing_offset, false).timeout
 	animation_player.play("appear")
+	await animation_player.animation_finished
+	animation_player.play("idle")
 
 
 func _process(delta: float) -> void:
@@ -81,6 +84,9 @@ func start_navigating(target: Node2D = null) -> void:
 	if target:
 		targets.append(target)
 	navigator_component.start(target)
+	
+	await get_tree().create_timer(timing_offset, false).timeout
+	animation_player.play("move")
 
 
 func stop_navigating(position_to_look_at: Vector2 = Vector2.ZERO) -> void:
@@ -91,7 +97,7 @@ func stop_navigating(position_to_look_at: Vector2 = Vector2.ZERO) -> void:
 	move_and_slide()
 	navigator_component.stop()
 	wall_bounce_component.freeze = true
-	#animation_state_machine.travel("idle")
+	animation_player.play("idle")
 	path_recalculation_timer.stop()
 
 
@@ -105,6 +111,7 @@ func _on_navigator_component_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_navigator_component_target_reached() -> void:
 	if navigator_component.has_valid_current_target():
+		_on_attack_range_entered(navigator_component.current_target)
 		navigator_component.resume()
 		return
 	

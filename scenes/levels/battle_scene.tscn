@@ -14,7 +14,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-15, 167, 662, 169, 663
 script = ExtResource("1_6a6ir")
 
 [node name="ResetNavigationTimer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 1.8
 one_shot = true
 
 [node name="Background" type="Node2D" parent="."]

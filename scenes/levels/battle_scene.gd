@@ -21,6 +21,7 @@ const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 @onready var reset_navigation_timer: Timer = $ResetNavigationTimer
 
 
+
 var player_robot_types: Array[EntityParameters] = []
 var enemy_types: Array[EntityParameters] = []
 var player_robots: Array[Node2D] = []
@@ -40,6 +41,7 @@ func _ready() -> void:
 	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE, false, true)
 	
+	await get_tree().create_timer(0.5, false).timeout
 	prep_battle()
 
 #endregion
@@ -48,7 +50,7 @@ func _ready() -> void:
 
 func spawn_robot() -> void:
 	var new_robot: PlayerRobot = PlayerRobotFactory.new_robot(player_robot_types.pick_random())
-	new_robot.appearance_timing_offset = randf_range(0.0, APPEAR_TIMING_OFFSET)
+	new_robot.timing_offset = randf_range(0.0, APPEAR_TIMING_OFFSET)
 	player_layer.add_child(new_robot)
 	new_robot.position = Vector2(player_marker.position.x + randf_range(-POSITION_OFFSET, POSITION_OFFSET),
 								 player_marker.position.y + randf_range(-POSITION_OFFSET, POSITION_OFFSET))
@@ -62,7 +64,7 @@ func spawn_robots(how_many: int) -> void:
 
 func spawn_enemy() -> void:
 	var new_enemy: Enemy = EnemyFactory.new_enemy(enemy_types.pick_random())
-	new_enemy.appearance_timing_offset = randf_range(0.0, APPEAR_TIMING_OFFSET)
+	new_enemy.timing_offset = randf_range(0.0, APPEAR_TIMING_OFFSET)
 	enemy_layer.add_child(new_enemy)
 	new_enemy.position = Vector2(enemy_marker.position.x + randf_range(-POSITION_OFFSET, POSITION_OFFSET),
 								 enemy_marker.position.y + randf_range(-POSITION_OFFSET, POSITION_OFFSET))
@@ -92,11 +94,15 @@ func start_battle() -> void:
 	
 	if not player_robots.is_empty() and not enemies.is_empty():
 		for player_robot in player_robots:
+			if player_robot.is_queued_for_deletion():
+				continue
 			player_robot = player_robot as PlayerRobot
 			player_robot.targets = enemies
 			player_robot.start_navigating(enemies.pick_random())
 		
 		for enemy in enemies:
+			if enemy.is_queued_for_deletion():
+				continue
 			enemy = enemy as Enemy
 			enemy.targets = player_robots
 			enemy.start_navigating(player_robots.pick_random())
