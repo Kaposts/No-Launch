@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_7m1fu")
 amount = 1
+rarity = -1
 description = "Draw one card"
 function = 0
 rounds = 0

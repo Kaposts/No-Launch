@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5hg061g82116" path="res://cards/card.gd" id="1_ttli1"]
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="2_032ga"]
-[ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="3_032ga"]
+[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="3_032ga"]
 [ext_resource type="Texture2D" uid="uid://jquepj7fyeds" path="res://cards/assets/highlight.png" id="3_77qwj"]
 [ext_resource type="Texture2D" uid="uid://nswnxasf6ps6" path="res://cards/assets/rarity/rarity2.png" id="4_352vs"]
 [ext_resource type="Texture2D" uid="uid://daxjiqxhbe6r" path="res://cards/assets/rarity/rarity1.png" id="6_77qwj"]
@@ -417,6 +417,20 @@ theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="corrupt" type="Label" parent="Container/info"]
+visible = false
+layout_mode = 0
+offset_left = 13.0
+offset_top = 89.0
+offset_right = 75.0
+offset_bottom = 103.0
+rotation = -1.05108
+scale = Vector2(1.69974, 1.69974)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "CORRUPTED"
 
 [node name="anim" type="AnimationPlayer" parent="."]
 libraries = {

@@ -18,9 +18,11 @@ func _ready() -> void:
 func update_health() -> void:
 	debug_label.text = "HP: %2d" % health
 
-
 func _on_body_entered(body: Node2D) -> void:
-	health -= 1
+	var damage = 1
+	if RoundEffect.nexus_takes_double_damage:
+		damage = 2
+	health -= damage
 	update_health()
 	body.health_component.damage(1000)
 
