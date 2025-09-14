@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DeckData" load_steps=11 format=3 uid="uid://capo0ballwxnh"]
+[gd_resource type="Resource" script_class="DeckData" load_steps=19 format=3 uid="uid://capo0ballwxnh"]
 
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="1_m1yx2"]
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="2_fq1aa"]
@@ -10,9 +10,17 @@
 [ext_resource type="Resource" uid="uid://cfgryt26darl7" path="res://cards/resources/cards/army_spd_plus_one.tres" id="7_bnwtv"]
 [ext_resource type="Resource" uid="uid://djejey6fjbje" path="res://cards/resources/cards/crazy.tres" id="8_ni3em"]
 [ext_resource type="Resource" uid="uid://oc5ctaewd073" path="res://cards/resources/cards/refill_energy.tres" id="9_qr5wy"]
+[ext_resource type="Resource" uid="uid://ch361o6xsfvax" path="res://cards/resources/cards/army_big_army_huge.tres" id="10_bnwtv"]
+[ext_resource type="Resource" uid="uid://b5vdx8k6a8ta0" path="res://cards/resources/cards/energy_cap_2.tres" id="11_i1urm"]
+[ext_resource type="Resource" uid="uid://n6i8rb1xqoio" path="res://cards/resources/cards/gain_2_energy.tres" id="12_6iiyf"]
+[ext_resource type="Resource" uid="uid://cfmh3pet40rxc" path="res://cards/resources/cards/draw_3.tres" id="13_6mhpd"]
+[ext_resource type="Resource" uid="uid://wpifo503051e" path="res://cards/resources/cards/draw_rare.tres" id="14_6iiyf"]
+[ext_resource type="Resource" uid="uid://bdjiwpo3liggs" path="res://cards/resources/cards/heal_nexus_1.tres" id="15_6mhpd"]
+[ext_resource type="Resource" uid="uid://dmfj6noilrbqf" path="res://cards/resources/cards/heal_nexus_3.tres" id="16_2njoq"]
+[ext_resource type="Resource" uid="uid://dxex3hg25414t" path="res://cards/resources/cards/duplicate_hand.tres" id="17_xbnij"]
 
 [resource]
 script = ExtResource("2_jm7wc")
 size = 20
-card_pool = Array[ExtResource("1_m1yx2")]([ExtResource("2_fq1aa"), ExtResource("3_oeao5"), ExtResource("4_1g8h1"), ExtResource("5_ni3em"), ExtResource("6_qr5wy"), ExtResource("7_bnwtv"), ExtResource("8_ni3em"), ExtResource("9_qr5wy")])
+card_pool = Array[ExtResource("1_m1yx2")]([ExtResource("2_fq1aa"), ExtResource("3_oeao5"), ExtResource("4_1g8h1"), ExtResource("5_ni3em"), ExtResource("6_qr5wy"), ExtResource("7_bnwtv"), ExtResource("8_ni3em"), ExtResource("9_qr5wy"), ExtResource("10_bnwtv"), ExtResource("11_i1urm"), ExtResource("12_6iiyf"), ExtResource("13_6mhpd"), ExtResource("14_6iiyf"), ExtResource("15_6mhpd"), ExtResource("16_2njoq"), ExtResource("17_xbnij")])
 metadata/_custom_type_script = "uid://cjpgkkglbfd61"

@@ -10,7 +10,7 @@ func _on_play_card(card: Card):
 			Enum.CARD_FUNCTION.DRAW_CARD:
 				for i in activation.amount:
 					await get_tree().create_timer(0.2).timeout
-					Global.draw(1)
+					Global.draw(1, activation.rarity)
 
 			Enum.CARD_FUNCTION.INCREASE_ENERGY:
 				Global.increase_energy(activation.amount)
@@ -23,3 +23,9 @@ func _on_play_card(card: Card):
 
 			Enum.CARD_FUNCTION.BUFF_ARMY:
 				PlayerBuffs.assign_card(activation)
+
+			Enum.CARD_FUNCTION.HEAL_NEXUS:
+				SignalBus.heal_nexus.emit(activation.heal_amount)
+
+			Enum.CARD_FUNCTION.DUPLICATE_HAND:
+				Global.duplicate_hand()

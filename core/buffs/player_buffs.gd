@@ -14,12 +14,12 @@ func get_buffs() -> PlayerBuffsResource:
 	for buff: Buff in buffs:
 		var data = buff.data
 		if data is ArmyBuffResource:
-			bonus_damage += buff.data.damage
-			bonus_health += buff.data.health
-			bonus_speed += buff.data.speed
+			bonus_damage += data.damage
+			bonus_health += data.health
+			bonus_speed += data.speed
 
 		if data is ArmySizeResource:
-			bonus_army += buff.army_amount
+			bonus_army += data.army_amount
 
 	var resource = PlayerBuffsResource.new()
 	resource.bonus_army = bonus_army
@@ -35,10 +35,9 @@ func assign_card(activation: ActivationResource):
 	add_child(buff_instance)
 
 	var sprites:Array = []
+	
 	#buff animation logic
-	print('assign)')
 	if activation is ArmyBuffResource:
-		print('yes)')
 		if activation.damage > 0:
 			sprites.append(load("res://entities/assets/buffs/buff1.png"))
 		if activation.health > 0:

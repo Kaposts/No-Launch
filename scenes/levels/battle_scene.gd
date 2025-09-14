@@ -27,6 +27,8 @@ func _ready() -> void:
 	robot_button.pressed.connect(_on_robot_button_pressed)
 	enemy_button.pressed.connect(_on_enemy_button_pressed)
 	start_battle_button.pressed.connect(_on_start_battle_button_pressed)
+
+	SignalBus.spawn_player.connect(_on_robot_button_pressed)
 	
 	_load_player_available_robot_types()
 	_load_enemy_types()
