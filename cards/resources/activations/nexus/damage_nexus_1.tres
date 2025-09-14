@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NexusResource" load_steps=2 format=3 uid="uid://nnjykfh0v225"]
+
+[ext_resource type="Script" uid="uid://bn0trt72uqms6" path="res://cards/resources/activations/nexus.gd" id="1_lf7qo"]
+
+[resource]
+script = ExtResource("1_lf7qo")
+heal_amount = -1
+description = "1 damage to  your nexus"
+function = 5
+rounds = 1
+metadata/_custom_type_script = "uid://bn0trt72uqms6"

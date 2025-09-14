@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=6 format=3 uid="uid://bdjiwpo3liggs"]
+
+[ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_s7pmi"]
+[ext_resource type="Resource" uid="uid://dd3afufvequm1" path="res://cards/resources/activations/nexus/heal_nexus_1.tres" id="2_s7pmi"]
+[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_1xgk5"]
+[ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_7vt4k"]
+[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_i8bph"]
+
+[resource]
+script = ExtResource("4_7vt4k")
+name = "Firewall"
+type = 1
+rarity = 0
+background = ExtResource("3_1xgk5")
+sprite = ExtResource("5_i8bph")
+energy = 1
+activations = Array[ExtResource("1_s7pmi")]([ExtResource("2_s7pmi")])
+metadata/_custom_type_script = "uid://6dduflnjkwry"

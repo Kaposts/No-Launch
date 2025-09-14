@@ -27,9 +27,12 @@ MusicPlayer="*res://autoloads/music_player/music_player.tscn"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-Audio="*res://addons/audio_manager/audio.gd"
 Activate="*res://core/activate.gd"
 PlayerBuffs="*res://core/buffs/player_buffs.gd"
+Audio="*res://addons/audio_manager/audio.gd"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+Shaker="*res://addons/shaker/src/Shaker.gd"
+RoundEffect="*res://core/round_effect.gd"
 
 [dialogic]
 
@@ -102,7 +105,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/editor_generate_functions/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/editor_generate_functions/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [file_customization]
 
@@ -122,6 +125,7 @@ death_layer="Layer to display death animations for entities"
 player_nexus=""
 enemy_nexus=""
 battle_scene="Main battle scene"
+player_layer=""
 
 [gui]
 

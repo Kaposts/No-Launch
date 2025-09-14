@@ -1,6 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccxkca6puflbo"]
+[gd_scene load_steps=9 format=3 uid="uid://ccxkca6puflbo"]
 
 [ext_resource type="Script" uid="uid://bl654htndwwbj" path="res://ui/player_ui.gd" id="1_cfom6"]
+[ext_resource type="Texture2D" uid="uid://daxjiqxhbe6r" path="res://cards/assets/rarity/rarity1.png" id="2_vq5xy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vq5xy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehg4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwa1g"]
+
+[sub_resource type="Animation" id="Animation_ehg4m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vq5xy"]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -40), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iwa1g"]
+_data = {
+&"RESET": SubResource("Animation_ehg4m"),
+&"show": SubResource("Animation_vq5xy")
+}
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_cfom6")
@@ -34,5 +78,55 @@ offset_bottom = 257.0
 text = "End round
 "
 
+[node name="round_effect" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -40.0
+offset_bottom = -4.0
+grow_horizontal = 2
+
+[node name="BG" type="TextureRect" parent="round_effect"]
+self_modulate = Color(1, 0, 0.258824, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_right = 180.0
+offset_bottom = 32.0
+grow_horizontal = 2
+texture = ExtResource("2_vq5xy")
+
+[node name="description" type="Label" parent="round_effect/BG"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU ARE CORRUPTED NOW"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="round_effect_close" type="Button" parent="round_effect"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 4.0
+offset_right = 488.0
+offset_bottom = 26.0
+scale = Vector2(1.76, 1)
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vq5xy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ehg4m")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iwa1g")
+text = "X"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="round_effect"]
+libraries = {
+&"": SubResource("AnimationLibrary_iwa1g")
+}
+
 [connection signal="pressed" from="play_turn" to="." method="_on_play_turn_pressed"]
 [connection signal="pressed" from="play_turn2" to="." method="_on_play_turn_2_pressed"]
+[connection signal="pressed" from="round_effect/round_effect_close" to="." method="_on_round_effect_close_pressed"]

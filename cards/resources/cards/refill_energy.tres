@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://grc6rgdo5j0i" path="res://cards/resources/activations/energy/fill_energy.tres" id="2_e5ms0"]
 [ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="5_40e0a"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="6_kxop8"]
-[ext_resource type="Texture2D" uid="uid://c18g6q5ifpcfl" path="res://icon.svg" id="7_apkhe"]
+[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="7_apkhe"]
 
 [resource]
 script = ExtResource("6_kxop8")

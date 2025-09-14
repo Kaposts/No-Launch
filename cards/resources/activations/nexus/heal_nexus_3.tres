@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="NexusResource" load_steps=2 format=3 uid="uid://beaav2ciqy8vb"]
+
+[ext_resource type="Script" uid="uid://bn0trt72uqms6" path="res://cards/resources/activations/nexus.gd" id="1_0ymwy"]
+
+[resource]
+script = ExtResource("1_0ymwy")
+heal_amount = 3
+description = "Heal nexus by 3"
+function = 5
+rounds = 1
+metadata/_custom_type_script = "uid://bn0trt72uqms6"
