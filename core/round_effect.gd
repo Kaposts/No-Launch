@@ -17,7 +17,6 @@ func _on_end_round():
 	activate_effect(pick_random_effect())
 
 func pick_random_effect() -> int:
-	return 4
 	return Enum.ROUND_EFFECTS.values().pick_random()
 
 func activate_effect(effect: Enum.ROUND_EFFECTS):
