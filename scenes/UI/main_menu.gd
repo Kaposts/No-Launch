@@ -6,7 +6,7 @@ extends Node2D
 
 func _ready():
 	MusicPlayer.switch_song(MusicPlayer.SongNames.TITLE_THEME, false, true)
-	await Global.transition()
+	SceneManager.fade_in()
 
 func _on_options_button_pressed() -> void:
 	Audio.play_random("sfx_ui_click")
