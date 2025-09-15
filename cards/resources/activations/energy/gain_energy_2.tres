@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_l6053")
 amount = 2
-description = "+2 EP"
+description = "Gain "
 function = 2
 rounds = 1
 metadata/_custom_type_script = "uid://q3rw36rkkhnn"

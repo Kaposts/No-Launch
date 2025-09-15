@@ -4,16 +4,15 @@
 [ext_resource type="Resource" uid="uid://130u2hs36wut" path="res://cards/resources/activations/energy/energy_cap_one.tres" id="2_f3ykg"]
 [ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_uk1gr"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_qxfoo"]
-[ext_resource type="Texture2D" uid="uid://do81txpern211" path="res://cards/assets/Card Sprites/Action Fill +2 EP.png" id="5_85t2b"]
+[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_vramf"]
 
 [resource]
 script = ExtResource("4_qxfoo")
-name = "DLC"
+name = "ENERGIZED"
 type = 2
-rarity = 0
+rarity = 1
 background = ExtResource("3_uk1gr")
-sprite = ExtResource("5_85t2b")
-energy = 2
-weight = 5
+sprite = ExtResource("5_vramf")
+energy = 3
 activations = Array[ExtResource("1_85t2b")]([ExtResource("2_f3ykg")])
 metadata/_custom_type_script = "uid://6dduflnjkwry"
