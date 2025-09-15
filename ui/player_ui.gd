@@ -52,4 +52,3 @@ func _on_restart_pressed() -> void:
 	await Global.transition()
 	get_tree().reload_current_scene()
 	SignalBus.start_game.emit()
-

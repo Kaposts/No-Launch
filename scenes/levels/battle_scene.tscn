@@ -47,6 +47,7 @@ polygon = PackedVector2Array(-9, 15, 677, 17, 680, 242, -9, 243)
 [node name="PlayerNexus" parent="." groups=["player_nexus"] instance=ExtResource("2_6b61y")]
 position = Vector2(82, 134)
 collision_mask = 2
+player = true
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerNexus"]
 show_behind_parent = true
@@ -58,6 +59,7 @@ region_rect = Rect2(0, 0, 216, 314)
 
 [node name="EnemyNexus" parent="." groups=["enemy_nexus"] instance=ExtResource("2_6b61y")]
 position = Vector2(555, 134)
+enemy = true
 health = 40
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemyNexus"]

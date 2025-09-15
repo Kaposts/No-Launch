@@ -4,6 +4,9 @@ extends Area2D
 ## Author: Lestavol
 ## Home Base for each faction
 
+@export var player: bool
+@export var enemy: bool
+
 @export var health: int = 20
 @export var can_destroy_entity: bool = false:
 	set(flag):
@@ -12,6 +15,7 @@ extends Area2D
 
 @onready var debug_label: Label = $DebugLabel
 @onready var collider: CollisionShape2D = $CollisionShape2D
+
 
 
 func _ready() -> void:
@@ -32,6 +36,15 @@ func _on_body_entered(body: Node2D) -> void:
 	health -= damage
 	update_health()
 	body.health_component.damage(1000)
+
+	if health <= 0:
+		die()
+
+func die():
+	if enemy:
+		get_tree().change_scene_to_file("res://scenes/Cutscenes/EndingCutScene.tscn")
+	if player:
+		get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
 
 
 func _on_heal_nexus(value: int):
