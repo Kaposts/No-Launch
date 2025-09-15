@@ -14,6 +14,7 @@ extends Area2D
 
 @onready var debug_label: Label = $DebugLabel
 @onready var collider: CollisionShape2D = $CollisionShape2D
+@onready var hurt_sfx_player: RandomAudioPlayer = $HurtSFXPlayer
 
 
 
@@ -34,7 +35,9 @@ func _on_body_entered(body: Node2D) -> void:
 	health -= damage
 	update_health()
 	body.health_component.damage(1000)
-
+	
+	hurt_sfx_player.play_random()
+	
 	if health <= 0:
 		call_deferred("die")
 

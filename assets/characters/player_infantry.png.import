@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8187367bd413158184915993b6e30e99d09c38894d51e689fc5715c4573ac34d
-size 797
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ovl8y74ydfug"
+path="res://.godot/imported/player_infantry.png-962e09fae291b85cf1b9027f33d39cd4.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/characters/player_infantry.png"
+dest_files=["res://.godot/imported/player_infantry.png-962e09fae291b85cf1b9027f33d39cd4.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

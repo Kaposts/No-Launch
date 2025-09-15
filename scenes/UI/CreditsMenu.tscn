@@ -104,12 +104,17 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="GridContainer/VBoxContainer4"]
 layout_mode = 2
-text = "Musicians:"
+text = "Musician:"
 label_settings = ExtResource("6_ggk6v")
 
 [node name="Label2" type="Label" parent="GridContainer/VBoxContainer4"]
 layout_mode = 2
 text = "TP39"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label4" type="Label" parent="GridContainer/VBoxContainer4"]
+layout_mode = 2
+text = "SFX Designer:"
 label_settings = ExtResource("6_ggk6v")
 
 [node name="Label3" type="Label" parent="GridContainer/VBoxContainer4"]

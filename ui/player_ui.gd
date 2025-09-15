@@ -6,6 +6,7 @@ func _ready():
 	SignalBus.round_effect_activate.connect(_on_round_effect_activate)
 	SignalBus.round_effect_hide.connect(on_round_effect_hide)
 	SignalBus.player_lost.connect(_on_player_lost)
+	SignalBus.end_round.connect(_on_end_round)
 
 
 func _on_update_energy(value):
@@ -15,6 +16,12 @@ func _on_update_hand():
 
 func _on_play_turn_pressed() -> void:
 	Global.play_turn()
+	$play_turn.disabled = true
+
+
+func _on_end_round() -> void:
+	$play_turn.disabled = false
+
 
 func _on_play_turn_2_pressed() -> void:
 	SignalBus.end_round.emit()

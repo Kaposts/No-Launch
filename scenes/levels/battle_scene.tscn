@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcc4ea6baq4mq"]
+[gd_scene load_steps=10 format=3 uid="uid://bcc4ea6baq4mq"]
 
 [ext_resource type="Script" uid="uid://blwyr6s3hoy0c" path="res://scenes/levels/battle_scene.gd" id="1_6a6ir"]
 [ext_resource type="PackedScene" uid="uid://mqf25vmd4yyl" path="res://entities/nexus/nexus.tscn" id="2_6b61y"]
 [ext_resource type="Texture2D" uid="uid://bm63mpsvjyyog" path="res://assets/Background/Background Ground ( darker ).png" id="2_emqap"]
+[ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="2_smbrp"]
+[ext_resource type="AudioStream" uid="uid://bcgca3x3m4mao" path="res://assets/SFX/system/end_turn.wav" id="3_xuffl"]
 [ext_resource type="Texture2D" uid="uid://l1j0i3abask5" path="res://assets/battle_scene/foreground.png" id="4_a0jns"]
 [ext_resource type="Texture2D" uid="uid://cwiwig2kmyyr1" path="res://assets/Background/ForeGround Left.png" id="6_2bu30"]
 [ext_resource type="Texture2D" uid="uid://cvd4sesmxcjhw" path="res://assets/Background/ForeGround Right.png" id="6_k8b4e"]
@@ -19,6 +21,10 @@ min_enemy_count = 7
 [node name="ResetNavigationTimer" type="Timer" parent="."]
 wait_time = 1.8
 one_shot = true
+
+[node name="RoundEndSFXPlayer" parent="." instance=ExtResource("2_smbrp")]
+volume_db = 5.0
+streams = Array[AudioStream]([ExtResource("3_xuffl")])
 
 [node name="Background" type="Node2D" parent="."]
 

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://dyipc677cbs7u"]
+
+[ext_resource type="AudioStream" uid="uid://c5lwlaq5l8kdr" path="res://assets/SFX/combat/core_damaged.wav" id="1_ff60r"]
+[ext_resource type="Script" uid="uid://bby850gxeiihc" path="res://addons/audio_manager/audio_data.gd" id="2_gfw75"]
+
+[resource]
+script = ExtResource("2_gfw75")
+res_name = "sfx_combat_core_damaged"
+res_stream = ExtResource("1_ff60r")
+res_volume_db = 0.0
+res_pitch_scale = 1.0
+res_pitch_randomizer = false

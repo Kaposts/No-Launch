@@ -19,6 +19,7 @@ const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 @onready var player_nexus: Nexus = $PlayerNexus
 @onready var enemy_nexus: Nexus = $EnemyNexus
 @onready var reset_navigation_timer: Timer = $ResetNavigationTimer
+@onready var round_end_sfx_player: RandomAudioPlayer = $RoundEndSFXPlayer
 
 
 var player_robot_types: Array[EntityParameters] = []
@@ -178,6 +179,7 @@ func _on_entity_died(entity: Entity) -> void:
 	# Check if battle is finished and start a new round
 	if _is_battle_ended():
 		SignalBus.end_round.emit()
+		round_end_sfx_player.play_random()
 		prep_battle()
 		return
 	
