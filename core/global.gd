@@ -13,13 +13,13 @@ var cards_in_hand: Array[Card] = []
 var cards_in_play: Array[Card] = []
 var deck: Array[CardData] = []
 
-# @onready var deck_data: DeckData = preload("res://cards/deck/test_deck.tres")
-@onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
+@onready var deck_data: DeckData = preload("res://cards/deck/test_deck.tres")
+# @onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
 const energy_cap: int = 15
 var max_energy: int = 4
 var energy: int = 4
 var deck_size = 5000
-var card_draw_per_round: int = 2
+var card_draw_per_round: int = 3
 var is_playing_turn: bool = false
 
 var game_is_paused: bool = false
@@ -177,12 +177,14 @@ func _on_end_round():
 		draw()
 
 func duplicate_hand():
-	var cards_to_dup = cards_in_hand
+	var cards_to_dup = cards_in_hand.duplicate(true)
 
-	var skip: bool = false
 	## SORRY I AM TOO TIRED AND SPENT ALREADY TOO MUCH TIME TO FIX THIS PROPERLY
 	for card in cards_to_dup.size():
-		for activation:ActivationResource in cards_to_dup[card].data.activations:
+		var skip: bool = false
+		if !cards_to_dup[card]: return
+		var card_data = cards_to_dup[card].data
+		for activation:ActivationResource in card_data.activations:
 			print(Enum.CARD_FUNCTION.DUPLICATE_HAND)
 			print(activation.function)
 			print(activation.function == Enum.CARD_FUNCTION.DUPLICATE_HAND)
@@ -223,6 +225,8 @@ func big_update():
 		var picked_card = deck_data.card_pool.pick_random()
 		new_data.activations.append(picked_card.activations[0])
 		new_data.activations.append(damage_nexus_activation)
+		new_data.energy += 2
+		card.energy_cost.text = str(new_data.energy)
 		card.data = new_data
 
 		print(new_data.activations)
