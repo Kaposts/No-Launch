@@ -44,9 +44,7 @@ layout/style_directory={
 "": "res://dialogic/New_File.tres",
 "New_File": "res://dialogic/New_File.tres"
 }
-variables={
-"player_name": "Jhon"
-}
+variables={}
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogic/New_File.tres"]
 layout/default_style="res://dialogic/New_File.tres"

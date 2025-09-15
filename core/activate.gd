@@ -25,7 +25,7 @@ func _on_play_card(card: Card):
 				PlayerBuffs.assign_card(activation)
 
 			Enum.CARD_FUNCTION.HEAL_NEXUS:
-				SignalBus.heal_nexus.emit(activation.heal_amount)
+				get_tree().get_first_node_in_group("player_nexus")._on_heal_nexus(activation.heal_amount)
 
 			Enum.CARD_FUNCTION.DUPLICATE_HAND:
 				Global.duplicate_hand()
