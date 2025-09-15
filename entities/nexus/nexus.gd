@@ -34,7 +34,9 @@ func _on_body_entered(body: Node2D) -> void:
 	health -= damage
 	update_health()
 	body.health_component.damage(1000)
-
+	
+	Audio.play_by_name(SFX.SFX_COMBAT_core_damaged)
+	
 	if health <= 0:
 		call_deferred("die")
 

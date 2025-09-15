@@ -178,6 +178,7 @@ func _on_entity_died(entity: Entity) -> void:
 	# Check if battle is finished and start a new round
 	if _is_battle_ended():
 		SignalBus.end_round.emit()
+		Audio.play_by_name(SFX.SFX_SYSTEM_end_turn)
 		prep_battle()
 		return
 	
