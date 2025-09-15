@@ -1,0 +1,10 @@
+[wait time="1.0"]
+[sound path="res://assets/SFX/ui/error/008.ogg" volume="0.0" bus="SFX"]
+Dev: Are you  KIDDING ME?! Now it's not even LAUNCHING?!
+[sound path="res://assets/SFX/ui/error/007.ogg" volume="0.0" bus="SFX"]
+Dev: What do I do now? The deadline is in a few hours!
+Dev: Wait...Maybe I could use those CatGPT helpers everyone is talking about!
+Dev: Yes! They will get inside the computer and fix my game! I'm a genius!
+[sound path="res://assets/SFX/ui/confirmation/003.ogg" volume="0.0" bus="SFX"]
+[wait time="0.2"]
+[signal arg="Game_Start"]

@@ -1,0 +1,119 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdilluerfe10k"]
+
+[ext_resource type="Script" uid="uid://xxl3e5fq4xsv" path="res://scenes/UI/credits_menu.gd" id="1_p787r"]
+[ext_resource type="Texture2D" uid="uid://dnbrkludb54v8" path="res://assets/UI/Credits Menu - Without Close.png" id="1_rwv5u"]
+[ext_resource type="Texture2D" uid="uid://c8qeg65lntobq" path="res://assets/UI/UI_Buttons/Close - Normal.png" id="2_6xtwi"]
+[ext_resource type="Texture2D" uid="uid://dd4t5yb2uby8g" path="res://assets/UI/UI_Buttons/Close - Clicked.png" id="3_p787r"]
+[ext_resource type="Texture2D" uid="uid://7o7f5byf5rh6" path="res://assets/UI/UI_Buttons/Close - Hover.png" id="4_ggk6v"]
+[ext_resource type="LabelSettings" uid="uid://bd4jlbqvq7d6x" path="res://assets/UI/Label.tres" id="6_ggk6v"]
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p787r")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 56.0
+offset_right = 491.0
+offset_bottom = 287.0
+texture = ExtResource("1_rwv5u")
+
+[node name="CloseButton" type="TextureButton" parent="."]
+offset_left = 450.0
+offset_top = 61.0
+offset_right = 465.0
+offset_bottom = 76.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("2_6xtwi")
+texture_pressed = ExtResource("3_p787r")
+texture_hover = ExtResource("4_ggk6v")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 189.2
+offset_top = 98.0
+offset_right = 455.2
+offset_bottom = 274.0
+theme_override_constants/h_separation = 100
+theme_override_constants/v_separation = 25
+columns = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GridContainer/VBoxContainer"]
+layout_mode = 2
+text = "Programmers:"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label2" type="Label" parent="GridContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lestavol"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label3" type="Label" parent="GridContainer/VBoxContainer"]
+layout_mode = 2
+text = "Hatter"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GridContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Artists:"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label2" type="Label" parent="GridContainer/VBoxContainer2"]
+layout_mode = 2
+text = "King_Kai"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label3" type="Label" parent="GridContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Something"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label4" type="Label" parent="GridContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Soul"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GridContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Designers:"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label2" type="Label" parent="GridContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Cabage"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="GridContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GridContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Musicians:"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label2" type="Label" parent="GridContainer/VBoxContainer4"]
+layout_mode = 2
+text = "TP39"
+label_settings = ExtResource("6_ggk6v")
+
+[node name="Label3" type="Label" parent="GridContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Mo Memo"
+label_settings = ExtResource("6_ggk6v")
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
