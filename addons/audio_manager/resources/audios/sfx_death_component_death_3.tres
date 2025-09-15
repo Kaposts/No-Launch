@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://3qatobh3qi73"]
 
 [ext_resource type="AudioStream" uid="uid://b7vgfxdrfjt1n" path="res://assets/SFX/death_component/death_3.ogg" id="1_4xd3f"]
-[ext_resource type="Script" uid="uid://bby850gxeiihc" path="res://addons/audio_manager/audio_data.gd" id="2_na380"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_na380"]
 
 [resource]
 script = ExtResource("2_na380")
