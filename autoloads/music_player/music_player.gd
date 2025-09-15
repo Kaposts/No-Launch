@@ -7,6 +7,9 @@ enum SongNames {
 	PRE_BATTLE,
 	MAIN_BATTLE,
 	POST_BATTLE,
+	TITLE_THEME,
+	OPENING_CUTSCENE,
+	ENDING_CUTSCENE,
 }
 
 var _playback_position: float = 0.0

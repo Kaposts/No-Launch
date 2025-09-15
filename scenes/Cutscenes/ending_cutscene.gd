@@ -5,8 +5,7 @@ func _ready():
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.start("Cutscene3")
 	
-	pass
-	
+	MusicPlayer.switch_song(MusicPlayer.SongNames.ENDING_CUTSCENE, false, true)
 
 
 func _on_dialogic_signal(argument: String):
