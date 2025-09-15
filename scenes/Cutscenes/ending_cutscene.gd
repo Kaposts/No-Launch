@@ -2,6 +2,11 @@ extends Node
 
 
 func _ready():
+	get_tree().paused = false
+	
+	await Global.transition()
+	$ColorRect.hide()
+	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.start("Cutscene3")
 	
