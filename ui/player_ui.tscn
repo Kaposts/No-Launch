@@ -112,10 +112,13 @@ texture = ExtResource("12_ud46t")
 script = ExtResource("1_cfom6")
 
 [node name="energy" type="Label" parent="."]
-offset_left = 21.0
-offset_top = 229.0
-offset_right = 141.0
-offset_bottom = 243.0
+offset_left = 458.0
+offset_top = 211.0
+offset_right = 686.0
+offset_bottom = 239.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 24
 text = "Executive Power: 4/4"
 
 [node name="cards_in_deck" type="Label" parent="."]
@@ -128,9 +131,9 @@ text = "Cards inside deck: "
 
 [node name="play_turn" type="Button" parent="."]
 offset_left = 550.0
-offset_top = 192.0
+offset_top = 177.0
 offset_right = 628.0
-offset_bottom = 220.0
+offset_bottom = 205.0
 text = "Play turn"
 
 [node name="play_turn2" type="Button" parent="."]

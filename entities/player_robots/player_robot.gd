@@ -6,6 +6,9 @@ extends Entity
 
 
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
+@onready var hit_sfx_player: RandomAudioPlayer2D = $HitSFXPlayer
+@onready var hurt_sfx_player: RandomAudioPlayer2D = $HurtSFXPlayer
+
 
 #===================================================================================================
 #region BUILT-IN FUNCTIONS
@@ -37,11 +40,13 @@ func _on_apply_buff(data: ActivationResource):
 
 
 func _on_hitbox_entered(_area: Area2D) -> void:
-	Audio.play_by_name(SFX.SFX_COMBAT_robot_attack)
+	#Audio.play_by_name(SFX.SFX_COMBAT_robot_attack)
+	hit_sfx_player.play_random()
 
 
 func _on_hurtbox_entered(_area: Area2D) -> void:
-	Audio.play_by_name(SFX.SFX_COMBAT_robot_hurt)
+	#Audio.play_by_name(SFX.SFX_COMBAT_robot_hurt)
+	hurt_sfx_player.play_random()
 
 
 #endregion

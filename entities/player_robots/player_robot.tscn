@@ -1,13 +1,16 @@
-[gd_scene load_steps=27 format=3 uid="uid://cetfvkhut1rm3"]
+[gd_scene load_steps=30 format=3 uid="uid://cetfvkhut1rm3"]
 
 [ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://entities/player_robots/player_robot.gd" id="1_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
+[ext_resource type="PackedScene" uid="uid://cs2msqcudcidd" path="res://components/random_audio_player/random_audio_player_2d_component.tscn" id="2_cleip"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="2_gllqd"]
 [ext_resource type="Texture2D" uid="uid://ovl8y74ydfug" path="res://assets/characters/player_infantry.png" id="2_qkkt1"]
 [ext_resource type="Material" uid="uid://bju26aurmj117" path="res://resources/pixel_smoothing_shader/pixel_smoothing_material.tres" id="2_uxc6o"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="3_i8ckr"]
+[ext_resource type="AudioStream" uid="uid://cgybxyha8jvkr" path="res://assets/SFX/combat/robot_attack.wav" id="3_qgwbr"]
 [ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="3_r6tem"]
 [ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="3_vpkpi"]
+[ext_resource type="AudioStream" uid="uid://da7nc368mn8xq" path="res://assets/SFX/combat/robot_hurt.wav" id="4_1imbi"]
 [ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="4_vyq1y"]
 [ext_resource type="PackedScene" uid="uid://cmi6e4m54urq" path="res://components/wall_bounce_component.tscn/wall_bounce_component.tscn" id="5_ixurt"]
 [ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="6_nvrdh"]
@@ -261,6 +264,12 @@ offset_bottom = -41.0
 max_value = 1.0
 value = 0.5
 show_percentage = false
+
+[node name="HitSFXPlayer" parent="." instance=ExtResource("2_cleip")]
+streams = Array[AudioStream]([ExtResource("3_qgwbr")])
+
+[node name="HurtSFXPlayer" parent="." instance=ExtResource("2_cleip")]
+streams = Array[AudioStream]([ExtResource("4_1imbi")])
 
 [node name="Visuals" type="Node2D" parent="."]
 
