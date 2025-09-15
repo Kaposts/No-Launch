@@ -20,7 +20,6 @@ func change_effect():
 	activate_effect(pick_random_effect())
 
 func pick_random_effect() -> int:
-	return 0
 	return Enum.ROUND_EFFECTS.values().pick_random()
 
 func activate_effect(effect: Enum.ROUND_EFFECTS):

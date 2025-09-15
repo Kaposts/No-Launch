@@ -32,7 +32,24 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and not event.echo:
 			if event.keycode == KEY_ESCAPE:
-				if $OptionsMenu.visible:
+				if $Pause.visible:
 					$OptionsMenu.hide()
+					$Pause.hide()
 				else:
-					$OptionsMenu.show()
+					$Pause.show()
+
+
+func _on_menu_pressed() -> void:
+	await Global.transition()
+	get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
+	SignalBus.start_game.emit()
+
+func _on_settings_pressed() -> void:
+	$OptionsMenu.show()
+	$Pause.hide()
+
+func _on_restart_pressed() -> void:
+	await Global.transition()
+	get_tree().reload_current_scene()
+	SignalBus.start_game.emit()
+

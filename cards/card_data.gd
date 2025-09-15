@@ -8,5 +8,7 @@ class_name CardData
 @export var sprite: Texture
 @export var energy: int = 1
 
+@export var weight: int = 5
+
 @export var activations: Array [ActivationResource]
 

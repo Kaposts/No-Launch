@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0ekft7b1k82x"]
+[gd_scene load_steps=11 format=3 uid="uid://c0ekft7b1k82x"]
 
 [ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="1_0le08"]
 [ext_resource type="Script" uid="uid://dwpriovdnijuo" path="res://cards/hand.gd" id="1_em3ci"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="4_5aj6u"]
 [ext_resource type="PackedScene" uid="uid://ccxkca6puflbo" path="res://ui/player_ui.tscn" id="5_t0n0d"]
 [ext_resource type="PackedScene" uid="uid://bcc4ea6baq4mq" path="res://scenes/levels/battle_scene.tscn" id="6_5aj6u"]
+[ext_resource type="PackedScene" uid="uid://b0a6xslbkr78j" path="res://ui/tutorial/tutorial.tscn" id="8_2a3jl"]
 
 [sub_resource type="Curve" id="Curve_laqxi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504065, 0.484672), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -58,5 +59,9 @@ text = "draw
 "
 
 [node name="UI" parent="." instance=ExtResource("5_t0n0d")]
+
+[node name="Tutorial" parent="." instance=ExtResource("8_2a3jl")]
+offset_right = 640.0
+offset_bottom = 360.0
 
 [connection signal="pressed" from="draw" to="hand" method="_on_draw_pressed"]

@@ -6,15 +6,16 @@
 [ext_resource type="Resource" uid="uid://b0dndv6sj7vwm" path="res://cards/resources/activations/army_buffs/army_dmg_plus_one.tres" id="3_oddg1"]
 [ext_resource type="Resource" uid="uid://2fjk0exchkdl" path="res://cards/resources/activations/army_buffs/army_spd_plus_one.tres" id="4_4vixs"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_oddg1"]
-[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_4vixs"]
+[ext_resource type="Texture2D" uid="uid://qh0nkto6hdv1" path="res://cards/assets/Card Sprites/Army Heal Core minor.png" id="7_ahey6"]
 
 [resource]
 script = ExtResource("4_oddg1")
-name = "CRAZY CARD"
+name = "Triple Buff"
 type = 0
 rarity = 0
 background = ExtResource("3_ahey6")
-sprite = ExtResource("5_4vixs")
-energy = 1
+sprite = ExtResource("7_ahey6")
+energy = 3
+weight = 1
 activations = Array[ExtResource("1_qxxwa")]([ExtResource("2_ahey6"), ExtResource("3_oddg1"), ExtResource("4_4vixs")])
 metadata/_custom_type_script = "uid://6dduflnjkwry"
