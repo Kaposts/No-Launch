@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://pjj1wdm05e8l" path="res://cards/resources/activations/army_size/army_plus_three.tres" id="2_fubvh"]
 [ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_1e7al"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_m0wkf"]
-[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_igv7t"]
+[ext_resource type="Texture2D" uid="uid://bk8d270j1yfby" path="res://cards/assets/Card Sprites/Army Core defense +1.png" id="5_fubvh"]
 
 [resource]
 script = ExtResource("4_m0wkf")
@@ -12,8 +12,8 @@ name = "BIG ARMY HUGE"
 type = 0
 rarity = 1
 background = ExtResource("3_1e7al")
-sprite = ExtResource("5_igv7t")
+sprite = ExtResource("5_fubvh")
 energy = 6
-weight = 5
+weight = 1
 activations = Array[ExtResource("1_fubvh")]([ExtResource("2_fubvh")])
 metadata/_custom_type_script = "uid://6dduflnjkwry"
