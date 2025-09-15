@@ -29,18 +29,23 @@ func activate_effect(effect: Enum.ROUND_EFFECTS):
 		Enum.ROUND_EFFECTS.NEXUS_TAKES_DOUBLE_DAMAGE:
 			nexus_takes_double_damage = true
 			description = "Damage to cores is doubled"
+			GlobalSfxPlayer.minor_glitch_sfx_player.play_random()
 		Enum.ROUND_EFFECTS.CARD_KILL_ROBOT_MAYBE:
 			card_kill_robot_maybe = true
 			description = "Playing a card has a 1/3 chance to destroy your robot"
+			GlobalSfxPlayer.minor_glitch_sfx_player.play_random()
 		Enum.ROUND_EFFECTS.DOUBLE_OR_NOTHING:
 			double_or_nothing = true
 			description = "50% chance that a card will either work twice, or not at all"
+			GlobalSfxPlayer.minor_glitch_sfx_player.play_random()
 		Enum.ROUND_EFFECTS.CORRUPTION_DETECTED:
 			Global.corrupt_cards()
 			description = "Some of your cards got corrupted"
+			GlobalSfxPlayer.debuffed_sfx_player.play_random()
 		Enum.ROUND_EFFECTS.BIG_UPDATE:
 			Global.big_update()
 			description = "Cards receive additional effects"
+			GlobalSfxPlayer.major_glitch_sfx_player.play_random()
 
 
 	SignalBus.round_effect_activate.emit(description)

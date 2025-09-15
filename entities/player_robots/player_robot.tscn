@@ -246,7 +246,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxc6o"]
 radius = 9.05539
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgwbr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1imbi"]
 resource_local_to_scene = true
 shader = ExtResource("7_vyq1y")
 shader_parameter/lerp_percent = 0.0
@@ -341,7 +341,7 @@ shape = SubResource("CircleShape2D_uxc6o")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("6_nvrdh")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_qgwbr")
+hit_flash_material = SubResource("ShaderMaterial_1imbi")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("2_ckjmp")]
 unique_name_in_owner = true
