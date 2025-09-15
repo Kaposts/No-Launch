@@ -46,4 +46,5 @@ func _on_SFX_mouse_exited() -> void:
 	self.release_focus()
 
 func _on_close_button_pressed() -> void:
+	Audio.play_random("sfx_ui_click")
 	hide()

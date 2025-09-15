@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blk1ycwrde8uk"]
+[gd_scene load_steps=19 format=3 uid="uid://blk1ycwrde8uk"]
 
 [ext_resource type="Texture2D" uid="uid://bdfcrq2mmpufd" path="res://assets/UI/Computer.png" id="1_58fj5"]
 [ext_resource type="Script" uid="uid://c44k4q21cabh6" path="res://scenes/UI/main_menu.gd" id="1_kuv8g"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c1w7rrrjj64fu" path="res://assets/UI/UI_Buttons/Quit - Clickedl.png" id="14_c1mgp"]
 [ext_resource type="Texture2D" uid="uid://b2sdrk8iiyp48" path="res://assets/UI/UI_Buttons/Quit - Hover.png" id="15_hkamj"]
 [ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="16_kuv8g"]
+[ext_resource type="PackedScene" uid="uid://bdilluerfe10k" path="res://scenes/UI/CreditsMenu.tscn" id="18_s1u1q"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_kuv8g")
@@ -157,6 +158,9 @@ label_settings = ExtResource("6_av0jf")
 horizontal_alignment = 1
 
 [node name="OptionsMenu" parent="." instance=ExtResource("16_kuv8g")]
+visible = false
+
+[node name="CreditsMenu" parent="." instance=ExtResource("18_s1u1q")]
 visible = false
 
 [connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Start/TextureButton" to="." method="_on_start_pressed"]

@@ -1,0 +1,8 @@
+Dev: Whew! 
+[sound path="res://assets/SFX/ui/confirmation/001.ogg" volume="0.0" bus="SFX"]
+Dev: I think I'm finally done, that wasn't so hard!
+Dev: Just need to test it first...
+Dev: But I'm sure it's all fi-
+[sound path="res://assets/SFX/ui/error/003.ogg" volume="0.0" bus="SFX"]
+[wait time="0.2"]
+[signal arg="Angry_Switch"]
