@@ -10,6 +10,8 @@ extends Area2D
 		can_destroy_entity = flag
 		collider.disabled = !can_destroy_entity
 
+@export var ally: bool = true
+
 @onready var debug_label: Label = $DebugLabel
 @onready var collider: CollisionShape2D = $CollisionShape2D
 
@@ -22,7 +24,6 @@ func _ready() -> void:
 
 func update_health() -> void:
 	debug_label.text = "HP: %2d" % health
-
 
 
 func _on_body_entered(body: Node2D) -> void:

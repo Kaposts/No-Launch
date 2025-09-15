@@ -21,7 +21,6 @@ const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 @onready var reset_navigation_timer: Timer = $ResetNavigationTimer
 
 
-
 var player_robot_types: Array[EntityParameters] = []
 var enemy_types: Array[EntityParameters] = []
 var player_robots: Array[Node2D] = []
