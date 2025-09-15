@@ -57,6 +57,7 @@ func spawn_robot() -> void:
 
 
 func spawn_robots(how_many: int) -> void:
+	if Global.game_is_paused: return
 	for i in how_many:
 		spawn_robot()
 
@@ -71,6 +72,7 @@ func spawn_enemy() -> void:
 
 
 func spawn_enemies(how_many: int) -> void:
+	if Global.game_is_paused: return
 	for i in how_many:
 		spawn_enemy()
 

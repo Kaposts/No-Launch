@@ -28,3 +28,5 @@ signal heal_nexus(value: int)
 
 signal start_game()
 signal game_started()
+
+signal player_lost()

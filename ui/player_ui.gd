@@ -5,6 +5,8 @@ func _ready():
 	SignalBus.update_hand.connect(_on_update_hand)
 	SignalBus.round_effect_activate.connect(_on_round_effect_activate)
 	SignalBus.round_effect_hide.connect(on_round_effect_hide)
+	SignalBus.player_lost.connect(_on_player_lost)
+
 
 func _on_update_energy(value):
 	$energy.text = "Executive Power: " + str(value) +"/"+ str(Global.max_energy)
@@ -53,3 +55,5 @@ func _on_restart_pressed() -> void:
 	get_tree().reload_current_scene()
 	SignalBus.start_game.emit()
 
+func _on_player_lost() -> void:
+	$Death.show()
