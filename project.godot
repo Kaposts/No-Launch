@@ -34,18 +34,8 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={
-"Dev": "res://assets/UI/Dialogue/Dev.dch",
-"godot": "res://dialogic/godot.dch",
-"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
-}
-directories/dtl_directory={
-"Cutscene1": "res://assets/UI/Dialogue/Cutscene1.dtl",
-"Cutscene2": "res://assets/UI/Dialogue/Cutscene2.dtl",
-"Cutscene3": "res://assets/UI/Dialogue/Cutscene3.dtl",
-"Cutscene4": "res://assets/UI/Dialogue/Cutscene4.dtl",
-"timeline": "res://dialogic/timeline.dtl"
-}
+directories/dch_directory={}
+directories/dtl_directory={}
 layout/style_directory={
 "": "res://dialogic/New_File.tres",
 "Dialogic_Box": "res://assets/UI/Dialogic_Box.tres",
