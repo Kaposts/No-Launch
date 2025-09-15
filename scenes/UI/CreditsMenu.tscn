@@ -25,6 +25,7 @@ offset_bottom = 287.0
 texture = ExtResource("1_rwv5u")
 
 [node name="CloseButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 450.0
 offset_top = 61.0
 offset_right = 465.0
@@ -36,11 +37,11 @@ texture_hover = ExtResource("4_ggk6v")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 189.2
+offset_left = 189.0
 offset_top = 98.0
-offset_right = 455.2
+offset_right = 463.0
 offset_bottom = 274.0
-theme_override_constants/h_separation = 100
+theme_override_constants/h_separation = 85
 theme_override_constants/v_separation = 25
 columns = 2
 
@@ -59,7 +60,7 @@ label_settings = ExtResource("6_ggk6v")
 
 [node name="Label3" type="Label" parent="GridContainer/VBoxContainer"]
 layout_mode = 2
-text = "Hatter"
+text = "CABAGE"
 label_settings = ExtResource("6_ggk6v")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="GridContainer"]
@@ -95,7 +96,7 @@ label_settings = ExtResource("6_ggk6v")
 
 [node name="Label2" type="Label" parent="GridContainer/VBoxContainer3"]
 layout_mode = 2
-text = "Cabage"
+text = "gnomik_dimbucho"
 label_settings = ExtResource("6_ggk6v")
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="GridContainer"]
