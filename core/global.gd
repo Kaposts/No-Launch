@@ -13,8 +13,8 @@ var cards_in_hand: Array[Card] = []
 var cards_in_play: Array[Card] = []
 var deck: Array[CardData] = []
 
-@onready var deck_data: DeckData = preload("res://cards/deck/test_deck.tres")
-# @onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
+# @onready var deck_data: DeckData = preload("res://cards/deck/test_deck.tres")
+@onready var deck_data: DeckData = preload("res://cards/deck/deck.tres")
 const energy_cap: int = 15
 var max_energy: int = 4
 var energy: int = 4
@@ -37,6 +37,12 @@ func transition():
 	SceneManager.fade_in()
 
 func _on_start_game():
+	# reset values
+	
+	cards_in_hand = []
+	cards_in_play = []
+	deck = []
+
 	energy = max_energy
 	# deck_size = deck_data.size
 	starting_hand()
@@ -87,7 +93,9 @@ func pop_deck_by_weight():
 	for card_data: CardData  in deck_data.card_pool:
 		running_sum += card_data.weight
 		if r < running_sum:
-			return card_data.duplicate(true)
+			# card_data.duplicate(true)
+			# card_data.resource_path = ""
+			return card_data
 
 func create_card(data: CardData):
 	SignalBus.update_hand.emit()
@@ -177,13 +185,13 @@ func _on_end_round():
 		draw()
 
 func duplicate_hand():
-	var cards_to_dup = cards_in_hand.duplicate(true)
+	var cards_to_dup = cards_in_hand
 
 	## SORRY I AM TOO TIRED AND SPENT ALREADY TOO MUCH TIME TO FIX THIS PROPERLY
-	for card in cards_to_dup.size():
+	for card in cards_to_dup:
 		var skip: bool = false
-		if !cards_to_dup[card]: return
-		var card_data = cards_to_dup[card].data
+		if !card: return
+		var card_data = card.data
 		for activation:ActivationResource in card_data.activations:
 			print(Enum.CARD_FUNCTION.DUPLICATE_HAND)
 			print(activation.function)
@@ -195,7 +203,7 @@ func duplicate_hand():
 		if skip: continue
 
 		await get_tree().create_timer(0.2).timeout
-		create_card(cards_to_dup[card].data)
+		create_card(card.data)
 
 func corrupt_cards():
 	var amount_to_corrupt
@@ -222,9 +230,10 @@ func big_update():
 	for card in cards_in_hand:
 		var new_data = CardData.new()
 		new_data = card.data.duplicate(true)
+		new_data.resource_path = ""
 		var picked_card = deck_data.card_pool.pick_random()
 		new_data.activations.append(picked_card.activations[0])
-		new_data.activations.append(damage_nexus_activation)
+		new_data.activations.append(damage_nexus_activation.duplicate(true))
 		new_data.energy += 2
 		card.energy_cost.text = str(new_data.energy)
 		card.data = new_data

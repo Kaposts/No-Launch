@@ -4,15 +4,16 @@
 [ext_resource type="Resource" uid="uid://b0dndv6sj7vwm" path="res://cards/resources/activations/army_buffs/army_dmg_plus_one.tres" id="2_soquf"]
 [ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_ew2x8"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_q8dwp"]
-[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_lt2e1"]
+[ext_resource type="Texture2D" uid="uid://utgc3b7t5ayb" path="res://cards/assets/Card Sprites/Buff Strenght Minor.png" id="5_soquf"]
 
 [resource]
 script = ExtResource("4_q8dwp")
-name = "Army"
-type = 0
+name = "CatGPT+"
+type = 1
 rarity = 0
 background = ExtResource("3_ew2x8")
-sprite = ExtResource("5_lt2e1")
+sprite = ExtResource("5_soquf")
 energy = 2
+weight = 5
 activations = Array[ExtResource("1_soquf")]([ExtResource("2_soquf")])
 metadata/_custom_type_script = "uid://6dduflnjkwry"

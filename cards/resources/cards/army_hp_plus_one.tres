@@ -4,15 +4,16 @@
 [ext_resource type="Resource" uid="uid://cst4qjohraau0" path="res://cards/resources/activations/army_buffs/army_hp_plus_one.tres" id="2_q12r5"]
 [ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_160ul"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_d2py7"]
-[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_3surd"]
+[ext_resource type="Texture2D" uid="uid://clvfb58kk737a" path="res://cards/assets/Card Sprites/Buff HP Minor.png" id="5_q12r5"]
 
 [resource]
 script = ExtResource("4_d2py7")
-name = "Health"
-type = 0
+name = "Buffer Update"
+type = 1
 rarity = 0
 background = ExtResource("3_160ul")
-sprite = ExtResource("5_3surd")
+sprite = ExtResource("5_q12r5")
 energy = 2
+weight = 5
 activations = Array[ExtResource("1_q12r5")]([ExtResource("2_q12r5")])
 metadata/_custom_type_script = "uid://6dduflnjkwry"
