@@ -14,5 +14,6 @@ rarity = 1
 background = ExtResource("3_6caec")
 sprite = ExtResource("5_dj856")
 energy = 1
+weight = 5
 activations = Array[ExtResource("1_vauco")]([ExtResource("2_vauco")])
 metadata/_custom_type_script = "uid://6dduflnjkwry"

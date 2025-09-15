@@ -1,0 +1,100 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0a6xslbkr78j"]
+
+[ext_resource type="Script" uid="uid://dtj8o7ytr6kt0" path="res://ui/tutorial/tutorial.gd" id="1_tkdws"]
+
+[node name="Tutorial" type="Control" node_paths=PackedStringArray("steps")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tkdws")
+steps = [NodePath("step_1"), NodePath("step_2"), NodePath("step_3")]
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -29.0
+offset_right = 665.0
+offset_bottom = 383.0
+
+[node name="step_1" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="step_1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -83.5
+offset_right = 100.0
+offset_bottom = 83.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Use Cards to Buff your Robots or Activate Their Effect"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="step_2" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="step_2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -104.5
+offset_top = -18.5
+offset_right = 104.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Each Card costs EP (Executive Power). EP is refilled each round"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="step_3" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="step_3"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -15.5
+offset_right = 93.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Drag a Card into the stage to Play it!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

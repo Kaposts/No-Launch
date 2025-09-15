@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcc4ea6baq4mq"]
+[gd_scene load_steps=8 format=3 uid="uid://bcc4ea6baq4mq"]
 
 [ext_resource type="Script" uid="uid://blwyr6s3hoy0c" path="res://scenes/levels/battle_scene.gd" id="1_6a6ir"]
 [ext_resource type="PackedScene" uid="uid://mqf25vmd4yyl" path="res://entities/nexus/nexus.tscn" id="2_6b61y"]
-[ext_resource type="Texture2D" uid="uid://d1moacob82no" path="res://assets/battle_scene/background.png" id="2_emqap"]
+[ext_resource type="Texture2D" uid="uid://bm63mpsvjyyog" path="res://assets/Background/Background Ground ( darker ).png" id="2_emqap"]
 [ext_resource type="Texture2D" uid="uid://l1j0i3abask5" path="res://assets/battle_scene/foreground.png" id="4_a0jns"]
+[ext_resource type="Texture2D" uid="uid://cwiwig2kmyyr1" path="res://assets/Background/ForeGround Left.png" id="6_2bu30"]
+[ext_resource type="Texture2D" uid="uid://cvd4sesmxcjhw" path="res://assets/Background/ForeGround Right.png" id="6_k8b4e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_skhqt"]
 vertices = PackedVector2Array(652.039, 178.969, 652.953, 395.953, -5, 393.039, -5, 177.023)
@@ -12,6 +14,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-15, 167, 662, 169, 663
 
 [node name="BattleScene" type="Node2D" groups=["battle_scene"]]
 script = ExtResource("1_6a6ir")
+min_enemy_count = 10
+max_enemy_count = 15
 
 [node name="ResetNavigationTimer" type="Timer" parent="."]
 wait_time = 1.8
@@ -20,6 +24,7 @@ one_shot = true
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(-124, -13)
 scale = Vector2(1.27183, 1.07485)
 texture = ExtResource("2_emqap")
 centered = false
@@ -53,6 +58,7 @@ region_rect = Rect2(0, 0, 216, 314)
 
 [node name="EnemyNexus" parent="." groups=["enemy_nexus"] instance=ExtResource("2_6b61y")]
 position = Vector2(555, 134)
+health = 40
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemyNexus"]
 show_behind_parent = true
@@ -82,3 +88,11 @@ unique_name_in_owner = true
 position = Vector2(474, 291)
 
 [node name="UILayer" type="Node2D" parent="." groups=["ui_layer"]]
+
+[node name="ForeGroundRight" type="Sprite2D" parent="."]
+position = Vector2(576, 265)
+texture = ExtResource("6_k8b4e")
+
+[node name="ForeGroundLeft" type="Sprite2D" parent="."]
+position = Vector2(64, 288)
+texture = ExtResource("6_2bu30")
