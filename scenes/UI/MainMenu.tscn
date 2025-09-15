@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://blk1ycwrde8uk"]
+[gd_scene load_steps=21 format=3 uid="uid://blk1ycwrde8uk"]
 
 [ext_resource type="Texture2D" uid="uid://bdfcrq2mmpufd" path="res://assets/UI/Computer.png" id="1_58fj5"]
 [ext_resource type="Script" uid="uid://c44k4q21cabh6" path="res://scenes/UI/main_menu.gd" id="1_kuv8g"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bfoyy5hcgwoyb" path="res://assets/UI/UI_Buttons/Settings - Hover.png" id="12_i2kgm"]
 [ext_resource type="Texture2D" uid="uid://cfhkvdm4kvy43" path="res://assets/UI/UI_Buttons/Quit - Normal.png" id="13_4v2cq"]
 [ext_resource type="Texture2D" uid="uid://c1w7rrrjj64fu" path="res://assets/UI/UI_Buttons/Quit - Clickedl.png" id="14_c1mgp"]
+[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button.tscn" id="14_r7s35"]
 [ext_resource type="Texture2D" uid="uid://b2sdrk8iiyp48" path="res://assets/UI/UI_Buttons/Quit - Hover.png" id="15_hkamj"]
 [ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="16_kuv8g"]
 [ext_resource type="Texture2D" uid="uid://bj8csggoqduto" path="res://assets/UI/No Launch Logo.png" id="17_h5h42"]
@@ -76,7 +77,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -3
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Start"]
+[node name="StartButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Start" instance=ExtResource("14_r7s35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -96,13 +98,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -3
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits"]
+[node name="CreditsButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits" instance=ExtResource("14_r7s35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("7_h5h42")
 texture_pressed = ExtResource("8_r7s35")
 texture_hover = ExtResource("9_ht4ob")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits"]
 layout_mode = 2
@@ -117,7 +121,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -6
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Options"]
+[node name="OptionsButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Options" instance=ExtResource("14_r7s35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -143,7 +148,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -3
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Quit"]
+[node name="QuitButton" parent="TextureRect2/MainMenu_Buttons/Quit" instance=ExtResource("14_r7s35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -167,8 +173,3 @@ visible = false
 
 [node name="CreditsMenu" parent="." instance=ExtResource("18_s1u1q")]
 visible = false
-
-[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Start/TextureButton" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits/TextureButton" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Options/TextureButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Quit/TextureButton" to="." method="_on_quit_pressed"]

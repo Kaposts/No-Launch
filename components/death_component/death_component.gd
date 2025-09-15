@@ -3,6 +3,7 @@ extends Node2D
 
 @export var health_component: HealthComponent
 @export var sprite: Sprite2D
+@onready var die_sfx_player: RandomAudioPlayer2D = $DieSFXPlayer
 
 
 func _ready():
@@ -21,5 +22,5 @@ func on_died():
 	
 	global_position = spawn_position
 	$AnimationPlayer.play("default")
-	Audio.play_random("sfx_death_component_death_")
+	die_sfx_player.play_random()
 	

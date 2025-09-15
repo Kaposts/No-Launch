@@ -1,6 +1,11 @@
 extends Control
 
 @onready var back_button = $TextureRect/CloseButton
+@onready var close_button: TextureButton = $TextureRect/CloseButton
+
+func _ready() -> void:
+	close_button.pressed.connect(_on_close_button_pressed)
+
 
 func Master_Volume(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),value)
@@ -40,11 +45,11 @@ func _on_music_mouse_exited() -> void:
 
 func _on_SFX_value_changed(value: float) -> void:
 	SFX_Volume(value)
-	Audio.play_random("sfx_ui_click")
+	#Audio.play_random("sfx_ui_click")
 
 func _on_SFX_mouse_exited() -> void:
 	self.release_focus()
 
 func _on_close_button_pressed() -> void:
-	Audio.play_random("sfx_ui_click")
+	#Audio.play_random("sfx_ui_click")
 	hide()

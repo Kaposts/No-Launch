@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw1hqpww84vwl"]
+
+[ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="1_lpidn"]
+[ext_resource type="Script" uid="uid://brtprk3pnmpc0" path="res://autoloads/sfx_player/global_sfx_player.gd" id="1_vbgfi"]
+[ext_resource type="AudioStream" uid="uid://0eq2hcre0mc5" path="res://assets/SFX/card/card_played.wav" id="2_b8e7u"]
+[ext_resource type="AudioStream" uid="uid://cx0mlpuyme737" path="res://assets/SFX/button/button_click.wav" id="4_lc3c1"]
+
+[node name="GlobalSFXPlayer" type="Node"]
+script = ExtResource("1_vbgfi")
+
+[node name="CardPlayedSFXPlayer" parent="." instance=ExtResource("1_lpidn")]
+volume_db = 4.0
+streams = Array[AudioStream]([ExtResource("2_b8e7u")])
+
+[node name="DiscardSFXPlayer" parent="." instance=ExtResource("1_lpidn")]
+streams = Array[AudioStream]([ExtResource("4_lc3c1")])
