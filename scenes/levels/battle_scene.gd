@@ -45,6 +45,7 @@ func _ready() -> void:
 	_load_enemy_types()
 	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE, false, true)
+	Global.max_energy = 4
 	
 	await get_tree().create_timer(0.5, false).timeout
 	prep_battle()
