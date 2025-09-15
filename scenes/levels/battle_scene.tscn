@@ -12,6 +12,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-15, 167, 662, 169, 663
 
 [node name="BattleScene" type="Node2D" groups=["battle_scene"]]
 script = ExtResource("1_6a6ir")
+min_enemy_count = 10
+max_enemy_count = 15
 
 [node name="ResetNavigationTimer" type="Timer" parent="."]
 wait_time = 1.8
@@ -53,6 +55,7 @@ region_rect = Rect2(0, 0, 216, 314)
 
 [node name="EnemyNexus" parent="." groups=["enemy_nexus"] instance=ExtResource("2_6b61y")]
 position = Vector2(555, 134)
+health = 40
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemyNexus"]
 show_behind_parent = true
