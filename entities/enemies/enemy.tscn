@@ -315,7 +315,6 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="CombatAreas" type="Node2D" parent="."]
-visible = false
 
 [node name="AttackRange" type="Area2D" parent="CombatAreas"]
 unique_name_in_owner = true

@@ -130,6 +130,7 @@ enemy_nexus=""
 battle_scene="Main battle scene"
 player_layer=""
 ui_layer="layer to contain any dynamic ui elements"
+vfx_layer=""
 
 [gui]
 

@@ -62,6 +62,8 @@ collision_mask = 2
 position = Vector2(555, 134)
 ally = false
 
+[node name="VFXLayer" type="Node2D" parent="." groups=["vfx_layer"]]
+
 [node name="DeathLayer" type="Node2D" parent="." groups=["death_layer"]]
 
 [node name="PlayerLayer" type="Node2D" parent="." groups=["player_layer"]]

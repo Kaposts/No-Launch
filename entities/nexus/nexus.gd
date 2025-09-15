@@ -30,6 +30,8 @@ var dying: bool = false
 @onready var enemy_shaker_component: ShakerComponent2D = %EnemyShakerComponent
 @onready var ally_hit_flash_component: HitFlashComponent = %AllyHitFlashComponent
 @onready var enemy_hit_flash_component: HitFlashComponent = %EnemyHitFlashComponent
+@onready var ally_core_particles_component: RandomGPUParticlesComponent = $AllyCore/AllyCoreParticlesComponent
+@onready var enemy_core_particles_component: RandomGPUParticlesComponent = $EnemyCore/EnemyCoreParticlesComponent
 
 
 func _ready() -> void:
@@ -62,9 +64,11 @@ func _on_body_entered(body: Node2D) -> void:
 	if ally:
 		ally_shaker_component.play_shake()
 		ally_hit_flash_component.flash(DAMAGE_ANIMATION_DURATION)
+		ally_core_particles_component.emit()
 	else:
 		enemy_shaker_component.play_shake()
 		enemy_hit_flash_component.flash(DAMAGE_ANIMATION_DURATION)
+		enemy_core_particles_component.emit()
 	
 	
 	if health <= 0:
