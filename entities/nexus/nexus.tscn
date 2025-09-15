@@ -24,4 +24,5 @@ shape = SubResource("RectangleShape2D_ai8wm")
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="HurtSFXPlayer" parent="." instance=ExtResource("2_p28lo")]
+volume_db = 7.0
 streams = Array[AudioStream]([ExtResource("3_3aw13")])

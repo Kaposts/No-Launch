@@ -23,7 +23,7 @@ wait_time = 1.8
 one_shot = true
 
 [node name="RoundEndSFXPlayer" parent="." instance=ExtResource("2_smbrp")]
-volume_db = 5.0
+volume_db = 10.0
 streams = Array[AudioStream]([ExtResource("3_xuffl")])
 
 [node name="Background" type="Node2D" parent="."]

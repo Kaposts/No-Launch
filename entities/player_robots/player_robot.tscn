@@ -230,7 +230,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxc6o"]
 radius = 9.05539
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxc6o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cleip"]
 resource_local_to_scene = true
 shader = ExtResource("7_vyq1y")
 shader_parameter/lerp_percent = 0.0
@@ -266,9 +266,11 @@ value = 0.5
 show_percentage = false
 
 [node name="HitSFXPlayer" parent="." instance=ExtResource("2_cleip")]
+volume_db = 5.0
 streams = Array[AudioStream]([ExtResource("3_qgwbr")])
 
 [node name="HurtSFXPlayer" parent="." instance=ExtResource("2_cleip")]
+volume_db = 5.0
 streams = Array[AudioStream]([ExtResource("4_1imbi")])
 
 [node name="Visuals" type="Node2D" parent="."]
@@ -309,7 +311,7 @@ shape = SubResource("CircleShape2D_uxc6o")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("6_nvrdh")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_uxc6o")
+hit_flash_material = SubResource("ShaderMaterial_cleip")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("2_ckjmp")]
 unique_name_in_owner = true

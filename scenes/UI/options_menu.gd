@@ -21,7 +21,7 @@ func Music_Volume(value):
 func SFX_Volume(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"),value)
 	
-	if value == -30:
+	if value == -15:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"),true)
 	else:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"),false)
