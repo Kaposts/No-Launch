@@ -188,7 +188,7 @@ func _on_entity_died(entity: Entity) -> void:
 	
 	# Check if battle is finished and start a new round
 	if _is_battle_ended():
-		if _entities_count == 0:
+		if _entities_count == 0 and (player_nexus.dying or enemy_nexus.dying):
 			Global.game_is_paused = true
 			return
 		

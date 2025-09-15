@@ -14,7 +14,7 @@ signal destroyed
 
 @export var ally: bool = true
 
-var _dying: bool = false
+var dying: bool = false
 
 @onready var debug_label: Label = $DebugLabel
 @onready var collider: CollisionShape2D = $CollisionShape2D
@@ -53,10 +53,10 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func die():
-	if _dying:
+	if dying:
 		return
 	else:
-		_dying = true
+		dying = true
 	
 	destroyed.emit()
 	

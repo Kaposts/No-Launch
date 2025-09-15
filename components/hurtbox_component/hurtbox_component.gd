@@ -53,5 +53,5 @@ func _add_damage_dealt_text_ui(damage: float) -> void:
 	var text: Node2D = FLOATING_TEXT.instantiate()
 	ui_layer.add_child(text)
 	text.global_position = owner.global_position
-	text.start("%.1f" % damage, true if owner is Enemy else false)
+	text.start("%d" % damage, true if owner is Enemy else false)
 	
