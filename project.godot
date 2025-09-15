@@ -48,7 +48,6 @@ directories/dtl_directory={
 }
 layout/style_directory={
 "": "res://dialogic/New_File.tres",
-"Dialogic_Box": "res://assets/UI/Dialogic_Box.tres",
 "New_File": "res://dialogic/New_File.tres"
 }
 variables={}

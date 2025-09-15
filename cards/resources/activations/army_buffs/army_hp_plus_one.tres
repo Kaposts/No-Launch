@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_b0km7")
 damage = 0
-health = 1
+health = 3
 speed = 0
 is_multiplier = false
 multiplier = 1
-description = "Increase armies health by 1"
+description = "Increase armies health by 3"
 function = 3
 rounds = 1
 metadata/_custom_type_script = "uid://1l34bmlgd313"
