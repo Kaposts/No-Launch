@@ -2,25 +2,18 @@
 
 [ext_resource type="Script" uid="uid://dtj8o7ytr6kt0" path="res://ui/tutorial/tutorial.gd" id="1_tkdws"]
 
-[node name="Tutorial" type="Control" node_paths=PackedStringArray("steps")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Tutorial" type="CanvasLayer" node_paths=PackedStringArray("steps")]
 script = ExtResource("1_tkdws")
 steps = [NodePath("step_1"), NodePath("step_2"), NodePath("step_3")]
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
 offset_left = -18.0
 offset_top = -29.0
 offset_right = 665.0
 offset_bottom = 383.0
 
 [node name="step_1" type="Control" parent="."]
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,7 +40,7 @@ autowrap_mode = 2
 
 [node name="step_2" type="Control" parent="."]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -74,7 +67,7 @@ autowrap_mode = 2
 
 [node name="step_3" type="Control" parent="."]
 visible = false
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

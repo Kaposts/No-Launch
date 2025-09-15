@@ -1,6 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://db1eyrqt7xw5f"]
+[gd_scene load_steps=5 format=3 uid="uid://db1eyrqt7xw5f"]
 
 [ext_resource type="Script" uid="uid://dli6kjo5x0pyt" path="res://components/hurtbox_component/hurtbox_component.gd" id="1_n7cp8"]
+[ext_resource type="PackedScene" uid="uid://bs7vi5x8y5rmd" path="res://components/random_gpu_particles_component/random_gpu_particles_component.tscn" id="2_iwcq0"]
+[ext_resource type="Texture2D" uid="uid://rxdi76sip4b" path="res://assets/visual_effects/sparkle_particles/sparkle_particle_2.png" id="3_cct4n"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cct4n"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+angle_min = -165.6
+angle_max = 297.5
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 43.99
+initial_velocity_max = 177.38
+angular_velocity_min = -185.01
+angular_velocity_max = 441.72
+gravity = Vector3(0, 150, 0)
+linear_accel_min = 15.95
+linear_accel_max = 45.4
+damping_min = 6.748
+damping_max = 16.564
 
 [node name="HurtboxComponent" type="Area2D"]
 collision_layer = 0
@@ -9,3 +28,12 @@ script = ExtResource("1_n7cp8")
 
 [node name="InvicibilityTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="RandomGPUParticlesComponent" parent="." instance=ExtResource("2_iwcq0")]
+emitting = false
+amount = 10
+texture = ExtResource("3_cct4n")
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_cct4n")

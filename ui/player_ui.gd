@@ -1,5 +1,12 @@
 extends Node
 
+
+@onready var round_start_sfx_player: RandomAudioPlayer = %RoundStartSFXPlayer
+@onready var play_button: TextureButton = %PlayButton
+@onready var energy_label: Label = %EnergyLabel
+@onready var energy_group: Control = %EnergyGroup
+
+
 func _ready():
 	SignalBus.update_energy.connect(_on_update_energy)
 	SignalBus.update_hand.connect(_on_update_hand)
@@ -7,24 +14,29 @@ func _ready():
 	SignalBus.round_effect_hide.connect(on_round_effect_hide)
 	SignalBus.player_lost.connect(_on_player_lost)
 	SignalBus.end_round.connect(_on_end_round)
+	
+	play_button.pressed.connect(_on_play_turn_pressed)
 
 
 func _on_update_energy(value):
-	$energy.text = "Executive Power: " + str(value) +"/"+ str(Global.max_energy)
+	energy_label.text = str(value) +"/"+ str(Global.max_energy)
 func _on_update_hand():
 	$cards_in_deck.text = "Cards insinde deck: " + str(Global.deck.size())
 
 func _on_play_turn_pressed() -> void:
 	Global.play_turn()
-	$play_turn.disabled = true
+	round_start_sfx_player.play_random()
+	play_button.disabled = true
+	
+	energy_group.modulate.a = 0.15
+	play_button.hide()
 
 
 func _on_end_round() -> void:
-	$play_turn.disabled = false
+	play_button.disabled = false
+	energy_group.modulate.a = 1.0
+	play_button.show()
 
-
-func _on_play_turn_2_pressed() -> void:
-	SignalBus.end_round.emit()
 
 func on_round_effect_hide():
 	$round_effect/AnimationPlayer.play("hide")
@@ -61,6 +73,7 @@ func _on_restart_pressed() -> void:
 	await Global.transition()
 	get_tree().reload_current_scene()
 	SignalBus.start_game.emit()
+	Global.is_playing_turn = false
 
 func _on_player_lost() -> void:
 	$Death.show()

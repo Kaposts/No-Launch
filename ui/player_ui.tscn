@@ -1,12 +1,21 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccxkca6puflbo"]
+[gd_scene load_steps=40 format=3 uid="uid://ccxkca6puflbo"]
 
 [ext_resource type="Script" uid="uid://bl654htndwwbj" path="res://ui/player_ui.gd" id="1_cfom6"]
+[ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="2_2pr6j"]
 [ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="2_vq5xy"]
+[ext_resource type="AudioStream" uid="uid://bihm1sxpvcdvo" path="res://assets/SFX/system/battle_start.wav" id="3_5p2iw"]
 [ext_resource type="Texture2D" uid="uid://baldbfde81frs" path="res://assets/In Game Ui/Pause Base.png" id="3_fynll"]
+[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button.tscn" id="4_5p2iw"]
 [ext_resource type="Texture2D" uid="uid://bvofktpvt175j" path="res://assets/In Game Ui/Pause Restart Hover.png" id="4_obao7"]
+[ext_resource type="Texture2D" uid="uid://b0rkgfn0ilgtw" path="res://assets/In Game Ui/EP Base.png" id="4_prpn4"]
+[ext_resource type="Texture2D" uid="uid://cs57mk1ksfgls" path="res://assets/In Game Ui/Ep ( Energy ).png" id="4_ud46t"]
 [ext_resource type="Texture2D" uid="uid://l47yu8ht32pp" path="res://assets/In Game Ui/Pause Restart Clicked.png" id="5_2pr6j"]
+[ext_resource type="Texture2D" uid="uid://b2kqcxnsiahnb" path="res://assets/In Game Ui/Play Turn Normal.png" id="5_m8r0k"]
 [ext_resource type="Texture2D" uid="uid://bsmmjsi152y8t" path="res://assets/In Game Ui/Pause Restart Normal.png" id="6_5p2iw"]
+[ext_resource type="Texture2D" uid="uid://dxys6oea8jfuo" path="res://assets/In Game Ui/Play Turn Not Available.png" id="6_prpn4"]
 [ext_resource type="Texture2D" uid="uid://by1rw4lfl5pby" path="res://assets/In Game Ui/Pause Settingst Hover.png" id="7_k3t1i"]
+[ext_resource type="Texture2D" uid="uid://bogjri417pbyd" path="res://assets/In Game Ui/Play Turn Hover.png" id="7_ud46t"]
+[ext_resource type="Texture2D" uid="uid://c78cowfgjjha1" path="res://assets/In Game Ui/Play Turn Not Available Hover.png" id="8_2dni3"]
 [ext_resource type="Texture2D" uid="uid://d3251uvcqxnht" path="res://assets/In Game Ui/Pause Settings Clicked.png" id="8_8om82"]
 [ext_resource type="Texture2D" uid="uid://dt0iffjyb4252" path="res://assets/In Game Ui/Pause Settings Normal.png" id="9_j0e15"]
 [ext_resource type="Texture2D" uid="uid://5l5ge1bx5y8m" path="res://assets/In Game Ui/Pause Menu Hover.png" id="10_m8r0k"]
@@ -111,15 +120,70 @@ texture = ExtResource("12_ud46t")
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_cfom6")
 
-[node name="energy" type="Label" parent="."]
-offset_left = 458.0
-offset_top = 211.0
-offset_right = 686.0
-offset_bottom = 239.0
+[node name="RoundStartSFXPlayer" parent="." instance=ExtResource("2_2pr6j")]
+unique_name_in_owner = true
+volume_db = 6.0
+streams = Array[AudioStream]([ExtResource("3_5p2iw")])
+
+[node name="EnergyGroup" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 142.0
+offset_top = 27.0
+offset_right = 142.0
+offset_bottom = 27.0
+
+[node name="EnergyTextTexture" type="TextureRect" parent="EnergyGroup"]
+offset_left = 42.0
+offset_top = 17.0
+offset_right = 106.0
+offset_bottom = 33.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_ud46t")
+stretch_mode = 2
+
+[node name="EnergyPanelTexture" type="TextureRect" parent="EnergyGroup"]
+offset_right = 96.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+texture = ExtResource("4_prpn4")
+stretch_mode = 2
+
+[node name="EnergyLabel" type="Label" parent="EnergyGroup"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 30.0
+offset_top = 35.0
+offset_right = 110.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 24
-text = "Executive Power: 4/4"
+text = "4/4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" parent="." instance=ExtResource("4_5p2iw")]
+unique_name_in_owner = true
+offset_left = 397.0
+offset_top = 46.0
+offset_right = 493.0
+offset_bottom = 94.0
+texture_normal = ExtResource("5_m8r0k")
+texture_pressed = ExtResource("6_prpn4")
+texture_hover = ExtResource("7_ud46t")
+texture_disabled = ExtResource("8_2dni3")
 
 [node name="cards_in_deck" type="Label" parent="."]
 visible = false
@@ -128,22 +192,6 @@ offset_top = 283.0
 offset_right = 141.0
 offset_bottom = 297.0
 text = "Cards inside deck: "
-
-[node name="play_turn" type="Button" parent="."]
-offset_left = 550.0
-offset_top = 177.0
-offset_right = 628.0
-offset_bottom = 205.0
-text = "Play turn"
-
-[node name="play_turn2" type="Button" parent="."]
-visible = false
-offset_left = 550.0
-offset_top = 229.0
-offset_right = 628.0
-offset_bottom = 257.0
-text = "End round
-"
 
 [node name="round_effect" type="Control" parent="."]
 layout_mode = 3
@@ -328,8 +376,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qbpmt")
 
-[connection signal="pressed" from="play_turn" to="." method="_on_play_turn_pressed"]
-[connection signal="pressed" from="play_turn2" to="." method="_on_play_turn_2_pressed"]
 [connection signal="pressed" from="round_effect/round_effect_close" to="." method="_on_round_effect_close_pressed"]
 [connection signal="pressed" from="Pause/container/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Pause/container/settings" to="." method="_on_settings_pressed"]

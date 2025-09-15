@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://cw1hqpww84vwl"]
+
+[ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="1_lpidn"]
+[ext_resource type="Script" uid="uid://brtprk3pnmpc0" path="res://autoloads/sfx_player/global_sfx_player.gd" id="1_vbgfi"]
+[ext_resource type="AudioStream" uid="uid://0eq2hcre0mc5" path="res://assets/SFX/card/card_played.wav" id="2_b8e7u"]
+[ext_resource type="AudioStream" uid="uid://cx0mlpuyme737" path="res://assets/SFX/button/button_click.wav" id="4_lc3c1"]
+[ext_resource type="AudioStream" uid="uid://cbtgmfplwmc2j" path="res://assets/SFX/system/debuffed.wav" id="5_xcc04"]
+[ext_resource type="AudioStream" uid="uid://dcq7dnclrmrs" path="res://assets/SFX/system/major_glitch.wav" id="6_q0560"]
+[ext_resource type="AudioStream" uid="uid://dgq65fi6udw3u" path="res://assets/SFX/system/minor_glitch.wav" id="7_2q8fc"]
+[ext_resource type="AudioStream" uid="uid://b76baioyapcg7" path="res://assets/SFX/system/energy_gained.wav" id="8_q0560"]
+
+[node name="GlobalSFXPlayer" type="Node"]
+script = ExtResource("1_vbgfi")
+
+[node name="CardPlayedSFXPlayer" parent="." instance=ExtResource("1_lpidn")]
+volume_db = 4.0
+streams = Array[AudioStream]([ExtResource("2_b8e7u")])
+
+[node name="DiscardSFXPlayer" parent="." instance=ExtResource("1_lpidn")]
+streams = Array[AudioStream]([ExtResource("4_lc3c1")])
+
+[node name="DebuffedSFXPlayer" parent="." instance=ExtResource("1_lpidn")]
+streams = Array[AudioStream]([ExtResource("5_xcc04")])
+
+[node name="MajorGlitchSFXPlayer" parent="." instance=ExtResource("1_lpidn")]
+streams = Array[AudioStream]([ExtResource("6_q0560")])
+
+[node name="MinorGlitchSFXPlayer" parent="." instance=ExtResource("1_lpidn")]
+streams = Array[AudioStream]([ExtResource("7_2q8fc")])
+
+[node name="EnergyIncreasedSFXPlayer" parent="." instance=ExtResource("1_lpidn")]
+streams = Array[AudioStream]([ExtResource("8_q0560")])
