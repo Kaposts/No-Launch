@@ -10,12 +10,22 @@
 "style": "",
 "suffix": ""
 },
-&"default_portrait": "",
+&"default_portrait": "New portrait",
 &"description": "this is a tesst",
 &"display_name": "Godot",
 &"mirror": false,
 &"nicknames": ["one", "two", "three"],
 &"offset": Vector2(0, 0),
-&"portraits": {},
+&"portraits": {
+"New portrait": {
+"export_overrides": {
+"image": "\"res://icon.svg\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 0.5,
+"scene": ""
+}
+},
 &"scale": 1.0
 }
