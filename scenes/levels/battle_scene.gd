@@ -27,12 +27,17 @@ var enemy_types: Array[EntityParameters] = []
 var player_robots: Array[Node2D] = []
 var enemies: Array[Node2D] = []
 
+var _entities_count: int = 0
+
 #===================================================================================================
 #region BUILT-IN FUNCTIONS
 
 func _ready() -> void:
 	SignalBus.spawn_player.connect(spawn_robot)
 	SignalBus.start_round.connect(start_battle)
+	
+	player_nexus.destroyed.connect(_on_nexus_destroyed)
+	enemy_nexus.destroyed.connect(_on_nexus_destroyed)
 	
 	reset_navigation_timer.timeout.connect(_on_reset_navigation_timer_timeout)
 	
@@ -90,6 +95,7 @@ func prep_battle(robot_count: int = randi_range(min_robot_count, max_robot_count
 	
 	player_nexus.can_destroy_entity = false
 	enemy_nexus.can_destroy_entity = false
+	Global.is_playing_turn = false
 	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE)
 
@@ -148,10 +154,13 @@ func _load_enemy_types() -> void:
 
 
 func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
+	_entities_count = 0
+	
 	player_robots.clear()
 	for child in player_layer.get_children():
 		if child not in excluded_entities:
 			player_robots.append(child as Node2D)
+			_entities_count += 1
 	if player_robots.is_empty():
 		player_nexus.can_destroy_entity = true
 	
@@ -159,6 +168,7 @@ func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
 	for child in enemy_layer.get_children():
 		if child not in excluded_entities:
 			enemies.append(child as Node2D)
+			_entities_count += 1
 	if enemies.is_empty():
 		enemy_nexus.can_destroy_entity = true
 	
@@ -178,6 +188,10 @@ func _on_entity_died(entity: Entity) -> void:
 	
 	# Check if battle is finished and start a new round
 	if _is_battle_ended():
+		if _entities_count == 0:
+			Global.game_is_paused = true
+			return
+		
 		SignalBus.end_round.emit()
 		round_end_sfx_player.play_random()
 		prep_battle()
@@ -211,6 +225,14 @@ func _on_entity_died(entity: Entity) -> void:
 func _on_reset_navigation_timer_timeout() -> void:
 	# Reset navigation for all entities when a certain amount of time has passed but no death occurs
 	start_battle()
+
+
+func _on_nexus_destroyed() -> void:
+	_set_valid_entities()
+	player_robots.append_array(enemies) # Get all entities in scene
+	for entity in player_robots:
+		entity = entity as Entity
+		entity.stop_navigating()
 
 #endregion
 #===================================================================================================

@@ -61,6 +61,7 @@ func _on_restart_pressed() -> void:
 	await Global.transition()
 	get_tree().reload_current_scene()
 	SignalBus.start_game.emit()
+	Global.is_playing_turn = false
 
 func _on_player_lost() -> void:
 	$Death.show()

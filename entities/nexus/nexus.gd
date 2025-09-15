@@ -4,7 +4,9 @@ extends Area2D
 ## Author: Lestavol
 ## Home Base for each faction
 
-@export var health: int = 20
+signal destroyed
+
+@export var health: int = 30
 @export var can_destroy_entity: bool = false:
 	set(flag):
 		can_destroy_entity = flag
@@ -12,15 +14,23 @@ extends Area2D
 
 @export var ally: bool = true
 
+var _dying: bool = false
+
 @onready var debug_label: Label = $DebugLabel
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var hurt_sfx_player: RandomAudioPlayer = $HurtSFXPlayer
-
+@onready var ally_core: Node2D = $AllyCore
+@onready var enemy_core: Node2D = $EnemyCore
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	update_health()
+	
+	ally_core.visible = ally
+	enemy_core.visible = !ally
+	
 	SignalBus.heal_nexus.connect(_on_heal_nexus)
 
 
@@ -43,11 +53,21 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func die():
+	if _dying:
+		return
+	else:
+		_dying = true
+	
+	destroyed.emit()
+	
 	if ally:
+		animation_player.play("destroy_ally")
+		await animation_player.animation_finished
 		SignalBus.player_lost.emit()
 		Global.game_is_paused = true
 	else:
-		get_tree().paused = true
+		animation_player.play("destroy_enemy")
+		await animation_player.animation_finished
 		get_tree().change_scene_to_file("res://scenes/Cutscenes/EndingCutScene.tscn")
 
 

@@ -1,28 +1,192 @@
-[gd_scene load_steps=5 format=3 uid="uid://mqf25vmd4yyl"]
+[gd_scene load_steps=17 format=3 uid="uid://mqf25vmd4yyl"]
 
 [ext_resource type="Script" uid="uid://dpl71fdu4ngcd" path="res://entities/nexus/nexus.gd" id="1_nuvkp"]
 [ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="2_p28lo"]
 [ext_resource type="AudioStream" uid="uid://c5lwlaq5l8kdr" path="res://assets/SFX/combat/core_damaged.wav" id="3_3aw13"]
+[ext_resource type="Texture2D" uid="uid://l1j0i3abask5" path="res://assets/battle_scene/foreground.png" id="4_3aw13"]
+[ext_resource type="AudioStream" uid="uid://bqbcd66vvdbio" path="res://assets/SFX/combat/core_destroyed.wav" id="4_oh37x"]
+[ext_resource type="Texture2D" uid="uid://0j33xk1pv44y" path="res://assets/In Game Ui/Core SpriteSheet ( Ally ).png" id="5_c3ah8"]
+[ext_resource type="Texture2D" uid="uid://bq7743rc6gg7m" path="res://assets/Background/ForeGround ( Core ) Left.png" id="6_ma1hg"]
+[ext_resource type="Texture2D" uid="uid://6rhlq447leb7" path="res://assets/Background/Background ( Core ) Left.png" id="6_y3lcq"]
+[ext_resource type="Texture2D" uid="uid://c5q6qiovoft56" path="res://assets/Background/Background ( Core ) Right.png" id="9_0wuyj"]
+[ext_resource type="Texture2D" uid="uid://du6g13xid68g3" path="res://assets/In Game Ui/Core SpriteSheet ( Enemies ).png" id="10_56a8o"]
+[ext_resource type="Texture2D" uid="uid://cn4g3vu0w5c5r" path="res://assets/Background/ForeGround ( Core ) Right.png" id="11_oypg6"]
+
+[sub_resource type="Animation" id="Animation_j57v7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AllyCore/Core:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyCore/Core:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3aw13"]
+resource_name = "destroy_ally"
+length = 3.0
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AllyCore/Core:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2, 2.33333, 2.66667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 1, 4, 2, 5, 3, 5, 3, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DestroyedSFXPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_oh37x"]
+resource_name = "destroy_enemy"
+length = 3.0
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyCore/Core:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2, 2.33333, 2.66667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 1, 4, 2, 5, 3, 5, 3, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DestroyedSFXPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3y3bm"]
+_data = {
+&"RESET": SubResource("Animation_j57v7"),
+&"destroy_ally": SubResource("Animation_3aw13"),
+&"destroy_enemy": SubResource("Animation_oh37x")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai8wm"]
-size = Vector2(130.5, 279)
+size = Vector2(114, 279)
 
 [node name="Nexus" type="Area2D"]
+process_mode = 3
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_nuvkp")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3y3bm")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_ai8wm")
+debug_color = Color(1, 1, 1, 0.42)
+
 [node name="DebugLabel" type="Label" parent="."]
+z_index = 1
 offset_left = -18.0
 offset_top = -81.0
 offset_right = 22.0
 offset_bottom = -67.0
 text = "HP: 20"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ai8wm")
-debug_color = Color(1, 1, 1, 0.42)
-
 [node name="HurtSFXPlayer" parent="." instance=ExtResource("2_p28lo")]
 volume_db = 7.0
 streams = Array[AudioStream]([ExtResource("3_3aw13")])
+
+[node name="DestroyedSFXPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oh37x")
+volume_db = 8.0
+bus = &"SFX"
+
+[node name="AllyCore" type="Node2D" parent="."]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="AllyCore"]
+position = Vector2(-29, 28)
+texture = ExtResource("6_y3lcq")
+
+[node name="Background2" type="Sprite2D" parent="AllyCore"]
+show_behind_parent = true
+position = Vector2(-82, -134)
+texture = ExtResource("4_3aw13")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 213, 62.8648)
+
+[node name="Core" type="Sprite2D" parent="AllyCore"]
+position = Vector2(-49, 83)
+texture = ExtResource("5_c3ah8")
+vframes = 6
+
+[node name="Foreground" type="Sprite2D" parent="AllyCore"]
+position = Vector2(-56.5, 122)
+texture = ExtResource("6_ma1hg")
+
+[node name="EnemyCore" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="EnemyCore"]
+position = Vector2(40, 29)
+texture = ExtResource("9_0wuyj")
+
+[node name="Background2" type="Sprite2D" parent="EnemyCore"]
+show_behind_parent = true
+position = Vector2(-141.5, -134)
+texture = ExtResource("4_3aw13")
+centered = false
+region_enabled = true
+region_rect = Rect2(284, 0, 228, 61.9999)
+
+[node name="Core" type="Sprite2D" parent="EnemyCore"]
+position = Vector2(46, 82)
+texture = ExtResource("10_56a8o")
+vframes = 6
+
+[node name="Foreground" type="Sprite2D" parent="EnemyCore"]
+position = Vector2(64, 90)
+texture = ExtResource("11_oypg6")
