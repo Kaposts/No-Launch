@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://dmjjqgxcmc8ac"
-path="res://.godot/imported/robot_move.wav-a3651cb0205a384778183a010352e9b5.sample"
-
-[deps]
-
-source_file="res://assets/SFX/combat/robot_move.wav"
-dest_files=["res://.godot/imported/robot_move.wav-a3651cb0205a384778183a010352e9b5.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=2
+version https://git-lfs.github.com/spec/v1
+oid sha256:562a6d364776ce85f501e1118548608d11b0305927b925b5d7349163a0a021e4
+size 506

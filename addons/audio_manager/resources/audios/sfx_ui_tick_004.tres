@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://bem1nilb5vp57"]
 
 [ext_resource type="AudioStream" uid="uid://bo83enbrwau33" path="res://assets/SFX/ui/tick/004.ogg" id="1_ypl7d"]
-[ext_resource type="Script" uid="uid://bby850gxeiihc" path="res://addons/audio_manager/audio_data.gd" id="2_cueed"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_cueed"]
 
 [resource]
 script = ExtResource("2_cueed")
 res_name = "sfx_ui_tick_004"
 res_stream = ExtResource("1_ypl7d")
 res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false
+res_pitch_scale = 1.21
+res_pitch_randomizer = true

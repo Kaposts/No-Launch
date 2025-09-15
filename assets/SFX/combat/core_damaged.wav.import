@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://c5lwlaq5l8kdr"
-path="res://.godot/imported/core_damaged.wav-7965c2ccc51048fd852d38d633e4c6cc.sample"
-
-[deps]
-
-source_file="res://assets/SFX/combat/core_damaged.wav"
-dest_files=["res://.godot/imported/core_damaged.wav-7965c2ccc51048fd852d38d633e4c6cc.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=2
+version https://git-lfs.github.com/spec/v1
+oid sha256:270bfae7793a50f228864f101c5191d195d0bbe46993c22a339a42ea9bb0d658
+size 512
