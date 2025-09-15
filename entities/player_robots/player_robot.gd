@@ -6,8 +6,11 @@ extends Entity
 
 
 @onready var sprite: Sprite2D = $Visuals/Sprite2D
-@onready var hit_sfx_player: RandomAudioPlayer2D = $HitSFXPlayer
-@onready var hurt_sfx_player: RandomAudioPlayer2D = $HurtSFXPlayer
+@onready var hit_sfx_player: RandomAudioPlayer2D = %HitSFXPlayer
+@onready var hurt_sfx_player: RandomAudioPlayer2D = %HurtSFXPlayer
+@onready var spawn_sfx_player: RandomAudioPlayer2D = %SpawnSFXPlayer
+@onready var buff_sfx_player: RandomAudioPlayer2D = %BuffSFXPlayer
+
 
 
 #===================================================================================================
@@ -31,12 +34,13 @@ func _ready() -> void:
 func _on_apply_buff(data: ActivationResource):
 	health_component.max_health = parameters.health
 	hitbox_component.damage = parameters.damage
-
+	
 	print('applying buff')
 	var buff: PlayerBuffsResource = PlayerBuffs.get_buffs()
 	health_component.max_health += buff.bonus_health
 	hitbox_component.damage += buff.bonus_damage
 	
+	buff_sfx_player.play_random()
 
 
 func _on_hitbox_entered(_area: Area2D) -> void:

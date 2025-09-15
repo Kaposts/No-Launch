@@ -19,7 +19,7 @@ const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 @onready var player_nexus: Nexus = $PlayerNexus
 @onready var enemy_nexus: Nexus = $EnemyNexus
 @onready var reset_navigation_timer: Timer = $ResetNavigationTimer
-@onready var round_end_sfx_player: RandomAudioPlayer = $RoundEndSFXPlayer
+@onready var round_end_sfx_player: RandomAudioPlayer = %RoundEndSFXPlayer
 
 
 var player_robot_types: Array[EntityParameters] = []
@@ -119,7 +119,8 @@ func start_battle() -> void:
 			enemy.targets = player_robots
 			enemy.start_navigating(player_robots.pick_random())
 	
-	MusicPlayer.switch_song(MusicPlayer.SongNames.MAIN_BATTLE, false)
+	MusicPlayer.switch_song(MusicPlayer.SongNames.MAIN_BATTLE)
+	
 	reset_navigation_timer.start()
 
 #endregion

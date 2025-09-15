@@ -1,5 +1,9 @@
 extends Node
 
+
+@onready var round_start_sfx_player: RandomAudioPlayer = %RoundStartSFXPlayer
+
+
 func _ready():
 	SignalBus.update_energy.connect(_on_update_energy)
 	SignalBus.update_hand.connect(_on_update_hand)
@@ -16,6 +20,7 @@ func _on_update_hand():
 
 func _on_play_turn_pressed() -> void:
 	Global.play_turn()
+	round_start_sfx_player.play_random()
 	$play_turn.disabled = true
 
 

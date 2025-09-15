@@ -16,7 +16,7 @@ func _ready():
 	
 	start_button.pressed.connect(_on_start_pressed)
 	credits_button.pressed.connect(_on_credits_pressed)
-	options_button.pressed.connect(_on_credits_pressed)
+	options_button.pressed.connect(_on_options_button_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 
 

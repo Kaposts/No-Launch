@@ -18,10 +18,12 @@ var dying: bool = false
 
 @onready var debug_label: Label = $DebugLabel
 @onready var collider: CollisionShape2D = $CollisionShape2D
-@onready var hurt_sfx_player: RandomAudioPlayer = $HurtSFXPlayer
 @onready var ally_core: Node2D = $AllyCore
 @onready var enemy_core: Node2D = $EnemyCore
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var hurt_sfx_player: RandomAudioPlayer = %HurtSFXPlayer
+@onready var victory_sfx_player: AudioStreamPlayer = $SFX/VictorySFXPlayer
+@onready var defeat_sfx_player: AudioStreamPlayer = $SFX/DefeatSFXPlayer
 
 
 func _ready() -> void:
@@ -63,6 +65,7 @@ func die():
 	if ally:
 		animation_player.play("destroy_ally")
 		await animation_player.animation_finished
+		defeat_sfx_player.play()
 		SignalBus.player_lost.emit()
 		Global.game_is_paused = true
 	else:

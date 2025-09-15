@@ -1,7 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccxkca6puflbo"]
+[gd_scene load_steps=33 format=3 uid="uid://ccxkca6puflbo"]
 
 [ext_resource type="Script" uid="uid://bl654htndwwbj" path="res://ui/player_ui.gd" id="1_cfom6"]
+[ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="2_2pr6j"]
 [ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="2_vq5xy"]
+[ext_resource type="AudioStream" uid="uid://bihm1sxpvcdvo" path="res://assets/SFX/system/battle_start.wav" id="3_5p2iw"]
 [ext_resource type="Texture2D" uid="uid://baldbfde81frs" path="res://assets/In Game Ui/Pause Base.png" id="3_fynll"]
 [ext_resource type="Texture2D" uid="uid://bvofktpvt175j" path="res://assets/In Game Ui/Pause Restart Hover.png" id="4_obao7"]
 [ext_resource type="Texture2D" uid="uid://l47yu8ht32pp" path="res://assets/In Game Ui/Pause Restart Clicked.png" id="5_2pr6j"]
@@ -110,6 +112,11 @@ texture = ExtResource("12_ud46t")
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_cfom6")
+
+[node name="RoundStartSFXPlayer" parent="." instance=ExtResource("2_2pr6j")]
+unique_name_in_owner = true
+volume_db = 6.0
+streams = Array[AudioStream]([ExtResource("3_5p2iw")])
 
 [node name="energy" type="Label" parent="."]
 offset_left = 458.0

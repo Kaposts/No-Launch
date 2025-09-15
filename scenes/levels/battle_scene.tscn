@@ -21,9 +21,15 @@ min_enemy_count = 7
 wait_time = 1.8
 one_shot = true
 
-[node name="RoundEndSFXPlayer" parent="." instance=ExtResource("2_smbrp")]
+[node name="SFX" type="Node" parent="."]
+
+[node name="RoundEndSFXPlayer" parent="SFX" instance=ExtResource("2_smbrp")]
+unique_name_in_owner = true
 volume_db = 10.0
 streams = Array[AudioStream]([ExtResource("3_xuffl")])
+
+[node name="RoundStartSFXPlayer4" parent="SFX" instance=ExtResource("2_smbrp")]
+unique_name_in_owner = true
 
 [node name="Background" type="Node2D" parent="."]
 

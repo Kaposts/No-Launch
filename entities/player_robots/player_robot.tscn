@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cetfvkhut1rm3"]
+[gd_scene load_steps=32 format=3 uid="uid://cetfvkhut1rm3"]
 
 [ext_resource type="Script" uid="uid://fwmtmtosnoph" path="res://entities/player_robots/player_robot.gd" id="1_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://da7nc368mn8xq" path="res://assets/SFX/combat/robot_hurt.wav" id="4_1imbi"]
 [ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="4_vyq1y"]
 [ext_resource type="PackedScene" uid="uid://cmi6e4m54urq" path="res://components/wall_bounce_component.tscn/wall_bounce_component.tscn" id="5_ixurt"]
+[ext_resource type="AudioStream" uid="uid://b2d8k6xb5leng" path="res://assets/SFX/system/robot_spawn.wav" id="5_qgwbr"]
+[ext_resource type="AudioStream" uid="uid://bmne18hdv5y3q" path="res://assets/SFX/combat/robot_buffed.wav" id="6_1imbi"]
 [ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="6_nvrdh"]
 [ext_resource type="Shader" uid="uid://doi7gyjf00jrn" path="res://components/hit_flash_component/red_hit_flash.gdshader" id="7_vyq1y"]
 [ext_resource type="PackedScene" uid="uid://d2t5i7o64cme7" path="res://components/death_component/death_component.tscn" id="9_nvrdh"]
@@ -96,6 +98,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/SpawnSFXPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_pn703"]
@@ -230,7 +246,7 @@ radius = 6.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_uxc6o"]
 radius = 9.05539
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cleip"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qgwbr"]
 resource_local_to_scene = true
 shader = ExtResource("7_vyq1y")
 shader_parameter/lerp_percent = 0.0
@@ -265,13 +281,27 @@ max_value = 1.0
 value = 0.5
 show_percentage = false
 
-[node name="HitSFXPlayer" parent="." instance=ExtResource("2_cleip")]
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="HitSFXPlayer" parent="SFX" instance=ExtResource("2_cleip")]
+unique_name_in_owner = true
 volume_db = 5.0
 streams = Array[AudioStream]([ExtResource("3_qgwbr")])
 
-[node name="HurtSFXPlayer" parent="." instance=ExtResource("2_cleip")]
+[node name="HurtSFXPlayer" parent="SFX" instance=ExtResource("2_cleip")]
+unique_name_in_owner = true
 volume_db = 5.0
 streams = Array[AudioStream]([ExtResource("4_1imbi")])
+
+[node name="SpawnSFXPlayer" parent="SFX" instance=ExtResource("2_cleip")]
+unique_name_in_owner = true
+volume_db = 4.0
+streams = Array[AudioStream]([ExtResource("5_qgwbr")])
+
+[node name="BuffSFXPlayer" parent="SFX" instance=ExtResource("2_cleip")]
+unique_name_in_owner = true
+volume_db = 6.0
+streams = Array[AudioStream]([ExtResource("6_1imbi")])
 
 [node name="Visuals" type="Node2D" parent="."]
 
@@ -311,7 +341,7 @@ shape = SubResource("CircleShape2D_uxc6o")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("sprite_group") instance=ExtResource("6_nvrdh")]
 sprite_group = [NodePath("../Visuals/Sprite2D")]
-hit_flash_material = SubResource("ShaderMaterial_cleip")
+hit_flash_material = SubResource("ShaderMaterial_qgwbr")
 
 [node name="NavigatorComponent" parent="." instance=ExtResource("2_ckjmp")]
 unique_name_in_owner = true
