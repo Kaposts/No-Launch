@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ovl8y74ydfug"
-path="res://.godot/imported/player_infantry.png-962e09fae291b85cf1b9027f33d39cd4.ctex"
+uid="uid://b0oi8hu1s2lfk"
+path="res://.godot/imported/player_lance.png-14be4a39a74755b88ee3e20487377990.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/player_infantry.png"
-dest_files=["res://.godot/imported/player_infantry.png-962e09fae291b85cf1b9027f33d39cd4.ctex"]
+source_file="res://assets/characters/player_lance.png"
+dest_files=["res://.godot/imported/player_lance.png-14be4a39a74755b88ee3e20487377990.ctex"]
 
 [params]
 

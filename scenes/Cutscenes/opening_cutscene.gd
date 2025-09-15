@@ -8,7 +8,6 @@ func _ready():
 	Dialogic.start("Cutscene1")
 	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.OPENING_CUTSCENE, false, true)
-	
 
 
 func _on_dialogic_signal(argument: String):

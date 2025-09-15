@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="EntityParameters" load_steps=3 format=3 uid="uid://cugg8eevv1j45"]
 
 [ext_resource type="Script" uid="uid://c1uhvd44yudpd" path="res://resources/entity_parameters.gd" id="1_xq0nn"]
-[ext_resource type="Texture2D" uid="uid://b6m1egen2p3o8" path="res://assets/characters/player_infantry.png" id="2_p5f28"]
+[ext_resource type="Texture2D" uid="uid://5sami0gh7477" path="res://assets/characters/player_shield.png" id="2_p5f28"]
 
 [resource]
 script = ExtResource("1_xq0nn")
