@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://blk1ycwrde8uk"]
+[gd_scene load_steps=20 format=3 uid="uid://blk1ycwrde8uk"]
 
 [ext_resource type="Texture2D" uid="uid://bdfcrq2mmpufd" path="res://assets/UI/Computer.png" id="1_58fj5"]
 [ext_resource type="Script" uid="uid://c44k4q21cabh6" path="res://scenes/UI/main_menu.gd" id="1_kuv8g"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c1w7rrrjj64fu" path="res://assets/UI/UI_Buttons/Quit - Clickedl.png" id="14_c1mgp"]
 [ext_resource type="Texture2D" uid="uid://b2sdrk8iiyp48" path="res://assets/UI/UI_Buttons/Quit - Hover.png" id="15_hkamj"]
 [ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="16_kuv8g"]
+[ext_resource type="Texture2D" uid="uid://bj8csggoqduto" path="res://assets/UI/No Launch Logo.png" id="17_h5h42"]
 [ext_resource type="PackedScene" uid="uid://bdilluerfe10k" path="res://scenes/UI/CreditsMenu.tscn" id="18_s1u1q"]
 
 [node name="MainMenu" type="Node2D"]
@@ -156,6 +157,10 @@ layout_mode = 2
 text = "Quit"
 label_settings = ExtResource("6_av0jf")
 horizontal_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="TextureRect2"]
+position = Vector2(303, 135)
+texture = ExtResource("17_h5h42")
 
 [node name="OptionsMenu" parent="." instance=ExtResource("16_kuv8g")]
 visible = false
