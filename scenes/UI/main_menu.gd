@@ -5,7 +5,7 @@ extends Node2D
 @onready var main_menu_buttons = $TextureRect2/MainMenu_Buttons
 
 func _ready():
-	pass
+	MusicPlayer.switch_song(MusicPlayer.SongNames.TITLE_THEME, false, true)
 
 func _on_options_button_pressed() -> void:
 	Audio.play_random("sfx_ui_click")
