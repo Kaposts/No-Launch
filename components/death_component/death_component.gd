@@ -11,7 +11,7 @@ func _ready():
 
 
 func on_died():
-	if owner == null || not owner is Node2D:
+	if owner == null || not owner is Node2D || get_tree() == null:
 		return
 	var spawn_position = owner.global_position
 	

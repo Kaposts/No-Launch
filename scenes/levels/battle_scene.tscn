@@ -58,7 +58,7 @@ region_rect = Rect2(0, 0, 216, 314)
 
 [node name="EnemyNexus" parent="." groups=["enemy_nexus"] instance=ExtResource("2_6b61y")]
 position = Vector2(555, 134)
-health = 50
+health = 30
 ally = false
 
 [node name="Sprite2D" type="Sprite2D" parent="EnemyNexus"]

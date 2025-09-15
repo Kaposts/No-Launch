@@ -4,9 +4,6 @@ extends Area2D
 ## Author: Lestavol
 ## Home Base for each faction
 
-@export var player: bool
-@export var enemy: bool
-
 @export var health: int = 20
 @export var can_destroy_entity: bool = false:
 	set(flag):
@@ -39,14 +36,16 @@ func _on_body_entered(body: Node2D) -> void:
 	body.health_component.damage(1000)
 
 	if health <= 0:
-		die()
+		call_deferred("die")
+
 
 func die():
-	if enemy:
-		get_tree().change_scene_to_file("res://scenes/Cutscenes/EndingCutScene.tscn")
-	if player:
+	if ally:
 		SignalBus.player_lost.emit()
 		Global.game_is_paused = true
+	else:
+		get_tree().paused = true
+		get_tree().change_scene_to_file("res://scenes/Cutscenes/EndingCutScene.tscn")
 
 
 func _on_heal_nexus(value: int):

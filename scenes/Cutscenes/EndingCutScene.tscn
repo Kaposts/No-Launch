@@ -231,7 +231,17 @@ _data = {
 }
 
 [node name="EndingCutscene" type="Node"]
+process_mode = 3
 script = ExtResource("1_tsui3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0627451, 0.12549, 1)
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(320, 180)
