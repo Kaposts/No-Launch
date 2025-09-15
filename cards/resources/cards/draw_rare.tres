@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://dbtw0tqgurb5h" path="res://cards/resources/activations/draw/draw_rare.tres" id="2_s678c"]
 [ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_1i5hg"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_n8i1l"]
-[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_j2ipg"]
+[ext_resource type="Texture2D" uid="uid://chdb8sssrgyut" path="res://cards/assets/Card Sprites/Action Draw Rare Card.png" id="5_s678c"]
 
 [resource]
 script = ExtResource("4_n8i1l")
@@ -12,7 +12,7 @@ name = "Legacy Code"
 type = 2
 rarity = 0
 background = ExtResource("3_1i5hg")
-sprite = ExtResource("5_j2ipg")
+sprite = ExtResource("5_s678c")
 energy = 2
 weight = 3
 activations = Array[ExtResource("1_s678c")]([ExtResource("2_s678c")])
