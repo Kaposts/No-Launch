@@ -38,6 +38,7 @@ func transition():
 
 func _on_start_game():
 	# reset values
+	game_is_paused = false
 	
 	cards_in_hand = []
 	cards_in_play = []
@@ -175,6 +176,8 @@ func fill_energy(amount: int):
 	SignalBus.update_energy.emit(energy)
 
 func _on_end_round():
+	if game_is_paused: return
+	
 	is_playing_turn = false
 	energy = max_energy
 

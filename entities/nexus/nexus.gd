@@ -44,7 +44,8 @@ func die():
 	if enemy:
 		get_tree().change_scene_to_file("res://scenes/Cutscenes/EndingCutScene.tscn")
 	if player:
-		get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
+		SignalBus.player_lost.emit()
+		Global.game_is_paused = true
 
 
 func _on_heal_nexus(value: int):
