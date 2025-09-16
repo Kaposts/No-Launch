@@ -9,6 +9,7 @@ extends Node
 @onready var pause_menu: Control = %PauseMenu
 @onready var death_menu: Control = %DeathMenu
 @onready var vignette: CanvasLayer = $Vignette
+@onready var input_stop_layer: CanvasLayer = $InputStopLayer # Stop player input when in transition
 
 
 func _ready():
@@ -18,6 +19,8 @@ func _ready():
 	SignalBus.round_effect_hide.connect(on_round_effect_hide)
 	SignalBus.player_lost.connect(_on_player_lost)
 	SignalBus.end_round.connect(_on_end_round)
+	
+	input_stop_layer.hide()
 	
 	play_button.pressed.connect(_on_play_turn_pressed)
 	pause_menu.visibility_changed.connect(_on_menu_visibility_changed)
@@ -70,8 +73,16 @@ func _input(event):
 				get_viewport().set_input_as_handled()
 
 
-func _on_menu_pressed() -> void:
+# Prep the scene when in transition
+func _set_in_transition() -> void:
 	death_menu.hide()
+	options_menu.hide()
+	pause_menu.hide()
+	input_stop_layer.show()
+
+
+func _on_menu_pressed() -> void:
+	_set_in_transition()
 	await Global.transition()
 	get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
 	SignalBus.start_game.emit()
@@ -81,7 +92,7 @@ func _on_settings_pressed() -> void:
 	options_menu.show()
 
 func _on_restart_pressed() -> void:
-	death_menu.hide()
+	_set_in_transition()
 	await Global.transition()
 	get_tree().reload_current_scene()
 	SignalBus.start_game.emit()
