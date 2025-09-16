@@ -5,6 +5,8 @@ extends Node
 @onready var play_button: TextureButton = %PlayButton
 @onready var energy_label: Label = %EnergyLabel
 @onready var energy_group: Control = %EnergyGroup
+@onready var options_menu: Control = $OptionsMenu
+@onready var pause_menu: Control = $PauseMenu
 
 
 func _ready():
@@ -53,11 +55,11 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and not event.echo:
 			if event.keycode == KEY_ESCAPE:
-				if $Pause.visible:
-					$OptionsMenu.hide()
-					$Pause.hide()
+				if pause_menu.visible or options_menu.visible:
+					options_menu.hide()
+					pause_menu.hide()
 				else:
-					$Pause.show()
+					pause_menu.show()
 
 
 func _on_menu_pressed() -> void:
@@ -66,8 +68,8 @@ func _on_menu_pressed() -> void:
 	SignalBus.start_game.emit()
 
 func _on_settings_pressed() -> void:
-	$OptionsMenu.show()
-	$Pause.hide()
+	options_menu.show()
+	pause_menu.hide()
 
 func _on_restart_pressed() -> void:
 	await Global.transition()

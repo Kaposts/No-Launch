@@ -247,7 +247,7 @@ libraries = {
 [node name="OptionsMenu" parent="." instance=ExtResource("2_vq5xy")]
 visible = false
 
-[node name="Pause" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -256,7 +256,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="TextureRect" parent="Pause"]
+[node name="BG" type="TextureRect" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -271,7 +271,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_fynll")
 
-[node name="container" type="VBoxContainer" parent="Pause"]
+[node name="container" type="VBoxContainer" parent="PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -286,21 +286,21 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="restart" type="Button" parent="Pause/container"]
+[node name="restart" type="Button" parent="PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_2dni3")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_22frk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_d0pem")
 
-[node name="settings" type="Button" parent="Pause/container"]
+[node name="settings" type="Button" parent="PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_llti3")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y84gk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qnke6")
 
-[node name="menu" type="Button" parent="Pause/container"]
+[node name="menu" type="Button" parent="PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
@@ -379,8 +379,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qbpmt")
 
 [connection signal="pressed" from="round_effect/round_effect_close" to="." method="_on_round_effect_close_pressed"]
-[connection signal="pressed" from="Pause/container/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Pause/container/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Pause/container/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/container/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/container/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/container/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="Death/container/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Death/container/menu" to="." method="_on_menu_pressed"]
