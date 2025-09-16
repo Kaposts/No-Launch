@@ -7,6 +7,3 @@
 script = ExtResource("2_cxtsb")
 res_name = "sfx_ui_drop_002"
 res_stream = ExtResource("1_5hr75")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

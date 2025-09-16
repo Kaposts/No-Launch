@@ -20,6 +20,8 @@ const LIBRARY_PATH = "res://addons/audio_manager/resources/audios/"
 func setup_sfx():
 	audios = read_dir()
 
+	print(audios)
+
 	for i in range(max_channels):
 		var player = AudioStreamPlayer.new()
 		add_child(player)
@@ -83,7 +85,12 @@ func play_by_name(sound_name: String, player_override = null):
 	return
 
 func play_random(prefix: String, player_override = null) -> void:
-	var matches := audios.filter(func(a): return a.res_name.begins_with(prefix))
+
+	var matches := audios.filter(
+		func(audio: AudioData): 
+			if !audio: return
+			return audio.res_name.begins_with(prefix)
+			)
 
 	if matches.is_empty():
 		push_warning("No sounds found with prefix: %s" % prefix)
@@ -124,7 +131,12 @@ func read_dir() -> Array[AudioData]:
 
 		elif filename.get_extension().to_lower() in RESOURCE_EXTENSION:
 				var resource: AudioData = load(path + filename)
-				assert(resource,"resource " + filename + " was not found")
+
+				if !resource: 
+					push_warning(resource,"resource " + filename + " was not found")
+					filename = dir.get_next()
+					continue
+
 				audios.append(resource)
 		else: 
 			push_error('The extension for this file is not supported: ', filename)

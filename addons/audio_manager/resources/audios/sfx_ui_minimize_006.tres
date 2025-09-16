@@ -7,6 +7,3 @@
 script = ExtResource("2_slkrb")
 res_name = "sfx_ui_minimize_006"
 res_stream = ExtResource("1_qamvv")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

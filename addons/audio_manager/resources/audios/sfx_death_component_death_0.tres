@@ -7,6 +7,3 @@
 script = ExtResource("2_u0i10")
 res_name = "sfx_death_component_death_0"
 res_stream = ExtResource("1_walqs")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false
