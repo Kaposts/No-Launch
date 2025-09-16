@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bfoyy5hcgwoyb" path="res://assets/UI/UI_Buttons/Settings - Hover.png" id="12_i2kgm"]
 [ext_resource type="Texture2D" uid="uid://cfhkvdm4kvy43" path="res://assets/UI/UI_Buttons/Quit - Normal.png" id="13_4v2cq"]
 [ext_resource type="Texture2D" uid="uid://c1w7rrrjj64fu" path="res://assets/UI/UI_Buttons/Quit - Clickedl.png" id="14_c1mgp"]
-[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button.tscn" id="14_r7s35"]
+[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button/sound_button.tscn" id="14_r7s35"]
 [ext_resource type="Texture2D" uid="uid://b2sdrk8iiyp48" path="res://assets/UI/UI_Buttons/Quit - Hover.png" id="15_hkamj"]
 [ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="16_kuv8g"]
 [ext_resource type="Texture2D" uid="uid://bj8csggoqduto" path="res://assets/UI/No Launch Logo.png" id="17_h5h42"]

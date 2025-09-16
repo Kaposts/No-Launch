@@ -5,8 +5,10 @@ extends Node
 @onready var play_button: TextureButton = %PlayButton
 @onready var energy_label: Label = %EnergyLabel
 @onready var energy_group: Control = %EnergyGroup
-@onready var options_menu: Control = $OptionsMenu
-@onready var pause_menu: Control = $PauseMenu
+@onready var options_menu: Control = %OptionsMenu
+@onready var pause_menu: Control = %PauseMenu
+@onready var death_menu: Control = %DeathMenu
+@onready var vignette: CanvasLayer = $Vignette
 
 
 func _ready():
@@ -18,6 +20,8 @@ func _ready():
 	SignalBus.end_round.connect(_on_end_round)
 	
 	play_button.pressed.connect(_on_play_turn_pressed)
+	pause_menu.visibility_changed.connect(_on_pause_menu_visibility_changed)
+	death_menu.visibility_changed.connect(_on_death_menu_visibility_changed)
 
 
 func _on_update_energy(value):
@@ -63,6 +67,7 @@ func _input(event):
 
 
 func _on_menu_pressed() -> void:
+	death_menu.hide()
 	await Global.transition()
 	get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
 	SignalBus.start_game.emit()
@@ -72,10 +77,19 @@ func _on_settings_pressed() -> void:
 	pause_menu.hide()
 
 func _on_restart_pressed() -> void:
+	death_menu.hide()
 	await Global.transition()
 	get_tree().reload_current_scene()
 	SignalBus.start_game.emit()
 	Global.is_playing_turn = false
 
 func _on_player_lost() -> void:
-	$Death.show()
+	death_menu.show()
+
+
+func _on_pause_menu_visibility_changed() -> void:
+	vignette.visible = pause_menu.visible
+
+
+func _on_death_menu_visibility_changed() -> void:
+	vignette.visible = death_menu.visible
