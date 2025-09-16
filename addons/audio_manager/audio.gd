@@ -2,10 +2,9 @@
 extends Node
 
 var audios: Array[AudioData] = []
-var config: AudioManagerConfig
+var config: AudioManagerConfig = preload("res://addons/audio_manager/config/config.tres")
 
-func _ready():
-	config = load("res://addons/audio_manager/config/config.tres")
+func _enter_tree() -> void:
 	setup_sfx()
 	setup_bgm()
 
@@ -15,6 +14,7 @@ var max_channels: int = 8
 var channels = []
 
 const RESOURCE_EXTENSION = ".tres"
+const RESOURCE_EXPORT_EXTENSION = ".tres.remap"
 const LIBRARY_PATH = "res://addons/audio_manager/resources/audios/"
 
 func setup_sfx():
@@ -76,6 +76,7 @@ func play(audio: AudioData, player_override = null):
 	# channels[0].play()
 
 func play_by_name(sound_name: String, player_override = null):
+	print(audios)
 	for audio: AudioData in audios:
 		if audio.res_name == sound_name:
 			play(audio, player_override)
@@ -122,15 +123,22 @@ func read_dir() -> Array[AudioData]:
 
 	dir.list_dir_begin()
 	var filename = dir.get_next()
+	var fn = []
 
 	while filename != "":
+		fn.append(filename)
 		# skip hidden files
 		if filename.begins_with("."):
 			filename = dir.get_next()
 			continue
 
-		elif filename.get_extension().to_lower() in RESOURCE_EXTENSION:
-				var resource: AudioData = load(path + filename)
+		# logic for expoerted resources
+		# if filename.ends_with(".remap"):
+		# 	var expected_length = filename.length() - ".remap".length()
+		# 	filename = filename.substr(0, expected_length)
+
+		elif filename.get_extension().to_lower() in RESOURCE_EXTENSION or filename.get_extension().to_lower() in RESOURCE_EXPORT_EXTENSION:
+				var resource: AudioData = ResourceLoader.load(path + filename)
 
 				if !resource: 
 					push_warning(resource,"resource " + filename + " was not found")
@@ -144,6 +152,8 @@ func read_dir() -> Array[AudioData]:
 		filename = dir.get_next()
 
 	dir.list_dir_end()
+
+	print(str(fn))
 
 	return audios
 

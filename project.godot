@@ -32,6 +32,7 @@ Activate="*res://core/activate.gd"
 PlayerBuffs="*res://core/buffs/player_buffs.gd"
 Audio="*res://addons/audio_manager/audio.gd"
 RoundEffect="*res://core/round_effect.gd"
+GlobalSfxPlayer="*res://autoloads/sfx_player/global_sfx_player.tscn"
 
 [dialogic]
 
@@ -103,6 +104,7 @@ window/stretch/scale_mode="integer"
 [editor]
 
 movie_writer/movie_file="D:/GodotGameProjects/Patch-Notes-v1-Jam/media/movies/output.avi"
+export/convert_text_resources_to_binary=false
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 

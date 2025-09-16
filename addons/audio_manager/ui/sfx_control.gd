@@ -27,7 +27,7 @@ func _play_button_pressed():
 	$AudioStreamPlayer.volume_db = audioResource.res_volume_db
 	$AudioStreamPlayer.pitch_scale = audioResource.res_pitch_scale
 	if audioResource.res_pitch_randomizer:
-		var config = preload("res://addons/audio_manager/config/config.tres")
+		var config = ResourceLoader.load("res://addons/audio_manager/config/config.tres")
 		var range = config.pitch_randomizer_range
 		var rand := randf_range(-1 * range, range)
 		$AudioStreamPlayer.pitch_scale += rand
