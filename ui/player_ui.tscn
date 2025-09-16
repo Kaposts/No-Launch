@@ -1,11 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://ccxkca6puflbo"]
+[gd_scene load_steps=41 format=3 uid="uid://ccxkca6puflbo"]
 
 [ext_resource type="Script" uid="uid://bl654htndwwbj" path="res://ui/player_ui.gd" id="1_cfom6"]
 [ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="2_2pr6j"]
 [ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="2_vq5xy"]
 [ext_resource type="AudioStream" uid="uid://bihm1sxpvcdvo" path="res://assets/SFX/system/battle_start.wav" id="3_5p2iw"]
 [ext_resource type="Texture2D" uid="uid://baldbfde81frs" path="res://assets/In Game Ui/Pause Base.png" id="3_fynll"]
-[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button.tscn" id="4_5p2iw"]
+[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button/sound_button.tscn" id="4_5p2iw"]
 [ext_resource type="Texture2D" uid="uid://bvofktpvt175j" path="res://assets/In Game Ui/Pause Restart Hover.png" id="4_obao7"]
 [ext_resource type="Texture2D" uid="uid://b0rkgfn0ilgtw" path="res://assets/In Game Ui/EP Base.png" id="4_prpn4"]
 [ext_resource type="Texture2D" uid="uid://cs57mk1ksfgls" path="res://assets/In Game Ui/Ep ( Energy ).png" id="4_ud46t"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://5l5ge1bx5y8m" path="res://assets/In Game Ui/Pause Menu Hover.png" id="10_m8r0k"]
 [ext_resource type="Texture2D" uid="uid://tu2j0s7ukorg" path="res://assets/In Game Ui/Pause Menu Clicked.png" id="11_prpn4"]
 [ext_resource type="Texture2D" uid="uid://bm8780sjvufe8" path="res://assets/In Game Ui/Pause Menu Normal.png" id="12_ud46t"]
+[ext_resource type="PackedScene" uid="uid://b3wtg6sxyrltt" path="res://scenes/UI/components/vignette/vignette.tscn" id="22_2dni3"]
 
 [sub_resource type="Gradient" id="Gradient_cfom6"]
 
@@ -125,6 +126,22 @@ unique_name_in_owner = true
 volume_db = 6.0
 streams = Array[AudioStream]([ExtResource("3_5p2iw")])
 
+[node name="Vignette" parent="." instance=ExtResource("22_2dni3")]
+layer = 2
+visible = false
+
+[node name="InputStopLayer" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Control" type="Control" parent="InputStopLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="EnergyGroup" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
@@ -135,6 +152,7 @@ offset_right = 142.0
 offset_bottom = 27.0
 
 [node name="EnergyTextTexture" type="TextureRect" parent="EnergyGroup"]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 17.0
 offset_right = 106.0
@@ -145,6 +163,7 @@ texture = ExtResource("4_ud46t")
 stretch_mode = 2
 
 [node name="EnergyPanelTexture" type="TextureRect" parent="EnergyGroup"]
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 64.0
 size_flags_horizontal = 0
@@ -242,11 +261,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_iwa1g")
 }
 
-[node name="OptionsMenu" parent="." instance=ExtResource("2_vq5xy")]
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="OptionsMenu" parent="MenuLayer" instance=ExtResource("2_vq5xy")]
+unique_name_in_owner = true
 visible = false
 
-[node name="Pause" type="Control" parent="."]
+[node name="PauseMenu" type="Control" parent="MenuLayer"]
+unique_name_in_owner = true
 visible = false
+top_level = true
+z_index = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -254,7 +280,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BG" type="TextureRect" parent="Pause"]
+[node name="BG" type="TextureRect" parent="MenuLayer/PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -269,7 +295,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_fynll")
 
-[node name="container" type="VBoxContainer" parent="Pause"]
+[node name="container" type="VBoxContainer" parent="MenuLayer/PauseMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -284,28 +310,29 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="restart" type="Button" parent="Pause/container"]
+[node name="restart" type="Button" parent="MenuLayer/PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_2dni3")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_22frk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_d0pem")
 
-[node name="settings" type="Button" parent="Pause/container"]
+[node name="settings" type="Button" parent="MenuLayer/PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_llti3")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y84gk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qnke6")
 
-[node name="menu" type="Button" parent="Pause/container"]
+[node name="menu" type="Button" parent="MenuLayer/PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qbpmt")
 
-[node name="Death" type="Control" parent="."]
+[node name="DeathMenu" type="Control" parent="MenuLayer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -314,14 +341,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="Death"]
+[node name="Panel" type="Panel" parent="MenuLayer/DeathMenu"]
 layout_mode = 0
 offset_left = -165.0
 offset_top = -113.0
 offset_right = 997.0
 offset_bottom = 500.0
 
-[node name="BG" type="TextureRect" parent="Death"]
+[node name="BG" type="TextureRect" parent="MenuLayer/DeathMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -336,7 +363,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_fynll")
 
-[node name="Label" type="Label" parent="Death"]
+[node name="Label" type="Label" parent="MenuLayer/DeathMenu"]
 layout_mode = 0
 offset_left = 272.0
 offset_top = 120.0
@@ -347,7 +374,7 @@ text = "GET REKT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="container" type="VBoxContainer" parent="Death"]
+[node name="container" type="VBoxContainer" parent="MenuLayer/DeathMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -362,14 +389,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="restart" type="Button" parent="Death/container"]
+[node name="restart" type="Button" parent="MenuLayer/DeathMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_2dni3")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_22frk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_d0pem")
 
-[node name="menu" type="Button" parent="Death/container"]
+[node name="menu" type="Button" parent="MenuLayer/DeathMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
@@ -377,8 +404,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qbpmt")
 
 [connection signal="pressed" from="round_effect/round_effect_close" to="." method="_on_round_effect_close_pressed"]
-[connection signal="pressed" from="Pause/container/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Pause/container/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Pause/container/menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="Death/container/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="Death/container/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="MenuLayer/PauseMenu/container/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MenuLayer/PauseMenu/container/settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MenuLayer/PauseMenu/container/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="MenuLayer/DeathMenu/container/restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MenuLayer/DeathMenu/container/menu" to="." method="_on_menu_pressed"]

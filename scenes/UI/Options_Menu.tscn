@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://v8w1mm1n1fug" path="res://assets/UI/Settings Menu #2 - Without Close.png" id="1_qbgyr"]
 [ext_resource type="Script" uid="uid://b0rgmdkheb7eg" path="res://scenes/UI/options_menu.gd" id="1_rb3fs"]
-[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button.tscn" id="3_m6btu"]
+[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button/sound_button.tscn" id="3_m6btu"]
 [ext_resource type="LabelSettings" uid="uid://dsk8tddkeqlvd" path="res://assets/UI/Label_Black.tres" id="5_e4yxm"]
 [ext_resource type="Texture2D" uid="uid://ckdav2kcveqb5" path="res://assets/UI/UI_Buttons/Grabber_Off.png" id="6_ar1by"]
 [ext_resource type="Texture2D" uid="uid://b3iayjau22qs5" path="res://assets/UI/UI_Buttons/Grabber_On.png" id="7_d6jn2"]

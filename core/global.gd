@@ -164,6 +164,7 @@ func increase_energy(amount: int):
 		max_energy = energy_cap
 	
 	GlobalSfxPlayer.energy_increased_sfx_player.play_random()
+	SignalBus.max_enery_increased.emit(amount)
 	SignalBus.update_energy.emit(energy)
 
 func fill_energy(amount: int):
@@ -175,6 +176,7 @@ func fill_energy(amount: int):
 		energy += amount
 	
 	GlobalSfxPlayer.energy_increased_sfx_player.play_random()
+	SignalBus.max_enery_increased.emit(amount)
 	SignalBus.update_energy.emit(energy)
 
 func _on_end_round():

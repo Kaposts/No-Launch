@@ -127,7 +127,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai8wm"]
 size = Vector2(114, 279)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxdqk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t68y3"]
 resource_local_to_scene = true
 shader = ExtResource("15_3knsx")
 shader_parameter/lerp_percent = 0.0
@@ -149,7 +149,7 @@ linear_accel_max = 22.65
 damping_min = 6.748
 damping_max = 17.887
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rrjn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hyis1"]
 resource_local_to_scene = true
 shader = ExtResource("15_3knsx")
 shader_parameter/lerp_percent = 0.0
@@ -254,7 +254,7 @@ metadata/_custom_type_script = "uid://davec6km1s6jp"
 [node name="AllyHitFlashComponent" parent="AllyCore" node_paths=PackedStringArray("sprite_group") instance=ExtResource("14_rxdqk")]
 unique_name_in_owner = true
 sprite_group = [NodePath("../Core")]
-hit_flash_material = SubResource("ShaderMaterial_rxdqk")
+hit_flash_material = SubResource("ShaderMaterial_t68y3")
 
 [node name="AllyCoreParticlesComponent" parent="AllyCore" instance=ExtResource("16_5rrjn")]
 position = Vector2(-23, 78)
@@ -310,7 +310,7 @@ metadata/_custom_type_script = "uid://davec6km1s6jp"
 [node name="EnemyHitFlashComponent" parent="EnemyCore" node_paths=PackedStringArray("sprite_group") instance=ExtResource("14_rxdqk")]
 unique_name_in_owner = true
 sprite_group = [NodePath("../Core")]
-hit_flash_material = SubResource("ShaderMaterial_5rrjn")
+hit_flash_material = SubResource("ShaderMaterial_hyis1")
 
 [node name="EnemyCoreParticlesComponent" parent="EnemyCore" instance=ExtResource("16_5rrjn")]
 position = Vector2(24, 85)

@@ -21,6 +21,28 @@ point_count = 3
 
 [node name="BattleScene" parent="." instance=ExtResource("6_5aj6u")]
 
+[node name="hand" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 262.0
+offset_right = 593.0
+offset_bottom = 427.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.00399, 1.00427)
+script = ExtResource("1_em3ci")
+card_scene = ExtResource("2_lya68")
+hand_curve = SubResource("Curve_laqxi")
+rotation_curve = SubResource("Curve_em3ci")
+x_sep = -1
+y_max = -35
+card_pool = Array[ExtResource("3_t0n0d")]([ExtResource("4_5aj6u")])
+
 [node name="drop" type="TextureRect" parent="." groups=["drop_zone"]]
 visible = false
 offset_right = 640.0
@@ -38,30 +60,6 @@ text = "draw
 
 [node name="UI" parent="." instance=ExtResource("5_t0n0d")]
 
-[node name="HandCanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="hand" type="Control" parent="HandCanvasLayer"]
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -276.0
-offset_top = -98.0
-offset_right = 273.0
-offset_bottom = 67.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.00399, 1.00427)
-script = ExtResource("1_em3ci")
-card_scene = ExtResource("2_lya68")
-hand_curve = SubResource("Curve_laqxi")
-rotation_curve = SubResource("Curve_em3ci")
-x_sep = -1
-y_max = -35
-card_pool = Array[ExtResource("3_t0n0d")]([ExtResource("4_5aj6u")])
-
 [node name="Tutorial" parent="." instance=ExtResource("8_2a3jl")]
 
-[connection signal="pressed" from="draw" to="HandCanvasLayer/hand" method="_on_draw_pressed"]
+[connection signal="pressed" from="draw" to="hand" method="_on_draw_pressed"]

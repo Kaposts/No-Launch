@@ -11,4 +11,3 @@ class_name CardData
 @export var weight: int = 5
 
 @export var activations: Array [ActivationResource]
-
