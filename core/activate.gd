@@ -4,7 +4,8 @@ func _ready():
 	SignalBus.play_card.connect(_on_play_card)
 
 func _on_play_card(card: Card):
-	Audio.play_by_name(SFX.SFX_UI_CLICK_003)
+	#Audio.play_by_name(SFX.SFX_UI_CLICK_003)
+	GlobalSfxPlayer.card_played_sfx_player.play_random()
 	for activation: ActivationResource in card.data.activations:
 		match activation.function:
 			Enum.CARD_FUNCTION.DRAW_CARD:

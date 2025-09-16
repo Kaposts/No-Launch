@@ -1,22 +1,332 @@
-[gd_scene load_steps=3 format=3 uid="uid://mqf25vmd4yyl"]
+[gd_scene load_steps=40 format=3 uid="uid://mqf25vmd4yyl"]
 
 [ext_resource type="Script" uid="uid://dpl71fdu4ngcd" path="res://entities/nexus/nexus.gd" id="1_nuvkp"]
+[ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="2_p28lo"]
+[ext_resource type="AudioStream" uid="uid://c5lwlaq5l8kdr" path="res://assets/SFX/combat/core_damaged.wav" id="3_3aw13"]
+[ext_resource type="Texture2D" uid="uid://l1j0i3abask5" path="res://assets/battle_scene/foreground.png" id="4_3aw13"]
+[ext_resource type="AudioStream" uid="uid://bqbcd66vvdbio" path="res://assets/SFX/combat/core_destroyed.wav" id="4_oh37x"]
+[ext_resource type="Texture2D" uid="uid://0j33xk1pv44y" path="res://assets/In Game Ui/Core SpriteSheet ( Ally ).png" id="5_c3ah8"]
+[ext_resource type="AudioStream" uid="uid://dg28gkwdynfkg" path="res://assets/SFX/system/victory.wav" id="5_oypg6"]
+[ext_resource type="Texture2D" uid="uid://bq7743rc6gg7m" path="res://assets/Background/ForeGround ( Core ) Left.png" id="6_ma1hg"]
+[ext_resource type="AudioStream" uid="uid://duebdywvbbain" path="res://assets/SFX/system/defeat.wav" id="6_qumls"]
+[ext_resource type="Texture2D" uid="uid://6rhlq447leb7" path="res://assets/Background/Background ( Core ) Left.png" id="6_y3lcq"]
+[ext_resource type="Texture2D" uid="uid://c5q6qiovoft56" path="res://assets/Background/Background ( Core ) Right.png" id="9_0wuyj"]
+[ext_resource type="Texture2D" uid="uid://du6g13xid68g3" path="res://assets/In Game Ui/Core SpriteSheet ( Enemies ).png" id="10_56a8o"]
+[ext_resource type="Script" uid="uid://davec6km1s6jp" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="10_ilqln"]
+[ext_resource type="Texture2D" uid="uid://cn4g3vu0w5c5r" path="res://assets/Background/ForeGround ( Core ) Right.png" id="11_oypg6"]
+[ext_resource type="Texture2D" uid="uid://c67ylk1x6t0n8" path="res://assets/In Game Ui/health_panel_ally.png" id="11_xfpmx"]
+[ext_resource type="Resource" uid="uid://dw6kho1pgiqui" path="res://resources/smooth_shake_preset/smooth_shake_preset.tres" id="13_k25q4"]
+[ext_resource type="Texture2D" uid="uid://co1i1iy8vkcat" path="res://assets/In Game Ui/health_panel_enemy.png" id="14_qumls"]
+[ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="14_rxdqk"]
+[ext_resource type="Shader" uid="uid://bvguo825tyhh6" path="res://components/hit_flash_component/white_hit_flash.gdshader" id="15_3knsx"]
+[ext_resource type="PackedScene" uid="uid://bs7vi5x8y5rmd" path="res://components/random_gpu_particles_component/random_gpu_particles_component.tscn" id="16_5rrjn"]
+[ext_resource type="Texture2D" uid="uid://cffu55qm1ur6b" path="res://assets/visual_effects/core_particles/core_particle_ally_1.png" id="17_3nc60"]
+[ext_resource type="Texture2D" uid="uid://duhimkjimfuo8" path="res://assets/visual_effects/core_particles/core_particle_ally_2.png" id="18_1fif4"]
+[ext_resource type="Texture2D" uid="uid://btwaqd5sckxcp" path="res://assets/visual_effects/core_particles/core_particle_ally_3.png" id="19_0vqn5"]
+[ext_resource type="Texture2D" uid="uid://6fjt31ihhhu4" path="res://assets/visual_effects/core_particles/core_particle_ally_4.png" id="20_jnybf"]
+[ext_resource type="Texture2D" uid="uid://bxu7rlvg0b1ds" path="res://assets/visual_effects/core_particles/core_particle_ally_5.png" id="21_mh4fp"]
+[ext_resource type="Texture2D" uid="uid://xslvodwqbwen" path="res://assets/visual_effects/core_particles/core_particle_enemy_1.png" id="26_t68y3"]
+[ext_resource type="Texture2D" uid="uid://plh848rmb85l" path="res://assets/visual_effects/core_particles/core_particle_enemy_2.png" id="27_hyis1"]
+[ext_resource type="Texture2D" uid="uid://bdle7uafjlmw1" path="res://assets/visual_effects/core_particles/core_particle_enemy_3.png" id="28_mo6ax"]
+[ext_resource type="Texture2D" uid="uid://dshk4553bhd77" path="res://assets/visual_effects/core_particles/core_particle_enemy_4.png" id="29_x1mfx"]
+[ext_resource type="Texture2D" uid="uid://b1ymr3iwe3o7j" path="res://assets/visual_effects/core_particles/core_particle_enemy_5.png" id="30_koful"]
+
+[sub_resource type="Animation" id="Animation_j57v7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AllyCore/Core:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemyCore/Core:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3aw13"]
+resource_name = "destroy_ally"
+length = 3.0
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AllyCore/Core:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2, 2.33333, 2.66667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 1, 4, 2, 5, 3, 5, 3, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/DestroyedSFXPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_oh37x"]
+resource_name = "destroy_enemy"
+length = 5.0
+step = 0.1667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemyCore/Core:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.666667, 1, 1.33333, 1.66667, 2, 2.33333, 2.66667, 3, 3.16667, 3.33333, 3.5, 3.66667, 3.83333, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 1, 4, 2, 5, 3, 5, 3, 5, 3, 5, 3, 5, 3, 3]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFX/VictorySFXPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3y3bm"]
+_data = {
+&"RESET": SubResource("Animation_j57v7"),
+&"destroy_ally": SubResource("Animation_3aw13"),
+&"destroy_enemy": SubResource("Animation_oh37x")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ai8wm"]
-size = Vector2(130.5, 279)
+size = Vector2(114, 279)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t68y3"]
+resource_local_to_scene = true
+shader = ExtResource("15_3knsx")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3nc60"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+angle_min = -165.6
+angle_max = 297.5
+direction = Vector3(0, 0, 0)
+spread = 65.635
+initial_velocity_min = 120.71
+initial_velocity_max = 254.1
+angular_velocity_min = -185.01
+angular_velocity_max = 441.72
+gravity = Vector3(0, 150, 0)
+linear_accel_min = -0.980002
+linear_accel_max = 22.65
+damping_min = 6.748
+damping_max = 17.887
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hyis1"]
+resource_local_to_scene = true
+shader = ExtResource("15_3knsx")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_57vyp"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+angle_min = -165.6
+angle_max = 297.5
+direction = Vector3(-1, 0, 0)
+spread = 59.668
+initial_velocity_min = 120.71
+initial_velocity_max = 254.1
+angular_velocity_min = -185.01
+angular_velocity_max = 441.72
+gravity = Vector3(0, 150, 0)
+linear_accel_min = -0.980002
+linear_accel_max = 22.65
+damping_min = 6.748
+damping_max = 17.887
 
 [node name="Nexus" type="Area2D"]
+process_mode = 3
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_nuvkp")
 
-[node name="DebugLabel" type="Label" parent="."]
-offset_left = -18.0
-offset_top = -81.0
-offset_right = 22.0
-offset_bottom = -67.0
-text = "HP: 20"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3y3bm")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(15, 0)
 shape = SubResource("RectangleShape2D_ai8wm")
 debug_color = Color(1, 1, 1, 0.42)
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="HurtSFXPlayer" parent="SFX" instance=ExtResource("2_p28lo")]
+unique_name_in_owner = true
+volume_db = 7.0
+streams = Array[AudioStream]([ExtResource("3_3aw13")])
+
+[node name="DestroyedSFXPlayer" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_oh37x")
+volume_db = 8.0
+bus = &"SFX"
+
+[node name="VictorySFXPlayer" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("5_oypg6")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="DefeatSFXPlayer" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("6_qumls")
+volume_db = 6.0
+bus = &"SFX"
+
+[node name="AllyCore" type="Node2D" parent="."]
+visible = false
+
+[node name="Background" type="Sprite2D" parent="AllyCore"]
+position = Vector2(-29, 28)
+texture = ExtResource("6_y3lcq")
+
+[node name="Background2" type="Sprite2D" parent="AllyCore"]
+show_behind_parent = true
+position = Vector2(-82, -134)
+texture = ExtResource("4_3aw13")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 213, 62.8648)
+
+[node name="Core" type="Sprite2D" parent="AllyCore"]
+position = Vector2(-49, 83)
+texture = ExtResource("5_c3ah8")
+vframes = 6
+
+[node name="Foreground" type="Sprite2D" parent="AllyCore"]
+position = Vector2(-56.5, 122)
+texture = ExtResource("6_ma1hg")
+
+[node name="HealthPanel" type="Sprite2D" parent="AllyCore"]
+position = Vector2(-2, -87)
+texture = ExtResource("11_xfpmx")
+
+[node name="AllyShakerComponent" type="Node2D" parent="AllyCore" node_paths=PackedStringArray("Targets")]
+unique_name_in_owner = true
+position = Vector2(-49, 83)
+script = ExtResource("10_ilqln")
+custom_target = true
+Targets = [NodePath("../Background"), NodePath("../Background2"), NodePath("../Core"), NodePath("../Foreground")]
+randomize = true
+intensity = 15.0
+duration = 0.3
+fade_in = 0.189465
+fade_out = 0.450625
+shakerPreset = ExtResource("13_k25q4")
+metadata/_custom_type_script = "uid://davec6km1s6jp"
+
+[node name="AllyHitFlashComponent" parent="AllyCore" node_paths=PackedStringArray("sprite_group") instance=ExtResource("14_rxdqk")]
+unique_name_in_owner = true
+sprite_group = [NodePath("../Core")]
+hit_flash_material = SubResource("ShaderMaterial_t68y3")
+
+[node name="AllyCoreParticlesComponent" parent="AllyCore" instance=ExtResource("16_5rrjn")]
+position = Vector2(-23, 78)
+emitting = false
+amount = 10
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_3nc60")
+textures = Array[Texture2D]([ExtResource("17_3nc60"), ExtResource("18_1fif4"), ExtResource("19_0vqn5"), ExtResource("20_jnybf"), ExtResource("21_mh4fp")])
+
+[node name="EnemyCore" type="Node2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="EnemyCore"]
+position = Vector2(40, 29)
+texture = ExtResource("9_0wuyj")
+
+[node name="Background2" type="Sprite2D" parent="EnemyCore"]
+show_behind_parent = true
+position = Vector2(-141.5, -134)
+texture = ExtResource("4_3aw13")
+centered = false
+region_enabled = true
+region_rect = Rect2(284, 0, 228, 61.9999)
+
+[node name="Core" type="Sprite2D" parent="EnemyCore"]
+position = Vector2(46, 82)
+texture = ExtResource("10_56a8o")
+vframes = 6
+
+[node name="Foreground" type="Sprite2D" parent="EnemyCore"]
+position = Vector2(64, 90)
+texture = ExtResource("11_oypg6")
+
+[node name="HealthPanel" type="Sprite2D" parent="EnemyCore"]
+position = Vector2(0, -87)
+texture = ExtResource("14_qumls")
+
+[node name="EnemyShakerComponent" type="Node2D" parent="EnemyCore" node_paths=PackedStringArray("Targets")]
+unique_name_in_owner = true
+position = Vector2(-49, 83)
+script = ExtResource("10_ilqln")
+custom_target = true
+Targets = [NodePath("../Background"), NodePath("../Background2"), NodePath("../Core"), NodePath("../Foreground")]
+randomize = true
+intensity = 15.0
+duration = 0.3
+fade_in = 0.189465
+fade_out = 0.450625
+shakerPreset = ExtResource("13_k25q4")
+metadata/_custom_type_script = "uid://davec6km1s6jp"
+
+[node name="EnemyHitFlashComponent" parent="EnemyCore" node_paths=PackedStringArray("sprite_group") instance=ExtResource("14_rxdqk")]
+unique_name_in_owner = true
+sprite_group = [NodePath("../Core")]
+hit_flash_material = SubResource("ShaderMaterial_hyis1")
+
+[node name="EnemyCoreParticlesComponent" parent="EnemyCore" instance=ExtResource("16_5rrjn")]
+position = Vector2(24, 85)
+emitting = false
+amount = 10
+lifetime = 0.5
+one_shot = true
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_57vyp")
+textures = Array[Texture2D]([ExtResource("26_t68y3"), ExtResource("27_hyis1"), ExtResource("28_mo6ax"), ExtResource("29_x1mfx"), ExtResource("30_koful")])
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = -5.0
+offset_top = -81.0
+offset_right = 7.0
+offset_bottom = -67.0
+size_flags_horizontal = 4
+theme_override_constants/outline_size = 8
+text = "20"

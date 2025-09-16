@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://crv6wrd1htgmr"]
+[gd_scene load_steps=33 format=3 uid="uid://crv6wrd1htgmr"]
 
 [ext_resource type="Script" uid="uid://5hg061g82116" path="res://cards/card.gd" id="1_ttli1"]
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="2_032ga"]
@@ -14,6 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://dd4t5yb2uby8g" path="res://assets/UI/UI_Buttons/Close - Clicked.png" id="11_dc7yu"]
 [ext_resource type="Material" uid="uid://dhcgqc68f1p1v" path="res://resources/external_border_shader/external_border_material.tres" id="11_tnxwt"]
 [ext_resource type="Texture2D" uid="uid://c8qeg65lntobq" path="res://assets/UI/UI_Buttons/Close - Normal.png" id="13_tnxwt"]
+[ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="15_6ytvp"]
+[ext_resource type="AudioStream" uid="uid://ct47stpr74oep" path="res://assets/SFX/card/card_unusable.wav" id="16_emeai"]
+[ext_resource type="AudioStream" uid="uid://co25yejwp0qok" path="res://assets/SFX/card/card_hovered.wav" id="17_l5sey"]
+[ext_resource type="AudioStream" uid="uid://0eq2hcre0mc5" path="res://assets/SFX/card/card_played.wav" id="18_ve2aj"]
+[ext_resource type="AudioStream" uid="uid://ct7g54il8a21f" path="res://assets/SFX/card/card_drawn.wav" id="19_emeai"]
+[ext_resource type="AudioStream" uid="uid://cbtgmfplwmc2j" path="res://assets/SFX/system/debuffed.wav" id="20_l5sey"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tnxwt"]
 texture = ExtResource("13_tnxwt")
@@ -115,7 +121,6 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_14m1o"]
 resource_name = "delete"
-length = 0.3667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -139,6 +144,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/FailedSFXPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ttli1"]
@@ -527,6 +546,23 @@ libraries = {
 &"": SubResource("AnimationLibrary_5aj6u")
 }
 playback_auto_capture_transition_type = 4
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="UnusableSFXPlayer" parent="SFX" instance=ExtResource("15_6ytvp")]
+streams = Array[AudioStream]([ExtResource("16_emeai")])
+
+[node name="HoveredSFXPlayer" parent="SFX" instance=ExtResource("15_6ytvp")]
+streams = Array[AudioStream]([ExtResource("17_l5sey")])
+
+[node name="PlayedSFXPlayer" parent="SFX" instance=ExtResource("15_6ytvp")]
+streams = Array[AudioStream]([ExtResource("18_ve2aj")])
+
+[node name="DrawnSFXPlayer" parent="SFX" instance=ExtResource("15_6ytvp")]
+streams = Array[AudioStream]([ExtResource("19_emeai")])
+
+[node name="FailedSFXPlayer" parent="SFX" instance=ExtResource("15_6ytvp")]
+streams = Array[AudioStream]([ExtResource("20_l5sey")])
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="pressed" from="Container/info/close" to="." method="_on_close_pressed"]

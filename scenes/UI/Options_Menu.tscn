@@ -1,10 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cr7esn4hh8e7e"]
+[gd_scene load_steps=14 format=3 uid="uid://cr7esn4hh8e7e"]
 
 [ext_resource type="Texture2D" uid="uid://v8w1mm1n1fug" path="res://assets/UI/Settings Menu #2 - Without Close.png" id="1_qbgyr"]
 [ext_resource type="Script" uid="uid://b0rgmdkheb7eg" path="res://scenes/UI/options_menu.gd" id="1_rb3fs"]
-[ext_resource type="Texture2D" uid="uid://c8qeg65lntobq" path="res://assets/UI/UI_Buttons/Close - Normal.png" id="2_m6btu"]
-[ext_resource type="Texture2D" uid="uid://dd4t5yb2uby8g" path="res://assets/UI/UI_Buttons/Close - Clicked.png" id="3_2c0gt"]
-[ext_resource type="Texture2D" uid="uid://7o7f5byf5rh6" path="res://assets/UI/UI_Buttons/Close - Hover.png" id="4_rb3fs"]
+[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button/sound_button.tscn" id="3_m6btu"]
 [ext_resource type="LabelSettings" uid="uid://dsk8tddkeqlvd" path="res://assets/UI/Label_Black.tres" id="5_e4yxm"]
 [ext_resource type="Texture2D" uid="uid://ckdav2kcveqb5" path="res://assets/UI/UI_Buttons/Grabber_Off.png" id="6_ar1by"]
 [ext_resource type="Texture2D" uid="uid://b3iayjau22qs5" path="res://assets/UI/UI_Buttons/Grabber_On.png" id="7_d6jn2"]
@@ -64,15 +62,12 @@ offset_bottom = 199.0
 scale = Vector2(1.475, 1.475)
 texture = ExtResource("1_qbgyr")
 
-[node name="CloseButton" type="TextureButton" parent="TextureRect"]
+[node name="CloseButton" parent="TextureRect" instance=ExtResource("3_m6btu")]
 layout_mode = 0
-offset_left = 160.678
+offset_left = 162.712
 offset_top = 2.71186
-offset_right = 175.678
+offset_right = 177.712
 offset_bottom = 17.7119
-texture_normal = ExtResource("2_m6btu")
-texture_pressed = ExtResource("3_2c0gt")
-texture_hover = ExtResource("4_rb3fs")
 
 [node name="GridContainer" type="GridContainer" parent="TextureRect"]
 layout_mode = 0
@@ -132,11 +127,10 @@ layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme = SubResource("Theme_61x1x")
-min_value = -30.0
-max_value = 0.0
+min_value = -15.0
+max_value = 15.0
 step = 3.0
 
-[connection signal="pressed" from="TextureRect/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_mouse_exited"]
 [connection signal="value_changed" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider2" to="." method="_on_music_mouse_exited"]

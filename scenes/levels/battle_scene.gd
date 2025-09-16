@@ -5,6 +5,9 @@ const APPEAR_TIMING_OFFSET: float = 0.5
 const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_parameters/"
 const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 
+const STARTING_MIN_ENEMY_COUNT: int = 5
+const STARTING_MAX_ENEMY_COUNT: int = 10
+
 
 @export_group("Battle Settings")
 @export var min_robot_count: int = 3
@@ -19,6 +22,7 @@ const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 @onready var player_nexus: Nexus = $PlayerNexus
 @onready var enemy_nexus: Nexus = $EnemyNexus
 @onready var reset_navigation_timer: Timer = $ResetNavigationTimer
+@onready var round_end_sfx_player: RandomAudioPlayer = %RoundEndSFXPlayer
 
 
 var player_robot_types: Array[EntityParameters] = []
@@ -26,12 +30,21 @@ var enemy_types: Array[EntityParameters] = []
 var player_robots: Array[Node2D] = []
 var enemies: Array[Node2D] = []
 
+var _entities_count: int = 0
+
 #===================================================================================================
 #region BUILT-IN FUNCTIONS
 
 func _ready() -> void:
+	min_enemy_count = STARTING_MIN_ENEMY_COUNT
+	max_enemy_count = STARTING_MAX_ENEMY_COUNT
+	
 	SignalBus.spawn_player.connect(spawn_robot)
 	SignalBus.start_round.connect(start_battle)
+	SignalBus.max_enery_increased.connect(_on_max_energy_increased)
+	
+	player_nexus.destroyed.connect(_on_nexus_destroyed)
+	enemy_nexus.destroyed.connect(_on_nexus_destroyed)
 	
 	reset_navigation_timer.timeout.connect(_on_reset_navigation_timer_timeout)
 	
@@ -39,6 +52,7 @@ func _ready() -> void:
 	_load_enemy_types()
 	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE, false, true)
+	Global.max_energy = 4
 	
 	await get_tree().create_timer(0.5, false).timeout
 	prep_battle()
@@ -89,6 +103,7 @@ func prep_battle(robot_count: int = randi_range(min_robot_count, max_robot_count
 	
 	player_nexus.can_destroy_entity = false
 	enemy_nexus.can_destroy_entity = false
+	Global.is_playing_turn = false
 	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE)
 
@@ -111,7 +126,8 @@ func start_battle() -> void:
 			enemy.targets = player_robots
 			enemy.start_navigating(player_robots.pick_random())
 	
-	MusicPlayer.switch_song(MusicPlayer.SongNames.MAIN_BATTLE, false)
+	MusicPlayer.switch_song(MusicPlayer.SongNames.MAIN_BATTLE)
+	
 	reset_navigation_timer.start()
 
 #endregion
@@ -147,10 +163,13 @@ func _load_enemy_types() -> void:
 
 
 func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
+	_entities_count = 0
+	
 	player_robots.clear()
 	for child in player_layer.get_children():
 		if child not in excluded_entities:
 			player_robots.append(child as Node2D)
+			_entities_count += 1
 	if player_robots.is_empty():
 		player_nexus.can_destroy_entity = true
 	
@@ -158,6 +177,7 @@ func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:
 	for child in enemy_layer.get_children():
 		if child not in excluded_entities:
 			enemies.append(child as Node2D)
+			_entities_count += 1
 	if enemies.is_empty():
 		enemy_nexus.can_destroy_entity = true
 	
@@ -177,7 +197,12 @@ func _on_entity_died(entity: Entity) -> void:
 	
 	# Check if battle is finished and start a new round
 	if _is_battle_ended():
+		if _entities_count == 0 and (player_nexus.dying or enemy_nexus.dying):
+			Global.game_is_paused = true
+			return
+		
 		SignalBus.end_round.emit()
+		round_end_sfx_player.play_random()
 		prep_battle()
 		return
 	
@@ -209,6 +234,28 @@ func _on_entity_died(entity: Entity) -> void:
 func _on_reset_navigation_timer_timeout() -> void:
 	# Reset navigation for all entities when a certain amount of time has passed but no death occurs
 	start_battle()
+
+
+func _on_nexus_destroyed() -> void:
+	_set_valid_entities()
+	player_robots.append_array(enemies) # Get all entities in scene
+	for entity in player_robots:
+		entity = entity as Entity
+		entity.stop_navigating()
+
+
+func _on_max_energy_increased(_amount: int) -> void:
+	# Raise enemy spawn cap as player max enery increases
+	if Global.max_energy == Global.energy_cap:
+		min_enemy_count = 8
+		max_enemy_count = 13
+	elif Global.max_energy >= 12:
+		min_enemy_count = 7
+		max_enemy_count = 12
+	elif Global.max_energy >= 8:
+		min_enemy_count = 6
+		max_enemy_count = 11
+
 
 #endregion
 #===================================================================================================

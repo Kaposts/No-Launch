@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_lf7qo")
 heal_amount = -1
-description = "1 damage to  your nexus"
+description = "1 damage to your nexus"
 function = 5
 rounds = 1
 metadata/_custom_type_script = "uid://bn0trt72uqms6"

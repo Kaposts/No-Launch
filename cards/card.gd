@@ -31,6 +31,12 @@ var drag_offset: Vector2
 @onready var highlight = $Container/highlight
 @onready var border_material: ShaderMaterial = rarity.material
 
+@onready var unusable_sfx_player: RandomAudioPlayer = $SFX/UnusableSFXPlayer
+@onready var hovered_sfx_player: RandomAudioPlayer = $SFX/HoveredSFXPlayer
+@onready var played_sfx_player: RandomAudioPlayer = $SFX/PlayedSFXPlayer
+@onready var drawn_sfx_player: RandomAudioPlayer = $SFX/DrawnSFXPlayer
+
+
 var double: bool = false
 
 func _ready():
@@ -58,7 +64,8 @@ func _ready():
 func _on_anim_finished(anim_name: StringName):
 	if anim_name == ANIM_DRAW:
 		mouse_filter = Control.MOUSE_FILTER_STOP
-		Audio.play_by_name(SFX.SFX_UI_CLICK_005)
+		#Audio.play_by_name(SFX.SFX_UI_CLICK_005)
+		drawn_sfx_player.play_random()
 	if anim_name == ANIM_DROP:
 		Global.play_card(self)
 	if anim_name == ANIM_DUPLICATE:
@@ -68,7 +75,8 @@ func _on_anim_finished(anim_name: StringName):
 
 func _on_mouse_entered():
 	if Global.is_playing_turn: return
-	Audio.play_by_name(SFX.SFX_UI_TICK_004)
+	#Audio.play_by_name(SFX.SFX_UI_TICK_004)
+	hovered_sfx_player.play_random()
 	is_hovered = true
 	border_material.set_shader_parameter("hovered", true)
 	if not is_dragging:
@@ -91,7 +99,8 @@ func _on_gui_input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if Global.energy - data.energy < 0 and event.pressed: 
-			Audio.play_by_name(SFX.SFX_UI_ERROR_003)
+			#Audio.play_by_name(SFX.SFX_UI_ERROR_003)
+			unusable_sfx_player.play_random()
 			return
 
 		if event.pressed:
@@ -158,6 +167,7 @@ func generate_description():
 		print(activation.description)
 
 func _on_close_pressed() -> void:
+	GlobalSfxPlayer.discard_sfx_player.play_random()
 	Global.discard(self)
 	SignalBus.update_hand.emit()
 

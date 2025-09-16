@@ -2,11 +2,12 @@ extends Node
 
 
 func _ready():
+	get_tree().paused = false
+	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.start("Cutscene1")
 	
 	MusicPlayer.switch_song(MusicPlayer.SongNames.OPENING_CUTSCENE, false, true)
-	
 
 
 func _on_dialogic_signal(argument: String):

@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://blk1ycwrde8uk"]
+[gd_scene load_steps=24 format=3 uid="uid://blk1ycwrde8uk"]
 
 [ext_resource type="Texture2D" uid="uid://bdfcrq2mmpufd" path="res://assets/UI/Computer.png" id="1_58fj5"]
 [ext_resource type="Script" uid="uid://c44k4q21cabh6" path="res://scenes/UI/main_menu.gd" id="1_kuv8g"]
 [ext_resource type="Texture2D" uid="uid://ct1nj6mhb5i30" path="res://assets/UI/Cool Dog ( Background ).png" id="2_3h7gc"]
+[ext_resource type="PackedScene" uid="uid://b3wtg6sxyrltt" path="res://scenes/UI/components/vignette/vignette.tscn" id="2_ht4ob"]
 [ext_resource type="Texture2D" uid="uid://rbp3828kpkmy" path="res://assets/UI/UI_Buttons/Play - Normal .png" id="3_6kh0n"]
+[ext_resource type="Shader" uid="uid://mfmqeg8tsdnp" path="res://scenes/UI/components/vignette/vignette.gdshader" id="3_ft4qb"]
 [ext_resource type="Texture2D" uid="uid://cukti72x7ype2" path="res://assets/UI/UI_Buttons/Play - Clicked.png" id="4_av0jf"]
 [ext_resource type="Texture2D" uid="uid://ca5qfs8j2juau" path="res://assets/UI/UI_Buttons/Play - Hover.png" id="5_kuv8g"]
 [ext_resource type="LabelSettings" uid="uid://bd4jlbqvq7d6x" path="res://assets/UI/Label.tres" id="6_av0jf"]
@@ -15,13 +17,28 @@
 [ext_resource type="Texture2D" uid="uid://bfoyy5hcgwoyb" path="res://assets/UI/UI_Buttons/Settings - Hover.png" id="12_i2kgm"]
 [ext_resource type="Texture2D" uid="uid://cfhkvdm4kvy43" path="res://assets/UI/UI_Buttons/Quit - Normal.png" id="13_4v2cq"]
 [ext_resource type="Texture2D" uid="uid://c1w7rrrjj64fu" path="res://assets/UI/UI_Buttons/Quit - Clickedl.png" id="14_c1mgp"]
+[ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button/sound_button.tscn" id="14_r7s35"]
 [ext_resource type="Texture2D" uid="uid://b2sdrk8iiyp48" path="res://assets/UI/UI_Buttons/Quit - Hover.png" id="15_hkamj"]
 [ext_resource type="PackedScene" uid="uid://cr7esn4hh8e7e" path="res://scenes/UI/Options_Menu.tscn" id="16_kuv8g"]
 [ext_resource type="Texture2D" uid="uid://bj8csggoqduto" path="res://assets/UI/No Launch Logo.png" id="17_h5h42"]
 [ext_resource type="PackedScene" uid="uid://bdilluerfe10k" path="res://scenes/UI/CreditsMenu.tscn" id="18_s1u1q"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5m80a"]
+shader = ExtResource("3_ft4qb")
+shader_parameter/vignette_intensity = 1.5
+shader_parameter/vignette_opacity = 0.33
+shader_parameter/vignette_rgb = Color(0.279015, 0.73131, 1, 1)
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_kuv8g")
+
+[node name="Vignette" parent="." instance=ExtResource("2_ht4ob")]
+
+[node name="AnimationPlayer" parent="Vignette" index="0"]
+active = false
+
+[node name="ColorRect" parent="Vignette" index="1"]
+material = SubResource("ShaderMaterial_5m80a")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 638.0
@@ -76,7 +93,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -3
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Start"]
+[node name="StartButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Start" instance=ExtResource("14_r7s35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -96,13 +114,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -3
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits"]
+[node name="CreditsButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits" instance=ExtResource("14_r7s35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("7_h5h42")
 texture_pressed = ExtResource("8_r7s35")
 texture_hover = ExtResource("9_ht4ob")
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits"]
 layout_mode = 2
@@ -117,7 +137,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -6
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Options"]
+[node name="OptionsButton" parent="TextureRect2/MainMenu_Buttons/Side_Buttons/Options" instance=ExtResource("14_r7s35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -143,7 +164,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = -3
 
-[node name="TextureButton" type="TextureButton" parent="TextureRect2/MainMenu_Buttons/Quit"]
+[node name="QuitButton" parent="TextureRect2/MainMenu_Buttons/Quit" instance=ExtResource("14_r7s35")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -162,13 +184,14 @@ horizontal_alignment = 1
 position = Vector2(303, 135)
 texture = ExtResource("17_h5h42")
 
-[node name="OptionsMenu" parent="." instance=ExtResource("16_kuv8g")]
+[node name="MenuLayer" type="CanvasLayer" parent="."]
+
+[node name="OptionsMenu" parent="MenuLayer" instance=ExtResource("16_kuv8g")]
+unique_name_in_owner = true
 visible = false
 
-[node name="CreditsMenu" parent="." instance=ExtResource("18_s1u1q")]
+[node name="CreditsMenu" parent="MenuLayer" instance=ExtResource("18_s1u1q")]
+unique_name_in_owner = true
 visible = false
 
-[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Start/TextureButton" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Credits/TextureButton" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Side_Buttons/Options/TextureButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="TextureRect2/MainMenu_Buttons/Quit/TextureButton" to="." method="_on_quit_pressed"]
+[editable path="Vignette"]

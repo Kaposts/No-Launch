@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://oagpas0di8jq"]
+
+[ext_resource type="Texture2D" uid="uid://c8qeg65lntobq" path="res://assets/UI/UI_Buttons/Close - Normal.png" id="1_ekpje"]
+[ext_resource type="Texture2D" uid="uid://dd4t5yb2uby8g" path="res://assets/UI/UI_Buttons/Close - Clicked.png" id="2_mhcbx"]
+[ext_resource type="Texture2D" uid="uid://7o7f5byf5rh6" path="res://assets/UI/UI_Buttons/Close - Hover.png" id="3_ml421"]
+[ext_resource type="Script" uid="uid://cd36amm32ghax" path="res://scenes/UI/components/sound_button/sound_button.gd" id="4_mhcbx"]
+[ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="5_evix7"]
+[ext_resource type="AudioStream" uid="uid://cx0mlpuyme737" path="res://assets/SFX/button/button_click.wav" id="6_tdmb5"]
+[ext_resource type="AudioStream" uid="uid://d206urlwk5jff" path="res://assets/SFX/button/button_hover.wav" id="7_qmwdm"]
+
+[node name="SoundButton" type="TextureButton"]
+offset_right = 15.0
+offset_bottom = 15.0
+texture_normal = ExtResource("1_ekpje")
+texture_pressed = ExtResource("2_mhcbx")
+texture_hover = ExtResource("3_ml421")
+script = ExtResource("4_mhcbx")
+
+[node name="ButtonClickedSFXPlayer" parent="." instance=ExtResource("5_evix7")]
+volume_db = 4.0
+streams = Array[AudioStream]([ExtResource("6_tdmb5")])
+
+[node name="ButtonHoveredSFXPlayer" parent="." instance=ExtResource("5_evix7")]
+volume_db = 4.0
+streams = Array[AudioStream]([ExtResource("7_qmwdm")])

@@ -21,12 +21,6 @@ point_count = 3
 
 [node name="BattleScene" parent="." instance=ExtResource("6_5aj6u")]
 
-[node name="drop" type="TextureRect" parent="." groups=["drop_zone"]]
-visible = false
-offset_right = 640.0
-offset_bottom = 249.0
-texture = ExtResource("1_0le08")
-
 [node name="hand" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 7
@@ -49,6 +43,12 @@ x_sep = -1
 y_max = -35
 card_pool = Array[ExtResource("3_t0n0d")]([ExtResource("4_5aj6u")])
 
+[node name="drop" type="TextureRect" parent="." groups=["drop_zone"]]
+visible = false
+offset_right = 640.0
+offset_bottom = 249.0
+texture = ExtResource("1_0le08")
+
 [node name="draw" type="Button" parent="."]
 visible = false
 offset_left = 550.0
@@ -61,7 +61,5 @@ text = "draw
 [node name="UI" parent="." instance=ExtResource("5_t0n0d")]
 
 [node name="Tutorial" parent="." instance=ExtResource("8_2a3jl")]
-offset_right = 640.0
-offset_bottom = 360.0
 
 [connection signal="pressed" from="draw" to="hand" method="_on_draw_pressed"]

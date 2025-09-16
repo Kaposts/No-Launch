@@ -1,8 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2t5i7o64cme7"]
+[gd_scene load_steps=15 format=3 uid="uid://d2t5i7o64cme7"]
 
 [ext_resource type="Script" uid="uid://8noimcf03orv" path="res://components/death_component/death_component.gd" id="1_bgl25"]
-[ext_resource type="Texture2D" uid="uid://b6m1egen2p3o8" path="res://assets/characters/player_infantry.png" id="1_oby1v"]
+[ext_resource type="Texture2D" uid="uid://ovl8y74ydfug" path="res://assets/characters/player_infantry.png" id="1_oby1v"]
 [ext_resource type="Animation" uid="uid://dvxcswawswqo3" path="res://components/death_component/default.res" id="2_k1esx"]
+[ext_resource type="PackedScene" uid="uid://cs2msqcudcidd" path="res://components/random_audio_player/random_audio_player_2d_component.tscn" id="4_n7ymn"]
+[ext_resource type="AudioStream" uid="uid://cseo0hoetdsaj" path="res://assets/SFX/death_component/death_0.ogg" id="5_h4qus"]
+[ext_resource type="AudioStream" uid="uid://bvlawk1npqpwg" path="res://assets/SFX/death_component/death_1.ogg" id="6_ox1pe"]
+[ext_resource type="AudioStream" uid="uid://b1x7vgl7kwyfp" path="res://assets/SFX/death_component/death_2.ogg" id="7_v4p57"]
+[ext_resource type="AudioStream" uid="uid://b7vgfxdrfjt1n" path="res://assets/SFX/death_component/death_3.ogg" id="8_ni134"]
+[ext_resource type="AudioStream" uid="uid://dunasror0fy6v" path="res://assets/SFX/death_component/death_4.ogg" id="9_htu6g"]
 
 [sub_resource type="Animation" id="Animation_u02hc"]
 length = 0.001
@@ -60,3 +66,7 @@ one_shot = true
 fixed_fps = 0
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_i6206")
+
+[node name="DieSFXPlayer" parent="." instance=ExtResource("4_n7ymn")]
+volume_db = 3.0
+streams = Array[AudioStream]([ExtResource("5_h4qus"), ExtResource("6_ox1pe"), ExtResource("7_v4p57"), ExtResource("8_ni134"), ExtResource("9_htu6g")])
