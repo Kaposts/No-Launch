@@ -35,6 +35,7 @@ var _entities_count: int = 0
 func _ready() -> void:
 	SignalBus.spawn_player.connect(spawn_robot)
 	SignalBus.start_round.connect(start_battle)
+	SignalBus.max_enery_increased.connect(_on_max_energy_increased)
 	
 	player_nexus.destroyed.connect(_on_nexus_destroyed)
 	enemy_nexus.destroyed.connect(_on_nexus_destroyed)
@@ -235,6 +236,13 @@ func _on_nexus_destroyed() -> void:
 	for entity in player_robots:
 		entity = entity as Entity
 		entity.stop_navigating()
+
+
+func _on_max_energy_increased(amount: int) -> void:
+	# Raise enemy spawn cap as player max enery increases
+	var spawn_increase: int = amount % 2
+	min_enemy_count += spawn_increase
+	max_enemy_count += spawn_increase
 
 #endregion
 #===================================================================================================
