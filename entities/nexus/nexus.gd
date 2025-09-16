@@ -47,17 +47,11 @@ func _ready() -> void:
 	SignalBus.heal_nexus.connect(_on_heal_nexus)
 
 
-func update_health() -> void:
-	health_label.text = "%2d" % health
-
-
-func _on_body_entered(body: Node2D) -> void:
-	var damage = 1
+func damage_nexus(damage_amount: int = 1) -> void:
 	if RoundEffect.nexus_takes_double_damage:
-		damage = 2
-	health -= damage
+		damage_amount = 2
+	health -= damage_amount
 	update_health()
-	body.health_component.damage(1000)
 	
 	hurt_sfx_player.play_random()
 	
@@ -73,6 +67,15 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	if health <= 0:
 		call_deferred("die")
+
+
+func update_health() -> void:
+	health_label.text = "%2d" % health
+
+
+func _on_body_entered(body: Node2D) -> void:
+	body.health_component.damage(1000)
+	damage_nexus()
 
 
 func die():
@@ -96,5 +99,9 @@ func die():
 
 
 func _on_heal_nexus(value: int):
+	if value < 0:
+		damage_nexus(-value)
+		return
+	
 	health += value
 	update_health()

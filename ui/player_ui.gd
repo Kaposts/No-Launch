@@ -20,8 +20,9 @@ func _ready():
 	SignalBus.end_round.connect(_on_end_round)
 	
 	play_button.pressed.connect(_on_play_turn_pressed)
-	pause_menu.visibility_changed.connect(_on_pause_menu_visibility_changed)
-	death_menu.visibility_changed.connect(_on_death_menu_visibility_changed)
+	pause_menu.visibility_changed.connect(_on_menu_visibility_changed)
+	death_menu.visibility_changed.connect(_on_menu_visibility_changed)
+	options_menu.visibility_changed.connect(_on_menu_visibility_changed)
 
 
 func _on_update_energy(value):
@@ -59,11 +60,14 @@ func _input(event):
 	if event is InputEventKey:
 		if event.pressed and not event.echo:
 			if event.keycode == KEY_ESCAPE:
-				if pause_menu.visible or options_menu.visible:
+				if death_menu.visible:
+					pass
+				elif pause_menu.visible or options_menu.visible:
 					options_menu.hide()
 					pause_menu.hide()
 				else:
 					pause_menu.show()
+				get_viewport().set_input_as_handled()
 
 
 func _on_menu_pressed() -> void:
@@ -73,8 +77,8 @@ func _on_menu_pressed() -> void:
 	SignalBus.start_game.emit()
 
 func _on_settings_pressed() -> void:
-	options_menu.show()
 	pause_menu.hide()
+	options_menu.show()
 
 func _on_restart_pressed() -> void:
 	death_menu.hide()
@@ -87,9 +91,5 @@ func _on_player_lost() -> void:
 	death_menu.show()
 
 
-func _on_pause_menu_visibility_changed() -> void:
-	vignette.visible = pause_menu.visible
-
-
-func _on_death_menu_visibility_changed() -> void:
-	vignette.visible = death_menu.visible
+func _on_menu_visibility_changed() -> void:
+	vignette.visible = pause_menu.visible or death_menu.visible or options_menu.visible
