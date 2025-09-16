@@ -5,6 +5,9 @@ const APPEAR_TIMING_OFFSET: float = 0.5
 const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_parameters/"
 const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 
+const STARTING_MIN_ENEMY_COUNT: int = 5
+const STARTING_MAX_ENEMY_COUNT: int = 10
+
 
 @export_group("Battle Settings")
 @export var min_robot_count: int = 3
@@ -33,6 +36,9 @@ var _entities_count: int = 0
 #region BUILT-IN FUNCTIONS
 
 func _ready() -> void:
+	min_enemy_count = STARTING_MIN_ENEMY_COUNT
+	max_enemy_count = STARTING_MAX_ENEMY_COUNT
+	
 	SignalBus.spawn_player.connect(spawn_robot)
 	SignalBus.start_round.connect(start_battle)
 	SignalBus.max_enery_increased.connect(_on_max_energy_increased)
@@ -238,11 +244,18 @@ func _on_nexus_destroyed() -> void:
 		entity.stop_navigating()
 
 
-func _on_max_energy_increased(amount: int) -> void:
+func _on_max_energy_increased(_amount: int) -> void:
 	# Raise enemy spawn cap as player max enery increases
-	var spawn_increase: int = amount % 2
-	min_enemy_count += spawn_increase
-	max_enemy_count += spawn_increase
+	if Global.max_energy == Global.energy_cap:
+		min_enemy_count = 8
+		max_enemy_count = 13
+	elif Global.max_energy >= 12:
+		min_enemy_count = 7
+		max_enemy_count = 12
+	elif Global.max_energy >= 8:
+		min_enemy_count = 6
+		max_enemy_count = 11
+
 
 #endregion
 #===================================================================================================

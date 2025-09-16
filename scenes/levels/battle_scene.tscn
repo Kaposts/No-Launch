@@ -9,13 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://cvd4sesmxcjhw" path="res://assets/Background/ForeGround Right.png" id="6_k8b4e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_skhqt"]
-vertices = PackedVector2Array(652.039, 178.969, 652.953, 395.953, -5, 393.039, -5, 177.023)
+vertices = PackedVector2Array(668.953, 173.977, 668.039, 400.977, -13.9531, 400.008, -13.0391, 173.008)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-15, 167, 662, 169, 663, 406, -15, 403)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-23, 163, 679, 164, 678, 411, -24, 410)])
 
 [node name="BattleScene" type="Node2D" groups=["battle_scene"]]
 script = ExtResource("1_6a6ir")
-min_enemy_count = 7
 
 [node name="ResetNavigationTimer" type="Timer" parent="."]
 wait_time = 1.8
