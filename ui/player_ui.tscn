@@ -135,6 +135,7 @@ offset_right = 142.0
 offset_bottom = 27.0
 
 [node name="EnergyTextTexture" type="TextureRect" parent="EnergyGroup"]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 17.0
 offset_right = 106.0
@@ -145,6 +146,7 @@ texture = ExtResource("4_ud46t")
 stretch_mode = 2
 
 [node name="EnergyPanelTexture" type="TextureRect" parent="EnergyGroup"]
+layout_mode = 0
 offset_right = 96.0
 offset_bottom = 64.0
 size_flags_horizontal = 0
