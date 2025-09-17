@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dhcgqc68f1p1v"]
+
+[ext_resource type="Shader" uid="uid://bpd32c0aufbby" path="res://cards/materials/external_border_shader/external_border.gdshader" id="1_6h6yf"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_6h6yf")
+shader_parameter/hovered = true
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/width = 0.573

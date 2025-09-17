@@ -12,7 +12,7 @@ extends Node2D
 
 
 func _ready():
-	MusicPlayer.switch_song(MusicPlayer.SongNames.TITLE_THEME, false, true)
+	MusicPlayer.switch_song(Enum.SONG_NAMES.TITLE_THEME, false, true)
 	SceneManager.fade_in()
 	vignette.hide()
 	
@@ -35,7 +35,8 @@ func _disable_all_buttons() -> void:
 func _on_start_pressed() -> void:
 	_disable_all_buttons()
 	await Global.transition()
-	get_tree().change_scene_to_file("res://scenes/Cutscenes/OpeningCutscene.tscn")
+	if Global.skip_cut_scenes: get_tree().change_scene_to_file("res://scenes/cabage.tscn")
+	else: get_tree().change_scene_to_file("res://scenes/Cutscenes/OpeningCutscene.tscn")
 
 
 func _on_credits_pressed() -> void:

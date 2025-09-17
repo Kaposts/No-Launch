@@ -7,7 +7,7 @@ class_name CardData
 @export var background: Texture
 @export var sprite: Texture
 @export var energy: int = 1
-
+## chances of the card getting drawed (The bigger weight means higher chances to draw)
 @export var weight: int = 5
 
 @export var activations: Array [ActivationResource]

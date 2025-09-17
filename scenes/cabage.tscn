@@ -1,47 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0ekft7b1k82x"]
+[gd_scene load_steps=6 format=3 uid="uid://c0ekft7b1k82x"]
 
 [ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="1_0le08"]
-[ext_resource type="Script" uid="uid://dwpriovdnijuo" path="res://cards/hand.gd" id="1_em3ci"]
-[ext_resource type="PackedScene" uid="uid://crv6wrd1htgmr" path="res://cards/scenes/card.tscn" id="2_lya68"]
-[ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="3_t0n0d"]
-[ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="4_5aj6u"]
+[ext_resource type="PackedScene" uid="uid://cv8wpyv3ibhbt" path="res://cards/hand.tscn" id="2_t0n0d"]
 [ext_resource type="PackedScene" uid="uid://ccxkca6puflbo" path="res://ui/player_ui.tscn" id="5_t0n0d"]
 [ext_resource type="PackedScene" uid="uid://bcc4ea6baq4mq" path="res://scenes/levels/battle_scene.tscn" id="6_5aj6u"]
 [ext_resource type="PackedScene" uid="uid://b0a6xslbkr78j" path="res://ui/tutorial/tutorial.tscn" id="8_2a3jl"]
-
-[sub_resource type="Curve" id="Curve_laqxi"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504065, 0.484672), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_em3ci"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501355, 0.498414), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
 
 [node name="Cabage" type="Node2D"]
 
 [node name="BattleScene" parent="." instance=ExtResource("6_5aj6u")]
 
-[node name="hand" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 44.0
-offset_top = 262.0
-offset_right = 593.0
-offset_bottom = 427.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.00399, 1.00427)
-script = ExtResource("1_em3ci")
-card_scene = ExtResource("2_lya68")
-hand_curve = SubResource("Curve_laqxi")
-rotation_curve = SubResource("Curve_em3ci")
-x_sep = -1
-y_max = -35
-card_pool = Array[ExtResource("3_t0n0d")]([ExtResource("4_5aj6u")])
+[node name="hand" parent="." instance=ExtResource("2_t0n0d")]
 
 [node name="drop" type="TextureRect" parent="." groups=["drop_zone"]]
 visible = false
@@ -61,5 +30,3 @@ text = "draw
 [node name="UI" parent="." instance=ExtResource("5_t0n0d")]
 
 [node name="Tutorial" parent="." instance=ExtResource("8_2a3jl")]
-
-[connection signal="pressed" from="draw" to="hand" method="_on_draw_pressed"]

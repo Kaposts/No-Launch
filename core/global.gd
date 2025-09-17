@@ -24,6 +24,8 @@ var is_playing_turn: bool = false
 
 var game_is_paused: bool = false
 
+var skip_cut_scenes: bool = true
+
 func _ready() -> void:
 	SceneManager.transition_finished.connect(func(): print('Transition complete'))
 	SceneManager.fade_complete.connect(func(): print('Fade complete'))

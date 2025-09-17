@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://kp5g0dyb23i8"]
 
-[ext_resource type="AudioStream" uid="uid://ct47stpr74oep" path="res://assets/SFX/card/card_unusable.wav" id="1_pdjpp"]
+[ext_resource type="AudioStream" uid="uid://dirdirw7oabfv" path="res://assets/SFX/card/card_unusable.wav" id="1_pdjpp"]
 [ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_72r4i"]
 
 [resource]

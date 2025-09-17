@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_a4pqt"]
 [ext_resource type="Resource" uid="uid://beaav2ciqy8vb" path="res://cards/resources/activations/nexus/heal_nexus_3.tres" id="2_a4pqt"]
-[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_1cyes"]
+[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/sprites/Sprite-0002.png" id="3_1cyes"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_1k8ym"]
-[ext_resource type="Texture2D" uid="uid://csfytxjwpts6s" path="res://cards/assets/Card Sprites/RARE - Army Heal Core.png" id="5_a4pqt"]
+[ext_resource type="Texture2D" uid="uid://csfytxjwpts6s" path="res://cards/sprites/Card Sprites/RARE - Army Heal Core.png" id="5_a4pqt"]
 
 [resource]
 script = ExtResource("4_1k8ym")

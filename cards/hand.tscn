@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv8wpyv3ibhbt"]
+
+[ext_resource type="Script" uid="uid://dwpriovdnijuo" path="res://cards/hand.gd" id="1_ed0ou"]
+[ext_resource type="PackedScene" uid="uid://crv6wrd1htgmr" path="res://cards/card.tscn" id="2_mngrm"]
+[ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="3_15cfu"]
+[ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="4_1fgmj"]
+
+[sub_resource type="Curve" id="Curve_laqxi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504065, 0.484672), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_em3ci"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501355, 0.498414), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="hand" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 262.0
+offset_right = 593.0
+offset_bottom = 427.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.00399, 1.00427)
+script = ExtResource("1_ed0ou")
+card_scene = ExtResource("2_mngrm")
+hand_curve = SubResource("Curve_laqxi")
+rotation_curve = SubResource("Curve_em3ci")
+x_sep = -1
+y_max = -35
+card_pool = Array[ExtResource("3_15cfu")]([ExtResource("4_1fgmj")])

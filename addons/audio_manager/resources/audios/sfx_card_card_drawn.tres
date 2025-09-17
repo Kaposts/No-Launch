@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://dfi8407p17t3h"]
 
-[ext_resource type="AudioStream" uid="uid://ct7g54il8a21f" path="res://assets/SFX/card/card_drawn.wav" id="1_rtynq"]
+[ext_resource type="AudioStream" uid="uid://cdkl3rearcgj3" path="res://assets/SFX/card/card_drawn.wav" id="1_rtynq"]
 [ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_qb7b3"]
 
 [resource]

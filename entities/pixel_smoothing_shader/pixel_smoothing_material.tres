@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bju26aurmj117"]
+
+[ext_resource type="Shader" uid="uid://cxewplga5g4s" path="res://entities/pixel_smoothing_shader/pixel_smoothing.gdshader" id="1_8ni4o"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_8ni4o")
+shader_parameter/modulate_color = Vector4(1, 1, 1, 1)
