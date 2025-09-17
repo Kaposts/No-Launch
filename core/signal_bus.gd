@@ -3,8 +3,10 @@ extends Node
 
 signal activate_card(card: Card)
 signal deactivate_card(card: Card)
+
 signal update_energy(value: int)
 signal max_enery_increased(increase_amount: int)
+
 signal round_effect_activate(description: String)
 signal round_effect_hide()
 
