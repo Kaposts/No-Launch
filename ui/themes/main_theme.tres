@@ -1,0 +1,32 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://blwjd2mb1dnlm"]
+
+[ext_resource type="Texture2D" uid="uid://cxqu14p71m7rn" path="res://ui/assets/progress_bar/progress_bar_0.png" id="1_biaja"]
+[ext_resource type="Texture2D" uid="uid://tp8yoy8fyj2b" path="res://ui/assets/progress_bar/progress_bar_green.png" id="2_vnc4k"]
+[ext_resource type="Texture2D" uid="uid://dhoo6g71hoe4v" path="res://ui/assets/progress_bar/rogress_bar_red.png" id="3_vnc4k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2nojw"]
+texture = ExtResource("1_biaja")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x127s"]
+texture = ExtResource("2_vnc4k")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qjhx0"]
+texture = ExtResource("3_vnc4k")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+
+[resource]
+ProgressBar/styles/background = SubResource("StyleBoxTexture_2nojw")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_x127s")
+RedProgressBar/base_type = &"ProgressBar"
+RedProgressBar/styles/fill = SubResource("StyleBoxTexture_qjhx0")

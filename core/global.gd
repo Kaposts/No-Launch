@@ -1,6 +1,7 @@
 extends Node
 
 const SCENE_PATHS: Dictionary[String, String] = {
+	"main_scene" : "uid://b176r6aw11cn",
 	"navigator_component" : "uid://brbg6i0mvo0l8",
 	"floating_text" : "uid://c6brqedq46jjh",
 }
@@ -24,6 +25,8 @@ var is_playing_turn: bool = false
 
 var game_is_paused: bool = false
 
+var skip_cut_scenes: bool = true
+
 func _ready() -> void:
 	SceneManager.transition_finished.connect(func(): print('Transition complete'))
 	SceneManager.fade_complete.connect(func(): print('Fade complete'))
@@ -43,9 +46,10 @@ func _on_start_game():
 	cards_in_hand = []
 	cards_in_play = []
 	deck = []
-
 	energy = max_energy
 	# deck_size = deck_data.size
+	
+	Global.deck_setup()
 	starting_hand()
 	await get_tree().create_timer(2).timeout
 	RoundEffect.change_effect()
@@ -203,7 +207,7 @@ func duplicate_hand():
 		create_card(card.data)
 
 func corrupt_cards():
-	var amount_to_corrupt
+	var amount_to_corrupt = 1
 
 	if cards_in_hand.size() <= 0:
 		push_warning("Corruption FAILED, No card found")

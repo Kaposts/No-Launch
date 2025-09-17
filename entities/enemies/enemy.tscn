@@ -1,8 +1,8 @@
 [gd_scene load_steps=26 format=3 uid="uid://bfbqdu1nyshr4"]
 
 [ext_resource type="Script" uid="uid://gt30j16u4rei" path="res://entities/enemies/enemy.gd" id="1_3udgd"]
-[ext_resource type="Material" uid="uid://bju26aurmj117" path="res://resources/pixel_smoothing_shader/pixel_smoothing_material.tres" id="2_nrfwl"]
-[ext_resource type="Texture2D" uid="uid://dofbdlrr3qwfk" path="res://assets/enemies/enemy_1.png" id="2_vabdn"]
+[ext_resource type="Material" uid="uid://bju26aurmj117" path="res://entities/pixel_smoothing_shader/pixel_smoothing_material.tres" id="2_nrfwl"]
+[ext_resource type="Texture2D" uid="uid://dofbdlrr3qwfk" path="res://entities/enemies/assets/enemy_1.png" id="2_vabdn"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="3_nrfwl"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="4_5xow2"]
 [ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="5_xmuku"]
@@ -306,8 +306,8 @@ hit_flash_material = SubResource("ShaderMaterial_nrfwl")
 [node name="NavigatorComponent" parent="." instance=ExtResource("9_u01qb")]
 unique_name_in_owner = true
 radius = 30.0
-avoidance_layers = 2
-avoidance_mask = 2
+avoidance_layers = 0
+avoidance_mask = 0
 enabled = false
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("10_vabdn")]

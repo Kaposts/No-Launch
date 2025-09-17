@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_ixqdo"]
 [ext_resource type="Resource" uid="uid://6jj0b16nfvwk" path="res://cards/resources/activations/draw/draw_one.tres" id="2_ixqdo"]
-[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_7pbrg"]
+[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/sprites/Sprite-0002.png" id="3_7pbrg"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_s645b"]
-[ext_resource type="Texture2D" uid="uid://0ejwpk3tq0wn" path="res://cards/assets/Card Sprites/Action Draw 1 Card.png" id="5_ixqdo"]
+[ext_resource type="Texture2D" uid="uid://0ejwpk3tq0wn" path="res://cards/sprites/Card Sprites/Action Draw 1 Card.png" id="5_ixqdo"]
 
 [resource]
 script = ExtResource("4_s645b")

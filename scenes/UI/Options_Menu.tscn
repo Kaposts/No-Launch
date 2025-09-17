@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://cr7esn4hh8e7e"]
 
-[ext_resource type="Texture2D" uid="uid://v8w1mm1n1fug" path="res://assets/UI/Settings Menu #2 - Without Close.png" id="1_qbgyr"]
+[ext_resource type="Texture2D" uid="uid://v8w1mm1n1fug" path="res://ui/assets/Settings Menu #2 - Without Close.png" id="1_qbgyr"]
 [ext_resource type="Script" uid="uid://b0rgmdkheb7eg" path="res://scenes/UI/options_menu.gd" id="1_rb3fs"]
 [ext_resource type="PackedScene" uid="uid://oagpas0di8jq" path="res://scenes/UI/components/sound_button/sound_button.tscn" id="3_m6btu"]
-[ext_resource type="LabelSettings" uid="uid://dsk8tddkeqlvd" path="res://assets/UI/Label_Black.tres" id="5_e4yxm"]
-[ext_resource type="Texture2D" uid="uid://ckdav2kcveqb5" path="res://assets/UI/UI_Buttons/Grabber_Off.png" id="6_ar1by"]
-[ext_resource type="Texture2D" uid="uid://b3iayjau22qs5" path="res://assets/UI/UI_Buttons/Grabber_On.png" id="7_d6jn2"]
-[ext_resource type="Texture2D" uid="uid://bobsx3llabjyg" path="res://assets/UI/UI_Buttons/Settings Sliders.png" id="8_2c0gt"]
+[ext_resource type="LabelSettings" uid="uid://dsk8tddkeqlvd" path="res://ui/assets/Label_Black.tres" id="5_e4yxm"]
+[ext_resource type="Texture2D" uid="uid://ckdav2kcveqb5" path="res://ui/assets/UI_Buttons/Grabber_Off.png" id="6_ar1by"]
+[ext_resource type="Texture2D" uid="uid://b3iayjau22qs5" path="res://ui/assets/UI_Buttons/Grabber_On.png" id="7_d6jn2"]
+[ext_resource type="Texture2D" uid="uid://bobsx3llabjyg" path="res://ui/assets/UI_Buttons/Settings Sliders.png" id="8_2c0gt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rb3fs"]
 atlas = ExtResource("8_2c0gt")
@@ -131,9 +131,18 @@ min_value = -15.0
 max_value = 15.0
 step = 3.0
 
+[node name="CheckButton" type="CheckButton" parent="TextureRect"]
+layout_mode = 0
+offset_left = 4.0677958
+offset_top = 124.0678
+offset_right = 133.0678
+offset_bottom = 148.06781
+text = "Skip Cutscenes"
+
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_mouse_exited"]
 [connection signal="value_changed" from="TextureRect/GridContainer/HSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider2" to="." method="_on_music_mouse_exited"]
 [connection signal="value_changed" from="TextureRect/GridContainer/HSlider2" to="." method="_on_music_value_changed"]
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider3" to="." method="_on_SFX_mouse_exited"]
 [connection signal="value_changed" from="TextureRect/GridContainer/HSlider3" to="." method="_on_SFX_value_changed"]
+[connection signal="toggled" from="TextureRect/CheckButton" to="." method="_on_check_button_toggled"]

@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_crntf"]
 [ext_resource type="Resource" uid="uid://camarusetn66a" path="res://cards/resources/activations/army_size/army_plus_one.tres" id="2_crntf"]
-[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_shupf"]
+[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/sprites/Sprite-0002.png" id="3_shupf"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_1frsi"]
-[ext_resource type="Texture2D" uid="uid://dsc3lknfabsbg" path="res://cards/assets/Card Sprites/Army + Robot.png" id="5_crntf"]
+[ext_resource type="Texture2D" uid="uid://dsc3lknfabsbg" path="res://cards/sprites/Card Sprites/Army + Robot.png" id="5_crntf"]
 
 [resource]
 script = ExtResource("4_1frsi")

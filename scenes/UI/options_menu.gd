@@ -53,3 +53,6 @@ func _on_SFX_mouse_exited() -> void:
 func _on_close_button_pressed() -> void:
 	#Audio.play_random("sfx_ui_click")
 	hide()
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	Global.skip_cut_scenes = toggled_on

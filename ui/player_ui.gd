@@ -85,7 +85,6 @@ func _on_menu_pressed() -> void:
 	_set_in_transition()
 	await Global.transition()
 	get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
-	SignalBus.start_game.emit()
 
 func _on_settings_pressed() -> void:
 	pause_menu.hide()
@@ -104,3 +103,12 @@ func _on_player_lost() -> void:
 
 func _on_menu_visibility_changed() -> void:
 	vignette.visible = pause_menu.visible or death_menu.visible or options_menu.visible
+
+func _on_speed_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Engine.time_scale = 2.0
+		$speed.text = "2x"
+	else: 
+		Engine.time_scale = 1.0
+		$speed.text = "1x"
+

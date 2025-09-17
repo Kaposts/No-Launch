@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6brqedq46jjh"]
 
 [ext_resource type="Script" uid="uid://b613tgqoq1rxs" path="res://components/ui/floating_text/floating_text.gd" id="1_gqwyq"]
-[ext_resource type="LabelSettings" uid="uid://b0tfeq0xvfm4f" path="res://resources/ui/ally_text_label.tres" id="2_1tf1l"]
+[ext_resource type="LabelSettings" uid="uid://b0tfeq0xvfm4f" path="res://ui/themes/ally_text_label.tres" id="2_1tf1l"]
 
 [node name="FloatingText" type="Node2D"]
 z_index = 1
