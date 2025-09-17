@@ -121,6 +121,7 @@ func start_battle() -> void:
 			if player_robot.is_queued_for_deletion():
 				continue
 			player_robot = player_robot as PlayerRobot
+			if !player_robot: push_warning("player_robot not found"); continue
 			player_robot.targets = enemies
 			player_robot.start_navigating(enemies.pick_random())
 		
@@ -128,6 +129,7 @@ func start_battle() -> void:
 			if enemy.is_queued_for_deletion():
 				continue
 			enemy = enemy as Enemy
+			if !enemy: push_warning("player_robot not found"); continue
 			enemy.targets = player_robots
 			enemy.start_navigating(player_robots.pick_random())
 	
@@ -223,11 +225,17 @@ func _on_entity_died(entity: Entity) -> void:
 	if entity is Enemy:
 		for player_robot in player_robots:
 			player_robot = player_robot as PlayerRobot
+
+			if !player_robot: push_warning("player_robot not found"); continue
+
 			if player_robot.navigator_component.current_target == entity:
 				player_robot.start_navigating()
 	elif entity is PlayerRobot:
 		for enemy in enemies:
 			enemy = enemy as Enemy
+
+			if !enemy: push_warning("enemy not found"); continue
+
 			if enemy.navigator_component.current_target == entity:
 				enemy.start_navigating()
 
@@ -256,7 +264,6 @@ func _on_max_energy_increased(_amount: int) -> void:
 	elif Global.max_energy >= 8:
 		min_enemy_count = 6
 		max_enemy_count = 11
-
 
 #endregion
 #===================================================================================================

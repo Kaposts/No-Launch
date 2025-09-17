@@ -82,7 +82,7 @@ audio/channel_defaults={
 "volume": 0.0
 }
 }
-glossary/glossary_files=["res://dialogic/glossary.tres"]
+glossary/glossary_files=[]
 
 [display]
 

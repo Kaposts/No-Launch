@@ -31,11 +31,11 @@ height = 32
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vq5xy"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwa1g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehg4m"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwa1g"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vq5xy"]
 
 [sub_resource type="Animation" id="Animation_ehg4m"]
 length = 0.001
@@ -91,32 +91,32 @@ _data = {
 &"show": SubResource("Animation_vq5xy")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2dni3"]
-texture = ExtResource("4_obao7")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0pem"]
+texture = ExtResource("6_5p2iw")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_22frk"]
 texture = ExtResource("5_2pr6j")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_d0pem"]
-texture = ExtResource("6_5p2iw")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llti3"]
-texture = ExtResource("7_k3t1i")
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y84gk"]
-texture = ExtResource("8_8om82")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2dni3"]
+texture = ExtResource("4_obao7")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qnke6"]
 texture = ExtResource("9_j0e15")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x22r1"]
-texture = ExtResource("10_m8r0k")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y84gk"]
+texture = ExtResource("8_8om82")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llti3"]
+texture = ExtResource("7_k3t1i")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qbpmt"]
+texture = ExtResource("12_ud46t")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5xoyk"]
 texture = ExtResource("11_prpn4")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qbpmt"]
-texture = ExtResource("12_ud46t")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x22r1"]
+texture = ExtResource("10_m8r0k")
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_cfom6")
@@ -251,9 +251,9 @@ offset_top = 4.0
 offset_right = 488.0
 offset_bottom = 26.0
 scale = Vector2(1.76, 1)
-theme_override_styles/hover = SubResource("StyleBoxEmpty_vq5xy")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_ehg4m")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_iwa1g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ehg4m")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vq5xy")
 text = "X"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="round_effect"]
@@ -313,23 +313,23 @@ alignment = 1
 [node name="restart" type="Button" parent="MenuLayer/PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_2dni3")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_22frk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_d0pem")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_22frk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2dni3")
 
 [node name="settings" type="Button" parent="MenuLayer/PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_llti3")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_y84gk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qnke6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y84gk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_llti3")
 
 [node name="menu" type="Button" parent="MenuLayer/PauseMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qbpmt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
 
 [node name="DeathMenu" type="Control" parent="MenuLayer"]
 unique_name_in_owner = true
@@ -392,16 +392,25 @@ alignment = 1
 [node name="restart" type="Button" parent="MenuLayer/DeathMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_2dni3")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_22frk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_d0pem")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_22frk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2dni3")
 
 [node name="menu" type="Button" parent="MenuLayer/DeathMenu/container"]
 custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
-theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
 theme_override_styles/normal = SubResource("StyleBoxTexture_qbpmt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
+theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
+
+[node name="speed" type="Button" parent="."]
+offset_left = 304.0
+offset_top = 56.0
+offset_right = 324.0
+offset_bottom = 78.0
+focus_mode = 0
+toggle_mode = true
+text = "1x"
 
 [connection signal="pressed" from="round_effect/round_effect_close" to="." method="_on_round_effect_close_pressed"]
 [connection signal="pressed" from="MenuLayer/PauseMenu/container/restart" to="." method="_on_restart_pressed"]
@@ -409,3 +418,4 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_qbpmt")
 [connection signal="pressed" from="MenuLayer/PauseMenu/container/menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="MenuLayer/DeathMenu/container/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MenuLayer/DeathMenu/container/menu" to="." method="_on_menu_pressed"]
+[connection signal="toggled" from="speed" to="." method="_on_speed_toggled"]

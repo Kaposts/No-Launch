@@ -306,8 +306,8 @@ hit_flash_material = SubResource("ShaderMaterial_nrfwl")
 [node name="NavigatorComponent" parent="." instance=ExtResource("9_u01qb")]
 unique_name_in_owner = true
 radius = 30.0
-avoidance_layers = 2
-avoidance_mask = 2
+avoidance_layers = 0
+avoidance_mask = 0
 enabled = false
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("10_vabdn")]

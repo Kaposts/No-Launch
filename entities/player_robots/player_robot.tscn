@@ -347,6 +347,7 @@ hit_flash_material = SubResource("ShaderMaterial_1imbi")
 unique_name_in_owner = true
 path_desired_distance = 10.0
 target_desired_distance = 16.0
+avoidance_mask = 0
 enabled = false
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("9_nvrdh")]

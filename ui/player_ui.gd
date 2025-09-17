@@ -104,3 +104,12 @@ func _on_player_lost() -> void:
 
 func _on_menu_visibility_changed() -> void:
 	vignette.visible = pause_menu.visible or death_menu.visible or options_menu.visible
+
+func _on_speed_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Engine.time_scale = 2.0
+		$speed.text = "2x"
+	else: 
+		Engine.time_scale = 1.0
+		$speed.text = "1x"
+
