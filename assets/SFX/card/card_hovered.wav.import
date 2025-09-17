@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://vcgq24c8ou0h"
-path="res://.godot/imported/card_hovered.wav-75e50fc8b9686bf1cfb071dd498ebdcc.sample"
-
-[deps]
-
-source_file="res://assets/SFX/card/card_hovered.wav"
-dest_files=["res://.godot/imported/card_hovered.wav-75e50fc8b9686bf1cfb071dd498ebdcc.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=2
+version https://git-lfs.github.com/spec/v1
+oid sha256:00dd8079b5b5dbbccc482b0b2dc84552cb3f72a2cfe34c2407a5a4f69fab0735
+size 509

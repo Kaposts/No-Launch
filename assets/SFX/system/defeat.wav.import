@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://duebdywvbbain"
-path="res://.godot/imported/defeat.wav-1ddf1c6f43f8d2f299a1fdcadf9e08d9.sample"
-
-[deps]
-
-source_file="res://assets/SFX/system/defeat.wav"
-dest_files=["res://.godot/imported/defeat.wav-1ddf1c6f43f8d2f299a1fdcadf9e08d9.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=2
+version https://git-lfs.github.com/spec/v1
+oid sha256:104825a00097afeb39af215db109944fd5d89cc427b4eeaffb62ec43322b6d9a
+size 494

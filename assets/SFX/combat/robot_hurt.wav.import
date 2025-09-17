@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://da7nc368mn8xq"
-path="res://.godot/imported/robot_hurt.wav-33a9133776a36d868b673f2db1e114a5.sample"
-
-[deps]
-
-source_file="res://assets/SFX/combat/robot_hurt.wav"
-dest_files=["res://.godot/imported/robot_hurt.wav-33a9133776a36d868b673f2db1e114a5.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=2
+version https://git-lfs.github.com/spec/v1
+oid sha256:d168fd5a8bbe69d1ab3f6bcd843e0a9416b9488e93b94e2642dc9c0c39d48b50
+size 506
