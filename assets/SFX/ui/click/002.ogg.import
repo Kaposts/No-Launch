@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:12631284110698ee49f6d75188a015f88619302c8de0fd45372869d490d71596
-size 385
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cvgm014uuatu7"
+path="res://.godot/imported/002.ogg-82436b59f1a380dbdc7205b0d250d555.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/SFX/ui/click/002.ogg"
+dest_files=["res://.godot/imported/002.ogg-82436b59f1a380dbdc7205b0d250d555.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

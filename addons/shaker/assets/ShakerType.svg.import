@@ -1,3 +1,43 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6bdd54ff1cab4043177e9d6565e7c50b979b5fd12b6ef59855b0f6f1d56239d9
-size 882
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dp17wukk84w6y"
+path="res://.godot/imported/ShakerType.svg-0e40c87944ca8f10dcb4da67f37ccfdf.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://addons/shaker/assets/ShakerType.svg"
+dest_files=["res://.godot/imported/ShakerType.svg-0e40c87944ca8f10dcb4da67f37ccfdf.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

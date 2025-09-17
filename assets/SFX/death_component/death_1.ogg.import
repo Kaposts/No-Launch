@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:26f5409a677e79cd69e12b46461d474ee74ea325c25a483eb02ec53fc414c809
-size 404
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bvlawk1npqpwg"
+path="res://.godot/imported/death_1.ogg-581bc1c36ea13e3ac4f8843b8147e3a4.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/SFX/death_component/death_1.ogg"
+dest_files=["res://.godot/imported/death_1.ogg-581bc1c36ea13e3ac4f8843b8147e3a4.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

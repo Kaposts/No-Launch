@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5427c65616581093130b02e0f0fe28c7530d1753113043a1aad20f2d948c16af
-size 512
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bihm1sxpvcdvo"
+path="res://.godot/imported/battle_start.wav-f135022ca72b5f25ea8be3a7176c438a.sample"
+
+[deps]
+
+source_file="res://assets/SFX/system/battle_start.wav"
+dest_files=["res://.godot/imported/battle_start.wav-f135022ca72b5f25ea8be3a7176c438a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
