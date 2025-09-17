@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://brbg6i0mvo0l8" path="res://components/navigator_component/navigator_component.tscn" id="2_ckjmp"]
 [ext_resource type="PackedScene" uid="uid://cs2msqcudcidd" path="res://components/random_audio_player/random_audio_player_2d_component.tscn" id="2_cleip"]
 [ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="2_gllqd"]
-[ext_resource type="Texture2D" uid="uid://ovl8y74ydfug" path="res://assets/characters/player_infantry.png" id="2_qkkt1"]
-[ext_resource type="Material" uid="uid://bju26aurmj117" path="res://resources/pixel_smoothing_shader/pixel_smoothing_material.tres" id="2_uxc6o"]
+[ext_resource type="Texture2D" uid="uid://ovl8y74ydfug" path="res://entities/player_robots/assets/player_infantry.png" id="2_qkkt1"]
+[ext_resource type="Material" uid="uid://bju26aurmj117" path="res://entities/pixel_smoothing_shader/pixel_smoothing_material.tres" id="2_uxc6o"]
 [ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="3_i8ckr"]
 [ext_resource type="AudioStream" uid="uid://cgybxyha8jvkr" path="res://assets/SFX/combat/robot_attack.wav" id="3_qgwbr"]
 [ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="3_r6tem"]
@@ -347,6 +347,7 @@ hit_flash_material = SubResource("ShaderMaterial_1imbi")
 unique_name_in_owner = true
 path_desired_distance = 10.0
 target_desired_distance = 16.0
+avoidance_mask = 0
 enabled = false
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("9_nvrdh")]

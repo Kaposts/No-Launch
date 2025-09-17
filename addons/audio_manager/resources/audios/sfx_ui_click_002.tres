@@ -7,6 +7,3 @@
 script = ExtResource("2_bcgd3")
 res_name = "sfx_ui_click_002"
 res_stream = ExtResource("1_3mvon")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

@@ -7,6 +7,3 @@
 script = ExtResource("2_xj0h2")
 res_name = "sfx_ui_scroll_001"
 res_stream = ExtResource("1_w8s72")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

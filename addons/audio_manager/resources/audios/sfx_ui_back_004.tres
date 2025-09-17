@@ -7,6 +7,3 @@
 script = ExtResource("2_p3k70")
 res_name = "sfx_ui_back_004"
 res_stream = ExtResource("1_evio8")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

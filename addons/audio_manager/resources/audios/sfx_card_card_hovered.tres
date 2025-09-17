@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://bkn46so3dmaf1"]
+
+[ext_resource type="AudioStream" uid="uid://vcgq24c8ou0h" path="res://assets/SFX/card/card_hovered.wav" id="1_t04og"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_06qvd"]
+
+[resource]
+script = ExtResource("2_06qvd")
+res_name = "sfx_card_card_hovered"
+res_stream = ExtResource("1_t04og")

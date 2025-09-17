@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://d0ush2se4hypy"]
+
+[ext_resource type="AudioStream" uid="uid://dsohwmrdb15vg" path="res://assets/SFX/button/button_hover.wav" id="1_tt0ly"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_lree7"]
+
+[resource]
+script = ExtResource("2_lree7")
+res_name = "sfx_button_button_hover"
+res_stream = ExtResource("1_tt0ly")

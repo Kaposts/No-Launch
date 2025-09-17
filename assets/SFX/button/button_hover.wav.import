@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://d206urlwk5jff"
-path="res://.godot/imported/button_hover.wav-627605e7ab9eecdabb65fc32e2e6c14c.sample"
-
-[deps]
-
-source_file="res://assets/SFX/button/button_hover.wav"
-dest_files=["res://.godot/imported/button_hover.wav-627605e7ab9eecdabb65fc32e2e6c14c.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=2
+version https://git-lfs.github.com/spec/v1
+oid sha256:48422208ec271b0cf85446f6048693439d5b129cf16724966c955362bd0d1592
+size 512

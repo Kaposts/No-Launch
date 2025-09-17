@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dk62yq4ftj1dx"]
+[gd_scene load_steps=3 format=3 uid="uid://b176r6aw11cn"]
 
 [ext_resource type="Script" uid="uid://byjj1n3h0axru" path="res://ui/transition_example_button.gd" id="1_o5qli"]
 [ext_resource type="FontFile" uid="uid://csu3erj4oisi5" path="res://assets/fonts/pixel-purl-font/Pixelpurl-0vBPP.ttf" id="2_sugp2"]

@@ -24,6 +24,8 @@ var is_playing_turn: bool = false
 
 var game_is_paused: bool = false
 
+var skip_cut_scenes: bool = true
+
 func _ready() -> void:
 	SceneManager.transition_finished.connect(func(): print('Transition complete'))
 	SceneManager.fade_complete.connect(func(): print('Fade complete'))
@@ -115,13 +117,6 @@ func discard(card) -> void:
 
 func play_turn() -> void:
 	is_playing_turn = true
-	print("You did your turn")
-	print(cards_in_play)
-	# for card in cards_in_play:
-	# 	await get_tree().create_timer(0.3).timeout
-	# 	SignalBus.play_card.emit(card)
-	# 	discard(card)
-	# cards_in_play.clear()
 
 	# SignalBus.update_hand.emit()
 	SignalBus.start_round.emit()
@@ -201,9 +196,6 @@ func duplicate_hand():
 		if !card: return
 		var card_data = card.data
 		for activation:ActivationResource in card_data.activations:
-			print(Enum.CARD_FUNCTION.DUPLICATE_HAND)
-			print(activation.function)
-			print(activation.function == Enum.CARD_FUNCTION.DUPLICATE_HAND)
 			if activation.function == Enum.CARD_FUNCTION.DUPLICATE_HAND: 
 				skip = true
 				continue
@@ -245,8 +237,6 @@ func big_update():
 		new_data.energy += 2
 		card.energy_cost.text = str(new_data.energy)
 		card.data = new_data
-
-		print(new_data.activations)
 
 		card.card_description.text = ""
 		card.generate_description()

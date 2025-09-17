@@ -7,6 +7,3 @@
 script = ExtResource("2_3gkfq")
 res_name = "sfx_ui_maximize_006"
 res_stream = ExtResource("1_35p1v")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

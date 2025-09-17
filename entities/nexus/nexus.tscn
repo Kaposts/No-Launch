@@ -2,34 +2,34 @@
 
 [ext_resource type="Script" uid="uid://dpl71fdu4ngcd" path="res://entities/nexus/nexus.gd" id="1_nuvkp"]
 [ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="2_p28lo"]
-[ext_resource type="AudioStream" uid="uid://c5lwlaq5l8kdr" path="res://assets/SFX/combat/core_damaged.wav" id="3_3aw13"]
-[ext_resource type="Texture2D" uid="uid://l1j0i3abask5" path="res://assets/battle_scene/foreground.png" id="4_3aw13"]
+[ext_resource type="AudioStream" uid="uid://dck5eubuhmmf0" path="res://assets/SFX/combat/core_damaged.wav" id="3_3aw13"]
+[ext_resource type="Texture2D" uid="uid://l1j0i3abask5" path="res://entities/nexus/assets/battle_scene/foreground.png" id="4_3aw13"]
 [ext_resource type="AudioStream" uid="uid://bqbcd66vvdbio" path="res://assets/SFX/combat/core_destroyed.wav" id="4_oh37x"]
-[ext_resource type="Texture2D" uid="uid://0j33xk1pv44y" path="res://assets/In Game Ui/Core SpriteSheet ( Ally ).png" id="5_c3ah8"]
+[ext_resource type="Texture2D" uid="uid://0j33xk1pv44y" path="res://ui/assets/In Game Ui/Core SpriteSheet ( Ally ).png" id="5_c3ah8"]
 [ext_resource type="AudioStream" uid="uid://dg28gkwdynfkg" path="res://assets/SFX/system/victory.wav" id="5_oypg6"]
-[ext_resource type="Texture2D" uid="uid://bq7743rc6gg7m" path="res://assets/Background/ForeGround ( Core ) Left.png" id="6_ma1hg"]
+[ext_resource type="Texture2D" uid="uid://bq7743rc6gg7m" path="res://entities/nexus/assets/Background/ForeGround ( Core ) Left.png" id="6_ma1hg"]
 [ext_resource type="AudioStream" uid="uid://duebdywvbbain" path="res://assets/SFX/system/defeat.wav" id="6_qumls"]
-[ext_resource type="Texture2D" uid="uid://6rhlq447leb7" path="res://assets/Background/Background ( Core ) Left.png" id="6_y3lcq"]
-[ext_resource type="Texture2D" uid="uid://c5q6qiovoft56" path="res://assets/Background/Background ( Core ) Right.png" id="9_0wuyj"]
-[ext_resource type="Texture2D" uid="uid://du6g13xid68g3" path="res://assets/In Game Ui/Core SpriteSheet ( Enemies ).png" id="10_56a8o"]
+[ext_resource type="Texture2D" uid="uid://6rhlq447leb7" path="res://entities/nexus/assets/Background/Background ( Core ) Left.png" id="6_y3lcq"]
+[ext_resource type="Texture2D" uid="uid://c5q6qiovoft56" path="res://entities/nexus/assets/Background/Background ( Core ) Right.png" id="9_0wuyj"]
+[ext_resource type="Texture2D" uid="uid://du6g13xid68g3" path="res://ui/assets/In Game Ui/Core SpriteSheet ( Enemies ).png" id="10_56a8o"]
 [ext_resource type="Script" uid="uid://davec6km1s6jp" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="10_ilqln"]
-[ext_resource type="Texture2D" uid="uid://cn4g3vu0w5c5r" path="res://assets/Background/ForeGround ( Core ) Right.png" id="11_oypg6"]
-[ext_resource type="Texture2D" uid="uid://c67ylk1x6t0n8" path="res://assets/In Game Ui/health_panel_ally.png" id="11_xfpmx"]
-[ext_resource type="Resource" uid="uid://dw6kho1pgiqui" path="res://resources/smooth_shake_preset/smooth_shake_preset.tres" id="13_k25q4"]
-[ext_resource type="Texture2D" uid="uid://co1i1iy8vkcat" path="res://assets/In Game Ui/health_panel_enemy.png" id="14_qumls"]
+[ext_resource type="Texture2D" uid="uid://cn4g3vu0w5c5r" path="res://entities/nexus/assets/Background/ForeGround ( Core ) Right.png" id="11_oypg6"]
+[ext_resource type="Texture2D" uid="uid://37js0chwndvo" path="res://ui/assets/In Game Ui/health_panel_ally.png" id="11_xfpmx"]
+[ext_resource type="Resource" uid="uid://dw6kho1pgiqui" path="res://entities/nexus/smooth_shake_preset.tres" id="13_k25q4"]
+[ext_resource type="Texture2D" uid="uid://c0y71kj5plcbn" path="res://ui/assets/In Game Ui/health_panel_enemy.png" id="14_qumls"]
 [ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="14_rxdqk"]
 [ext_resource type="Shader" uid="uid://bvguo825tyhh6" path="res://components/hit_flash_component/white_hit_flash.gdshader" id="15_3knsx"]
 [ext_resource type="PackedScene" uid="uid://bs7vi5x8y5rmd" path="res://components/random_gpu_particles_component/random_gpu_particles_component.tscn" id="16_5rrjn"]
-[ext_resource type="Texture2D" uid="uid://cffu55qm1ur6b" path="res://assets/visual_effects/core_particles/core_particle_ally_1.png" id="17_3nc60"]
-[ext_resource type="Texture2D" uid="uid://duhimkjimfuo8" path="res://assets/visual_effects/core_particles/core_particle_ally_2.png" id="18_1fif4"]
-[ext_resource type="Texture2D" uid="uid://btwaqd5sckxcp" path="res://assets/visual_effects/core_particles/core_particle_ally_3.png" id="19_0vqn5"]
-[ext_resource type="Texture2D" uid="uid://6fjt31ihhhu4" path="res://assets/visual_effects/core_particles/core_particle_ally_4.png" id="20_jnybf"]
-[ext_resource type="Texture2D" uid="uid://bxu7rlvg0b1ds" path="res://assets/visual_effects/core_particles/core_particle_ally_5.png" id="21_mh4fp"]
-[ext_resource type="Texture2D" uid="uid://xslvodwqbwen" path="res://assets/visual_effects/core_particles/core_particle_enemy_1.png" id="26_t68y3"]
-[ext_resource type="Texture2D" uid="uid://plh848rmb85l" path="res://assets/visual_effects/core_particles/core_particle_enemy_2.png" id="27_hyis1"]
-[ext_resource type="Texture2D" uid="uid://bdle7uafjlmw1" path="res://assets/visual_effects/core_particles/core_particle_enemy_3.png" id="28_mo6ax"]
-[ext_resource type="Texture2D" uid="uid://dshk4553bhd77" path="res://assets/visual_effects/core_particles/core_particle_enemy_4.png" id="29_x1mfx"]
-[ext_resource type="Texture2D" uid="uid://b1ymr3iwe3o7j" path="res://assets/visual_effects/core_particles/core_particle_enemy_5.png" id="30_koful"]
+[ext_resource type="Texture2D" uid="uid://cffu55qm1ur6b" path="res://entities/enemies/assets/core_particle_ally_1.png" id="17_3nc60"]
+[ext_resource type="Texture2D" uid="uid://duhimkjimfuo8" path="res://entities/enemies/assets/core_particle_ally_2.png" id="18_1fif4"]
+[ext_resource type="Texture2D" uid="uid://btwaqd5sckxcp" path="res://entities/enemies/assets/core_particle_ally_3.png" id="19_0vqn5"]
+[ext_resource type="Texture2D" uid="uid://6fjt31ihhhu4" path="res://entities/enemies/assets/core_particle_ally_4.png" id="20_jnybf"]
+[ext_resource type="Texture2D" uid="uid://bxu7rlvg0b1ds" path="res://entities/enemies/assets/core_particle_ally_5.png" id="21_mh4fp"]
+[ext_resource type="Texture2D" uid="uid://xslvodwqbwen" path="res://entities/enemies/assets/core_particle_enemy_1.png" id="26_t68y3"]
+[ext_resource type="Texture2D" uid="uid://plh848rmb85l" path="res://entities/enemies/assets/core_particle_enemy_2.png" id="27_hyis1"]
+[ext_resource type="Texture2D" uid="uid://bdle7uafjlmw1" path="res://entities/enemies/assets/core_particle_enemy_3.png" id="28_mo6ax"]
+[ext_resource type="Texture2D" uid="uid://dshk4553bhd77" path="res://entities/enemies/assets/core_particle_enemy_4.png" id="29_x1mfx"]
+[ext_resource type="Texture2D" uid="uid://b1ymr3iwe3o7j" path="res://entities/enemies/assets/core_particle_enemy_5.png" id="30_koful"]
 
 [sub_resource type="Animation" id="Animation_j57v7"]
 length = 0.001
@@ -269,24 +269,24 @@ textures = Array[Texture2D]([ExtResource("17_3nc60"), ExtResource("18_1fif4"), E
 [node name="EnemyCore" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="EnemyCore"]
-position = Vector2(40, 29)
+position = Vector2(39.99999, 28.999996)
 texture = ExtResource("9_0wuyj")
 
 [node name="Background2" type="Sprite2D" parent="EnemyCore"]
 show_behind_parent = true
-position = Vector2(-141.5, -134)
+position = Vector2(-141.50002, -134.00002)
 texture = ExtResource("4_3aw13")
 centered = false
 region_enabled = true
 region_rect = Rect2(284, 0, 228, 61.9999)
 
 [node name="Core" type="Sprite2D" parent="EnemyCore"]
-position = Vector2(46, 82)
+position = Vector2(46.000004, 81.99999)
 texture = ExtResource("10_56a8o")
 vframes = 6
 
 [node name="Foreground" type="Sprite2D" parent="EnemyCore"]
-position = Vector2(64, 90)
+position = Vector2(63.999992, 90.00001)
 texture = ExtResource("11_oypg6")
 
 [node name="HealthPanel" type="Sprite2D" parent="EnemyCore"]

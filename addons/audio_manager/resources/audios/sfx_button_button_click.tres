@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioData" load_steps=3 format=3 uid="uid://cef42up10dkxr"]
+
+[ext_resource type="AudioStream" uid="uid://bfgkgyiaspngk" path="res://assets/SFX/button/button_click.wav" id="1_pbgm2"]
+[ext_resource type="Script" path="res://addons/audio_manager/audio_data.gd" id="2_6bnvu"]
+
+[resource]
+script = ExtResource("2_6bnvu")
+res_name = "sfx_button_button_click"
+res_stream = ExtResource("1_pbgm2")
