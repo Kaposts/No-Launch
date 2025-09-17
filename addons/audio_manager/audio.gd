@@ -20,8 +20,6 @@ const LIBRARY_PATH = "res://addons/audio_manager/resources/audios/"
 func setup_sfx():
 	audios = read_dir()
 
-	print(audios)
-
 	for i in range(max_channels):
 		var player = AudioStreamPlayer.new()
 		add_child(player)
@@ -76,7 +74,6 @@ func play(audio: AudioData, player_override = null):
 	# channels[0].play()
 
 func play_by_name(sound_name: String, player_override = null):
-	print(audios)
 	for audio: AudioData in audios:
 		if audio.res_name == sound_name:
 			play(audio, player_override)
