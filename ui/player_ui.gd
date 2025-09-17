@@ -85,7 +85,6 @@ func _on_menu_pressed() -> void:
 	_set_in_transition()
 	await Global.transition()
 	get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
-	SignalBus.start_game.emit()
 
 func _on_settings_pressed() -> void:
 	pause_menu.hide()

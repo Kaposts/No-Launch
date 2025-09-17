@@ -46,6 +46,7 @@ texture = ExtResource("2_emqap")
 centered = false
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(0, -147)
 navigation_polygon = SubResource("NavigationPolygon_skhqt")
 
