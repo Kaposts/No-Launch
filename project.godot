@@ -35,8 +35,15 @@ GlobalSfxPlayer="*res://core/sfx_player/global_sfx_player.tscn"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"Dev": "res://ui/assets/Dialogue/Dev.dch"
+}
+directories/dtl_directory={
+"Cutscene1": "res://ui/assets/Dialogue/Cutscene1.dtl",
+"Cutscene2": "res://ui/assets/Dialogue/Cutscene2.dtl",
+"Cutscene3": "res://ui/assets/Dialogue/Cutscene3.dtl",
+"Cutscene4": "res://ui/assets/Dialogue/Cutscene4.dtl"
+}
 layout/style_directory={}
 variables={}
 glossary/default_case_sensitive=true

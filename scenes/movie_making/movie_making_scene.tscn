@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://rgi2d5audq6t"]
 
+[ext_resource type="Script" uid="uid://yde7y1upjc8p" path="res://scenes/main.gd" id="1_bsku7"]
 [ext_resource type="PackedScene" uid="uid://bcc4ea6baq4mq" path="res://scenes/levels/battle_scene.tscn" id="1_e070n"]
-[ext_resource type="Script" uid="uid://fss4fjg4aqy" path="res://scenes/movie_making_scene.gd" id="1_uofra"]
 [ext_resource type="Script" uid="uid://dwpriovdnijuo" path="res://cards/hand.gd" id="2_uofra"]
-[ext_resource type="PackedScene" uid="uid://crv6wrd1htgmr" path="res://cards/scenes/card.tscn" id="3_iyqcc"]
+[ext_resource type="PackedScene" uid="uid://crv6wrd1htgmr" path="res://cards/card.tscn" id="3_iyqcc"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_fqf28"]
 [ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="5_p8fy2"]
 [ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="6_wci2d"]
 [ext_resource type="PackedScene" uid="uid://ccxkca6puflbo" path="res://ui/player_ui.tscn" id="7_mxsik"]
 [ext_resource type="PackedScene" uid="uid://b0a6xslbkr78j" path="res://ui/tutorial/tutorial.tscn" id="8_ogdd7"]
-[ext_resource type="Shader" uid="uid://bpd32c0aufbby" path="res://resources/external_border_shader/external_border.gdshader" id="10_fqf28"]
-[ext_resource type="Texture2D" uid="uid://bj8csggoqduto" path="res://assets/UI/No Launch Logo.png" id="10_iyqcc"]
+[ext_resource type="Shader" uid="uid://bpd32c0aufbby" path="res://cards/materials/external_border_shader/external_border.gdshader" id="10_fqf28"]
+[ext_resource type="Texture2D" uid="uid://bj8csggoqduto" path="res://ui/assets/No Launch Logo.png" id="10_iyqcc"]
 
 [sub_resource type="Curve" id="Curve_laqxi"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504065, 0.484672), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -28,7 +28,7 @@ shader_parameter/line_color = Vector4(1, 1, 1, 1)
 shader_parameter/width = 6.0
 
 [node name="MovieMakingScene" type="Node2D"]
-script = ExtResource("1_uofra")
+script = ExtResource("1_bsku7")
 
 [node name="BattleScene" parent="." instance=ExtResource("1_e070n")]
 
