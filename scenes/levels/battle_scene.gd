@@ -51,7 +51,7 @@ func _ready() -> void:
 	_load_player_available_robot_types()
 	_load_enemy_types()
 	
-	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE, false, true)
+	MusicPlayer.switch_song(Enum.SONG_NAMES.PRE_BATTLE, false, true)
 	Global.max_energy = 4
 	
 	await get_tree().create_timer(0.5, false).timeout
@@ -105,7 +105,7 @@ func prep_battle(robot_count: int = randi_range(min_robot_count, max_robot_count
 	enemy_nexus.can_destroy_entity = false
 	Global.is_playing_turn = false
 	
-	MusicPlayer.switch_song(MusicPlayer.SongNames.PRE_BATTLE)
+	MusicPlayer.switch_song(Enum.SONG_NAMES.PRE_BATTLE)
 
 
 func start_battle() -> void:
@@ -126,7 +126,7 @@ func start_battle() -> void:
 			enemy.targets = player_robots
 			enemy.start_navigating(player_robots.pick_random())
 	
-	MusicPlayer.switch_song(MusicPlayer.SongNames.MAIN_BATTLE)
+	MusicPlayer.switch_song(Enum.SONG_NAMES.MAIN_BATTLE)
 	
 	reset_navigation_timer.start()
 

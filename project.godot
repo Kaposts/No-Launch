@@ -22,9 +22,8 @@ version_control/autoload_on_startup=true
 
 Global="*res://core/global.gd"
 Enum="*res://core/enum.gd"
-Ref="*res://core/ref.gd"
 SignalBus="*res://core/signal_bus.gd"
-MusicPlayer="*res://autoloads/music_player/music_player.tscn"
+MusicPlayer="*res://core/music_player/music_player.tscn"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
@@ -32,26 +31,20 @@ Activate="*res://core/activate.gd"
 PlayerBuffs="*res://core/buffs/player_buffs.gd"
 Audio="*res://addons/audio_manager/audio.gd"
 RoundEffect="*res://core/round_effect.gd"
-GlobalSfxPlayer="*res://autoloads/sfx_player/global_sfx_player.tscn"
+GlobalSfxPlayer="*res://core/sfx_player/global_sfx_player.tscn"
 
 [dialogic]
 
 directories/dch_directory={
-"Dev": "res://assets/UI/Dialogue/Dev.dch",
-"godot": "res://dialogic/godot.dch",
-"unit_test_character": "res://Tests/Resources/unit_test_character.dch"
+"Dev": "res://ui/assets/Dialogue/Dev.dch"
 }
 directories/dtl_directory={
-"Cutscene1": "res://assets/UI/Dialogue/Cutscene1.dtl",
-"Cutscene2": "res://assets/UI/Dialogue/Cutscene2.dtl",
-"Cutscene3": "res://assets/UI/Dialogue/Cutscene3.dtl",
-"Cutscene4": "res://assets/UI/Dialogue/Cutscene4.dtl",
-"timeline": "res://dialogic/timeline.dtl"
+"Cutscene1": "res://ui/assets/Dialogue/Cutscene1.dtl",
+"Cutscene2": "res://ui/assets/Dialogue/Cutscene2.dtl",
+"Cutscene3": "res://ui/assets/Dialogue/Cutscene3.dtl",
+"Cutscene4": "res://ui/assets/Dialogue/Cutscene4.dtl"
 }
-layout/style_directory={
-"": "res://dialogic/New_File.tres",
-"New_File": "res://dialogic/New_File.tres"
-}
+layout/style_directory={}
 variables={}
 glossary/default_case_sensitive=true
 layout/style_list=["res://dialogic/New_File.tres"]
@@ -116,11 +109,13 @@ enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons
 
 folder_colors={
 "res://addons/": "red",
-"res://cards/": "pink",
-"res://core/": "orange",
-"res://dialogic/": "yellow",
-"res://scenes/": "green",
-"res://ui/": "blue"
+"res://assets/": "yellow",
+"res://cards/": "purple",
+"res://components/": "yellow",
+"res://core/": "purple",
+"res://entities/": "yellow",
+"res://scenes/": "purple",
+"res://ui/": "yellow"
 }
 
 [global_group]

@@ -12,7 +12,7 @@ extends Node2D
 
 
 func _ready():
-	MusicPlayer.switch_song(MusicPlayer.SongNames.TITLE_THEME, false, true)
+	MusicPlayer.switch_song(Enum.SONG_NAMES.TITLE_THEME, false, true)
 	SceneManager.fade_in()
 	vignette.hide()
 	

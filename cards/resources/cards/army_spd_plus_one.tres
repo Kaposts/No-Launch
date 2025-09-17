@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_osjey"]
 [ext_resource type="Resource" uid="uid://2fjk0exchkdl" path="res://cards/resources/activations/army_buffs/army_spd_plus_one.tres" id="2_osjey"]
-[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_mf4kg"]
+[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/sprites/Sprite-0002.png" id="3_mf4kg"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_ti836"]
 [ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="5_ww5ov"]
 

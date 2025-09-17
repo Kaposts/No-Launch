@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b2p4us4rkxeut" path="res://cards/resources/activations/activations_data.gd" id="1_k0heh"]
 [ext_resource type="Resource" uid="uid://c1xfcymiws6ql" path="res://cards/resources/activations/duplicate/duplicate_hand.tres" id="2_k0heh"]
-[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/assets/Sprite-0002.png" id="3_1ik2x"]
+[ext_resource type="Texture2D" uid="uid://0xptcumbelio" path="res://cards/sprites/Sprite-0002.png" id="3_1ik2x"]
 [ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_1w0e3"]
-[ext_resource type="Texture2D" uid="uid://cqb64swgqnw2n" path="res://cards/assets/Card Sprites/RARE Action Duplicate Cards.png" id="5_k0heh"]
+[ext_resource type="Texture2D" uid="uid://cqb64swgqnw2n" path="res://cards/sprites/Card Sprites/RARE Action Duplicate Cards.png" id="5_k0heh"]
 
 [resource]
 script = ExtResource("4_1w0e3")
