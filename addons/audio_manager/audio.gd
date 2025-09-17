@@ -123,19 +123,13 @@ func read_dir() -> Array[AudioData]:
 
 	dir.list_dir_begin()
 	var filename = dir.get_next()
-	var fn = []
 
 	while filename != "":
-		fn.append(filename)
+
 		# skip hidden files
 		if filename.begins_with("."):
 			filename = dir.get_next()
 			continue
-
-		# logic for expoerted resources
-		# if filename.ends_with(".remap"):
-		# 	var expected_length = filename.length() - ".remap".length()
-		# 	filename = filename.substr(0, expected_length)
 
 		elif filename.get_extension().to_lower() in RESOURCE_EXTENSION or filename.get_extension().to_lower() in RESOURCE_EXPORT_EXTENSION:
 				var resource: AudioData = ResourceLoader.load(path + filename)
@@ -152,8 +146,6 @@ func read_dir() -> Array[AudioData]:
 		filename = dir.get_next()
 
 	dir.list_dir_end()
-
-	print(str(fn))
 
 	return audios
 
