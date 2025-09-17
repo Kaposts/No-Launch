@@ -103,7 +103,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/editor_generate_functions/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/editor_generate_functions/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
 [file_customization]
 
@@ -127,6 +127,8 @@ enemy_nexus=""
 battle_scene="Main battle scene"
 player_layer=""
 ui_layer="layer to contain any dynamic ui elements"
+e=""
+p=""
 
 [gui]
 

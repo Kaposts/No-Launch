@@ -8,7 +8,7 @@ const FLOATING_TEXT: PackedScene = preload(Global.SCENE_PATHS.floating_text)
 
 @export var invicibility_duration: float = 0.2
 @export var health_component: HealthComponent
-@export var navigator_component: NavigatorComponent
+# @export var navigator_component: NavigatorComponent
 @export var knockback_component: KnockbackComponent
 @export var hit_flash_component: HitFlashComponent
 @export var hitstop_component: HitstopComponent
@@ -36,7 +36,7 @@ func _on_area_entered(hitbox_component: HitboxComponent) -> void:
 	
 	health_component.damage(hitbox_component.damage)
 	hit_flash_component.flash(invicibility_duration)
-	navigator_component.pause()
+	# navigator_component.pause()
 	hitstop_component.freeze_frame(hitbox_component.hitstop_duration)
 	
 	_add_damage_dealt_text_ui(hitbox_component.damage)
@@ -46,7 +46,7 @@ func _on_area_entered(hitbox_component: HitboxComponent) -> void:
 	
 	# Need to check for previously freed physics objects
 	if hitbox_component != null:
-		navigator_component.pause()
+		# navigator_component.pause()
 		knockback_component.knockback(hitbox_component)
 		#knockback_component.knockback_tween(hitbox_component)
 
