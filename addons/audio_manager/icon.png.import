@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dti7donb22h4m"
-valid=false
+uid="uid://5iqb2inu7di"
+path="res://.godot/imported/icon.png-1a5ddf69c49b89ecd53feef996433514.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://addons/audio_manager/icon.png"
+dest_files=["res://.godot/imported/icon.png-1a5ddf69c49b89ecd53feef996433514.ctex"]
 
 [params]
 
