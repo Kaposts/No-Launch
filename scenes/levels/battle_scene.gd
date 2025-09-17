@@ -2,12 +2,17 @@ extends Node2D
 
 const POSITION_OFFSET: float = 50.0
 const APPEAR_TIMING_OFFSET: float = 0.5
+
+# wtf is this 
 const PLAYER_ROBOT_PARAMETERS_PATH: String = "res://resources/player_robot_parameters/"
 const ENEMY_PARAMETERS_PATH: String = "res://resources/enemy_parameters/"
 
 const STARTING_MIN_ENEMY_COUNT: int = 5
 const STARTING_MAX_ENEMY_COUNT: int = 10
 
+@export_group("Resources")
+@export var robot_resources: Array[EntityParameters]
+@export var enemy_resources: Array[EntityParameters]
 
 @export_group("Battle Settings")
 @export var min_robot_count: int = 3
@@ -25,8 +30,8 @@ const STARTING_MAX_ENEMY_COUNT: int = 10
 @onready var round_end_sfx_player: RandomAudioPlayer = %RoundEndSFXPlayer
 
 
-var player_robot_types: Array[EntityParameters] = []
-var enemy_types: Array[EntityParameters] = []
+# var player_robot_types: Array[EntityParameters] = []
+# var enemy_types: Array[EntityParameters] = []
 var player_robots: Array[Node2D] = []
 var enemies: Array[Node2D] = []
 
@@ -48,8 +53,8 @@ func _ready() -> void:
 	
 	reset_navigation_timer.timeout.connect(_on_reset_navigation_timer_timeout)
 	
-	_load_player_available_robot_types()
-	_load_enemy_types()
+	# _load_player_available_robot_types()
+	# _load_enemy_types()
 	
 	MusicPlayer.switch_song(Enum.SONG_NAMES.PRE_BATTLE, false, true)
 	Global.max_energy = 4
@@ -62,7 +67,7 @@ func _ready() -> void:
 #region PUBLIC FUNCTIONS
 
 func spawn_robot() -> void:
-	var new_robot: PlayerRobot = PlayerRobotFactory.new_robot(player_robot_types.pick_random())
+	var new_robot: PlayerRobot = PlayerRobotFactory.new_robot(robot_resources.pick_random())
 	new_robot.timing_offset = randf_range(0.0, APPEAR_TIMING_OFFSET)
 	player_layer.add_child(new_robot)
 	new_robot.position = Vector2(player_marker.position.x + randf_range(-POSITION_OFFSET, POSITION_OFFSET),
@@ -77,7 +82,7 @@ func spawn_robots(how_many: int) -> void:
 
 
 func spawn_enemy() -> void:
-	var new_enemy: Enemy = EnemyFactory.new_enemy(enemy_types.pick_random())
+	var new_enemy: Enemy = EnemyFactory.new_enemy(enemy_resources.pick_random())
 	new_enemy.timing_offset = randf_range(0.0, APPEAR_TIMING_OFFSET)
 	enemy_layer.add_child(new_enemy)
 	new_enemy.position = Vector2(enemy_marker.position.x + randf_range(-POSITION_OFFSET, POSITION_OFFSET),
@@ -134,32 +139,28 @@ func start_battle() -> void:
 #===================================================================================================
 #region PRIVATE FUNCTIONS
 
-func _load_player_available_robot_types() -> void:
-	var directory_path: String = PLAYER_ROBOT_PARAMETERS_PATH
+# func _load_player_available_robot_types() -> void:
+# 	# Get all resource files in the given dirrectory
+# 	var resources: PackedStringArray = ResourceLoader.list_directory(PLAYER_ROBOT_PARAMETERS_PATH)
 	
-	# Get all resource files in the given dirrectory
-	var resources: PackedStringArray = ResourceLoader.list_directory(directory_path)
-	
-	for resource_file in resources:
-		if resource_file.ends_with(".gd"):
-			continue
+# 	for resource_file in resources:
+# 		if resource_file.ends_with(".gd"):
+# 			continue
 		
-		var param: EntityParameters = load(directory_path + resource_file)
-		player_robot_types.append(param)
+# 		var param: EntityParameters = load(PLAYER_ROBOT_PARAMETERS_PATH + resource_file)
+# 		player_robot_types.append(param)
 
 
-func _load_enemy_types() -> void:
-	var directory_path: String = ENEMY_PARAMETERS_PATH
+# func _load_enemy_types() -> void:
+# 	# Get all resource files in the given dirrectory
+# 	var resources: PackedStringArray = ResourceLoader.list_directory(ENEMY_PARAMETERS_PATH)
 	
-	# Get all resource files in the given dirrectory
-	var resources: PackedStringArray = ResourceLoader.list_directory(directory_path)
-	
-	for resource_file in resources:
-		if resource_file.ends_with(".gd"):
-			continue
+# 	for resource_file in resources:
+# 		if resource_file.ends_with(".gd"):
+# 			continue
 		
-		var param: EntityParameters = load(directory_path + resource_file)
-		enemy_types.append(param)
+# 		var param: EntityParameters = load(ENEMY_PARAMETERS_PATH + resource_file)
+# 		enemy_types.append(param)
 
 
 func _set_valid_entities(excluded_entities: Array[Entity] = []) -> void:

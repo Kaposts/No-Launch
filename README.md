@@ -7,15 +7,15 @@ Help him fix the game in time by squashing those bugs and glitches by playing ca
 ## Developed by 
 
 - Programmers
-    - [Cabage](https://cabagedev.itch.io/)
-    - [Lestavol](https://lestavol.itch.io/)
+	- [Cabage](https://cabagedev.itch.io/)
+	- [Lestavol](https://lestavol.itch.io/)
 - Designer
-    - [gnomik dimbucho](https://itch.io/profile/gnomik-dimbucho)
+	- [gnomik dimbucho](https://itch.io/profile/gnomik-dimbucho)
 - Artists
-    - [Something](https://a-something.itch.io/)
-    - [Soul](https://uma-alma.itch.io/)
-    - [king_kai](https://king-kai258.itch.io/)
+	- [Something](https://a-something.itch.io/)
+	- [Soul](https://uma-alma.itch.io/)
+	- [king_kai](https://king-kai258.itch.io/)
 - Musician
-    - [TP39](https://itch.io/profile/tp39)
+	- [TP39](https://itch.io/profile/tp39)
 - SFX Designer
-    - [Mo Memo](https://momemo-music.itch.io/)
+	- [Mo Memo](https://momemo-music.itch.io/)
