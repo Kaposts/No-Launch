@@ -1,0 +1,118 @@
+[gd_scene load_steps=15 format=3 uid="uid://rgi2d5audq6t"]
+
+[ext_resource type="PackedScene" uid="uid://bcc4ea6baq4mq" path="res://scenes/levels/battle_scene.tscn" id="1_e070n"]
+[ext_resource type="Script" uid="uid://fss4fjg4aqy" path="res://scenes/movie_making_scene.gd" id="1_uofra"]
+[ext_resource type="Script" uid="uid://dwpriovdnijuo" path="res://cards/hand.gd" id="2_uofra"]
+[ext_resource type="PackedScene" uid="uid://crv6wrd1htgmr" path="res://cards/scenes/card.tscn" id="3_iyqcc"]
+[ext_resource type="Script" uid="uid://6dduflnjkwry" path="res://cards/card_data.gd" id="4_fqf28"]
+[ext_resource type="Resource" uid="uid://c6oianq42ffac" path="res://cards/resources/cards/draw.tres" id="5_p8fy2"]
+[ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="6_wci2d"]
+[ext_resource type="PackedScene" uid="uid://ccxkca6puflbo" path="res://ui/player_ui.tscn" id="7_mxsik"]
+[ext_resource type="PackedScene" uid="uid://b0a6xslbkr78j" path="res://ui/tutorial/tutorial.tscn" id="8_ogdd7"]
+[ext_resource type="Shader" uid="uid://bpd32c0aufbby" path="res://resources/external_border_shader/external_border.gdshader" id="10_fqf28"]
+[ext_resource type="Texture2D" uid="uid://bj8csggoqduto" path="res://assets/UI/No Launch Logo.png" id="10_iyqcc"]
+
+[sub_resource type="Curve" id="Curve_laqxi"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.504065, 0.484672), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_em3ci"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501355, 0.498414), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fqf28"]
+resource_local_to_scene = true
+shader = ExtResource("10_fqf28")
+shader_parameter/hovered = true
+shader_parameter/line_color = Vector4(1, 1, 1, 1)
+shader_parameter/width = 6.0
+
+[node name="MovieMakingScene" type="Node2D"]
+script = ExtResource("1_uofra")
+
+[node name="BattleScene" parent="." instance=ExtResource("1_e070n")]
+
+[node name="PlayerNexus" parent="BattleScene" index="5"]
+position = Vector2(150, 131)
+
+[node name="EnemyNexus" parent="BattleScene" index="6"]
+position = Vector2(482, 140)
+
+[node name="hand" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_top = 262.0
+offset_right = 593.0
+offset_bottom = 427.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.00399, 1.00427)
+script = ExtResource("2_uofra")
+card_scene = ExtResource("3_iyqcc")
+hand_curve = SubResource("Curve_laqxi")
+rotation_curve = SubResource("Curve_em3ci")
+x_sep = -1
+y_max = -35
+card_pool = Array[ExtResource("4_fqf28")]([ExtResource("5_p8fy2")])
+
+[node name="drop" type="TextureRect" parent="." groups=["drop_zone"]]
+visible = false
+offset_right = 640.0
+offset_bottom = 249.0
+texture = ExtResource("6_wci2d")
+
+[node name="draw" type="Button" parent="."]
+visible = false
+offset_left = 550.0
+offset_top = 161.0
+offset_right = 627.0
+offset_bottom = 189.0
+text = "draw
+"
+
+[node name="UI" parent="." instance=ExtResource("7_mxsik")]
+
+[node name="EnergyGroup" parent="UI" index="3"]
+offset_left = 182.0
+offset_top = 58.0
+offset_right = 182.0
+offset_bottom = 58.0
+
+[node name="PlayButton" parent="UI" index="4"]
+offset_left = 362.0
+offset_top = 75.0
+offset_right = 458.0
+offset_bottom = 123.0
+
+[node name="Tutorial" parent="." instance=ExtResource("8_ogdd7")]
+visible = false
+
+[node name="Logo" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0.9)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Logo"]
+material = SubResource("ShaderMaterial_fqf28")
+position = Vector2(324, 150)
+texture = ExtResource("10_iyqcc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(312, 179)
+zoom = Vector2(1.3, 1.3)
+
+[connection signal="pressed" from="draw" to="hand" method="_on_draw_pressed"]
+
+[editable path="BattleScene"]
+[editable path="UI"]

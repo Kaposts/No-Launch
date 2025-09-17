@@ -45,9 +45,10 @@ func _on_start_game():
 	cards_in_hand = []
 	cards_in_play = []
 	deck = []
-
 	energy = max_energy
 	# deck_size = deck_data.size
+	
+	Global.deck_setup()
 	starting_hand()
 	await get_tree().create_timer(2).timeout
 	RoundEffect.change_effect()

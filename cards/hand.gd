@@ -18,7 +18,6 @@ func _ready():
 	SignalBus.update_hand.connect(_update_cards)
 	SignalBus.draw_card.connect(_on_draw_card)
 
-	Global.deck_setup()
 
 func _on_draw_card(card_data: CardData):
 	if Global.cards_in_hand.size() >= Global.card_in_hand_limit: return
