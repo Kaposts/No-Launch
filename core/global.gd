@@ -206,7 +206,7 @@ func duplicate_hand():
 		create_card(card.data)
 
 func corrupt_cards():
-	var amount_to_corrupt
+	var amount_to_corrupt = 1
 
 	if cards_in_hand.size() <= 0:
 		push_warning("Corruption FAILED, No card found")

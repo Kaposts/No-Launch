@@ -145,3 +145,4 @@ text = "Skip Cutscenes"
 [connection signal="value_changed" from="TextureRect/GridContainer/HSlider2" to="." method="_on_music_value_changed"]
 [connection signal="mouse_exited" from="TextureRect/GridContainer/HSlider3" to="." method="_on_SFX_mouse_exited"]
 [connection signal="value_changed" from="TextureRect/GridContainer/HSlider3" to="." method="_on_SFX_value_changed"]
+[connection signal="toggled" from="TextureRect/CheckButton" to="." method="_on_check_button_toggled"]

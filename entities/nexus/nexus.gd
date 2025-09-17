@@ -95,7 +95,8 @@ func die():
 	else:
 		animation_player.play("destroy_enemy")
 		await animation_player.animation_finished
-		get_tree().change_scene_to_file("res://scenes/Cutscenes/EndingCutScene.tscn")
+		if Global.skip_cut_scenes:get_tree().change_scene_to_file("res://scenes/UI/MainMenu.tscn")
+		else: get_tree().change_scene_to_file("res://scenes/Cutscenes/EndingCutScene.tscn")
 
 
 func _on_heal_nexus(value: int):
