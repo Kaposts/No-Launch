@@ -7,6 +7,3 @@
 script = ExtResource("2_najbk")
 res_name = "sfx_ui_minimize_003"
 res_stream = ExtResource("1_h26cl")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

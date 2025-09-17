@@ -1,34 +1,3 @@
-[remap]
-
-importer="texture"
-type="CompressedTexture2D"
-uid="uid://cffu55qm1ur6b"
-path="res://.godot/imported/core_particle_ally_1.png-fb02d2a3b0177a98ca60ba3532dff2ee.ctex"
-metadata={
-"vram_texture": false
-}
-
-[deps]
-
-source_file="res://assets/visual_effects/core_particles/core_particle_ally_1.png"
-dest_files=["res://.godot/imported/core_particle_ally_1.png-fb02d2a3b0177a98ca60ba3532dff2ee.ctex"]
-
-[params]
-
-compress/mode=0
-compress/high_quality=false
-compress/lossy_quality=0.7
-compress/hdr_compression=1
-compress/normal_map=0
-compress/channel_pack=0
-mipmaps/generate=false
-mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
-process/fix_alpha_border=true
-process/premult_alpha=false
-process/normal_map_invert_y=false
-process/hdr_as_srgb=false
-process/hdr_clamp_exposure=false
-process/size_limit=0
-detect_3d/compress_to=1
+version https://git-lfs.github.com/spec/v1
+oid sha256:8ce2bd5bd6341b524737810b83a7098455a5172ddfdc555c7b8c2b8ff05e9adb
+size 1001

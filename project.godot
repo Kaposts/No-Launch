@@ -10,12 +10,13 @@ config_version=5
 
 [application]
 
-config/name="PatchNoteJam"
+config/name="No Launch"
 run/main_scene="uid://blk1ycwrde8uk"
-config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="uid://dofbdlrr3qwfk"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="uid://jsuis1uohbcp"
 "<<<<<<<HEAD[editor]version_control/plugin_name"="GitPlugin"
 version_control/autoload_on_startup=true
+<<<<<<<HEADconfig/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
@@ -97,17 +98,19 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/stretch/scale_mode="integer"
 
 [editor]
 
 movie_writer/movie_file="D:/GodotGameProjects/Patch-Notes-v1-Jam/media/movies/output.avi"
+export/convert_text_resources_to_binary=false
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Asset_Drawer/plugin.cfg", "res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/editor_generate_functions/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/audio_manager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/editor_generate_functions/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [file_customization]
 
@@ -129,14 +132,13 @@ enemy_nexus=""
 battle_scene="Main battle scene"
 player_layer=""
 ui_layer="layer to contain any dynamic ui elements"
-vfx_layer=""
 
 [gui]
 
-theme/custom="uid://blwjd2mb1dnlm"
-theme/custom_font="uid://csu3erj4oisi5"
 theme/default_font_antialiasing=0
 theme/default_font_hinting=0
+theme/custom="uid://blwjd2mb1dnlm"
+theme/custom_font="uid://csu3erj4oisi5"
 
 [input]
 

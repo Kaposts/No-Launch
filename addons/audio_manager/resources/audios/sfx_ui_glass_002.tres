@@ -7,6 +7,3 @@
 script = ExtResource("2_3pwti")
 res_name = "sfx_ui_glass_002"
 res_stream = ExtResource("1_y3yqq")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

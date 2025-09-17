@@ -1,24 +1,3 @@
-[remap]
-
-importer="wav"
-type="AudioStreamWAV"
-uid="uid://dg28gkwdynfkg"
-path="res://.godot/imported/victory.wav-ae480ee96d0ef6e57eac4d00d3ccfd0b.sample"
-
-[deps]
-
-source_file="res://assets/SFX/system/victory.wav"
-dest_files=["res://.godot/imported/victory.wav-ae480ee96d0ef6e57eac4d00d3ccfd0b.sample"]
-
-[params]
-
-force/8_bit=false
-force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
-edit/trim=false
-edit/normalize=false
-edit/loop_mode=0
-edit/loop_begin=0
-edit/loop_end=-1
-compress/mode=2
+version https://git-lfs.github.com/spec/v1
+oid sha256:04c4c8676adb1fe26047c8a42d01a706121d4e1cda34c1bdc816580ded55cbc0
+size 497

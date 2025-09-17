@@ -7,6 +7,3 @@
 script = ExtResource("2_570ev")
 res_name = "sfx_death_component_death_4"
 res_stream = ExtResource("1_gisdu")
-res_volume_db = 0.0
-res_pitch_scale = 1.0
-res_pitch_randomizer = false

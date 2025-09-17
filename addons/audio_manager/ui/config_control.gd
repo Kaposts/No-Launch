@@ -5,7 +5,7 @@ class_name ConfigControl
 var config: AudioManagerConfig
 
 func _ready():
-	config = load("res://addons/audio_manager/config/config.tres")
+	config = ResourceLoader.load("res://addons/audio_manager/config/config.tres")
 	$config_container/sfx_directory/btn.pressed.connect(_on_browse_pressed)
 	$config_container/sfx_directory/FileDialog.dir_selected.connect(_on_dir_selected)
 	$config_container/sfx_directory/input.text = config.sfx_directory

@@ -2,6 +2,18 @@
 ## This is a auto generated file to store audio consts
 extends Node
 class_name SFX
+const SFX_COMBAT_core_damaged = "sfx_combat_core_damaged"
+const SFX_CARD_card_unusable = "sfx_card_card_unusable"
+const SFX_CARD_card_hovered = "sfx_card_card_hovered"
+const SFX_CARD_card_played = "sfx_card_card_played"
+const SFX_CARD_card_drawn = "sfx_card_card_drawn"
+const SFX_BUTTON_button_click = "sfx_button_button_click"
+const SFX_BUTTON_button_hover = "sfx_button_button_hover"
+const SFX_DEATH_COMPONENT_death_0 = "sfx_death_component_death_0"
+const SFX_DEATH_COMPONENT_death_1 = "sfx_death_component_death_1"
+const SFX_DEATH_COMPONENT_death_2 = "sfx_death_component_death_2"
+const SFX_DEATH_COMPONENT_death_4 = "sfx_death_component_death_4"
+const SFX_DEATH_COMPONENT_death_3 = "sfx_death_component_death_3"
 const SFX_UI_SELECT_007 = "sfx_ui_select_007"
 const SFX_UI_SELECT_001 = "sfx_ui_select_001"
 const SFX_UI_SELECT_004 = "sfx_ui_select_004"

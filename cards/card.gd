@@ -164,7 +164,6 @@ func _check_drop():
 func generate_description():
 	for activation in data.activations:
 		card_description.text += activation.description + "\n"
-		print(activation.description)
 
 func _on_close_pressed() -> void:
 	GlobalSfxPlayer.discard_sfx_player.play_random()

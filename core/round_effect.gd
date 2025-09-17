@@ -24,7 +24,7 @@ func pick_random_effect() -> int:
 
 func activate_effect(effect: Enum.ROUND_EFFECTS):
 	var description: String = "404"
-	print("ASLDIHAS:OFIHAS:    ", effect)
+	
 	match effect:
 		Enum.ROUND_EFFECTS.NEXUS_TAKES_DOUBLE_DAMAGE:
 			nexus_takes_double_damage = true
