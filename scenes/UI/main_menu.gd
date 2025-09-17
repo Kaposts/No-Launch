@@ -35,9 +35,7 @@ func _disable_all_buttons() -> void:
 func _on_start_pressed() -> void:
 	_disable_all_buttons()
 	await Global.transition()
-	if Global.skip_cut_scenes: 
-		get_tree().change_scene_to_file("res://scenes/cabage.tscn")
-		SignalBus.start_game.emit()
+	if Global.skip_cut_scenes: get_tree().change_scene_to_file(Global.SCENE_PATHS.main_scene)
 	else: get_tree().change_scene_to_file("res://scenes/Cutscenes/OpeningCutscene.tscn")
 
 

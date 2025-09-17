@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e1a9d1a7298d8eb32ad5638c4f845908d99a65f7496b26d2ae1da7fe64cbeef2
-size 512
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgq65fi6udw3u"
+path="res://.godot/imported/minor_glitch.wav-a663323c779424c7a44ab45d30600adb.sample"
+
+[deps]
+
+source_file="res://assets/SFX/system/minor_glitch.wav"
+dest_files=["res://.godot/imported/minor_glitch.wav-a663323c779424c7a44ab45d30600adb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
