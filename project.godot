@@ -92,11 +92,12 @@ glossary/glossary_files=["res://dialogic/glossary.tres"]
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/viewport_width=630
+window/size/viewport_height=500
+window/size/window_width_override=630
+window/size/window_height_override=500
 window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"
 
 [editor]
