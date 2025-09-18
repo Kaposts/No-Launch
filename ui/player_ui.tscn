@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://ccxkca6puflbo"]
+[gd_scene load_steps=43 format=3 uid="uid://ccxkca6puflbo"]
 
 [ext_resource type="Script" uid="uid://bl654htndwwbj" path="res://ui/player_ui.gd" id="1_cfom6"]
 [ext_resource type="PackedScene" uid="uid://yey23xnr0h7w" path="res://components/random_audio_player/random_audio_player_component.tscn" id="2_2pr6j"]
@@ -20,36 +20,35 @@
 [ext_resource type="Texture2D" uid="uid://dt0iffjyb4252" path="res://ui/assets/In Game Ui/Pause Settings Normal.png" id="9_j0e15"]
 [ext_resource type="Texture2D" uid="uid://5l5ge1bx5y8m" path="res://ui/assets/In Game Ui/Pause Menu Hover.png" id="10_m8r0k"]
 [ext_resource type="Texture2D" uid="uid://tu2j0s7ukorg" path="res://ui/assets/In Game Ui/Pause Menu Clicked.png" id="11_prpn4"]
+[ext_resource type="Texture2D" uid="uid://bdtfhuqc6egy0" path="res://ui/assets/In Game Ui/Effect Base Outlined.png" id="12_22frk"]
 [ext_resource type="Texture2D" uid="uid://bm8780sjvufe8" path="res://ui/assets/In Game Ui/Pause Menu Normal.png" id="12_ud46t"]
+[ext_resource type="Texture2D" uid="uid://75j55kpgrod1" path="res://ui/assets/In Game Ui/Close Button Big ( Normal ).png" id="13_y84gk"]
+[ext_resource type="Texture2D" uid="uid://b5ybf08li74t2" path="res://ui/assets/In Game Ui/Close Button Big ( Clickedl ).png" id="14_qnke6"]
+[ext_resource type="Texture2D" uid="uid://l2fjsfyxa7bl" path="res://ui/assets/In Game Ui/Close Button Big ( Hover ).png" id="15_x22r1"]
 [ext_resource type="PackedScene" uid="uid://b3wtg6sxyrltt" path="res://scenes/UI/components/vignette/vignette.tscn" id="22_2dni3"]
 
-[sub_resource type="Gradient" id="Gradient_cfom6"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bf63m"]
+texture = ExtResource("13_y84gk")
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_vq5xy"]
-gradient = SubResource("Gradient_cfom6")
-height = 32
-fill_from = Vector2(0.5, 0)
-fill_to = Vector2(0.5, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h1tc0"]
+texture = ExtResource("14_qnke6")
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwa1g"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehg4m"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vq5xy"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lo0bj"]
+texture = ExtResource("15_x22r1")
 
 [sub_resource type="Animation" id="Animation_ehg4m"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("BG:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -40)]
+"values": [Vector2(0, -48)]
 }
 
 [sub_resource type="Animation" id="Animation_cfom6"]
@@ -58,14 +57,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("BG:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -40)]
+"values": [Vector2(0, 0), Vector2(0, -48)]
 }
 
 [sub_resource type="Animation" id="Animation_vq5xy"]
@@ -74,14 +73,14 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("BG:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -40), Vector2(0, 0)]
+"values": [Vector2(0, -48), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iwa1g"]
@@ -118,7 +117,13 @@ texture = ExtResource("11_prpn4")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x22r1"]
 texture = ExtResource("10_m8r0k")
 
-[node name="UI" type="CanvasLayer"]
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_cfom6")
 
 [node name="RoundStartSFXPlayer" parent="." instance=ExtResource("2_2pr6j")]
@@ -144,7 +149,6 @@ grow_vertical = 2
 
 [node name="EnergyGroup" type="Control" parent="."]
 unique_name_in_owner = true
-layout_mode = 3
 anchors_preset = 0
 offset_left = 142.0
 offset_top = 27.0
@@ -195,6 +199,7 @@ vertical_alignment = 1
 
 [node name="PlayButton" parent="." instance=ExtResource("4_5p2iw")]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 397.0
 offset_top = 46.0
 offset_right = 493.0
@@ -206,6 +211,7 @@ texture_disabled = ExtResource("8_2dni3")
 
 [node name="cards_in_deck" type="Label" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 21.0
 offset_top = 283.0
 offset_right = 141.0
@@ -213,24 +219,19 @@ offset_bottom = 297.0
 text = "Cards inside deck: "
 
 [node name="round_effect" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = -40.0
-offset_bottom = -4.0
-grow_horizontal = 2
+anchors_preset = 0
+offset_left = 144.0
+offset_right = 144.0
+offset_bottom = 36.0
 
 [node name="BG" type="TextureRect" parent="round_effect"]
 self_modulate = Color(1, 0, 0.258824, 1)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -180.0
-offset_right = 180.0
-offset_bottom = 32.0
-grow_horizontal = 2
-texture = SubResource("GradientTexture2D_vq5xy")
+layout_mode = 0
+offset_top = -48.0
+offset_right = 352.0
+offset_bottom = -7.0
+pivot_offset = Vector2(176, 0)
+texture = ExtResource("12_22frk")
 
 [node name="description" type="Label" parent="round_effect/BG"]
 unique_name_in_owner = true
@@ -244,17 +245,17 @@ text = "YOU ARE CORRUPTED NOW"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="round_effect_close" type="Button" parent="round_effect"]
+[node name="round_effect_close" type="Button" parent="round_effect/BG"]
+visible = false
 layout_mode = 0
-offset_left = 473.0
-offset_top = 4.0
-offset_right = 488.0
-offset_bottom = 26.0
-scale = Vector2(1.76, 1)
-theme_override_styles/normal = SubResource("StyleBoxEmpty_iwa1g")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_ehg4m")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_vq5xy")
-text = "X"
+offset_left = 328.0
+offset_top = -8.0
+offset_right = 360.0
+offset_bottom = 24.0
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_bf63m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h1tc0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lo0bj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="round_effect"]
 libraries = {
@@ -363,12 +364,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_fynll")
 
-[node name="Label" type="Label" parent="MenuLayer/DeathMenu"]
+[node name="Label" type="Label" parent="MenuLayer/DeathMenu/BG"]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 120.0
-offset_right = 368.0
-offset_bottom = 160.0
+offset_left = 16.0
+offset_top = 19.5
+offset_right = 112.0
+offset_bottom = 59.5
 theme_override_font_sizes/font_size = 25
 text = "GET REKT"
 horizontal_alignment = 1
@@ -404,6 +405,7 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_5xoyk")
 theme_override_styles/hover = SubResource("StyleBoxTexture_x22r1")
 
 [node name="speed" type="Button" parent="."]
+layout_mode = 0
 offset_left = 304.0
 offset_top = 56.0
 offset_right = 324.0
@@ -412,7 +414,7 @@ focus_mode = 0
 toggle_mode = true
 text = "1x"
 
-[connection signal="pressed" from="round_effect/round_effect_close" to="." method="_on_round_effect_close_pressed"]
+[connection signal="pressed" from="round_effect/BG/round_effect_close" to="." method="_on_round_effect_close_pressed"]
 [connection signal="pressed" from="MenuLayer/PauseMenu/container/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MenuLayer/PauseMenu/container/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MenuLayer/PauseMenu/container/menu" to="." method="_on_menu_pressed"]

@@ -7,10 +7,11 @@ script = ExtResource("1_tkdws")
 steps = [NodePath("step_1"), NodePath("step_2"), NodePath("step_3")]
 
 [node name="Panel" type="Panel" parent="."]
-offset_left = -18.0
-offset_top = -29.0
-offset_right = 665.0
-offset_bottom = 383.0
+offset_left = -518.0
+offset_top = -327.0
+offset_right = 165.0
+offset_bottom = 85.0
+scale = Vector2(2.4800005, 2.4800005)
 
 [node name="step_1" type="Control" parent="."]
 layout_mode = 3

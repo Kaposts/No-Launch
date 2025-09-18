@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 @onready var options_menu = %OptionsMenu 
 @onready var credits_menu = %CreditsMenu
