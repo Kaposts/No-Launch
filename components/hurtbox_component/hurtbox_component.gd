@@ -12,6 +12,8 @@ const FLOATING_TEXT: PackedScene = preload(Global.SCENE_PATHS.floating_text)
 @export var knockback_component: KnockbackComponent
 @export var hit_flash_component: HitFlashComponent
 @export var hitstop_component: HitstopComponent
+@export var hit_spark_light: PointLight2D
+
 @onready var spark_particles: GPUParticles2D = $SparkParticles
 
 var ui_layer: Node2D

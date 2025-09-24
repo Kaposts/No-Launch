@@ -8,6 +8,17 @@ exports/
 addons/Asset_Drawer/
 addons/godot-git-plugin/
 addons/dialogic/
+
+character.png
+character.png.import
+character_n.png
+character_n.png.import
+character_s.png
+character_s.png.import
+light.webp
+light.webp.import
+test_scene.tscn
+
 =======
 .nomedia
 
