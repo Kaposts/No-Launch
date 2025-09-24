@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b176r6aw11cn"]
 
-[ext_resource type="Script" uid="uid://yde7y1upjc8p" path="res://scenes/main.gd" id="1_tefeu"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bcc4ea6baq4mq" path="res://scenes/levels/battle_scene.tscn" id="2_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cv8wpyv3ibhbt" path="res://cards/hand.tscn" id="3_tipki"]
 [ext_resource type="Texture2D" uid="uid://ci0al2xrftmmc" path="res://icon.svg" id="4_85g3d"]
@@ -9,6 +9,9 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_tefeu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(320, 180)
 
 [node name="BattleScene" parent="." instance=ExtResource("2_o6xl0")]
 

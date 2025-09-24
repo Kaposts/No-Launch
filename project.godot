@@ -14,9 +14,9 @@ config/name="No Launch"
 run/main_scene="uid://blk1ycwrde8uk"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://jsuis1uohbcp"
-"<<<<<<<HEAD[editor]version_control/plugin_name"="GitPlugin"
+[editor]version_control/plugin_name"="GitPlugin"
 version_control/autoload_on_startup=true
-<<<<<<<HEADconfig/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
@@ -88,11 +88,10 @@ glossary/glossary_files=[]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/window_width_override=1280
+window/size/window_width_override=1600
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/stretch/scale_mode="integer"
 
 [editor]
 
