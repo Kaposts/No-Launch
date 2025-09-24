@@ -34,6 +34,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-version https://git-lfs.github.com/spec/v1
-oid sha256:2cab4d2f2d1327d81be161c49ad7e6a21f1af426d0aaec2684ad308c7c1df2a4
-size 937
