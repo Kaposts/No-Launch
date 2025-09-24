@@ -10,6 +10,7 @@ extends Entity
 @onready var hurt_sfx_player: RandomAudioPlayer2D = %HurtSFXPlayer
 @onready var spawn_sfx_player: RandomAudioPlayer2D = %SpawnSFXPlayer
 @onready var buff_sfx_player: RandomAudioPlayer2D = %BuffSFXPlayer
+@onready var hit_spark_light_player: AnimationPlayer = %HitSparkLightPlayer
 
 
 
@@ -30,6 +31,9 @@ func _ready() -> void:
 	
 	SignalBus.apply_buff.connect(_on_apply_buff)
 
+#endregion
+#===================================================================================================
+#region EVENT HANDLERS
 
 func _on_apply_buff(data: ActivationResource):
 	health_component.max_health = parameters.health
@@ -45,6 +49,7 @@ func _on_apply_buff(data: ActivationResource):
 func _on_hitbox_entered(_area: Area2D) -> void:
 	#Audio.play_by_name(SFX.SFX_COMBAT_robot_attack)
 	hit_sfx_player.play_random()
+	hit_spark_light_player.play("sparking_light")
 
 
 func _on_hurtbox_entered(_area: Area2D) -> void:

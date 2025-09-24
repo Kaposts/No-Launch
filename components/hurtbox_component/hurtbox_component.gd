@@ -12,7 +12,9 @@ const FLOATING_TEXT: PackedScene = preload(Global.SCENE_PATHS.floating_text)
 @export var knockback_component: KnockbackComponent
 @export var hit_flash_component: HitFlashComponent
 @export var hitstop_component: HitstopComponent
-@onready var random_gpu_particles_component: RandomGPUParticlesComponent = $RandomGPUParticlesComponent
+@export var hit_spark_light: PointLight2D
+
+@onready var spark_particles: GPUParticles2D = $SparkParticles
 
 var ui_layer: Node2D
 
@@ -40,7 +42,7 @@ func _on_area_entered(hitbox_component: HitboxComponent) -> void:
 	hitstop_component.freeze_frame(hitbox_component.hitstop_duration)
 	
 	_add_damage_dealt_text_ui(hitbox_component.damage)
-	random_gpu_particles_component.emit()
+	spark_particles.emitting = true
 	
 	await get_tree().create_timer(hitbox_component.hitstop_duration, false).timeout
 	

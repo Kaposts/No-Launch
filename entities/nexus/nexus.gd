@@ -30,8 +30,8 @@ var dying: bool = false
 @onready var enemy_shaker_component: ShakerComponent2D = %EnemyShakerComponent
 @onready var ally_hit_flash_component: HitFlashComponent = %AllyHitFlashComponent
 @onready var enemy_hit_flash_component: HitFlashComponent = %EnemyHitFlashComponent
-@onready var ally_core_particles_component: RandomGPUParticlesComponent = $AllyCore/AllyCoreParticlesComponent
-@onready var enemy_core_particles_component: RandomGPUParticlesComponent = $EnemyCore/EnemyCoreParticlesComponent
+@onready var ally_core_particles: GPUParticles2D = %AllyCoreParticles
+@onready var enemy_core_particles: GPUParticles2D = %EnemyCoreParticles
 
 
 func _ready() -> void:
@@ -58,11 +58,11 @@ func damage_nexus(damage_amount: int = 1) -> void:
 	if ally:
 		ally_shaker_component.play_shake()
 		ally_hit_flash_component.flash(DAMAGE_ANIMATION_DURATION)
-		ally_core_particles_component.emit()
+		ally_core_particles.emitting = true
 	else:
 		enemy_shaker_component.play_shake()
 		enemy_hit_flash_component.flash(DAMAGE_ANIMATION_DURATION)
-		enemy_core_particles_component.emit()
+		enemy_core_particles.emitting = true
 	
 	
 	if health <= 0:
