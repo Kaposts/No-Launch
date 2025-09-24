@@ -21,7 +21,7 @@ font_size = 22
 resource_name = "BlueScreen"
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("Node2D2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -187,7 +187,7 @@ tracks/4/keys = {
 }
 tracks/5/type = "value"
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/path = NodePath("Node2D2:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
@@ -230,12 +230,19 @@ _data = {
 &"RESET": SubResource("Animation_4wfmg")
 }
 
-[node name="EndingCutscene" type="Node"]
+[node name="EndingCutscene" type="Control"]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_tsui3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 1
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -243,8 +250,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0862745, 0.0627451, 0.12549, 1)
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(320, 180)
+[node name="Node2D" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BG" type="Sprite2D" parent="Node2D"]
 texture = ExtResource("2_ix8fu")
@@ -263,28 +277,52 @@ offset = Vector2(0, 16)
 position = Vector2(20, 66)
 texture = ExtResource("6_skbch")
 
-[node name="Node2D2" type="Node2D" parent="."]
+[node name="Node2D2" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(313.39, 236.655)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = -320.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(0.145, 0.145)
+pivot_offset = Vector2(320, 180)
 
-[node name="BG" type="Sprite2D" parent="Node2D2"]
-position = Vector2(0, -360)
+[node name="BG" type="TextureRect" parent="Node2D2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(320, 180)
 texture = ExtResource("7_lyt4f")
 
 [node name="Label" type="Label" parent="Node2D2/BG"]
-offset_left = -225.0
-offset_top = -56.0
-offset_right = -93.0
-offset_bottom = 5.0
+layout_mode = 0
+offset_left = 87.0
+offset_top = 130.0
+offset_right = 219.0
+offset_bottom = 191.0
 text = "Oopsie!"
 label_settings = SubResource("LabelSettings_u2aod")
 
 [node name="Label2" type="Label" parent="Node2D2/BG"]
-offset_left = -224.0
-offset_top = -19.0
-offset_right = 224.0
-offset_bottom = 104.0
+layout_mode = 0
+offset_left = 88.0
+offset_top = 167.0
+offset_right = 536.0
+offset_bottom = 308.0
 text = "It appears that during the game you have done so well or not (lmao) that your PC has blown itself up.
 
 You should just give up and get  an extrabox instead."
@@ -296,5 +334,3 @@ libraries = {
 &"": SubResource("AnimationLibrary_1e6jp")
 }
 autoplay = "OpeningSceneDay"
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -17,5 +17,5 @@ func _on_dialogic_signal(argument: String):
 	
 	if argument == "Game_Start":
 		await Global.transition()
-		get_tree().change_scene_to_file("res://scenes/cabage.tscn")
+		get_tree().change_scene_to_file(Global.SCENE_PATHS.main_scene)
 		SignalBus.start_game.emit()

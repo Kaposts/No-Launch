@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 
 @onready var round_start_sfx_player: RandomAudioPlayer = %RoundStartSFXPlayer

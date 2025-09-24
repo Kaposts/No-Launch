@@ -54,12 +54,20 @@ grow_vertical = 2
 script = ExtResource("1_rb3fs")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 179.0
-offset_top = 75.0
-offset_right = 362.0
-offset_bottom = 199.0
-scale = Vector2(1.475, 1.475)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -62.0
+offset_right = 91.5
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(90, 60)
 texture = ExtResource("1_qbgyr")
 
 [node name="CloseButton" parent="TextureRect" instance=ExtResource("3_m6btu")]

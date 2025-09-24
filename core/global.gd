@@ -1,6 +1,7 @@
 extends Node
 
 const SCENE_PATHS: Dictionary[String, String] = {
+	"main_scene" : "uid://b176r6aw11cn",
 	"navigator_component" : "uid://brbg6i0mvo0l8",
 	"floating_text" : "uid://c6brqedq46jjh",
 }

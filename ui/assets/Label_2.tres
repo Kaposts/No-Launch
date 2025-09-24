@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://co7y3cieph66m"]
+
+[ext_resource type="FontFile" uid="uid://cdcwtu3i2pxed" path="res://assets/fonts/ThaleahFat/ThaleahFat.ttf" id="1_llhsy"]
+
+[resource]
+font = ExtResource("1_llhsy")
+font_color = Color(0.89912087, 0.79057163, 0, 1)
