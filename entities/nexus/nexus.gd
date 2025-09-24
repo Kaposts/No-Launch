@@ -74,6 +74,9 @@ func update_health() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group('e'): return
+	if body.is_in_group('p'): return
+
 	body.health_component.damage(1000)
 	damage_nexus()
 

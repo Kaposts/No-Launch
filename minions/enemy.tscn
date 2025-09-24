@@ -1,0 +1,123 @@
+[gd_scene load_steps=21 format=3 uid="uid://di0x0qcwwsirb"]
+
+[ext_resource type="Script" uid="uid://bx6md3om5jods" path="res://minions/minion.gd" id="1_08a2n"]
+[ext_resource type="Resource" uid="uid://dquq8a7iqipgf" path="res://entities/enemies/resources/basic_enemy.tres" id="2_q3vgr"]
+[ext_resource type="Script" uid="uid://ciqsbcgyxedyl" path="res://addons/xsm/state.gd" id="3_q3vgr"]
+[ext_resource type="Texture2D" uid="uid://ovl8y74ydfug" path="res://entities/player_robots/assets/player_infantry.png" id="3_ys6ok"]
+[ext_resource type="Script" uid="uid://bt0gqvntvb2rw" path="res://minions/states/minion_idle_state.gd" id="4_bg2yy"]
+[ext_resource type="Script" uid="uid://cs3uvheajday2" path="res://minions/states/minion_battle_state.gd" id="5_w781p"]
+[ext_resource type="Script" uid="uid://cg25baltxg0jc" path="res://minions/states/minion_end_state.gd" id="6_s41v7"]
+[ext_resource type="PackedScene" uid="uid://jkbju0f05q12" path="res://components/health_component/health_component.tscn" id="8_q3vgr"]
+[ext_resource type="PackedScene" uid="uid://b17yc6s3yip17" path="res://components/knockback_component/knockback_component.tscn" id="9_ynpxk"]
+[ext_resource type="PackedScene" uid="uid://cmi6e4m54urq" path="res://components/wall_bounce_component.tscn/wall_bounce_component.tscn" id="10_kwoai"]
+[ext_resource type="PackedScene" uid="uid://buayfca5hh34h" path="res://components/hitstop_component/hitstop_component.tscn" id="11_fkdap"]
+[ext_resource type="PackedScene" uid="uid://b1b47optq3bq3" path="res://components/hit_flash_component/hit_flash_component.tscn" id="12_rtmct"]
+[ext_resource type="Shader" uid="uid://doi7gyjf00jrn" path="res://components/hit_flash_component/red_hit_flash.gdshader" id="13_e3568"]
+[ext_resource type="PackedScene" uid="uid://3650ubpaya7f" path="res://components/hitbox_component/hitbox_component.tscn" id="14_v0wbf"]
+[ext_resource type="PackedScene" uid="uid://db1eyrqt7xw5f" path="res://components/hurtbox_component/hurtbox_component.tscn" id="15_lukqv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2g2j"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5wtl"]
+radius = 9.05539
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ys6ok"]
+resource_local_to_scene = true
+shader = ExtResource("13_e3568")
+shader_parameter/lerp_percent = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjsw8"]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0nrq"]
+radius = 20.0
+
+[node name="enemy" type="CharacterBody2D" groups=["e"]]
+motion_mode = 1
+script = ExtResource("1_08a2n")
+target_group = "p"
+target_nexus = "player_nexus"
+data = ExtResource("2_q3vgr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_c2g2j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -9)
+texture = ExtResource("3_ys6ok")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_q3vgr")
+history_size = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://ciqsbcgyxedyl"
+
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_bg2yy")
+metadata/_custom_type_script = "uid://ciqsbcgyxedyl"
+
+[node name="battle" type="Node" parent="StateMachine"]
+script = ExtResource("5_w781p")
+metadata/_custom_type_script = "uid://ciqsbcgyxedyl"
+
+[node name="end" type="Node" parent="StateMachine"]
+script = ExtResource("6_s41v7")
+metadata/_custom_type_script = "uid://ciqsbcgyxedyl"
+
+[node name="Components" type="Node2D" parent="."]
+
+[node name="HealthComponent" parent="Components" instance=ExtResource("8_q3vgr")]
+
+[node name="KnockbackComponent" parent="Components" node_paths=PackedStringArray("wall_bounce_component") instance=ExtResource("9_ynpxk")]
+unique_name_in_owner = true
+wall_bounce_component = NodePath("WallBounceComponent")
+
+[node name="WallBounceComponent" parent="Components/KnockbackComponent" instance=ExtResource("10_kwoai")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(0, -10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/KnockbackComponent/WallBounceComponent"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_c5wtl")
+
+[node name="HitstopComponent" parent="Components" instance=ExtResource("11_fkdap")]
+
+[node name="HitFlashComponent" parent="Components" node_paths=PackedStringArray("sprite_group") instance=ExtResource("12_rtmct")]
+sprite_group = [NodePath("../../Sprite2D")]
+hit_flash_material = SubResource("ShaderMaterial_ys6ok")
+
+[node name="CombatAreas" type="Node2D" parent="Components"]
+position = Vector2(-1, 12)
+
+[node name="HitboxComponent" parent="Components/CombatAreas" node_paths=PackedStringArray("hitstop_component") instance=ExtResource("14_v0wbf")]
+unique_name_in_owner = true
+collision_layer = 16
+collision_mask = 8
+hitstop_component = NodePath("../../HitstopComponent")
+
+[node name="HitboxCollider" type="CollisionShape2D" parent="Components/CombatAreas/HitboxComponent"]
+position = Vector2(16, -11)
+shape = SubResource("CapsuleShape2D_sjsw8")
+disabled = true
+
+[node name="HurtboxComponent" parent="Components/CombatAreas" node_paths=PackedStringArray("health_component", "knockback_component", "hit_flash_component", "hitstop_component") instance=ExtResource("15_lukqv")]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 32
+health_component = NodePath("../../HealthComponent")
+knockback_component = NodePath("../../KnockbackComponent")
+hit_flash_component = NodePath("../../HitFlashComponent")
+hitstop_component = NodePath("../../HitstopComponent")
+
+[node name="HurtboxCollider" type="CollisionShape2D" parent="Components/CombatAreas/HurtboxComponent"]
+position = Vector2(0, -12)
+shape = SubResource("CircleShape2D_v0nrq")
+debug_color = Color(0.876566, 0.263999, 0.560066, 0.42)

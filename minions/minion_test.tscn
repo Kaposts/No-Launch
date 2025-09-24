@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdi3he7nln3rl"]
+
+[ext_resource type="PackedScene" uid="uid://ccxkca6puflbo" path="res://ui/player_ui.tscn" id="1_34gym"]
+[ext_resource type="PackedScene" uid="uid://bvyjm3nr0o8q1" path="res://minions/player.tscn" id="2_mrn8u"]
+[ext_resource type="PackedScene" uid="uid://di0x0qcwwsirb" path="res://minions/enemy.tscn" id="3_x60sk"]
+[ext_resource type="PackedScene" uid="uid://mqf25vmd4yyl" path="res://entities/nexus/nexus.tscn" id="4_ti3ib"]
+
+[node name="MinionTest" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_34gym")]
+
+[node name="temp" type="Node2D" parent="."]
+
+[node name="player" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(171, 169)
+
+[node name="player2" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(168, 224)
+
+[node name="player3" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(147, 277)
+
+[node name="player4" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(193, 337)
+
+[node name="player5" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(238, 260)
+
+[node name="player6" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(103, 212)
+
+[node name="player7" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(122, 107)
+
+[node name="player8" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(171, 52)
+
+[node name="player9" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(232, 162)
+
+[node name="player10" parent="temp" instance=ExtResource("2_mrn8u")]
+position = Vector2(199, 89)
+
+[node name="enemy" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(372, 159)
+
+[node name="enemy2" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(428, 213)
+
+[node name="enemy3" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(376, 266)
+
+[node name="enemy4" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(419, 307)
+
+[node name="enemy5" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(484, 336)
+
+[node name="enemy6" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(533, 265)
+
+[node name="enemy7" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(452, 266)
+
+[node name="enemy8" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(487, 182)
+
+[node name="enemy9" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(442, 138)
+
+[node name="enemy10" parent="temp" instance=ExtResource("3_x60sk")]
+position = Vector2(486, 62)
+
+[node name="PlayerNexus" parent="." groups=["player_nexus"] instance=ExtResource("4_ti3ib")]
+position = Vector2(82, 134)
+collision_mask = 2
+
+[node name="EnemyNexus" parent="." groups=["enemy_nexus"] instance=ExtResource("4_ti3ib")]
+position = Vector2(555, 134)
+ally = false

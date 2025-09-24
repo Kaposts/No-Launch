@@ -18,7 +18,7 @@ signal hit_connected(hurtbox_component: HurtboxComponent)
 @export_range(0.0, 10.0, 0.001) var hitstop_duration: float = 0.12
 @export var hitstop_component: HitstopComponent
 
-@export var navigator_component: NavigatorComponent
+# @export var navigator_component: NavigatorComponent
 
 
 func _ready() -> void:
